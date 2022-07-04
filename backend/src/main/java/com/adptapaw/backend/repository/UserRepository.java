@@ -1,6 +1,6 @@
-package com.adptapaw.backend.Repository;
+package com.adptapaw.backend.repository;
 
-import com.adptapaw.backend.Model.User;
+import com.adptapaw.backend.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

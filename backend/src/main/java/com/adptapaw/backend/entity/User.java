@@ -1,4 +1,4 @@
-package com.adptapaw.backend.Model;
+package com.adptapaw.backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
