@@ -1,0 +1,132 @@
+.primary-button,
+.primary-button *,
+.primary-button :after,
+.primary-button :before,
+.primary-button:after,
+.primary-button:before,
+.primary-variant,
+.primary-variant *,
+.primary-variant :after,
+.primary-variant :before,
+.primary-variant:after,
+.primary-variant:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+.primary-button,
+.primary-variant {
+  -webkit-tap-highlight-color: hsl(18, 74%, 46%);
+  -webkit-appearance: button;
+  /* background-color: hsl(18, 74%, 46%); */
+  background: linear-gradient(180deg, #ff540b 0%, #d05926 100%);
+  /* background-image: none; */
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 100%;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 500;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.primary-variant {
+  -webkit-tap-highlight-color: hsl(17, 66%, 16%);
+  -webkit-appearance: button;
+  /* background-color: hsl(17, 66%, 16%); */
+  background: linear-gradient(180deg, #451e0e 0%, #452113 45.31%, #230f07 100%);
+}
+
+.primary-button:disabled,
+.primary-variant:disabled {
+  cursor: default;
+}
+.primary-button:-moz-focusring,
+.primary-variant:-moz-focusring {
+  outline: auto;
+}
+.primary-button svg,
+.primary-variant svg {
+  display: block;
+  vertical-align: middle;
+}
+.primary-button [hidden],
+.primary-variant [hidden] {
+  display: none;
+}
+.primary-button,
+.primary-variant {
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-width: 0px;
+  overflow: hidden;
+  padding: 0.8rem 3rem;
+  position: relative;
+}
+.primary-button span,
+.primary-variant span {
+  /* mix-blend-mode: difference; */
+  position: absolute;
+}
+.primary-button:hover span,
+.primary-variant:hover span {
+  /* mix-blend-mode: difference; */
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+}
+
+.primary-button:before,
+.primary-variant:before {
+  -webkit-animation: move-out 0.3s;
+  animation: move-out 0.3s;
+  background: hsl(18, 74%, 42%);
+  content: '';
+  height: 100%;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  will-change: transform;
+}
+.primary-variant:before {
+  background: hsl(17, 66%, 20%);
+}
+.primary-button:hover:before,
+.primary-variant:hover:before {
+  -webkit-animation: move-in 0.3s forwards;
+  animation: move-in 0.3s forwards;
+}
+@-webkit-keyframes move-in {
+  0% {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes move-in {
+  0% {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@-webkit-keyframes move-out {
+  0% {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
+@keyframes move-out {
+  0% {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}

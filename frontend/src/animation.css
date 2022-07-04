@@ -1,0 +1,19 @@
+.bottomup {
+  animation: bottom-up-animation 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    forwards;
+}
+@keyframes bottom-up-animation {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@media screen and (min-width: 768px) {
+  .outlined {
+    -webkit-text-stroke-width: 2px;
+  }
+}

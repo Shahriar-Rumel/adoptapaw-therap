@@ -1,0 +1,72 @@
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate
+} from 'react-router-dom';
+import './App.css';
+import './animation.css';
+import './buttonanimation.css';
+import Nav from './Components/Nav/Nav';
+import Adoptionpage from './Pages/Adoptionpage';
+import Homepage from './Pages/Homepage';
+import Onboarding from './Pages/Onboarding';
+import AdoptionAnimalProfile from './Pages/AdoptionAnimalProfile';
+import AdoptionRequestPage from './Pages/AdoptionRequestPage';
+import AdoptionRequestConfirmationPage from './Pages/AdoptionRequestConfirmationPage';
+import RegistrationPage from './Pages/RegistrationPage';
+import LoginPage from './Pages/LoginPage';
+import MissingAnimalPage from './Pages/MissingAnimalPage';
+import DonationPage from './Pages/DonationPage';
+import MissingAnimalProfilePage from './Pages/MissingAnimalProfilePage';
+import MissingAnimalDataPage from './Pages/MissingAnimalDataPage';
+
+function App() {
+  return (
+    <>
+      <Router>
+        {/* <ScrollToTop> */}
+        <Nav />
+        <Routes>
+          <Route
+            path="/missing/cat/information"
+            element={<MissingAnimalDataPage />}
+            exact
+          />
+          <Route
+            path="/missing/cat"
+            element={<MissingAnimalProfilePage />}
+            exact
+          />
+          <Route path="/ongoingdonations" element={<DonationPage />} exact />
+          <Route path="/missing" element={<MissingAnimalPage />} exact />
+          <Route path="/login" element={<LoginPage />} exact />
+          <Route path="/registration" element={<RegistrationPage />} exact />
+          <Route
+            path="/adoption/request/success"
+            element={<AdoptionRequestConfirmationPage />}
+            exact
+          />
+          <Route
+            path="/adoption/request"
+            element={<AdoptionRequestPage />}
+            exact
+          />
+          <Route
+            path="/adoption/cat"
+            element={<AdoptionAnimalProfile />}
+            exact
+          />{' '}
+          <Route path="/adoption" element={<Adoptionpage />} exact />
+          <Route path="/home" element={<Homepage />} exact />
+          <Route path="/" element={<Onboarding />} exact />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        {/* <Footer /> */}
+        {/* </ScrollToTop> */}
+      </Router>
+    </>
+  );
+}
+
+export default App;
