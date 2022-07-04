@@ -1,10 +1,9 @@
-package com.adptapaw.backend.Controller;
+package com.adptapaw.backend.controller;
 
-import com.adptapaw.backend.Model.User;
-import com.adptapaw.backend.Repository.UserRepository;
+import com.adptapaw.backend.entity.User;
+import com.adptapaw.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
