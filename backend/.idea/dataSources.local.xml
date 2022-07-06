@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-221.5787.30">
+    <data-source name="backend/Hibernate" uuid="8bce13b2-56a5-488c-b467-1eb8682b7e85">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
+      <user-name>gtbamjleupcasr</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

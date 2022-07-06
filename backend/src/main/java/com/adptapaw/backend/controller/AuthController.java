@@ -42,6 +42,8 @@ public class AuthController {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDTO.getEmail(), loginDTO.getPassword()));
 
+        System.out.println(loginDTO.getEmail());
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return new ResponseEntity<>("User signed-in successfully!.", HttpStatus.OK);
     }
@@ -51,14 +53,18 @@ public class AuthController {
 
         // add check for username exists in a DB
         if(userRepository.existsByEmail(signupDTO.getEmail())){
-            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
         }
 
+        if(userRepository.existsByUsername(signupDTO.getUsername())){
+            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
+        }
 
         // create user object
         User user = new User();
         user.setName(signupDTO.getName());
         user.setEmail(signupDTO.getEmail());
+        user.setUsername(signupDTO.getUsername());
         user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
 
         Roles roles = roleRepository.findByName("ROLE_ADMIN").get();
