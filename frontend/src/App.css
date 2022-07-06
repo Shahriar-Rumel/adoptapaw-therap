@@ -167,3 +167,18 @@ body {
   overflow: hidden;
   height: calc(100vh - 200px);
 }
+
+.loader {
+  animation: loader-animation 1.2s forwards cubic-bezier(0.39, 0.575, 0.565, 1)
+    infinite;
+  opacity: 0;
+}
+
+@keyframes loader-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -4,6 +4,9 @@ import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 import Burger from './Burger';
 import NeoNav from '../NeoNav';
+import { useDispatch, useSelector } from 'react-redux';
+import Button from '../Button';
+import { logOut } from '../../actions/userActions';
 
 export default function Nav() {
   const [mobile, setMobile] = useState(true);
@@ -48,6 +51,7 @@ export default function Nav() {
       setTheme(0);
     }
   }, [arr]);
+
   return (
     <>
       <div
@@ -65,7 +69,11 @@ export default function Nav() {
             ></img>
           </Link>
 
-          {!mobile && <DesktopMenu theme={theme} />}
+          {!mobile && (
+            <>
+              <DesktopMenu theme={theme} />
+            </>
+          )}
 
           {mobile && (
             <Burger

@@ -4,9 +4,11 @@ import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.User;
 import com.adptapaw.backend.payload.LoginDTO;
 import com.adptapaw.backend.payload.SignupDTO;
+import com.adptapaw.backend.payload.UserDetailsDTO;
 import com.adptapaw.backend.repository.RolesRepository;
 import com.adptapaw.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,13 +16,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.List;
 
+@CrossOrigin(origins  = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -38,14 +39,14 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/signin")
-    public ResponseEntity<String> authenticateUser(@RequestBody LoginDTO loginDTO){
+    public ResponseEntity<LoginDTO> authenticateUser(@RequestBody LoginDTO loginDTO){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDTO.getEmail(), loginDTO.getPassword()));
 
         System.out.println(loginDTO.getEmail());
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("User signed-in successfully!.", HttpStatus.OK);
+        return new ResponseEntity<>(loginDTO, HttpStatus.OK);
     }
 
     @PostMapping("/signup")
@@ -72,7 +73,13 @@ public class AuthController {
 
         userRepository.save(user);
 
-        return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+        UserDetailsDTO userDetails = new UserDetailsDTO();
+        userDetails.setRole(user.getRoles());
+        userDetails.setName(user.getName());
+        userDetails.setEmail(user.getEmail());
+        userDetails.setUsername(user.getUsername());
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
 }

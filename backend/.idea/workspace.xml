@@ -5,29 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6db3950-41fd-42d2-b3bb-eb8cf9375558" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_modelmapper_modelmapper_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AdoptionAnimalController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionAnimal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/AdoptionAnimalDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/AdoptionAnimalResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/UserDetailsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/AdoptionAnimalRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/AdoptionAnimalService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/BackendApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/LoginDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/SignupDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/SignupDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/BackendApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/BackendApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/Repository/UserRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/config/SecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/LoginDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/LoginDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/SignupDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/SignupDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Nav/DesktopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Nav/DesktopMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Nav/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Nav/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/TextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/TextInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/RegistrationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/RegistrationPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,24 +60,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Work Projects/Java Fest/adoptapaw/backend&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;b43fdd98b1fd705ae4c3a10cf25aad8a&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Work Projects/Java Fest/BloodBook-master/BloodBook-master/backend",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "b43fdd98b1fd705ae4c3a10cf25aad8a"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Spring Boot.BackendApplication">
     <configuration name="PasswordEncodingGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.adptapaw.backend.utils.PasswordEncodingGenerator" />
@@ -120,6 +119,7 @@
       <workItem from="1656914580893" duration="297000" />
       <workItem from="1657081114197" duration="4995000" />
       <workItem from="1657089999865" duration="8897000" />
+      <workItem from="1657104173145" duration="18827000" />
     </task>
     <servers />
   </component>

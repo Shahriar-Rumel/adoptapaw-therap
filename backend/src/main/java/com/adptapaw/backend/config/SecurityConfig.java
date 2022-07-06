@@ -14,12 +14,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-
 
     @Autowired
     private UserServiceSecurity userDetailsService;
@@ -36,11 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/**").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/adoption/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .httpBasic();
     }
+
 
     @Override
     @Bean
