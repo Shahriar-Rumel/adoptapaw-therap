@@ -1,10 +1,12 @@
 package com.adptapaw.backend.controller;
 
+import com.adptapaw.backend.entity.AdoptionAnimal;
 import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.User;
 import com.adptapaw.backend.payload.LoginDTO;
 import com.adptapaw.backend.payload.SignupDTO;
 import com.adptapaw.backend.payload.UserDetailsDTO;
+import com.adptapaw.backend.repository.AdoptionAnimalRepository;
 import com.adptapaw.backend.repository.RolesRepository;
 import com.adptapaw.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,6 +37,9 @@ public class AuthController {
 
     @Autowired
     private RolesRepository roleRepository;
+
+    @Autowired
+    private AdoptionAnimalRepository adoptionAnimalRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -70,14 +76,17 @@ public class AuthController {
 
         Roles roles = roleRepository.findByName("ROLE_ADMIN").get();
         user.setRoles(Collections.singleton(roles));
+//        user.setAnimals(signupDTO.getAnimals());
+
 
         userRepository.save(user);
 
-        UserDetailsDTO userDetails = new UserDetailsDTO();
-        userDetails.setRole(user.getRoles());
-        userDetails.setName(user.getName());
-        userDetails.setEmail(user.getEmail());
-        userDetails.setUsername(user.getUsername());
+//        UserDetailsDTO userDetails = new UserDetailsDTO();
+//        userDetails.setRole(user.getRoles());
+//        userDetails.setAnimals(user.getAnimals());
+//        userDetails.setName(user.getName());
+//        userDetails.setEmail(user.getEmail());
+//        userDetails.setUsername(user.getUsername());
 
         return new ResponseEntity<>(user, HttpStatus.OK);
 

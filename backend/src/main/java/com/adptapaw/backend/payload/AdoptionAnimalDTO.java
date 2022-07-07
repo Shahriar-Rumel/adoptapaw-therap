@@ -1,5 +1,6 @@
 package com.adptapaw.backend.payload;
 
+import com.adptapaw.backend.entity.User;
 import lombok.Data;
 
 @Data
@@ -16,5 +17,6 @@ public class AdoptionAnimalDTO {
     private String behaviour;
     private String food;
     private String gender;
-    private String creator;
+    private User user;
+
 }

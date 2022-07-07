@@ -1,5 +1,6 @@
 package com.adptapaw.backend.payload;
 
+import com.adptapaw.backend.entity.AdoptionAnimal;
 import com.adptapaw.backend.entity.Roles;
 import lombok.Data;
 
