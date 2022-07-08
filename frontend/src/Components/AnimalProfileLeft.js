@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { adoptionListGallery } from '../Data/adoption';
-export default function AnimalProfileLeft({ poster }) {
+export default function AnimalProfileLeft({ poster, data }) {
   const [image, setImage] = useState(adoptionListGallery[0].img);
   return (
     <div className="w-[100%]  mr-10 description-gallery-animation">

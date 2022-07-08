@@ -1,18 +1,23 @@
 import React from 'react';
 import { features } from '../Data/adoption';
+import FeaturesCol from './FeaturesCol';
+import FeaturesRow from './FeaturesRow';
 
-export default function () {
-  let count = 1;
+export default function ({ data }) {
   return (
     <div className="description-animation missing-animation flex mt-[30px]  lg:mt-[0px] lg:mb-5 justify-between items-center  mx-auto bg-primary-light py-3 px-5 custom-round">
-      {features.map((item) => (
-        <div className={count++ > 1 && 'border-l-brand border-l-2 pl-3'}>
-          <h1 className="text-primary font-[600]">{item.title}</h1>
-          <h1 className="text-gray-light text-[14px] font-[500]">
-            {item.feature}
-          </h1>
-        </div>
-      ))}
+      <div>
+        <FeaturesCol title={'Breed'} value={data.breed} />
+      </div>
+      <div className={'border-l-brand border-l-2 pl-3'}>
+        <FeaturesCol title={'Training'} value={data.training} />
+      </div>
+      <div className={'border-l-brand border-l-2 pl-3'}>
+        <FeaturesCol title={'Vaccinated'} value={data.vaccine} />
+      </div>
+      <div className={'border-l-brand border-l-2 pl-3'}>
+        <FeaturesCol title={'Color'} value={data.color} />
+      </div>
     </div>
   );
 }

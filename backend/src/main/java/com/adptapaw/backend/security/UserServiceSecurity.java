@@ -2,6 +2,7 @@ package com.adptapaw.backend.security;
 
 import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.User;
+import com.adptapaw.backend.payload.UserDetailsDTO;
 import com.adptapaw.backend.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,8 +29,26 @@ public class UserServiceSecurity implements UserDetailsService {
         User user = userRepository.findByUsernameOrEmail(usernameOrEmail,usernameOrEmail)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found with username or email:" + usernameOrEmail));
+
         return new org.springframework.security.core.userdetails.User(user.getEmail(),
                 user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+
+    }
+
+
+
+
+    public UserDetailsDTO loadUserByEmail(String usernameOrEmail) throws UsernameNotFoundException {
+        User user = userRepository.findByUsernameOrEmail(usernameOrEmail,usernameOrEmail).get();
+//                .orElseThrow(() ->
+//                        new UsernameNotFoundException("User not found with username or email:" + Email));
+
+        UserDetailsDTO userDetails = new UserDetailsDTO();
+        userDetails.setUsername(user.getUsername());
+        userDetails.setEmail(user.getEmail());
+        userDetails.setId(user.getId());
+
+        return userDetails;
 
     }
 

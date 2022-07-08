@@ -1,9 +1,9 @@
 package com.adptapaw.backend.entity;
 
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
+
 
 import javax.persistence.*;
 
@@ -34,7 +34,8 @@ public class AdoptionAnimal {
     @Column(nullable = false)
     private String color;
 
-    @Column(nullable = false)
+//    @Lob
+    @Column(nullable = false,length = 1000)
     private String description;
 
     @Column(nullable = false)
@@ -52,9 +53,6 @@ public class AdoptionAnimal {
     @Column(nullable = false)
     private String gender;
 
-//    @ManyToOne
-//    @JoinColumn(name="user_id",nullable = false)
-//
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User user;

@@ -1,19 +1,15 @@
 package com.adptapaw.backend.service;
 
-import com.adptapaw.backend.entity.User;
-import com.adptapaw.backend.payload.AdoptionAnimalAllDTO;
-import com.adptapaw.backend.payload.AdoptionAnimalDTO;
-import com.adptapaw.backend.payload.AdoptionAnimalResponseDTO;
-
-import java.util.List;
+import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
+import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
 
 public interface AdoptionAnimalService {
-//    List<AdoptionAnimalDTO> getPostByCreator(long id);
 
-//    AdoptionAnimalDTO getByCreator(Long creator);
     AdoptionAnimalResponseDTO getAllByCreator(String id);
 
     AdoptionAnimalResponseDTO getAllAdoptionAnimals();
 
     AdoptionAnimalDTO createAdoptionAnimal(String id,AdoptionAnimalDTO adoptionAnimalDTO);
+
+    AdoptionAnimalDTO getAllById(String id);
 }

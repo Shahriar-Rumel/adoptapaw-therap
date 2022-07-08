@@ -5,10 +5,16 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
+import {
+  adoptionAdoptionPostByIdReducer,
+  adoptionAllPostReducer
+} from './reducers/adoptionReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
-  userRegister: userRegisterReducer
+  userRegister: userRegisterReducer,
+  adoptionPosts: adoptionAllPostReducer,
+  adoptionPostByIdStore: adoptionAdoptionPostByIdReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

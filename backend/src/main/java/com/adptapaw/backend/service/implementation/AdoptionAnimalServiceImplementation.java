@@ -2,18 +2,16 @@ package com.adptapaw.backend.service.implementation;
 
 import com.adptapaw.backend.entity.AdoptionAnimal;
 import com.adptapaw.backend.entity.User;
-import com.adptapaw.backend.payload.AdoptionAnimalAllDTO;
-import com.adptapaw.backend.payload.AdoptionAnimalDTO;
-import com.adptapaw.backend.payload.AdoptionAnimalResponseDTO;
+import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
+import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
+import com.adptapaw.backend.payload.adoption.AdoptionUserDTO;
 import com.adptapaw.backend.repository.AdoptionAnimalRepository;
 import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.AdoptionAnimalService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -95,15 +93,20 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         animal.setTraining(adoptionAnimalDTO.getTraining());
         animal.setVaccine(adoptionAnimalDTO.getVaccine());
 
-//        ArrayList<AdoptionAnimal> animalList = new ArrayList<>();
-//        animalList.add(animal);
-
         User user = userRepository.findById(Long.valueOf(id)).orElse(null);
         animal.setUser(user);
 
         adoptionAnimalRepository.save(animal);
 
-        adoptionAnimalDTO.setUser(user);
+        AdoptionUserDTO adoptionUserDTO = new AdoptionUserDTO();
+
+        adoptionUserDTO.setUsername(user.getUsername());
+        adoptionUserDTO.setId(user.getId());
+
+        adoptionAnimalDTO.setUser(adoptionUserDTO);
+
+
+        adoptionAnimalDTO.setId(animal.getId());
 
 //        AdoptionAnimalResponseDTO response = new AdoptionAnimalResponseDTO();
 
@@ -118,6 +121,14 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
 //        // convert entity to DTO
 //        AdoptionAnimalDTO adoptionPostResponse = mapToDTO(newAdoptionAnimalPost);
 //        return adoptionPostResponse;
+    }
+
+    @Override
+    public AdoptionAnimalDTO getAllById(String id) {
+
+        AdoptionAnimal adoptionAnimal = adoptionAnimalRepository.findById(Long.valueOf(id)).get();
+
+        return mapToDTO(adoptionAnimal);
     }
 
 

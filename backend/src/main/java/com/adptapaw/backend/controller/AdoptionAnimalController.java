@@ -1,36 +1,24 @@
 package com.adptapaw.backend.controller;
 
-import com.adptapaw.backend.entity.User;
-import com.adptapaw.backend.payload.AdoptionAnimalAllDTO;
-import com.adptapaw.backend.payload.AdoptionAnimalDTO;
-import com.adptapaw.backend.payload.AdoptionAnimalResponseDTO;
-import com.adptapaw.backend.repository.AdoptionAnimalRepository;
-import com.adptapaw.backend.repository.UserRepository;
+import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
+import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
 import com.adptapaw.backend.service.AdoptionAnimalService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
+@CrossOrigin(origins  = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/adoption")
 public class AdoptionAnimalController {
 
-    private AdoptionAnimalService adoptionAnimalService;
-
-    @Autowired
-    private AdoptionAnimalRepository adoptionAnimalRepository;
-
-
+    private final AdoptionAnimalService adoptionAnimalService;
 
     public AdoptionAnimalController(AdoptionAnimalService adoptionAnimalService) {
         this.adoptionAnimalService = adoptionAnimalService;
     }
 
 
-    @PutMapping("/{id}/createadoptionpost")
+    @PostMapping("/{id}/createadoptionpost")
     public AdoptionAnimalDTO createAdoptionAnimalPost(@PathVariable (name="id") String  id, @RequestBody AdoptionAnimalDTO adoptionAnimalPostDTO){
-
-
         return adoptionAnimalService.createAdoptionAnimal(id,adoptionAnimalPostDTO);
 
     }
@@ -47,8 +35,16 @@ public class AdoptionAnimalController {
 //        return ResponseEntity.ok(adoptionAnimalService.getPostByCreator(Long.parseLong(id)));
 //    }
 
+
     @GetMapping("/{id}")
+    public AdoptionAnimalDTO getAdoptionAnimalById(@PathVariable(name = "id") String id){
+        return adoptionAnimalService.getAllById(id);
+    }
+
+    @GetMapping("/user/{id}")
     public AdoptionAnimalResponseDTO getAdoptionAnimalByCreator(@PathVariable(name = "id") String id){
         return adoptionAnimalService.getAllByCreator(id);
     }
+
+
 }

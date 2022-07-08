@@ -1,8 +1,12 @@
 import gsap from 'gsap';
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { adoptionPostByIdAction } from '../actions/adoptionActions';
 import AnimalProfileBottom from '../Components/AnimalProfileBottom';
 import AnimalProfileLeft from '../Components/AnimalProfileLeft';
 import AnimalProfileMid from '../Components/AnimalProfileMid';
+import { useParams } from 'react-router-dom';
+import Loader from '../Components/Loader';
 
 export default function AdoptionAnimalProfile() {
   useEffect(() => {
@@ -36,13 +40,34 @@ export default function AdoptionAnimalProfile() {
       stagger: 0.3
     });
   });
+
+  const dispatch = useDispatch();
+
+  const adoptionPostByIdDataSet = useSelector(
+    (state) => state.adoptionPostByIdStore
+  );
+
+  const { loading, error, adoptionPostById } = adoptionPostByIdDataSet;
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(adoptionPostByIdAction(id));
+  }, [dispatch]);
+
   return (
-    <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
-      <div className=" lg:w-[50%]  lg:mr-10">
-        <AnimalProfileLeft />
-        <AnimalProfileMid />
-      </div>
-      <AnimalProfileBottom />
-    </div>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+          <div className=" lg:w-[50%]  lg:mr-10">
+            <AnimalProfileLeft data={adoptionPostById} />
+            <AnimalProfileMid data={adoptionPostById} />
+          </div>
+          <AnimalProfileBottom data={adoptionPostById} />
+        </div>
+      )}
+    </>
   );
 }
