@@ -2,11 +2,13 @@ package com.adptapaw.backend.controller;
 
 import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.User;
+import com.adptapaw.backend.payload.JWTDTO;
 import com.adptapaw.backend.payload.LoginDTO;
 import com.adptapaw.backend.payload.SignupDTO;
 import com.adptapaw.backend.payload.UserDetailsDTO;
 import com.adptapaw.backend.repository.RolesRepository;
 import com.adptapaw.backend.repository.UserRepository;
+import com.adptapaw.backend.security.JWTTokenProvider;
 import com.adptapaw.backend.security.UserServiceSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +40,9 @@ public class AuthController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JWTTokenProvider tokenProvider;
+
     @PostMapping("/signin")
     public UserDetailsDTO authenticateUser(@RequestBody LoginDTO loginDTO){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -45,9 +50,17 @@ public class AuthController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        String token = tokenProvider.generateToken(authentication);
+
         UserServiceSecurity userServiceSecurity = new UserServiceSecurity(userRepository);
 
-        return userServiceSecurity.loadUserByEmail(loginDTO.getEmail());
+        UserDetailsDTO userDetailsDTO = userServiceSecurity.loadUserByEmail(loginDTO.getEmail());
+
+        JWTDTO jwtdto = new JWTDTO(token);
+
+        userDetailsDTO.setJwtdto(jwtdto);
+
+        return userDetailsDTO;
     }
 
     @PostMapping("/signup")

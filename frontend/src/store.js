@@ -7,14 +7,16 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
 import {
   adoptionAdoptionPostByIdReducer,
-  adoptionAllPostReducer
+  adoptionAllPostReducer,
+  adoptionPostCreateReducer
 } from './reducers/adoptionReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   adoptionPosts: adoptionAllPostReducer,
-  adoptionPostByIdStore: adoptionAdoptionPostByIdReducer
+  adoptionPostByIdStore: adoptionAdoptionPostByIdReducer,
+  adoptionPostCreated: adoptionPostCreateReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

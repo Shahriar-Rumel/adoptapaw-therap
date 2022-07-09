@@ -3,6 +3,9 @@ import {
   ADOPTION_POST_BY_ID_FAIL,
   ADOPTION_POST_BY_ID_REQUEST,
   ADOPTION_POST_BY_ID_SUCCESS,
+  ADOPTION_POST_CREATE_FAIL,
+  ADOPTION_POST_CREATE_REQUEST,
+  ADOPTION_POST_CREATE_SUCCESS,
   ADOPTION_POST_FAIL,
   ADOPTION_POST_REQUEST,
   ADOPTION_POST_SUCCESS
@@ -59,3 +62,44 @@ export const adoptionPostByIdAction = (id) => async (dispatch) => {
     });
   }
 };
+
+export const adoptionPostCreateAction =
+  (dataport) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ADOPTION_POST_CREATE_REQUEST
+      });
+
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+      console.log(dataport);
+      await axios.post(
+        `${BASE_URL}/1/createadoptionpost`,
+
+        dataport,
+        config
+      );
+
+      dispatch({
+        type: ADOPTION_POST_CREATE_SUCCESS
+      });
+
+      // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: ADOPTION_POST_CREATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };

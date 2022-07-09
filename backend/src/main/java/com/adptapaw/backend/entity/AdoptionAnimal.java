@@ -53,6 +53,9 @@ public class AdoptionAnimal {
     @Column(nullable = false)
     private String gender;
 
+    @Column(nullable = false)
+    private String type;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User user;

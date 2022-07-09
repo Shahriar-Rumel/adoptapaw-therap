@@ -19,15 +19,12 @@ export default function Adoptionpage({ history }) {
 
   const { userInfo } = userLogin;
 
-  // const redirect = location ? location.split('=')[1] : '/';
-
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(adoptionPostsAction());
   }, [dispatch]);
 
-  console.log(userInfo);
   return (
     <>
       {loading ? (

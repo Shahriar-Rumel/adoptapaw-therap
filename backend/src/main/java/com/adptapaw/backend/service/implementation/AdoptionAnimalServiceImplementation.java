@@ -87,6 +87,7 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         animal.setDescription(adoptionAnimalDTO.getDescription());
         animal.setFood(adoptionAnimalDTO.getFood());
         animal.setGender(adoptionAnimalDTO.getGender());
+        animal.setType(adoptionAnimalDTO.getType());
         animal.setLocation(adoptionAnimalDTO.getLocation());
         animal.setName(adoptionAnimalDTO.getName());
         animal.setPhysicalcondition(adoptionAnimalDTO.getPhysicalcondition());

@@ -13,4 +13,5 @@ public class UserDetailsDTO {
     private String username;
     private String email;
     private Set<Roles> role;
+    private JWTDTO jwtdto;
 }
