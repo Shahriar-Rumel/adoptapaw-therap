@@ -2,7 +2,7 @@ import { dblClick } from '@testing-library/user-event/dist/click';
 import gsap from 'gsap';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Button from './Button';
+import Button from '../Button';
 import Features from './Features';
 
 export default function AnimalProfileMid({ poster, data }) {

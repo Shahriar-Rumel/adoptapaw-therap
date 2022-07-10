@@ -1,6 +1,6 @@
 import React from 'react';
-import { aditionalFeatures } from '../Data/adoption';
-import FeaturesRow from './FeaturesRow';
+import { aditionalFeatures } from '../../Data/adoption';
+import FeaturesRow from '../FeaturesRow';
 export default function AdditionalFeatures({ data }) {
   let count = 1;
   return (

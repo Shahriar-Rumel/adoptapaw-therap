@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AdoptionHeader from '../Components/AdoptionHeader';
-import CardList from '../Components/CardList';
+import AdoptionHeader from '../Components/Adoption/AdoptionHeader';
+import CardList from '../Components/Cards/CardList';
 
 export default function MissingAnimalPage() {
   return (

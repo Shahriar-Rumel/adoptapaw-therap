@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Components/Button';
-import TextInput from '../Components/TextInput';
+import TextInput from '../Components/IO/TextInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
@@ -86,13 +86,20 @@ export default function RegistrationPage({ history, location }) {
               type="text"
             />
           </div>
-
           <div className="request-form-animation">
             <TextInput
               label="Email"
               placeholder={'example@gmail.com'}
               type="email"
               setData={setEmail}
+            />
+          </div>{' '}
+          <div className="request-form-animation">
+            <TextInput
+              label="Username"
+              placeholder={'user'}
+              type="text"
+              setData={setUsername}
             />
           </div>
           <div className="request-form-animation">
@@ -101,14 +108,6 @@ export default function RegistrationPage({ history, location }) {
               placeholder={'123456Easy'}
               type="password"
               setData={setPassword}
-            />
-          </div>
-          <div className="request-form-animation">
-            <TextInput
-              label="Location"
-              placeholder={'Dhaka , Bangladesh'}
-              type="address"
-              setData={setUsername}
             />
           </div>
           <div className="request-form-animation" onClick={submitHandler}>

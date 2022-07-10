@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Components/Button';
-import TextInput from '../Components/TextInput';
+import TextInput from '../Components/IO/TextInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
@@ -72,8 +72,8 @@ export default function LoginPage({ location, history }) {
 
           <div className="request-form-animation">
             <TextInput
-              label="Email"
-              placeholder={'example@gmail.com'}
+              label="Email or Username"
+              placeholder={'example@gmail.com or username'}
               type="email"
               data={email}
               setData={setEmail}

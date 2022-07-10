@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { adoptionPostByIdAction } from '../actions/adoptionActions';
-import AnimalProfileLeft from '../Components/AnimalProfileLeft';
-import AnimalProfileMid from '../Components/AnimalProfileMid';
+import AnimalProfileLeft from '../Components/Adoption/AnimalProfileLeft';
+import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
 import Button from '../Components/Button';
-import Features from '../Components/Features';
+import Features from '../Components/Adoption/Features';
 import Loader from '../Components/Loader';
 import RequestForm from '../Components/RequestForm';
 

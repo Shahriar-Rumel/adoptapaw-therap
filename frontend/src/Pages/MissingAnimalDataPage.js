@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Components/Button';
-import TextInput from '../Components/TextInput';
+import TextInput from '../Components/IO/TextInput';
 
 export default function MissingAnimalDataPage() {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { adoptionListGallery } from '../Data/adoption';
+import { adoptionListGallery } from '../../Data/adoption';
 export default function AnimalProfileLeft({ poster, data }) {
   const [image, setImage] = useState(adoptionListGallery[0].img);
   return (

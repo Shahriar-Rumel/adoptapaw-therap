@@ -21,6 +21,8 @@ import DonationPage from './Pages/DonationPage';
 import MissingAnimalProfilePage from './Pages/MissingAnimalProfilePage';
 import MissingAnimalDataPage from './Pages/MissingAnimalDataPage';
 import CreateAdoptionPost from './Pages/CreateAdoptionPost';
+import UserProfilepage from './Pages/UserProfilePage';
+import UserAdoptionPostsPage from './Pages/UserAdoptionPostsPage';
 
 function App() {
   return (
@@ -62,7 +64,13 @@ function App() {
             path="/adoption/:id"
             element={<AdoptionAnimalProfile />}
             exact
-          />{' '}
+          />
+          <Route
+            path="/user/profile/:id/adoptionposts"
+            element={<UserAdoptionPostsPage />}
+            exact
+          />
+          <Route path="/user/profile/:id" element={<UserProfilepage />} exact />
           <Route path="/adoption" element={<Adoptionpage />} exact />
           <Route path="/home" element={<Homepage />} exact />
           <Route path="/" element={<Onboarding />} exact />

@@ -1,5 +1,8 @@
 import axios from 'axios';
 import {
+  ADOPTION_POSTS_BY_USERID_FAIL,
+  ADOPTION_POSTS_BY_USERID_REQUEST,
+  ADOPTION_POSTS_BY_USERID_SUCCESS,
   ADOPTION_POST_BY_ID_FAIL,
   ADOPTION_POST_BY_ID_REQUEST,
   ADOPTION_POST_BY_ID_SUCCESS,
@@ -63,6 +66,42 @@ export const adoptionPostByIdAction = (id) => async (dispatch) => {
   }
 };
 
+export const adoptionPostByUserIdAction =
+  (id) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ADOPTION_POSTS_BY_USERID_REQUEST
+      });
+
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      const { data } = await axios.get(`${BASE_URL}/user/${id}`, config);
+
+      dispatch({
+        type: ADOPTION_POSTS_BY_USERID_SUCCESS,
+        payload: data
+      });
+
+      // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: ADOPTION_POSTS_BY_USERID_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };
 export const adoptionPostCreateAction =
   (dataport) => async (dispatch, getState) => {
     try {
@@ -80,7 +119,7 @@ export const adoptionPostCreateAction =
           Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
         }
       };
-      console.log(dataport);
+
       await axios.post(
         `${BASE_URL}/1/createadoptionpost`,
 

@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import React, { useEffect } from 'react';
-import { donationList } from '../Data/donation';
-import Button from './Button';
+import { donationList } from '../../Data/donation';
+import Button from '../Button';
 export default function DonationListCard() {
   useEffect(() => {
     gsap.from('.donation-list-animation', {

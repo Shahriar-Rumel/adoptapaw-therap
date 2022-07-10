@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { adoptionPostsAction } from '../actions/adoptionActions';
-import AdoptionHeader from '../Components/AdoptionHeader';
+import AdoptionHeader from '../Components/Adoption/AdoptionHeader';
 import Button from '../Components/Button';
-import CardList from '../Components/CardList';
+import CardList from '../Components/Cards/CardList';
 import Loader from '../Components/Loader';
-import Searchbox from '../Components/Searchbox';
+import Searchbox from '../Components/IO/Searchbox';
 
 export default function Adoptionpage({ history }) {
   const dispatch = useDispatch();

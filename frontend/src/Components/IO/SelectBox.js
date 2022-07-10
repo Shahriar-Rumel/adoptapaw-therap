@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { adoptionList } from '../Data/adoption';
+import { adoptionList } from '../../Data/adoption';
 
-export default function SelectBox({ minHeight, label, choiceList }) {
+export default function SelectBox({
+  minHeight,
+  label,
+  choiceList,
+  data,
+  setData
+}) {
   const [showDropDown, setShowDropDown] = useState(false);
   const [choice, setChoice] = useState(label);
 
@@ -19,23 +25,19 @@ export default function SelectBox({ minHeight, label, choiceList }) {
     return () => {
       document.body.removeEventListener('click', closeDropDown);
     };
-  }, []);
+  }, [document]);
 
   return (
-    <div className="relative z-12  items-left w-full my-3 lg:my-0  lg:mt-[-20px]">
-      <label className="font-bold text-primary text-[14px] mb-[15px]">
-        {label}
-      </label>
+    <div className="relative z-12 flex flex-col  items-left w-full my-3 ">
+      <label className="font-bold text-primary text-[14px] ">{label}</label>
       <div
-        className={
-          !showDropDown
-            ? 'drop-down focus:border-2 flex z-[12] justify-between w-full mx-auto border-0 bg-input custom-round py-4 px-5 cursor-pointer'
-            : 'drop-down focus:border-2 flex z-[12] justify-between w-full mx-auto border border-brand custom-round py-4 px-5 cursor-pointer'
-        }
+        className={`drop-down focus:border-2 flex z-[12] justify-between w-full mx-auto ${
+          !showDropDown ? 'border-0' : 'border border-brand'
+        } bg-input custom-round py-4 px-4 my-3 cursor-pointer`}
         ref={dropDownRef}
         onClick={() => setShowDropDown((prev) => !prev)}
       >
-        <h3 className="text-[black] text-[14px]">{choice}</h3>
+        <h3 className="text-[black] text-[14px]">{data}</h3>
         <img
           src="/assets/Icons/dropdown.svg"
           className="w-[20px] z-1 absolute right-4 mt-2"
@@ -44,7 +46,7 @@ export default function SelectBox({ minHeight, label, choiceList }) {
       <div
         className={
           showDropDown
-            ? `custom-round w-full mx-auto py-4 z-[99] lg:py-0 bg-input mt-[2px] absolute border-brand border-[1px] transition-all ease-in block overflow-y-scroll  ${`h-[minHeight]px`}`
+            ? `custom-round w-full mx-auto py-4 z-[99] lg:py-4 bg-white mt-[90px] absolute shadow-xl transition-all ease-in block overflow-y-scroll  ${`h-[minHeight]px`}`
             : 'hidden'
         }
       >
@@ -54,7 +56,7 @@ export default function SelectBox({ minHeight, label, choiceList }) {
               className="hover:bg-gradient-to-r ml-2 from-brand mx-auto to-primary hover:text-white py-3 px-5 text-[14px] text-[gray] cursor-pointer transition-all ease-in"
               onClick={() => {
                 setShowDropDown(false);
-                setChoice(item);
+                setData(item);
               }}
             >
               <span className="font-regular ">{item}</span>

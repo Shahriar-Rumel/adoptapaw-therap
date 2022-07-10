@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CardList from '../Components/CardList';
+import CardList from '../Components/Cards/CardList';
 import Loader from '../Components/Loader';
 import { adoptionPostsAction } from '../actions/adoptionActions';
 

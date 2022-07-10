@@ -1,7 +1,7 @@
 import React from 'react';
-import { features } from '../Data/adoption';
-import FeaturesCol from './FeaturesCol';
-import FeaturesRow from './FeaturesRow';
+import { features } from '../../Data/adoption';
+import FeaturesCol from '../FeaturesCol';
+import FeaturesRow from '../FeaturesRow';
 
 export default function ({ data }) {
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import AttributeCard from '../Components/AttributeCard';
-import Features from '../Components/Features';
-import RewardCard from '../Components/RewardCard';
+import AttributeCard from '../Components/Cards/AttributeCard';
+import Features from '../Components/Adoption/Features';
+import RewardCard from '../Components/Cards/RewardCard';
 import { Link } from 'react-router-dom';
 import { adoptionListGallery } from '../Data/adoption';
 import Button from '../Components/Button';

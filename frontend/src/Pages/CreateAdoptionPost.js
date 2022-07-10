@@ -3,23 +3,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { adoptionPostCreateAction } from '../actions/adoptionActions';
 import Button from '../Components/Button';
-import Checkbox from '../Components/Checkbox';
-import ChoiceInput from '../Components/ChoiceInput';
-import SelectBox from '../Components/SelectBox';
-import TextInput from '../Components/TextInput';
+import Checkbox from '../Components/IO/Checkbox';
+import ChoiceInput from '../Components/IO/ChoiceInput';
+import SelectBox from '../Components/IO/SelectBox';
+import TextInput from '../Components/IO/TextInput';
 
 export default function CreateAdoptionPost({ history }) {
   const [name, setName] = useState('');
-  const [behaviour, setBehaviour] = useState('');
+  const [behaviour, setBehaviour] = useState("Choose pet's behaviour");
   const [location, setLocation] = useState('');
   const [food, setFood] = useState('');
   const [description, setDescription] = useState('');
-  const [gender, setGender] = useState('');
-  const [breed, setBreed] = useState('');
-  const [physicalcondition, setPhysicalcondition] = useState('');
+  const [gender, setGender] = useState("Choose pet's  gender");
+  const [breed, setBreed] = useState("Choose pet's  breed");
+  const [physicalcondition, setPhysicalcondition] = useState(
+    "Choose pet's physical condition"
+  );
   const [vaccine, setVaccine] = useState('');
   const [stray, setStray] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState("Choose pet's type");
   const [training, setTraining] = useState('');
   const [color, setColor] = useState('');
 
@@ -63,7 +65,6 @@ export default function CreateAdoptionPost({ history }) {
   var behaviourType = ['Calm', 'Angry'];
 
   const submitHandler = () => {
-    console.log(dataport);
     if (dataport) {
       dispatch(adoptionPostCreateAction(dataport));
     } else {
@@ -78,67 +79,94 @@ export default function CreateAdoptionPost({ history }) {
       </h1>
       <form>
         <div className="lg:flex justify-between items-center">
-          <TextInput
-            label={'Location'}
-            placeholder={'Dhaka,Bangladesh'}
-            type={'text'}
-            setData={setLocation}
-          />
-          <SelectBox
-            minHeight={200}
-            label={'Pet type'}
-            choiceList={petType}
-            setData={setType}
-          />
-          <TextInput
-            label={'Pet name'}
-            placeholder={'Tommy'}
-            type={'text'}
-            setData={setName}
-          />
+          <div className="lg:w-[32%]">
+            <TextInput
+              label={'Location'}
+              placeholder={'Dhaka,Bangladesh'}
+              type={'text'}
+              setData={setLocation}
+            />
+          </div>
+          <div className="lg:w-[32%]">
+            <SelectBox
+              minHeight={200}
+              label={'Pet type'}
+              choiceList={petType}
+              data={type}
+              setData={setType}
+            />
+          </div>
+          <div className="lg:w-[32%]">
+            <TextInput
+              label={'Pet name'}
+              placeholder={'Tommy'}
+              type={'text'}
+              setData={setName}
+            />
+          </div>
         </div>
 
-        <TextInput
-          label={'Pet description'}
-          placeholder={'Lorep impsum ...'}
-          type={'text'}
-          setData={setDescription}
-        />
-        <SelectBox
-          minHeight={200}
-          label={'Pet gender'}
-          choiceList={genderType}
-          setData={setGender}
-        />
-        <SelectBox
-          minHeight={200}
-          label={'Pet breed'}
-          choiceList={breedType}
-          setData={setBreed}
-        />
-        <SelectBox
-          minHeight={200}
-          label={'Pet behaviour'}
-          choiceList={behaviourType}
-          setData={setBehaviour}
-        />
-        <TextInput
-          label={"Pet's food"}
-          placeholder={'Meat'}
-          type={'text'}
-          setData={setFood}
-        />
-        <TextInput
-          label={"Pet's color"}
-          placeholder={'Dhaka,Bangladesh'}
-          type={'text'}
-          setData={setColor}
-        />
+        <div className="lg:flex justify-between items-center">
+          <div className="lg:w-[32%]">
+            <TextInput
+              label={'Pet description'}
+              placeholder={'Lorep impsum ...'}
+              type={'text'}
+              setData={setDescription}
+            />
+          </div>
+          <div className="lg:w-[32%]">
+            <SelectBox
+              minHeight={200}
+              label={'Pet gender'}
+              choiceList={genderType}
+              data={gender}
+              setData={setGender}
+            />
+          </div>
+          <div className="lg:w-[32%]">
+            <SelectBox
+              minHeight={200}
+              label={'Pet breed'}
+              choiceList={breedType}
+              data={breed}
+              setData={setBreed}
+            />
+          </div>
+        </div>
+        <div className="lg:flex justify-between items-center">
+          <div className="lg:w-[32%]">
+            <SelectBox
+              minHeight={200}
+              label={'Pet behaviour'}
+              choiceList={behaviourType}
+              data={behaviour}
+              setData={setBehaviour}
+            />
+          </div>
+          <div className="lg:w-[32%]">
+            <TextInput
+              label={"Pet's food"}
+              placeholder={'Meat'}
+              type={'text'}
+              setData={setFood}
+            />
+          </div>
+          <div className="lg:w-[32%]">
+            <TextInput
+              label={"Pet's color"}
+              placeholder={'Dhaka,Bangladesh'}
+              type={'text'}
+              setData={setColor}
+            />
+          </div>
+        </div>
 
         <SelectBox
           minHeight={200}
           label={"Pet's physical condition"}
           choiceList={healthType}
+          data={physicalcondition}
           setData={setPhysicalcondition}
         />
         <div className="flex justify-between">

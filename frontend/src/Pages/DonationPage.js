@@ -1,5 +1,5 @@
 import React from 'react';
-import DonationListCard from '../Components/DonationListCard';
+import DonationListCard from '../Components/Cards/DonationListCard';
 
 export default function DonationPage() {
   return (

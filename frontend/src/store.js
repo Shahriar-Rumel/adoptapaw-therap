@@ -8,7 +8,8 @@ import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
 import {
   adoptionAdoptionPostByIdReducer,
   adoptionAllPostReducer,
-  adoptionPostCreateReducer
+  adoptionPostCreateReducer,
+  adoptionPostsByUserIdReducer
 } from './reducers/adoptionReducer';
 
 const reducer = combineReducers({
@@ -16,7 +17,8 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   adoptionPosts: adoptionAllPostReducer,
   adoptionPostByIdStore: adoptionAdoptionPostByIdReducer,
-  adoptionPostCreated: adoptionPostCreateReducer
+  adoptionPostCreated: adoptionPostCreateReducer,
+  adoptionPostsByUserId: adoptionPostsByUserIdReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

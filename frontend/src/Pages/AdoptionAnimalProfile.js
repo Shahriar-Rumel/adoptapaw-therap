@@ -2,9 +2,9 @@ import gsap from 'gsap';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { adoptionPostByIdAction } from '../actions/adoptionActions';
-import AnimalProfileBottom from '../Components/AnimalProfileBottom';
-import AnimalProfileLeft from '../Components/AnimalProfileLeft';
-import AnimalProfileMid from '../Components/AnimalProfileMid';
+import AnimalProfileBottom from '../Components/Adoption/AnimalProfileBottom';
+import AnimalProfileLeft from '../Components/Adoption/AnimalProfileLeft';
+import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
 import { useParams } from 'react-router-dom';
 import Loader from '../Components/Loader';
 

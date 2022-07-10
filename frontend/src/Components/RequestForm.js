@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import React, { useEffect } from 'react';
-import SelectBox from './SelectBox';
-import TextInput from './TextInput';
+import SelectBox from './IO/SelectBox';
+import TextInput from './IO/TextInput';
 
 export default function RequestForm() {
   useEffect(() => {

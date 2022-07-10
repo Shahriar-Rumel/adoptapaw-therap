@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import React, { useEffect } from 'react';
-import AdditionalFeatures from './AdditionalFeatures';
+import AdditionalFeatures from '../Adoption/AdditionalFeatures';
 import Features from './Features';
 
 export default function AnimalProfileBottom({ data }) {

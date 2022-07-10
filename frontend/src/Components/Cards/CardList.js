@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { adoptionList } from '../Data/adoption';
+import { adoptionList } from '../../Data/adoption';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 
