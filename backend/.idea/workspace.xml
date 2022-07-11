@@ -5,15 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6db3950-41fd-42d2-b3bb-eb8cf9375558" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionRequests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/AdoptionRequestRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/AdoptionRequestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/SelectBox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/TextInput.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/Adoptionpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/Adoptionpage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/CreateAdoptionPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/CreateAdoptionPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/actions/adoptionActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/actions/adoptionActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/constants/adoptionConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constants/adoptionConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/adoptionReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/adoptionReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionAnimal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/AdoptionAnimal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/AdoptionAnimal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Nav/DesktopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Nav/DesktopMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/RequestForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/RequestForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/AdoptionRequestPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/AdoptionRequestPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/Onboarding.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/Onboarding.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/buttonanimation.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/buttonanimation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +127,7 @@
       <workItem from="1657340827061" duration="10583000" />
       <workItem from="1657388716661" duration="613000" />
       <workItem from="1657431781641" duration="3098000" />
+      <workItem from="1657517285343" duration="6590000" />
     </task>
     <servers />
   </component>

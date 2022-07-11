@@ -1,11 +1,14 @@
 package com.adptapaw.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -56,8 +59,19 @@ public class AdoptionAnimal {
     @Column(nullable = false)
     private String type;
 
+    @Column(nullable = false)
+    private Boolean availability;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User user;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "owner_id",referencedColumnName = "id")
+    private User owner;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "pet")
+    private Set<AdoptionRequests> adoptionrequests = new HashSet<>();
 
 }

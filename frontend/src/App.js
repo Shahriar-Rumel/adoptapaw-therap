@@ -23,6 +23,8 @@ import MissingAnimalDataPage from './Pages/MissingAnimalDataPage';
 import CreateAdoptionPost from './Pages/CreateAdoptionPost';
 import UserProfilepage from './Pages/UserProfilePage';
 import UserAdoptionPostsPage from './Pages/UserAdoptionPostsPage';
+import UserAdoptionRequestsPage from './Pages/UserAdoptionRequestsPage';
+import UserAdoptionRequestDetailsPage from './Pages/UserAdoptionRequestDetailsPage';
 
 function App() {
   return (
@@ -63,6 +65,16 @@ function App() {
           <Route
             path="/adoption/:id"
             element={<AdoptionAnimalProfile />}
+            exact
+          />
+          <Route
+            path="/user/profile/:id/adoptionrequests/details"
+            element={<UserAdoptionRequestDetailsPage />}
+            exact
+          />
+          <Route
+            path="/user/profile/:id/adoptionrequests"
+            element={<UserAdoptionRequestsPage />}
             exact
           />
           <Route

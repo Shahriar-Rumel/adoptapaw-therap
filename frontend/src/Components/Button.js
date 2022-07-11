@@ -8,13 +8,20 @@ export default function Button({
   height,
   heightClass,
   textSize,
-  textSizeClass
+  textSizeClass,
+  secondary
 }) {
   return (
     <button
       className={` ${
-        !brand ? 'bg-brand primary-button' : 'bg-primary primary-variant'
-      } text-[16px] text-white ${width ? widthClass : 'w-full'}  ${
+        !brand
+          ? !secondary && 'bg-brand primary-button'
+          : !secondary && 'bg-primary primary-variant'
+      } ${
+        secondary &&
+        'border-[1px] hover:border-0 border-primary secondary-variant'
+      } 'text-white'
+       text-[16px]  ${width ? widthClass : 'w-full'}  ${
         height ? heightClass : 'h-[50px]'
       }  py-3 my-5 tracking-[-0.5px] `}
     >

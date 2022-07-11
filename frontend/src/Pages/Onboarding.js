@@ -1,13 +1,31 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import Button from '../Components/Button';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Onboarding() {
   useEffect(() => {
     gsap.from('.arriving-animation', { y: '+=200', opacity: 0, stagger: 0.2 });
     gsap.to('.arriving-animation', { y: '0', opacity: 1, stagger: 0.2 });
   }, []);
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { loading, error, userInfo } = userLogin;
+
+  // const redirect = location ? location.split('=')[1] : '/';
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userInfo) {
+      // history.push(redirect);
+      navigate('/home');
+    }
+  }, [userInfo]);
   return (
     <div className=" mx-auto  w-[95vw] lg:w-3/4 mt-[50px] md:mt-[80px]   ">
       <div className="cover"></div>

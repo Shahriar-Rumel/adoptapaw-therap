@@ -7,9 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -36,18 +34,18 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Roles> roles;
 
-
-//    @OneToMany(targetEntity = AdoptionAnimal.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    @JoinColumn(name ="creator",referencedColumnName = "id")
-//    @Column(nullable = false)
-//    private List<AdoptionAnimal> animals = new ArrayList<>();
-
-
-
-
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<AdoptionAnimal> animals = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "adoptionseeker")
+    private Set<AdoptionRequests> adoptionrequests = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "owner")
+    private Set<AdoptionAnimal> adoptedpets = new HashSet<>();
+
 
     public void addAnimal(AdoptionAnimal newAdoptionAnimal){
         animals.add(newAdoptionAnimal);
@@ -56,4 +54,21 @@ public class User {
     public void setAnimals(Set<AdoptionAnimal> animals) {
         this.animals = animals;
     }
+
+    public Set<AdoptionRequests> getAdoptionrequests() {
+        return adoptionrequests;
+    }
+
+    public void setAdoptionrequests(Set<AdoptionRequests> adoptionrequests) {
+        this.adoptionrequests = adoptionrequests;
+    }
+
+    public Set<AdoptionAnimal> getAdoptedpets() {
+        return adoptedpets;
+    }
+
+    public void setAdoptedpets(Set<AdoptionAnimal> adoptedpets) {
+        this.adoptedpets = adoptedpets;
+    }
+
 }

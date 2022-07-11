@@ -1,9 +1,10 @@
 import gsap from 'gsap';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SelectBox from './IO/SelectBox';
 import TextInput from './IO/TextInput';
 
 export default function RequestForm() {
+  const [data, setData] = useState('Yes');
   useEffect(() => {
     gsap.from('.request-form-animation', {
       y: '+=110',
@@ -15,35 +16,42 @@ export default function RequestForm() {
       stagger: 0.2
     });
   });
+  var choiceArray = ['Yes', 'No'];
+
   return (
-    <form className="">
+    <>
       <TextInput
         label={'Tell us why you want to adopt'}
         placeholder={'Placeholder'}
         type={'text'}
       />
-      <div className="flex flex-col my-5 request-form-animation ">
-        <label className="font-bold text-primary text-[14px]">
-          Did you had any pets before ?
-        </label>
-        <SelectBox minHeight={200} />
-      </div>
-      <div className="flex flex-col my-5 request-form-animation">
-        <label className="font-bold text-primary text-[14px]">
-          Will you be able to pick up by yourself ?
-        </label>
-        <SelectBox minHeight={200} />
-      </div>
+
+      <SelectBox
+        minHeight={200}
+        label={' Did you had any pets before ?'}
+        choiceList={choiceArray}
+        data={data}
+        setData={setData}
+      />
+
+      <SelectBox
+        minHeight={200}
+        label={'Will you be able to pick up by yourself ?'}
+        choiceList={choiceArray}
+        data={data}
+        setData={setData}
+      />
+
       <TextInput
         label={'Your mobile number'}
         placeholder={'0170000000'}
         type={'Number'}
-      />{' '}
+      />
       <TextInput
         label={'Your email'}
         placeholder={'example@gmail.com'}
         type={'email'}
       />
-    </form>
+    </>
   );
 }

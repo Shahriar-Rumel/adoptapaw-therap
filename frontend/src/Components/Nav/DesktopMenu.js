@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { navItems, navItemsLeft } from '../../Data/nav';
-import { useDispatch, useSelector, d } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../actions/userActions';
 import Button from '../Button';
 import ProfileBurger from './ProfileBurger';
@@ -82,7 +82,7 @@ export default function DesktopMenu({ theme }) {
               >
                 <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
                   <h2 className="px-2 text-[14px] font-semibold ml-2 ">
-                    Adoption posts
+                    My adoption posts
                   </h2>
                 </div>
               </Link>
@@ -93,12 +93,12 @@ export default function DesktopMenu({ theme }) {
               >
                 <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
                   <h2 className="px-2 text-[14px] font-semibold ml-2 ">
-                    Missing posts
+                    My missing posts
                   </h2>
                 </div>
               </Link>
               <Link
-                to={`/user/profile/${userInfo.id}`}
+                to={`/user/profile/${userInfo.id}/adoptionrequests`}
                 className="w-[100%]"
                 onClick={() => setShowProfileMenu((prev) => !prev)}
               >

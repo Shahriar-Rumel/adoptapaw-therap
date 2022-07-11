@@ -17,6 +17,7 @@ public class AdoptionAnimalDTO {
     private String food;
     private String gender;
     private String type;
+    private Boolean availability;
     private AdoptionUserDTO user;
 
 }

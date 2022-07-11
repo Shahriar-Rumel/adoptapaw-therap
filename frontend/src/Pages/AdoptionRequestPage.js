@@ -36,6 +36,8 @@ export default function AdoptionRequestPage() {
   useEffect(() => {
     dispatch(adoptionPostByIdAction(id));
   }, [dispatch]);
+
+  const submitHandler = () => {};
   return (
     <>
       {loading ? (
@@ -54,13 +56,12 @@ export default function AdoptionRequestPage() {
               </h1>
             </div>
             <div className="request-adoption-gallery-animation">
-              <RequestForm />
-            </div>
-
-            <div className="request-adoption-gallery-animation">
-              <Link to="/adoption/request/success">
-                <Button text="Confirm Adoption Request" />
-              </Link>
+              <form>
+                <RequestForm />
+                <div onClick={submitHandler}>
+                  <Button text="Confirm Adoption Request" />
+                </div>
+              </form>
             </div>
           </div>
         </div>

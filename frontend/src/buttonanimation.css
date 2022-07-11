@@ -13,8 +13,10 @@
   border: 0 solid;
   box-sizing: border-box;
 }
+
 .primary-button,
-.primary-variant {
+.primary-variant,
+.secondary-variant {
   -webkit-tap-highlight-color: hsl(18, 74%, 46%);
   -webkit-appearance: button;
   /* background-color: hsl(18, 74%, 46%); */
@@ -38,7 +40,14 @@
   /* background-color: hsl(17, 66%, 16%); */
   background: linear-gradient(180deg, #451e0e 0%, #452113 45.31%, #230f07 100%);
 }
+.secondary-variant {
+  -webkit-tap-highlight-color: hsl(17, 66%, 16%);
+  -webkit-appearance: button;
+  background: transparent;
 
+  color: hsl(17, 66%, 16%);
+  font-weight: 700;
+}
 .primary-button:disabled,
 .primary-variant:disabled {
   cursor: default;
@@ -57,7 +66,8 @@
   display: none;
 }
 .primary-button,
-.primary-variant {
+.primary-variant,
+.secondary-variant {
   border-bottom-right-radius: 20px;
   border-top-left-radius: 20px;
   border-width: 0px;
@@ -65,8 +75,12 @@
   padding: 0.8rem 3rem;
   position: relative;
 }
+.secondary-variant {
+  border-width: 1px;
+}
 .primary-button span,
-.primary-variant span {
+.primary-variant span,
+.secondary-variant span {
   /* mix-blend-mode: difference; */
   position: absolute;
 }
@@ -76,9 +90,14 @@
   color: rgb(255, 255, 255);
   font-weight: 500;
 }
+.secondary-variant:hover span {
+  color: hsl(0, 0%, 100%);
+  font-weight: 500;
+}
 
 .primary-button:before,
-.primary-variant:before {
+.primary-variant:before,
+.secondary-variant:before {
   -webkit-animation: move-out 0.3s;
   animation: move-out 0.3s;
   background: hsl(18, 74%, 42%);
@@ -93,8 +112,13 @@
 .primary-variant:before {
   background: hsl(17, 66%, 20%);
 }
+.secondary-variant:before {
+  background: hsl(17, 66%, 20%);
+  color: white;
+}
 .primary-button:hover:before,
-.primary-variant:hover:before {
+.primary-variant:hover:before,
+.secondary-variant:hover:before {
   -webkit-animation: move-in 0.3s forwards;
   animation: move-in 0.3s forwards;
 }

@@ -93,6 +93,7 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         animal.setPhysicalcondition(adoptionAnimalDTO.getPhysicalcondition());
         animal.setTraining(adoptionAnimalDTO.getTraining());
         animal.setVaccine(adoptionAnimalDTO.getVaccine());
+        animal.setAvailability(true);
 
         User user = userRepository.findById(Long.valueOf(id)).orElse(null);
         animal.setUser(user);
