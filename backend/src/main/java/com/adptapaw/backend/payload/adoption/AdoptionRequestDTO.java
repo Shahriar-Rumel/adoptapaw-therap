@@ -17,6 +17,16 @@ public class AdoptionRequestDTO {
 
     private Boolean status;
 
+    private String rfa;
+
+    private Boolean hadpet;
+
+    private Boolean pickup;
+
+    private String mobile;
+
+    private String email;
+
     private AdoptionUserDTO adoptionseeker;
 
     private AdoptionAnimalDTO pet;

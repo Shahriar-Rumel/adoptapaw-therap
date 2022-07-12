@@ -27,6 +27,21 @@ public class AdoptionRequest {
     @Column(nullable = false)
     private Boolean status;
 
+    @Column(nullable = false,length = 1000)
+    private String rfa;
+
+    @Column(nullable = false)
+    private Boolean hadpet;
+
+    @Column(nullable = false)
+    private Boolean pickup;
+
+    @Column(nullable = false)
+    private String mobile;
+
+    @Column(nullable = false)
+    private String email;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "adoptionseeker_id",referencedColumnName = "id")
     private User adoptionseeker;
