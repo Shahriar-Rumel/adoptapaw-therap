@@ -72,6 +72,6 @@ public class AdoptionAnimal {
 
     @JsonIgnore
     @OneToMany(mappedBy = "pet")
-    private Set<AdoptionRequests> adoptionrequests = new HashSet<>();
+    private Set<AdoptionRequest> adoptionrequests = new HashSet<>();
 
 }

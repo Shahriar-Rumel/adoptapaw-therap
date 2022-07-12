@@ -5,27 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6db3950-41fd-42d2-b3bb-eb8cf9375558" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionRequests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/AdoptionRequestRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/AdoptionRequestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AdoptionRequestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/adoption/AdoptionRequestDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionAnimal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/AdoptionRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/AdoptionRequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/AdoptionRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/AdoptionRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/AdoptionAnimal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/AdoptionAnimal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Nav/DesktopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Nav/DesktopMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/RequestForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/RequestForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/AdoptionRequestPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/AdoptionRequestPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/Onboarding.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/Onboarding.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/buttonanimation.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/buttonanimation.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,24 +49,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Work Projects/Java Fest/SpringBootCourse/springboot-blog-rest-api/springboot-blog-rest-api&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;b43fdd98b1fd705ae4c3a10cf25aad8a&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Work Projects/Java Fest/adoptapaw2.0/backend",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "b43fdd98b1fd705ae4c3a10cf25aad8a"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Spring Boot.BackendApplication">
     <configuration name="PasswordEncodingGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.adptapaw.backend.utils.PasswordEncodingGenerator" />
@@ -128,6 +118,7 @@
       <workItem from="1657388716661" duration="613000" />
       <workItem from="1657431781641" duration="3098000" />
       <workItem from="1657517285343" duration="6590000" />
+      <workItem from="1657609013018" duration="1292000" />
     </task>
     <servers />
   </component>

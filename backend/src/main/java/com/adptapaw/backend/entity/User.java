@@ -40,7 +40,7 @@ public class User {
 
     @JsonIgnore
     @OneToMany(mappedBy = "adoptionseeker")
-    private Set<AdoptionRequests> adoptionrequests = new HashSet<>();
+    private Set<AdoptionRequest> adoptionrequests = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "owner")
@@ -55,11 +55,11 @@ public class User {
         this.animals = animals;
     }
 
-    public Set<AdoptionRequests> getAdoptionrequests() {
+    public Set<AdoptionRequest> getAdoptionrequests() {
         return adoptionrequests;
     }
 
-    public void setAdoptionrequests(Set<AdoptionRequests> adoptionrequests) {
+    public void setAdoptionrequests(Set<AdoptionRequest> adoptionrequests) {
         this.adoptionrequests = adoptionrequests;
     }
 
