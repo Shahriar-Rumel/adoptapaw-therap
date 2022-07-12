@@ -110,19 +110,8 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
 
         adoptionAnimalDTO.setId(animal.getId());
 
-//        AdoptionAnimalResponseDTO response = new AdoptionAnimalResponseDTO();
-
-
         return adoptionAnimalDTO;
 
-
-
-//        AdoptionAnimal adoptionAnimalPost = mapToEntity(adoptionAnimalPostDTO);
-//        AdoptionAnimal newAdoptionAnimalPost = adoptionAnimalRepository.save(adoptionAnimalPost);
-//
-//        // convert entity to DTO
-//        AdoptionAnimalDTO adoptionPostResponse = mapToDTO(newAdoptionAnimalPost);
-//        return adoptionPostResponse;
     }
 
     @Override

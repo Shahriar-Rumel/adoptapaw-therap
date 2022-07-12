@@ -11,7 +11,11 @@ import {
   ADOPTION_POSTS_BY_USERID_REQUEST,
   ADOPTION_POSTS_BY_USERID_SUCCESS,
   ADOPTION_POSTS_BY_USERID_FAIL,
-  ADOPTION_POST_CREATE_FAIL
+  ADOPTION_POST_CREATE_FAIL,
+  ADOPTION_REQUEST_REQUEST,
+  ADOPTION_REQUEST_SUCCESS,
+  ADOPTION_REQUEST_FAIL,
+  ADOPTION_REQUEST_RESET
 } from '../constants/adoptionConstants';
 
 export const adoptionAllPostReducer = (
@@ -30,13 +34,10 @@ export const adoptionAllPostReducer = (
   }
 };
 
-export const adoptionAdoptionPostByIdReducer = (
-  state = { adoptionPostById: {} },
-  action
-) => {
+export const adoptionAdoptionPostByIdReducer = (state = {}, action) => {
   switch (action.type) {
     case ADOPTION_POST_BY_ID_REQUEST:
-      return { loading: true, adoptionPostById: {} };
+      return { loading: true };
     case ADOPTION_POST_BY_ID_SUCCESS:
       return { loading: false, adoptionPostById: action.payload };
     case ADOPTION_POST_BY_ID_FAIL:
@@ -67,11 +68,30 @@ export const adoptionPostCreateReducer = (state = {}, action) => {
     case ADOPTION_POST_CREATE_REQUEST:
       return { loading: true };
     case ADOPTION_POST_CREATE_SUCCESS:
-      return { loading: false, success: true, adoptionPost: action.payload };
+      return { loading: false, adoptionPost: action.payload };
 
     case ADOPTION_POST_CREATE_FAIL:
       return { loading: false, error: action.payload };
     case ADOPTION_POST_CREATE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const adoptionRequestReducer = (
+  state = { adoptionRequest: {}, loading: false, success: false },
+  action
+) => {
+  switch (action.type) {
+    case ADOPTION_REQUEST_REQUEST:
+      return { loading: true, adoptionRequest: {} };
+    case ADOPTION_REQUEST_SUCCESS:
+      return { loading: false, success: true, adoptionRequest: action.payload };
+
+    case ADOPTION_REQUEST_FAIL:
+      return { loading: false, error: action.payload };
+    case ADOPTION_REQUEST_RESET:
       return {};
     default:
       return state;

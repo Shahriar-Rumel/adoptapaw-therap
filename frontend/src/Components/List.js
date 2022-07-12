@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 
-export default function List({ title, data, limit, query, page }) {
-  var count = 1;
+export default function List({ title, data, limit, query, page, uid }) {
+  var count = 0;
   let limitforSection = 0;
   if (limit == 0) {
     // limitforSection = data.length;
@@ -51,14 +51,14 @@ export default function List({ title, data, limit, query, page }) {
                     {count++ < data.length - 1 && (
                       <tr className="border-b border-gray font-medium tracking-tight text-[14px] text-gray-light align-middle">
                         <td scope="col" className="py-4 cursor-pointer px-6">
-                          {item.name}
+                          {item.pet.name}
                         </td>
-                        <td>{item.location}</td>
-                        <td>{item.breed}</td>
-                        <td>{item.training}</td>
-                        <td>{item.vaccine}</td>
+                        <td>{item.pet.location}</td>
+                        <td>{item.requestdate}</td>
+                        <td>{item.approveddate}</td>
+                        <td>{item.status ? 'Approved' : 'Pending'}</td>
                         <td>
-                          <Link to={'/user/profile/1/adoptionrequests/details'}>
+                          <Link to={`/user/${uid}/adoption/request/${item.id}`}>
                             <Button
                               text={'Details'}
                               width={true}
@@ -71,17 +71,17 @@ export default function List({ title, data, limit, query, page }) {
                         </td>
                       </tr>
                     )}
-                    {count === data.length - 1 && (
+                    {count == data.length && (
                       <tr className="border-0 py-4 text-[14px] text-gray-light align-middle font-medium">
                         <td className="py-4 px-6 cursor-pointer">
-                          {item.name}
+                          {item.pet.name}
                         </td>
-                        <td>{item.location}</td>
-                        <td>{item.breed}</td>
-                        <td>{item.training}</td>
-                        <td>{item.vaccine}</td>
+                        <td>{item.pet.location}</td>
+                        <td>{item.requestdate}</td>
+                        <td>{item.approveddate}</td>
+                        <td>{item.status ? 'Approved' : 'Pending'}</td>
                         <td>
-                          <Link to={'/user/profile/1/adoptionrequests/details'}>
+                          <Link to={`/user/${uid}/adoption/request/${item.id}`}>
                             <Button
                               text={'Details'}
                               width={true}

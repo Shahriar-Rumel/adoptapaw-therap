@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { adoptionPostByUserIdAction } from '../actions/adoptionActions';
+import { adoptionRequestsByUserIdAction } from '../actions/adoptionRequestActions';
 import List from '../Components/List';
 import Loader from '../Components/Loader';
 
@@ -12,11 +12,12 @@ export default function UserAdoptionRequestsPage() {
 
   const { userInfo } = userLogin;
 
-  const adoptionPostByUserIdData = useSelector(
-    (state) => state.adoptionPostsByUserId
+  const adoptionRequestByUserIdData = useSelector(
+    (state) => state.adoptionRequestsByUserId
   );
 
-  const { loading, error, adoptionPostByUserId } = adoptionPostByUserIdData;
+  const { loading, error, adoptionRequestsByUserId } =
+    adoptionRequestByUserIdData;
 
   const navigate = useNavigate();
 
@@ -25,9 +26,9 @@ export default function UserAdoptionRequestsPage() {
     if (!userInfo) {
       navigate('/login');
     }
-  }, [userInfo]);
+  }, [userInfo, navigate]);
   useEffect(() => {
-    dispatch(adoptionPostByUserIdAction(id));
+    dispatch(adoptionRequestsByUserIdAction(id));
   }, [dispatch, id]);
 
   return (
@@ -36,8 +37,8 @@ export default function UserAdoptionRequestsPage() {
         <Loader />
       ) : (
         <div className="lg:w-[11/12] w-[95vw] mx-auto mt-[80px]  mb-[100px]">
-          {adoptionPostByUserId && (
-            <List data={adoptionPostByUserId.content} query={''} />
+          {adoptionRequestsByUserId && (
+            <List data={adoptionRequestsByUserId.content} query={''} uid={id} />
           )}
         </div>
       )}

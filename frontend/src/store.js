@@ -9,8 +9,13 @@ import {
   adoptionAdoptionPostByIdReducer,
   adoptionAllPostReducer,
   adoptionPostCreateReducer,
-  adoptionPostsByUserIdReducer
+  adoptionPostsByUserIdReducer,
+  adoptionRequestReducer
 } from './reducers/adoptionReducer';
+import {
+  adoptionRequestByIdReducer,
+  adoptionRequestsByUserIdReducer
+} from './reducers/adoptionRequestReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -18,7 +23,10 @@ const reducer = combineReducers({
   adoptionPosts: adoptionAllPostReducer,
   adoptionPostByIdStore: adoptionAdoptionPostByIdReducer,
   adoptionPostCreated: adoptionPostCreateReducer,
-  adoptionPostsByUserId: adoptionPostsByUserIdReducer
+  adoptionPostsByUserId: adoptionPostsByUserIdReducer,
+  adoptionRequstCreated: adoptionRequestReducer,
+  adoptionRequestsByUserId: adoptionRequestsByUserIdReducer,
+  adoptionRequestById: adoptionRequestByIdReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

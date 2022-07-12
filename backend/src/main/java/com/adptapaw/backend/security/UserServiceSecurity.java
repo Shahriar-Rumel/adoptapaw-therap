@@ -45,6 +45,8 @@ public class UserServiceSecurity implements UserDetailsService {
 
         UserDetailsDTO userDetails = new UserDetailsDTO();
         userDetails.setUsername(user.getUsername());
+        userDetails.setRole(user.getRoles());
+        userDetails.setName(user.getName());
         userDetails.setEmail(user.getEmail());
         userDetails.setId(user.getId());
 
