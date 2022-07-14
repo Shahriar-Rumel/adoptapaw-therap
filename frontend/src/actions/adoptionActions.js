@@ -106,7 +106,7 @@ export const adoptionPostByUserIdAction =
     }
   };
 export const adoptionPostCreateAction =
-  (dataport, id) => async (dispatch, getState) => {
+  (id, dataport) => async (dispatch, getState) => {
     try {
       dispatch({
         type: ADOPTION_POST_CREATE_REQUEST
@@ -125,7 +125,6 @@ export const adoptionPostCreateAction =
 
       await axios.post(
         `${BASE_URL}/${id}/createadoptionpost`,
-
         dataport,
         config
       );

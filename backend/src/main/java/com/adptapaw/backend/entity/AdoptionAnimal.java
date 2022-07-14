@@ -37,7 +37,7 @@ public class AdoptionAnimal {
     @Column(nullable = false)
     private String color;
 
-    @Column()
+    @Column(length = 1000)
     private String image;
 
 //    @Lob
