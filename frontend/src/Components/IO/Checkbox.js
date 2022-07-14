@@ -9,8 +9,8 @@ export default function Checkbox({ type, label, setData, placeholder, width }) {
       <input
         type={type}
         placeholder={placeholder}
-        onChange={(e) => {
-          setData(e.target.value);
+        onClick={() => {
+          setData((prev) => !prev);
         }}
         className="bg-input py-4 custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
       ></input>

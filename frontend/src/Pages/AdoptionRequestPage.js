@@ -1,8 +1,11 @@
 import gsap from 'gsap';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import { adoptionPostByIdAction } from '../actions/adoptionActions';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import {
+  adoptionPostByIdAction,
+  adoptionRequestAction
+} from '../actions/adoptionActions';
 import AnimalProfileLeft from '../Components/Adoption/AnimalProfileLeft';
 import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
 import Button from '../Components/Button';
@@ -11,6 +14,63 @@ import Loader from '../Components/Loader';
 import RequestForm from '../Components/RequestForm';
 
 export default function AdoptionRequestPage() {
+  const [rfa, setRfa] = useState('');
+  const [hadpet, setHadpet] = useState(false);
+  const [pickup, setPickup] = useState(false);
+  const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
+
+  const { id, uid } = useParams();
+
+  const dataset = {
+    rfa: rfa,
+    hadpet: hadpet ? true : false,
+    pickup: pickup ? true : false,
+    mobile: mobile,
+    email: email
+  };
+
+  const setObjects = {
+    rfa: rfa,
+    hadpet: hadpet,
+    pickup: pickup,
+    mobile: mobile,
+    email: email,
+    setRfa: setRfa,
+    setHadpet: setHadpet,
+    setPickup: setPickup,
+    setMobile: setMobile,
+    setEmail: setEmail
+  };
+
+  const dispatch = useDispatch();
+
+  const adoptionPostByIdDataSet = useSelector(
+    (state) => state.adoptionPostByIdStore
+  );
+
+  const { loading, error, adoptionPostById } = adoptionPostByIdDataSet;
+
+  useEffect(() => {
+    dispatch(adoptionPostByIdAction(id));
+  }, [dispatch]);
+
+  const adoptionRequestdata = useSelector(
+    (state) => state.adoptionRequestCreated
+  );
+  // const { success, adoptionRequest } = adoptionRequestdata;
+  const navigate = useNavigate();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (rfa && mobile && email) {
+      dispatch(adoptionRequestAction(dataset, id, uid));
+      navigate(`/user/profile/${uid}/adoptionrequests`);
+    } else {
+      window.alert("Data can't be empty");
+    }
+  };
+
   useEffect(() => {
     gsap.from('.request-adoption-gallery-animation', {
       y: '+=110',
@@ -21,23 +81,8 @@ export default function AdoptionRequestPage() {
       opacity: 1,
       stagger: 0.2
     });
-  });
+  }, [loading]);
 
-  const dispatch = useDispatch();
-
-  const adoptionPostByIdDataSet = useSelector(
-    (state) => state.adoptionPostByIdStore
-  );
-
-  const { loading, error, adoptionPostById } = adoptionPostByIdDataSet;
-
-  const { id } = useParams();
-
-  useEffect(() => {
-    dispatch(adoptionPostByIdAction(id));
-  }, [dispatch]);
-
-  const submitHandler = () => {};
   return (
     <>
       {loading ? (
@@ -57,7 +102,7 @@ export default function AdoptionRequestPage() {
             </div>
             <div className="request-adoption-gallery-animation">
               <form>
-                <RequestForm />
+                <RequestForm setObjects={setObjects} />
                 <div onClick={submitHandler}>
                   <Button text="Confirm Adoption Request" />
                 </div>

@@ -63,7 +63,7 @@ export default function DesktopMenu({ theme }) {
           </div>
 
           {showProfileMenu && (
-            <div className="w-[200px] h-[400px] bg-white shadow-md absolute flex flex-col mr-[100px] items-center justify-between mt-[460px] custom-round px-4 py-4">
+            <div className="w-[200px] h-[400px] menu-blur shadow-md absolute flex flex-col mr-[100px] items-center justify-between mt-[460px] custom-round px-4 py-4">
               <Link
                 to={`/user/profile/${userInfo.id}`}
                 className="w-[100%]"

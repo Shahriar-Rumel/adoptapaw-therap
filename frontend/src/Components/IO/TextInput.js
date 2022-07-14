@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default function TextInput({ label, placeholder, type, data, setData }) {
+export default function TextInput({
+  label,
+  placeholder,
+  type,
+  data,
+  setData,
+  pattern
+}) {
   return (
     <div className="flex flex-col my-3 request-form-animation">
       <label className="font-bold text-primary text-[14px]">{label}</label>

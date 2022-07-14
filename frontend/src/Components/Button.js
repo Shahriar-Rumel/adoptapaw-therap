@@ -9,7 +9,8 @@ export default function Button({
   heightClass,
   textSize,
   textSizeClass,
-  secondary
+  secondary,
+  disabled
 }) {
   return (
     <button
@@ -23,7 +24,7 @@ export default function Button({
       } 'text-white'
        text-[16px]  ${width ? widthClass : 'w-full'}  ${
         height ? heightClass : 'h-[50px]'
-      }  py-3 my-5 tracking-[-0.5px] `}
+      } ${disabled && 'disabled'}  py-3 my-5 tracking-[-0.5px] `}
     >
       <span
         className={`font-[600] lg:font-[500] ${

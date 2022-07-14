@@ -93,6 +93,7 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         animal.setPhysicalcondition(adoptionAnimalDTO.getPhysicalcondition());
         animal.setTraining(adoptionAnimalDTO.getTraining());
         animal.setVaccine(adoptionAnimalDTO.getVaccine());
+        animal.setImage(adoptionAnimalDTO.getImage());
         animal.setAvailability(true);
 
         User user = userRepository.findById(Long.valueOf(id)).orElse(null);
@@ -110,19 +111,8 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
 
         adoptionAnimalDTO.setId(animal.getId());
 
-//        AdoptionAnimalResponseDTO response = new AdoptionAnimalResponseDTO();
-
-
         return adoptionAnimalDTO;
 
-
-
-//        AdoptionAnimal adoptionAnimalPost = mapToEntity(adoptionAnimalPostDTO);
-//        AdoptionAnimal newAdoptionAnimalPost = adoptionAnimalRepository.save(adoptionAnimalPost);
-//
-//        // convert entity to DTO
-//        AdoptionAnimalDTO adoptionPostResponse = mapToDTO(newAdoptionAnimalPost);
-//        return adoptionPostResponse;
     }
 
     @Override

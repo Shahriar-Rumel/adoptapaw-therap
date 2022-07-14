@@ -58,7 +58,7 @@ function App() {
             exact
           />
           <Route
-            path="/adoption/:id/request"
+            path="/adoption/:id/user/:uid/createadoptionrequest"
             element={<AdoptionRequestPage />}
             exact
           />
@@ -68,7 +68,7 @@ function App() {
             exact
           />
           <Route
-            path="/user/profile/:id/adoptionrequests/details"
+            path="/user/:uid/adoption/request/:id"
             element={<UserAdoptionRequestDetailsPage />}
             exact
           />

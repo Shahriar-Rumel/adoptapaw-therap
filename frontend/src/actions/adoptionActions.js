@@ -11,7 +11,10 @@ import {
   ADOPTION_POST_CREATE_SUCCESS,
   ADOPTION_POST_FAIL,
   ADOPTION_POST_REQUEST,
-  ADOPTION_POST_SUCCESS
+  ADOPTION_POST_SUCCESS,
+  ADOPTION_REQUEST_FAIL,
+  ADOPTION_REQUEST_REQUEST,
+  ADOPTION_REQUEST_SUCCESS
 } from '../constants/adoptionConstants';
 
 const BASE_URL = 'http://localhost:8081/api/adoption';
@@ -103,7 +106,7 @@ export const adoptionPostByUserIdAction =
     }
   };
 export const adoptionPostCreateAction =
-  (dataport) => async (dispatch, getState) => {
+  (id, dataport) => async (dispatch, getState) => {
     try {
       dispatch({
         type: ADOPTION_POST_CREATE_REQUEST
@@ -121,8 +124,7 @@ export const adoptionPostCreateAction =
       };
 
       await axios.post(
-        `${BASE_URL}/1/createadoptionpost`,
-
+        `${BASE_URL}/${id}/createadoptionpost`,
         dataport,
         config
       );
@@ -135,6 +137,47 @@ export const adoptionPostCreateAction =
     } catch (error) {
       dispatch({
         type: ADOPTION_POST_CREATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };
+
+export const adoptionRequestAction =
+  (dataset, id, uid) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ADOPTION_REQUEST_REQUEST
+      });
+
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      const { data } = await axios.post(
+        `${BASE_URL}/${id}/user/${uid}/createadoptionrequest`,
+        dataset,
+        config
+      );
+
+      dispatch({
+        type: ADOPTION_REQUEST_SUCCESS,
+        payload: data
+      });
+
+      // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: ADOPTION_REQUEST_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

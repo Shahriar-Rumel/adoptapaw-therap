@@ -1,12 +1,16 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { adoptionPostCreateAction } from '../actions/adoptionActions';
 import Button from '../Components/Button';
 import Checkbox from '../Components/IO/Checkbox';
 import ChoiceInput from '../Components/IO/ChoiceInput';
+import ImageInput from '../Components/IO/ImageInput';
 import SelectBox from '../Components/IO/SelectBox';
 import TextInput from '../Components/IO/TextInput';
+import Loader from '../Components/Loader';
+import UploadLoader from '../Components/UploadLoader/UploadLoader';
 
 export default function CreateAdoptionPost({ history }) {
   const [name, setName] = useState('');
@@ -25,11 +29,26 @@ export default function CreateAdoptionPost({ history }) {
   const [training, setTraining] = useState('');
   const [color, setColor] = useState('');
 
+  const [imageOne, setImageOne] = useState(
+    '/assets/Icons/ImagePlaceholder.svg'
+  );
+  const [imageTwo, setImageTwo] = useState(
+    '/assets/Icons/ImagePlaceholder.svg'
+  );
+  const [imageThree, setImageThree] = useState(
+    '/assets/Icons/ImagePlaceholder.svg'
+  );
+
+  const [image, setImage] = useState('Upload Image');
+
+  const [uploading, setUploading] = useState('');
+
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
 
   const { loading, error, userInfo } = userLogin;
+  const { id } = useParams();
 
   const createAdoptionPost = useSelector((state) => state.CreateAdoptionPost);
 
@@ -48,7 +67,8 @@ export default function CreateAdoptionPost({ history }) {
     physicalcondition: physicalcondition,
     training: training,
     vaccine: vaccine,
-    type: type
+    type: type,
+    image: imageOne
   };
 
   useEffect(() => {
@@ -64,11 +84,44 @@ export default function CreateAdoptionPost({ history }) {
   var healthType = ['Healthy', 'Conditioned'];
   var behaviourType = ['Calm', 'Angry'];
 
-  const submitHandler = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
     if (dataport) {
-      dispatch(adoptionPostCreateAction(dataport));
+      dispatch(adoptionPostCreateAction(id, dataport));
     } else {
       console.log('Data is empty');
+    }
+  };
+
+  const BASE_URL = 'http://localhost:8081';
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      console.log(config);
+      const { data } = await axios.post(
+        `${BASE_URL}/api/files/upload`,
+        formData,
+        config
+      );
+
+      setImageOne(data);
+      console.log(data);
+      setUploading(false);
+    } catch (errror) {
+      console.log(error);
+      setUploading(false);
     }
   };
 
@@ -87,6 +140,7 @@ export default function CreateAdoptionPost({ history }) {
               setData={setLocation}
             />
           </div>
+
           <div className="lg:w-[32%]">
             <SelectBox
               minHeight={200}
@@ -124,6 +178,11 @@ export default function CreateAdoptionPost({ history }) {
               setData={setGender}
             />
           </div>
+          {uploading && (
+            <div className="fixed z-[999] top-[80px] bg-primary-light bg-opacity-25 left-0 right-0 bottom-0 flex items-center justify-center">
+              <UploadLoader />
+            </div>
+          )}
           <div className="lg:w-[32%]">
             <SelectBox
               minHeight={200}
@@ -161,7 +220,49 @@ export default function CreateAdoptionPost({ history }) {
             />
           </div>
         </div>
+        <div className="flex justify-between items-center my-16  lg:py-[100px]">
+          <div className="w-[32%] lg:w-[33%] ">
+            <div className="">
+              <label
+                htmlFor="filePicker"
+                style={{
+                  backgroundImage: `url(${imageOne})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat'
+                }}
+                className=" text-[12px]  cursor-pointer font-bold text-[transparent] py-[50px] px-[25px]  custom-round"
+              >
+                {image}
+              </label>
+              <input
+                id="filePicker"
+                onChange={uploadFileHandler}
+                required
+                style={{ visibility: 'hidden' }}
+                type={'file'}
+              ></input>
+            </div>
 
+            {/* <div className="flex flex-col my-3 request-form-animation">
+              <label className="font-bold text-primary text-[14px]">
+                Upload First Image
+              </label>
+              <input
+                type="file"
+                onChange={uploadFileHandler}
+                required
+                className="bg-input py-4 custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
+              ></input>
+            </div> */}
+          </div>
+          {/* <div className="w-[32%] lg:w-[33%]">
+            <ImageInput />
+          </div>
+          <div className="w-[32%] lg:w-[33%]">
+            <ImageInput />
+          </div> */}
+        </div>
         <SelectBox
           minHeight={200}
           label={"Pet's physical condition"}
