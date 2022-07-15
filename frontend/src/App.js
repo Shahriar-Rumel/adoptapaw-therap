@@ -25,6 +25,7 @@ import UserProfilepage from './Pages/UserProfilePage';
 import UserAdoptionPostsPage from './Pages/UserAdoptionPostsPage';
 import UserAdoptionRequestsPage from './Pages/UserAdoptionRequestsPage';
 import UserAdoptionRequestDetailsPage from './Pages/UserAdoptionRequestDetailsPage';
+import UserMissingAnimalPostsPage from './Pages/UserMissingAnimalPostsPage';
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
             exact
           />
           <Route
-            path="/missing/cat"
+            path="/missing/:id"
             element={<MissingAnimalProfilePage />}
             exact
           />
@@ -75,6 +76,11 @@ function App() {
           <Route
             path="/user/profile/:id/adoptionrequests"
             element={<UserAdoptionRequestsPage />}
+            exact
+          />
+          <Route
+            path="/user/profile/:id/missingposts"
+            element={<UserMissingAnimalPostsPage />}
             exact
           />
           <Route

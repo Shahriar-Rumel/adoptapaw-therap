@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useNavigate, useParams } from 'react-router-dom';
 import { adoptionPostByUserIdAction } from '../actions/adoptionActions';
+import { missingPostByUserIdAction } from '../actions/missingAnimalActions';
 import Button from '../Components/Button';
 import AdoptionPostCard from '../Components/Cards/AdoptionPostCard';
 import Loader from '../Components/Loader';
 
-export default function UserAdoptionPostsPage() {
+export default function UserMissingAnimalPostsPage() {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -15,11 +16,11 @@ export default function UserAdoptionPostsPage() {
 
   const navigate = useNavigate();
 
-  const adoptionPostByUserIdData = useSelector(
-    (state) => state.adoptionPostsByUserId
+  const missingPostByUserIdData = useSelector(
+    (state) => state.missingPostsByUserId
   );
 
-  const { loading, error, adoptionPostByUserId } = adoptionPostByUserIdData;
+  const { loading, error, missingPostByUserId } = missingPostByUserIdData;
 
   const { id } = useParams();
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function UserAdoptionPostsPage() {
     }
   }, [userInfo]);
   useEffect(() => {
-    dispatch(adoptionPostByUserIdAction(id));
+    dispatch(missingPostByUserIdAction(id));
   }, [dispatch]);
   return (
     <>
@@ -39,11 +40,11 @@ export default function UserAdoptionPostsPage() {
           <div className="lg:w-3/4 w-[90vw]   mx-auto mt-[100px] mb-[40px] lg:flex justify-between ">
             <div>
               <h1 className="text-[18px] font-bold text-primary tracking-tight mt-[30px] mb-3">
-                Adoption Posts
+                Missing Posts
               </h1>
-              {adoptionPostByUserId.content && (
+              {missingPostByUserId.contentfile && (
                 <AdoptionPostCard
-                  data={adoptionPostByUserId.content}
+                  data={missingPostByUserId.contentfile}
                   columnSize={3}
                   columnSizeXl={3}
                 />

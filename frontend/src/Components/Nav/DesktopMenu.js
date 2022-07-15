@@ -87,7 +87,7 @@ export default function DesktopMenu({ theme }) {
                 </div>
               </Link>
               <Link
-                to={`/user/profile/${userInfo.id}`}
+                to={`/user/profile/${userInfo.id}/missingposts`}
                 className="w-[100%]"
                 onClick={() => setShowProfileMenu((prev) => !prev)}
               >

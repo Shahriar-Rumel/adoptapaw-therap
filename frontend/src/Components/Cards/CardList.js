@@ -22,9 +22,7 @@ export default function CardList({ link, buttonText, list }) {
                 backgroundRepeat: 'no-repeat'
               }}
             ></div>
-            {/* <h2 className="absolute mt-[240px] uppercase text-[24px] font-extrabold tracking-[10px] ease-in-out duration-300 ">
-              {item.name}
-            </h2> */}
+
             <div className="overlay w-[100%] h-[100%] px-5  absolute mx-auto flex flex-col justify-center bg-[#000000] bg-opacity-[0.6]">
               <div className="flex justify-between items-center relative mt-[120px] ">
                 <h2 className="capitalize text-[20px] font-semibold tracking-tight ease-in-out duration-300 ">
