@@ -40,6 +40,9 @@ public class MissingAnimal {
     @Column(nullable = false,length = 1000)
     private String datemissing;
 
+    @Column(length = 1000)
+    private String image;
+
     @Column(nullable = false,length = 1000)
     private String specificattribute;
 

@@ -88,6 +88,7 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
         animal.setSpecificattribute(missingAnimalDTO.getSpecificattribute());
         animal.setAccessorieslastworn(missingAnimalDTO.getAccessorieslastworn());
         animal.setRewards(missingAnimalDTO.getRewards());
+        animal.setImage(missingAnimalDTO.getImage());
 
         User user = userRepository.findById(Long.valueOf(id)).orElse(null);
         animal.setUser(user);
