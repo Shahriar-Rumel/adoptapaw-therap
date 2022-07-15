@@ -30,11 +30,6 @@ public class MissingAnimalController {
     }
 
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<List<AdoptionAnimalDTO>> getAdoptionAnimalByCreator(@PathVariable(name = "id") String id){
-//        return ResponseEntity.ok(adoptionAnimalService.getPostByCreator(Long.parseLong(id)));
-//    }
-
 
     @GetMapping("/{id}")
     public MissingAnimalDTO getMissingAnimalById(@PathVariable(name = "id") String id){

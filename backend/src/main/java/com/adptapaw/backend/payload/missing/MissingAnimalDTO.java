@@ -1,6 +1,6 @@
 package com.adptapaw.backend.payload.missing;
 
-import com.adptapaw.backend.payload.adoption.AdoptionUserDTO;
+
 import lombok.Data;
 
 @Data
