@@ -16,6 +16,11 @@ import {
   adoptionRequestByIdReducer,
   adoptionRequestsByUserIdReducer
 } from './reducers/adoptionRequestReducer';
+import {
+  missingAllPostReducer,
+  missingPostByIdReducer,
+  missingPostsByUserIdReducer
+} from './reducers/missingAnimalReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -26,7 +31,10 @@ const reducer = combineReducers({
   adoptionPostsByUserId: adoptionPostsByUserIdReducer,
   adoptionRequstCreated: adoptionRequestReducer,
   adoptionRequestsByUserId: adoptionRequestsByUserIdReducer,
-  adoptionRequestById: adoptionRequestByIdReducer
+  adoptionRequestById: adoptionRequestByIdReducer,
+  missingPostsStore: missingAllPostReducer,
+  missingPostByIdStore: missingPostByIdReducer,
+  missingPostsByUserId: missingPostsByUserIdReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

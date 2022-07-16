@@ -25,6 +25,9 @@ import UserProfilepage from './Pages/UserProfilePage';
 import UserAdoptionPostsPage from './Pages/UserAdoptionPostsPage';
 import UserAdoptionRequestsPage from './Pages/UserAdoptionRequestsPage';
 import UserAdoptionRequestDetailsPage from './Pages/UserAdoptionRequestDetailsPage';
+import UserMissingAnimalPostsPage from './Pages/UserMissingAnimalPostsPage';
+import DonationDetailsPage from './Pages/DonationDetailsPage';
+import ContactPage from './Pages/ContactPage';
 
 function App() {
   return (
@@ -39,8 +42,13 @@ function App() {
             exact
           />
           <Route
-            path="/missing/cat"
+            path="/missing/:id"
             element={<MissingAnimalProfilePage />}
+            exact
+          />
+          <Route
+            path="/ongoingdonations/:id"
+            element={<DonationDetailsPage />}
             exact
           />
           <Route path="/ongoingdonations" element={<DonationPage />} exact />
@@ -78,12 +86,18 @@ function App() {
             exact
           />
           <Route
+            path="/user/profile/:id/missingposts"
+            element={<UserMissingAnimalPostsPage />}
+            exact
+          />
+          <Route
             path="/user/profile/:id/adoptionposts"
             element={<UserAdoptionPostsPage />}
             exact
           />
           <Route path="/user/profile/:id" element={<UserProfilepage />} exact />
           <Route path="/adoption" element={<Adoptionpage />} exact />
+          <Route path="/contact" element={<ContactPage />} exact />
           <Route path="/home" element={<Homepage />} exact />
           <Route path="/" element={<Onboarding />} exact />
           <Route path="*" element={<Navigate to="/" replace />} />

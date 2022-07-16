@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { donationList } from '../../Data/donation';
 import Button from '../Button';
 export default function DonationListCard() {
@@ -20,15 +21,17 @@ export default function DonationListCard() {
               <h1 className="text-primary font-extrabold text-[14px] md:text-[16px] md:leading-[18px] leading-[16px] tracking-tighter mr-3">
                 {item.name}
               </h1>
-              <Button
-                text="Donate"
-                height={true}
-                heightClass="h-[40px] md:h-[45px]"
-                width={true}
-                widthClass="w-[30px] md:w-[65px]"
-                textSize={true}
-                textSizeClass="text-[12px] md:text-[14px]"
-              />
+              <Link to="/ongoingdonations/1">
+                <Button
+                  text="Donate"
+                  height={true}
+                  heightClass="h-[40px] md:h-[45px]"
+                  width={true}
+                  widthClass="w-[30px] md:w-[65px]"
+                  textSize={true}
+                  textSizeClass="text-[12px] md:text-[14px]"
+                />
+              </Link>
             </div>
 
             <div className="flex mt-2 mb-5">
