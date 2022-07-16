@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:remove="all">Registration confirmation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 'Ubuntu', sans-serif;
+        }
+        a.link {
+            border: solid 1px #FF611E;
+            background-color: #FF611E;
+            border-top-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            display: block;
+            width: 460px;
+            text-align: center;
+            padding: 15px 0;
+            cursor: pointer;
+        }
+        .header{
+            font-weight: 900;
+            color:#451E0E;
+            letter-spacing: -0.4px;
+            font-size: 18px;
+            width:460px;
+        }
+        .bg-image{
+            padding:10px;
+            height: 100px;
+            width:100px;
+            background-color: aquamarine;
+            background-image: url('https://unsplash.com/photos/LvLlOpu3vzM');
+            background-repeat: repeat;
+        }
+        p{
+            width:420px;
+            color: #3b3b3b;
+        }
+        .cover{
+            background-color: #451E0E;
+            width:460px;
+            height: 100px;
+            border-top-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            padding:20px 0px;
+
+        }
+        .cover-text{
+            color:white;
+            text-align: center;
+        }
+        .cover-text span{
+             color:#FF611E;
+         }
+        .footer{
+            border-top: 1px solid #a9a9a9;
+            width: 440px;
+            padding: 20px 10px;
+
+        }
+        .footer-title{
+            text-align: center;
+            font-size: 18px;
+            font-weight:900;
+            color:#451E0E;
+            margin-top: -10px;
+        }
+        .footer-title span{
+             color:#FF611E;
+         }
+        .footer h6{
+            text-align: center;
+        }
+        .address{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100px;
+            margin:auto;
+        }
+        .address h6{
+            padding: 3px 5px;
+            border-right: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+<div class="cover">
+    <h1 class="cover-text">adopt<span>a</span>paw</h1>
+</div>
+<h2 class="header">Confirm your email address to get started on Adoptapaw</h2>
+<div>Hey, <b th:text="${name}">name</b> !</div>
+<p>
+    Welcome to adoptapaw ! Your account has been created . Once you've confirmed that <b th:text="${email}">email</b>
+    your email address,you can start using our platform !
+    <br/><br/>
+    To confirm the validity of your email address, please click on the button below
+</p>
+<p style="text-align: left;">
+    <a class="link" href="google.com" th:href="${url}">Confirm account</a>
+</p>
+<br>
+<!--<div>-->
+<!--    <img src="/images/adoptapawlog.png"  alt="" th:src="|cid:${imageResourceName}|" />-->
+<!--</div>-->
+
+<div class="footer">
+
+        <h6>Made by</h6>
+        <h4 class="footer-title">adopt<span>a</span>paw</h4>
+    <div class="address">
+        <h6>Dhaka</h6>
+        <h6>Bangladesh</h6>
+    </div>
+
+</div>
+
+</body>
+</html>

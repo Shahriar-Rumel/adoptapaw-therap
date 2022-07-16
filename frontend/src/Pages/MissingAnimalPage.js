@@ -9,6 +9,7 @@ import Loader from '../Components/Loader';
 
 import AdoptionHeader from '../Components/Adoption/AdoptionHeader';
 import CardList from '../Components/Cards/CardList';
+import Button from '../Components/Button';
 
 const MissingCardList = ({ list, buttonText }) => {
   return (
@@ -71,10 +72,35 @@ export default function MissingAnimalPage() {
         <Loader />
       ) : (
         <div className="lg:w-3/4 w-[90vw] mx-auto mt-[100px]">
-          <AdoptionHeader
-            link="/assets/Lost-dog.svg"
-            header="Missing Animals"
-          />
+          <div className="flex flex-col w-[100%]  md:flex-row md:justify-between md:items-center mb-5">
+            <AdoptionHeader
+              link="/assets/Lost-dog.svg"
+              header="Missing Animals"
+            />
+            {userInfo && (
+              <Link to={`/missing/${userInfo.id}/createpost`}>
+                <Button
+                  text="Create Post"
+                  height={true}
+                  heightClass="h-[50px]"
+                  width={true}
+                  widthClass="w-[120px]"
+                />
+              </Link>
+            )}
+            {!userInfo && (
+              <Link to={`/login`}>
+                <Button
+                  text="Create Post"
+                  height={true}
+                  heightClass="h-[50px]"
+                  width={true}
+                  widthClass="w-[120px]"
+                />
+              </Link>
+            )}
+          </div>
+
           <h1 className="font-extrabold tracking-tighter text-[24px] px-3 text-primary border-l-4 border-l-red">
             Paws Missing
           </h1>
