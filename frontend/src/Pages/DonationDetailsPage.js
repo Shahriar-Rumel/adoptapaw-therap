@@ -191,10 +191,11 @@ const DonationModal = ({ modal, setModal }) => {
               text="Donate with Bkash"
               className=" donation-animation text-white custom-round bg-[#D12053]  hover:bg-[#a61a41] w-[100%] py-4 flex items-center justify-center"
             >
+              <img src="/assets/icons/bkash.svg" className="mr-2"></img>
               Donate with Bkash
             </button>
             <h2
-              className="donation-animation font-bold tracking-tight text-gray-light mt-8 cursor-pointer"
+              className="donation-animation font-bold tracking-tight  text-gray-light w-[100px] mt-8 cursor-pointer"
               onClick={() => setModal(false)}
             >
               Maybe Later

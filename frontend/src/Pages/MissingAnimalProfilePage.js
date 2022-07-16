@@ -117,15 +117,17 @@ export default function MissingAnimalProfilePage() {
               <h3 className="mx-2 text-[12px] font-bold text-white">
                 Went missing on
               </h3>
-              <div className="relative">
-                <img
-                  src="/assets/icons/bannerfordate.svg"
-                  className="h-[30px]"
-                ></img>
-                <h3 className="ml-[20px] text-[12px] absolute  mt-[-25px] font-bold text-white">
-                  {missingPostById.datemissing}
-                </h3>
-              </div>
+              {missingPostById && (
+                <div className="relative">
+                  <img
+                    src="/assets/icons/bannerfordate.svg"
+                    className="h-[30px]"
+                  ></img>
+                  <h3 className="ml-[20px] text-[12px] absolute  mt-[-25px] font-bold text-white">
+                    {missingPostById.datemissing}
+                  </h3>
+                </div>
+              )}
             </div>
           </div>
           <div className="lg:w-[50%] lg:ml-10">

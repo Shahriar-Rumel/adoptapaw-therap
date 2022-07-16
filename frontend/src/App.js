@@ -27,6 +27,7 @@ import UserAdoptionRequestsPage from './Pages/UserAdoptionRequestsPage';
 import UserAdoptionRequestDetailsPage from './Pages/UserAdoptionRequestDetailsPage';
 import UserMissingAnimalPostsPage from './Pages/UserMissingAnimalPostsPage';
 import DonationDetailsPage from './Pages/DonationDetailsPage';
+import ContactPage from './Pages/ContactPage';
 
 function App() {
   return (
@@ -96,6 +97,7 @@ function App() {
           />
           <Route path="/user/profile/:id" element={<UserProfilepage />} exact />
           <Route path="/adoption" element={<Adoptionpage />} exact />
+          <Route path="/contact" element={<ContactPage />} exact />
           <Route path="/home" element={<Homepage />} exact />
           <Route path="/" element={<Onboarding />} exact />
           <Route path="*" element={<Navigate to="/" replace />} />
