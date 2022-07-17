@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Components/Loader';
+import Error from '../Components/Error';
 
 export default function RegistrationPage({ history, location }) {
   useEffect(() => {
@@ -44,28 +45,23 @@ export default function RegistrationPage({ history, location }) {
 
   const { userInfo } = userLogin;
 
-  // const redirect = location.search ? location.search.split('=')[1] : '/';
-  // console.log(redirect);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (userInfo) {
-      // history.push(redirect);
       navigate('/home');
     }
   }, [history, userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    //dispatch Login
-    // if (password !== confirmPassword) {
-    //   setMessage('Password do not match');
-    // } else
+
     dispatch(register(name, email, password, username));
   };
   return (
     <>
       {loading && <Loader />}
+
       <div className=" lg:flex  lg:flex-row-reverse justify-between lg:items-center lg:w-3/4 w-[90vw] mx-auto mt-[150px] mb-[100px]">
         <img
           src="/assets/dogcat.svg"
@@ -78,6 +74,7 @@ export default function RegistrationPage({ history, location }) {
           <h3 className="text-[14px] font-regular text-gray-light mb-10 request-form-animation">
             Sign up to get Started
           </h3>
+          {error && <Error message={error} />}
           <div className="request-form-animation">
             <TextInput
               label="Name"

@@ -29,6 +29,7 @@ import UserMissingAnimalPostsPage from './Pages/UserMissingAnimalPostsPage';
 import DonationDetailsPage from './Pages/DonationDetailsPage';
 import ContactPage from './Pages/ContactPage';
 import CreateMissingPost from './Pages/CreateMissingPostpage';
+import ForgotPasswordPage from './Pages/ForgotPasswordPage';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           />
           <Route path="/ongoingdonations" element={<DonationPage />} exact />
           <Route path="/missing" element={<MissingAnimalPage />} exact />
+          <Route path="/forgot" element={<ForgotPasswordPage />} exact />
           <Route path="/login" element={<LoginPage />} exact />
           <Route path="/registration" element={<RegistrationPage />} exact />
           <Route

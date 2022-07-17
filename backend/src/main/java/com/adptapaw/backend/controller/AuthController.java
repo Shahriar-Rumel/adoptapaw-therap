@@ -44,9 +44,15 @@ public class AuthController {
     private JWTTokenProvider tokenProvider;
 
     @PostMapping("/signin")
-    public UserDetailsDTO authenticateUser(@RequestBody LoginDTO loginDTO){
+    public ResponseEntity<?> authenticateUser(@RequestBody LoginDTO loginDTO){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDTO.getEmail(), loginDTO.getPassword()));
+
+
+        if(userRepository.existsByEmail(loginDTO.getEmail())){
+            return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
+        }
+
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -60,34 +66,50 @@ public class AuthController {
 
         userDetailsDTO.setJwtdto(jwtdto);
 
-        return userDetailsDTO;
+        return new ResponseEntity<>(userDetailsDTO, HttpStatus.OK);
     }
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignupDTO signupDTO){
 
-        // add check for username exists in a DB
-        if(userRepository.existsByEmail(signupDTO.getEmail())){
-            return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
-        }
 
-        if(userRepository.existsByUsername(signupDTO.getUsername())){
-            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
-        }
+            if( signupDTO.getName().isBlank())
+                return new ResponseEntity<>("Name can not be empty",HttpStatus.BAD_REQUEST);
 
-        // create user object
-        User user = new User();
-        user.setName(signupDTO.getName());
-        user.setEmail(signupDTO.getEmail());
-        user.setUsername(signupDTO.getUsername());
-        user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
+            if(signupDTO.getEmail().isBlank()  )
+                return new ResponseEntity<>("Email can not be empty",HttpStatus.BAD_REQUEST);
 
-        Roles roles = roleRepository.findByName("ROLE_ADMIN").get();
-        user.setRoles(Collections.singleton(roles));
 
-        userRepository.save(user);
+            if( signupDTO.getUsername().isBlank())
+                return new ResponseEntity<>("Username can not be empty",HttpStatus.BAD_REQUEST);
 
-        return new ResponseEntity<>(user, HttpStatus.OK);
+
+            if( signupDTO.getPassword().isBlank() )
+                return new ResponseEntity<>("Password can not be empty",HttpStatus.BAD_REQUEST);
+
+
+            if(userRepository.existsByEmail(signupDTO.getEmail()))
+                return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
+
+
+            if(userRepository.existsByUsername(signupDTO.getUsername()))
+                return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
+
+
+            // create user object
+            User user = new User();
+            user.setName(signupDTO.getName());
+            user.setEmail(signupDTO.getEmail());
+            user.setUsername(signupDTO.getUsername());
+            user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
+
+            Roles roles = roleRepository.findByName("ROLE_ADMIN").get();
+            user.setRoles(Collections.singleton(roles));
+
+            userRepository.save(user);
+
+            return new ResponseEntity<>(user, HttpStatus.OK);
+
 
     }
 }

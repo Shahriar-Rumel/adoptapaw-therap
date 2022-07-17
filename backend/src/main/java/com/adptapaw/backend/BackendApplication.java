@@ -52,18 +52,19 @@ public class BackendApplication {
 
       @EventListener(ApplicationReadyEvent.class)
       public void setMail() throws MessagingException {
+
           AccountVerificationEmailContext mail = new AccountVerificationEmailContext();
           mail.setFrom("adoptapawofficial@gmail.com");
           mail.setTemplateLocation("emailsender.html");
           mail.setSubject("Complete your registration");
           mail.setTo("contactrumel@gmail.com");
           mail.put("name","Just a name");
-          mail.put("token","38947hfkshfkjsdhfkj");
-
+          mail.put("config","www.google.com");
           FileSystemResource imageResourceName = new FileSystemResource(new File("unsplash.com/photos/LvLlOpu3vzM"));
           mail.put("imageResourceName",imageResourceName);
-
           emailService.sendMail(mail);
+
+
       }
 
 

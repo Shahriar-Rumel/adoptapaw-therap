@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Components/Loader';
+import Error from '../Components/Error';
 
 export default function LoginPage({ location, history }) {
   useEffect(() => {
@@ -57,7 +58,7 @@ export default function LoginPage({ location, history }) {
   return (
     <>
       {loading && <Loader />}
-      <div className="container lg:flex  lg:flex-row-reverse justify-between lg:items-center lg:w-3/4 w-[90vw] mx-auto mt-[150px] ">
+      <div className=" lg:flex  lg:flex-row-reverse justify-between lg:items-center lg:w-3/4 w-[90vw] mx-auto mt-[150px] ">
         <img
           src="/assets/dogcat secondary.svg"
           className="w-[50vw] mx-auto lg:mr-5 mb-12 mt-[-50px] lg:mt-0 md:w-[40vw] lg:w-[35vw] xl:w-[25vw] request-form-image-animation"
@@ -69,6 +70,8 @@ export default function LoginPage({ location, history }) {
           <h3 className="text-[14px] font-regular text-gray-light mb-10 request-form-animation">
             Login to adopt paws
           </h3>
+
+          {error && <Error message="Username or Email doesn't exist !" />}
 
           <div className="request-form-animation">
             <TextInput
@@ -94,7 +97,7 @@ export default function LoginPage({ location, history }) {
             <Button text="Login" />
           </div>
 
-          <div className="mt-5 request-form-animation">
+          <div className="mt-5 request-form-animation flex justify-between">
             <h3 className="text-gray-light tracking-tight">
               Don't have an account ?
               <Link to="/registration">
@@ -103,6 +106,9 @@ export default function LoginPage({ location, history }) {
                 </span>
               </Link>
             </h3>
+            <Link to="/forgot">
+              <h3 className="text-primary tracking-tight">Forgot password ?</h3>
+            </Link>
           </div>
         </div>
       </div>

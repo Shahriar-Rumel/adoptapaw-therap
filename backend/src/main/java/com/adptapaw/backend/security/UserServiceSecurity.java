@@ -16,9 +16,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceSecurity implements UserDetailsService {
+public  class UserServiceSecurity implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserServiceSecurity(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -35,13 +35,10 @@ public class UserServiceSecurity implements UserDetailsService {
 
     }
 
-
-
-
     public UserDetailsDTO loadUserByEmail(String usernameOrEmail) throws UsernameNotFoundException {
-        User user = userRepository.findByUsernameOrEmail(usernameOrEmail,usernameOrEmail).get();
-//                .orElseThrow(() ->
-//                        new UsernameNotFoundException("User not found with username or email:" + Email));
+        User user = userRepository.findByUsernameOrEmail(usernameOrEmail,usernameOrEmail)
+                .orElseThrow(() ->
+                        new UsernameNotFoundException("User not found with username or email:" + "okay"));
 
         UserDetailsDTO userDetails = new UserDetailsDTO();
         userDetails.setUsername(user.getUsername());
