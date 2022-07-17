@@ -40,6 +40,9 @@ public class MissingAnimal {
     @Column(nullable = false,length = 1000)
     private String datemissing;
 
+    @Column(length = 1000)
+    private String image;
+
     @Column(nullable = false,length = 1000)
     private String specificattribute;
 
@@ -71,6 +74,6 @@ public class MissingAnimal {
 
     @JsonIgnore
     @OneToMany(mappedBy = "pet")
-    private Set<AdoptionRequest> adoptionrequests = new HashSet<>();
+    private Set<MissingRequest> missingrequests = new HashSet<>();
 
 }

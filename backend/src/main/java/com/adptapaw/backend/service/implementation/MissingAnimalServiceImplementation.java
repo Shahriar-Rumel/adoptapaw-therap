@@ -44,13 +44,7 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
         return missingAnimal;
     }
 
-    //    @Override
-//    public AdoptionAnimalDTO getByCreator(Long creator) {
-//        AdoptionAnimal adoptionAnimal = (AdoptionAnimal) AdoptionAnimalRepository.findByCreator(String.valueOf(creator));
-////                .orElseThrow(() -> new ResourceNotFoundException("Adoption Animal", "id", creator));
-//        return mapToDTO(adoptionAnimal);
-//    }
-//
+
     @Override
     public MissingAnimalResponseDTO getAllByCreator(String id) {
 
@@ -94,6 +88,7 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
         animal.setSpecificattribute(missingAnimalDTO.getSpecificattribute());
         animal.setAccessorieslastworn(missingAnimalDTO.getAccessorieslastworn());
         animal.setRewards(missingAnimalDTO.getRewards());
+        animal.setImage(missingAnimalDTO.getImage());
 
         User user = userRepository.findById(Long.valueOf(id)).orElse(null);
         animal.setUser(user);
@@ -110,19 +105,14 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
 
         missingAnimalDTO.setId(animal.getId());
 
-//        AdoptionAnimalResponseDTO response = new AdoptionAnimalResponseDTO();
+
 
 
         return missingAnimalDTO;
 
 
 
-//        AdoptionAnimal adoptionAnimalPost = mapToEntity(adoptionAnimalPostDTO);
-//        AdoptionAnimal newAdoptionAnimalPost = adoptionAnimalRepository.save(adoptionAnimalPost);
-//
-//        // convert entity to DTO
-//        AdoptionAnimalDTO adoptionPostResponse = mapToDTO(newAdoptionAnimalPost);
-//        return adoptionPostResponse;
+
     }
 
     @Override

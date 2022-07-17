@@ -13,8 +13,6 @@ export default function UserAdoptionPostsPage() {
 
   const { userInfo } = userLogin;
 
-  const createAdoptionPost = useSelector((state) => state.CreateAdoptionPost);
-
   const navigate = useNavigate();
 
   const adoptionPostByUserIdData = useSelector(

@@ -1,6 +1,6 @@
 package com.adptapaw.backend.payload.missing;
 
-import com.adptapaw.backend.payload.adoption.AdoptionUserDTO;
+
 import lombok.Data;
 
 @Data
@@ -14,6 +14,7 @@ public class MissingAnimalDTO {
     private String specificattribute;
     private String location;
     private String accessorieslastworn;
+    private  String image;
     private String rewards;
     private String gender;
     private String type;
