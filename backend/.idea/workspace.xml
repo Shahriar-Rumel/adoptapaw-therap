@@ -21,6 +21,14 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/email/EmailService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/email/implementation/EmailServiceImplementation.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/templates/emailsender.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/config/ThymeleafTemplateConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/context/AbstractEmailContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/context/AccountVerificationEmailContext.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/EmailController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/email/EmailService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/email/implementation/EmailServiceImplementation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/emailsender.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/Pages/CreateMissingPostpage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
@@ -156,7 +164,7 @@
       <workItem from="1657907794718" duration="4814000" />
       <workItem from="1657954167845" duration="7390000" />
       <workItem from="1657988269614" duration="5242000" />
-      <workItem from="1657993669028" duration="11007000" />
+      <workItem from="1657993669028" duration="11214000" />
     </task>
     <servers />
   </component>
