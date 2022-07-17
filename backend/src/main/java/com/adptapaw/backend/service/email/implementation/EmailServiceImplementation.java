@@ -25,6 +25,9 @@ public class EmailServiceImplementation implements EmailService {
     public SpringTemplateEngine templateEngine;
 
 
+
+
+
     @Override
     public void sendMail(AbstractEmailContext email) throws MessagingException {
         MimeMessage message = javaMailSender.createMimeMessage();
@@ -43,4 +46,6 @@ public class EmailServiceImplementation implements EmailService {
 
         javaMailSender.send(message);
     }
+
+
 }

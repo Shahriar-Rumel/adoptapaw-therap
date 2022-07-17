@@ -1,7 +1,10 @@
 package com.adptapaw.backend.controller;
 
+import com.adptapaw.backend.context.AccountVerificationEmailContext;
 import com.adptapaw.backend.entity.Roles;
+import com.adptapaw.backend.entity.Token;
 import com.adptapaw.backend.entity.User;
+import com.adptapaw.backend.exception.InvalidTokenException;
 import com.adptapaw.backend.payload.JWTDTO;
 import com.adptapaw.backend.payload.LoginDTO;
 import com.adptapaw.backend.payload.SignupDTO;
@@ -10,7 +13,12 @@ import com.adptapaw.backend.repository.RolesRepository;
 import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.security.JWTTokenProvider;
 import com.adptapaw.backend.security.UserServiceSecurity;
+import com.adptapaw.backend.service.email.EmailService;
+import com.adptapaw.backend.service.token.TokenService;
+import com.cloudinary.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,6 +28,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+import java.io.File;
 import java.util.Collections;
 
 @CrossOrigin(origins  = "http://localhost:3000")
@@ -27,6 +37,7 @@ import java.util.Collections;
 @RequestMapping("/api/auth")
 public class AuthController {
 
+    private static final String REDIRECT_LOGIN = "Your Account has been verified visit localhost:3000/signin to login";
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -36,6 +47,8 @@ public class AuthController {
     @Autowired
     private RolesRepository roleRepository;
 
+    @Autowired
+    private UserServiceSecurity userServiceSecurity;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -43,34 +56,39 @@ public class AuthController {
     @Autowired
     private JWTTokenProvider tokenProvider;
 
+    @Autowired
+    private EmailService emailService;
+
+    @Autowired
+    private TokenService tokenService;
+
+    @Value("${site.base.url.https}")
+    private String baseURL;
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginDTO loginDTO){
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginDTO.getEmail(), loginDTO.getPassword()));
 
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                    loginDTO.getEmail(), loginDTO.getPassword()));
 
-        if(userRepository.existsByEmail(loginDTO.getEmail())){
-            return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
-        }
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
+            String token = tokenProvider.generateToken(authentication);
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+            UserServiceSecurity userServiceSecurity = new UserServiceSecurity(userRepository, tokenService);
 
-        String token = tokenProvider.generateToken(authentication);
+            UserDetailsDTO userDetailsDTO = userServiceSecurity.loadUserByEmail(loginDTO.getEmail());
 
-        UserServiceSecurity userServiceSecurity = new UserServiceSecurity(userRepository);
+            JWTDTO jwtdto = new JWTDTO(token);
 
-        UserDetailsDTO userDetailsDTO = userServiceSecurity.loadUserByEmail(loginDTO.getEmail());
+            userDetailsDTO.setJwtdto(jwtdto);
 
-        JWTDTO jwtdto = new JWTDTO(token);
+            return new ResponseEntity<>(userDetailsDTO, HttpStatus.OK);
 
-        userDetailsDTO.setJwtdto(jwtdto);
-
-        return new ResponseEntity<>(userDetailsDTO, HttpStatus.OK);
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@RequestBody SignupDTO signupDTO){
+    public ResponseEntity<?> registerUser(@RequestBody SignupDTO signupDTO)  {
 
 
             if( signupDTO.getName().isBlank())
@@ -108,8 +126,40 @@ public class AuthController {
 
             userRepository.save(user);
 
+            Token token  = tokenService.createToken(user);
+
+            AccountVerificationEmailContext mail = new AccountVerificationEmailContext();
+            mail.setFrom("adoptapawofficial@gmail.com");
+            mail.setTemplateLocation("emailsender.html");
+            mail.setSubject("Complete your registration");
+            mail.setTo(user.getEmail());
+            mail.put("name",user.getName());
+            mail.setToken(token.getToken());
+            mail.buildVerificationUrl(baseURL,token.getToken());
+            FileSystemResource imageResourceName = new FileSystemResource(new File("unsplash.com/photos/LvLlOpu3vzM"));
+            mail.put("imageResourceName",imageResourceName);
+
+            try{
+                emailService.sendMail(mail);
+            }catch (MessagingException e){
+                e.printStackTrace();
+            }
+            
+
             return new ResponseEntity<>(user, HttpStatus.OK);
 
 
+    }
+
+    @GetMapping("/verify")
+    public String verifyCustomer(@RequestParam(required = false) String token) throws InvalidTokenException {
+
+        if(StringUtils.isEmpty(token)){
+
+            return REDIRECT_LOGIN;
+        }
+        userServiceSecurity.verifyUser(token);
+
+        return REDIRECT_LOGIN;
     }
 }

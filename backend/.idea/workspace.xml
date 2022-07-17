@@ -5,24 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6db3950-41fd-42d2-b3bb-eb8cf9375558" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/Token.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/exception/InvalidTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/TokenRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/token/TokenService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/token/implementation/TokenServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/BackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/context/AccountVerificationEmailContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/context/AccountVerificationEmailContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/MissingRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/MissingRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/email/implementation/EmailServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/email/implementation/EmailServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/emailsender.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/emailsender.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/BackendApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/BackendApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/context/AccountVerificationEmailContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/context/AccountVerificationEmailContext.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/EmailController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/email/implementation/EmailServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/email/implementation/EmailServiceImplementation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/emailsender.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/emailsender.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/RegistrationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/RegistrationPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -79,6 +85,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.adptapaw.backend.service.token" />
       <recent name="com.adptapaw.backend.service.email" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -151,7 +158,7 @@
       <workItem from="1657993669028" duration="11214000" />
       <workItem from="1658037411582" duration="570000" />
       <workItem from="1658038393347" duration="6955000" />
-      <workItem from="1658047508440" duration="309000" />
+      <workItem from="1658047508440" duration="17333000" />
     </task>
     <servers />
   </component>

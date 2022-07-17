@@ -34,6 +34,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private boolean accountVerified;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -51,6 +54,11 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "owner")
     private Set<AdoptionAnimal> adoptedpets = new HashSet<>();
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "usertoken")
+    private Set<Token> tokens = new HashSet<>();
 
 
     public void addAnimal(AdoptionAnimal newAdoptionAnimal){
