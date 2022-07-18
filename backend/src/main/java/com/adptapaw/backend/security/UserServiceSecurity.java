@@ -1,12 +1,10 @@
 package com.adptapaw.backend.security;
 
 import com.adptapaw.backend.context.AccountPasswordResetEmailContext;
-import com.adptapaw.backend.context.AccountVerificationEmailContext;
 import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.Token;
 import com.adptapaw.backend.entity.User;
 import com.adptapaw.backend.exception.InvalidTokenException;
-import com.adptapaw.backend.payload.SignupDTO;
 import com.adptapaw.backend.payload.UserDetailsDTO;
 import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.email.EmailService;
@@ -14,7 +12,6 @@ import com.adptapaw.backend.service.token.TokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,12 +19,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.security.core.userdetails.User.UserBuilder;
 
 import javax.mail.MessagingException;
-import java.io.File;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
@@ -65,6 +59,9 @@ public  class UserServiceSecurity implements UserDetailsService {
 
         System.out.println(user.isAccountVerified());
         if(user.isAccountVerified()){
+            System.out.println(user.getPassword());
+            System.out.println(new org.springframework.security.core.userdetails.User(user.getEmail(),
+                    user.getPassword(), user.isAccountVerified(),true,true,true,mapRolesToAuthorities(user.getRoles())).isEnabled());
 
             return new org.springframework.security.core.userdetails.User(user.getEmail(),
                     user.getPassword(), user.isAccountVerified(),true,true,true,mapRolesToAuthorities(user.getRoles()));

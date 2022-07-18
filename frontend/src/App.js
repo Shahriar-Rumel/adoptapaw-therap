@@ -30,6 +30,7 @@ import DonationDetailsPage from './Pages/DonationDetailsPage';
 import ContactPage from './Pages/ContactPage';
 import CreateMissingPost from './Pages/CreateMissingPostpage';
 import ForgotPasswordPage from './Pages/ForgotPasswordPage';
+import PasswordResetRequestSentPage from './Pages/PasswordResetRequestSentPage';
 
 function App() {
   return (
@@ -55,6 +56,11 @@ function App() {
           />
           <Route path="/ongoingdonations" element={<DonationPage />} exact />
           <Route path="/missing" element={<MissingAnimalPage />} exact />
+          <Route
+            path="/forgot/:email"
+            element={<PasswordResetRequestSentPage />}
+            exact
+          />
           <Route path="/forgot" element={<ForgotPasswordPage />} exact />
           <Route path="/login" element={<LoginPage />} exact />
           <Route path="/registration" element={<RegistrationPage />} exact />

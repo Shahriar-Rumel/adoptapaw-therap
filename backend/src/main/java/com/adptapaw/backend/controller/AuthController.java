@@ -6,10 +6,7 @@ import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.Token;
 import com.adptapaw.backend.entity.User;
 import com.adptapaw.backend.exception.InvalidTokenException;
-import com.adptapaw.backend.payload.JWTDTO;
-import com.adptapaw.backend.payload.LoginDTO;
-import com.adptapaw.backend.payload.SignupDTO;
-import com.adptapaw.backend.payload.UserDetailsDTO;
+import com.adptapaw.backend.payload.*;
 import com.adptapaw.backend.repository.RolesRepository;
 import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.security.JWTTokenProvider;
@@ -175,7 +172,7 @@ public class AuthController {
     }
 
     @PutMapping("/reset")
-    public String ResetPassword(@RequestParam(required = false) String token,@RequestBody String password) throws InvalidTokenException {
+    public String ResetPassword(@RequestParam(required = false) String token,@RequestBody ResetTokenDTO resetTokenDTO) throws InvalidTokenException {
 
         try {
 
@@ -187,7 +184,9 @@ public class AuthController {
             if (Objects.isNull(user)) {
                 return "Can't reset Password";
             }
-            user.setPassword(passwordEncoder.encode(password));
+
+            System.out.println(resetTokenDTO.getPassword());
+            user.setPassword(passwordEncoder.encode(resetTokenDTO.getPassword()));
 
             userRepository.save(user);
 
