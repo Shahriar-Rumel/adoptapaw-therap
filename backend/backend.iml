@@ -82,7 +82,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.21" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.4.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.checkerframework:checker-qual:3.5.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:5.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.21" level="project" />
@@ -122,7 +122,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.21" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.9.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.7.1" level="project" />
     <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.3" level="project" />

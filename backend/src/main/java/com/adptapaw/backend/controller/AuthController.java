@@ -1,5 +1,6 @@
 package com.adptapaw.backend.controller;
 
+import com.adptapaw.backend.context.AccountPasswordResetEmailContext;
 import com.adptapaw.backend.context.AccountVerificationEmailContext;
 import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.Token;
@@ -25,12 +26,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.io.File;
 import java.util.Collections;
+import java.util.Objects;
 
 @CrossOrigin(origins  = "http://localhost:3000")
 @RestController
@@ -144,7 +148,7 @@ public class AuthController {
             }catch (MessagingException e){
                 e.printStackTrace();
             }
-            
+
 
             return new ResponseEntity<>(user, HttpStatus.OK);
 
@@ -152,7 +156,7 @@ public class AuthController {
     }
 
     @GetMapping("/verify")
-    public String verifyCustomer(@RequestParam(required = false) String token) throws InvalidTokenException {
+    public String verifyUser(@RequestParam(required = false) String token) throws InvalidTokenException {
 
         if(StringUtils.isEmpty(token)){
 
@@ -161,5 +165,54 @@ public class AuthController {
         userServiceSecurity.verifyUser(token);
 
         return REDIRECT_LOGIN;
+    }
+
+    @PostMapping("/resetrequest")
+    public String ResetPasswordRequest(@RequestParam(required = false) String email) throws InvalidTokenException {
+
+        return userServiceSecurity.CreateForgotPasswordToken(email);
+
+    }
+
+    @PutMapping("/reset")
+    public String ResetPassword(@RequestParam(required = false) String token,@RequestBody String password) throws InvalidTokenException {
+
+        try {
+
+            Token usertoken = tokenService.findByToken(token);
+            if (Objects.isNull(usertoken) || !org.apache.commons.lang3.StringUtils.equals(token, usertoken.getToken()) || usertoken.isExpired()) {
+                throw new InvalidTokenException("Token is not valid");
+            }
+            User user = userRepository.findById(usertoken.getUsertoken().getId()).get();
+            if (Objects.isNull(user)) {
+                return "Can't reset Password";
+            }
+            user.setPassword(passwordEncoder.encode(password));
+
+            userRepository.save(user);
+
+            tokenService.removeToken(usertoken);
+
+
+
+            AccountPasswordResetEmailContext mail = new AccountPasswordResetEmailContext();
+            mail.setFrom("adoptapawofficial@gmail.com");
+            mail.setTemplateLocation("passwordresetsuccess.html");
+            mail.setSubject("Password Reset Confirmation");
+            mail.setTo(user.getEmail());
+            mail.put("name",user.getName());
+
+            try{
+                emailService.sendMail(mail);
+            }catch (MessagingException e){
+                e.printStackTrace();
+            }
+
+            return "Password Changed";
+
+        } catch (UsernameNotFoundException e) {
+            return "No user found";
+        }
+
     }
 }
