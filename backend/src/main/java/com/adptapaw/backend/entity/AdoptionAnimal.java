@@ -38,7 +38,13 @@ public class AdoptionAnimal {
     private String color;
 
     @Column(length = 1000)
-    private String image;
+    private String imageone;
+
+    @Column(length = 1000)
+    private String imagetwo;
+
+    @Column(length = 1000)
+    private String imagethree;
 
 //    @Lob
     @Column(nullable = false,length = 1000)

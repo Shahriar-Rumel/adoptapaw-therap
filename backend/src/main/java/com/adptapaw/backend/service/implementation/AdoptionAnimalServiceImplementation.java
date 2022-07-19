@@ -93,7 +93,10 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         animal.setPhysicalcondition(adoptionAnimalDTO.getPhysicalcondition());
         animal.setTraining(adoptionAnimalDTO.getTraining());
         animal.setVaccine(adoptionAnimalDTO.getVaccine());
-        animal.setImage(adoptionAnimalDTO.getImage());
+        animal.setImageone(adoptionAnimalDTO.getImageone());
+        animal.setImagetwo(adoptionAnimalDTO.getImagetwo());
+        animal.setImagethree(adoptionAnimalDTO.getImagethree());
+
         animal.setAvailability(true);
 
         User user = userRepository.findById(Long.valueOf(id)).orElse(null);
@@ -121,6 +124,32 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         AdoptionAnimal adoptionAnimal = adoptionAnimalRepository.findById(Long.valueOf(id)).get();
 
         return mapToDTO(adoptionAnimal);
+    }
+
+    @Override
+    public AdoptionAnimalDTO updateById(String id,AdoptionAnimalDTO adoptionAnimalDTO) {
+        AdoptionAnimal adoptionAnimal = adoptionAnimalRepository.findById(Long.valueOf(id)).get();
+
+        adoptionAnimal.setBreed(adoptionAnimalDTO.getBreed());
+        adoptionAnimal.setBehaviour(adoptionAnimalDTO.getBehaviour());
+        adoptionAnimal.setColor(adoptionAnimalDTO.getColor());
+        adoptionAnimal.setDescription(adoptionAnimalDTO.getDescription());
+        adoptionAnimal.setFood(adoptionAnimalDTO.getFood());
+        adoptionAnimal.setGender(adoptionAnimalDTO.getGender());
+        adoptionAnimal.setType(adoptionAnimalDTO.getType());
+        adoptionAnimal.setLocation(adoptionAnimalDTO.getLocation());
+        adoptionAnimal.setName(adoptionAnimalDTO.getName());
+        adoptionAnimal.setPhysicalcondition(adoptionAnimalDTO.getPhysicalcondition());
+        adoptionAnimal.setTraining(adoptionAnimalDTO.getTraining());
+        adoptionAnimal.setVaccine(adoptionAnimalDTO.getVaccine());
+        adoptionAnimal.setImageone(adoptionAnimalDTO.getImageone());
+        adoptionAnimal.setImagetwo(adoptionAnimalDTO.getImagetwo());
+        adoptionAnimal.setImagethree(adoptionAnimalDTO.getImagethree());
+
+        adoptionAnimalRepository.save(adoptionAnimal);
+
+        return mapToDTO(adoptionAnimal);
+
     }
 
 

@@ -30,10 +30,6 @@ public class AdoptionAnimalController {
     }
 
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<List<AdoptionAnimalDTO>> getAdoptionAnimalByCreator(@PathVariable(name = "id") String id){
-//        return ResponseEntity.ok(adoptionAnimalService.getPostByCreator(Long.parseLong(id)));
-//    }
 
 
     @GetMapping("/{id}")
@@ -46,5 +42,9 @@ public class AdoptionAnimalController {
         return adoptionAnimalService.getAllByCreator(id);
     }
 
+    @PostMapping("/{id}")
+    public AdoptionAnimalDTO UpdateAdoptionAnimal(@PathVariable (name="id") String  id, @RequestBody AdoptionAnimalDTO adoptionAnimalPostDTO){
+        return adoptionAnimalService.updateById(id,adoptionAnimalPostDTO);
+    }
 
 }

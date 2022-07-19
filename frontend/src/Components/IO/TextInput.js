@@ -14,6 +14,7 @@ export default function TextInput({
       <input
         type={type}
         placeholder={placeholder}
+        value={data}
         onChange={(e) => {
           setData(e.target.value);
         }}

@@ -16,7 +16,7 @@ export default function CardList({ link, buttonText, list }) {
             <div
               className=" card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300"
               style={{
-                backgroundImage: `url(${item.image})`,
+                backgroundImage: `url(${item.imageone})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'

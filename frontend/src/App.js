@@ -32,6 +32,7 @@ import CreateMissingPost from './Pages/CreateMissingPostpage';
 import ForgotPasswordPage from './Pages/ForgotPasswordPage';
 import PasswordResetRequestSentPage from './Pages/PasswordResetRequestSentPage';
 import ForgotPasswordResetPage from './Pages/ForgotPasswordResetPage';
+import UserAdoptionDetailsPage from './Pages/UserAdoptionPostDetailsPage';
 
 function App() {
   return (
@@ -94,6 +95,11 @@ function App() {
           <Route
             path="/adoption/:id"
             element={<AdoptionAnimalProfile />}
+            exact
+          />
+          <Route
+            path="/user/adoption/:id"
+            element={<UserAdoptionDetailsPage />}
             exact
           />
           <Route
