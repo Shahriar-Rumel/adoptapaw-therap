@@ -171,8 +171,8 @@ public class AuthController {
 
     }
 
-    @PutMapping("/reset")
-    public String ResetPassword(@RequestParam(required = false) String token,@RequestBody ResetTokenDTO resetTokenDTO) throws InvalidTokenException {
+    @PutMapping("/reset/{token}")
+    public String ResetPassword(@PathVariable(name="token") String  token,@RequestBody ResetTokenDTO resetTokenDTO) throws InvalidTokenException {
 
         try {
 
@@ -185,7 +185,6 @@ public class AuthController {
                 return "Can't reset Password";
             }
 
-            System.out.println(resetTokenDTO.getPassword());
             user.setPassword(passwordEncoder.encode(resetTokenDTO.getPassword()));
 
             userRepository.save(user);

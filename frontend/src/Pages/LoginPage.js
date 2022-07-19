@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Components/Loader';
-import Error from '../Components/Error';
+import Message from '../Components/Message';
 
 export default function LoginPage({ location, history }) {
   useEffect(() => {
@@ -71,7 +71,14 @@ export default function LoginPage({ location, history }) {
             Login to adopt paws
           </h3>
 
-          {error && <Error message="Username or Email doesn't exist !" />}
+          {error && (
+            <Message
+              message={"Username or Email doesn't exist !"}
+              text={'Retry'}
+              link={'/login'}
+              variant={'danger'}
+            />
+          )}
 
           <div className="request-form-animation">
             <TextInput

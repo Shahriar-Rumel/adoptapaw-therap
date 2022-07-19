@@ -21,7 +21,10 @@ import {
   missingPostByIdReducer,
   missingPostsByUserIdReducer
 } from './reducers/missingAnimalReducer';
-import { passwordResetRquestReducer } from './reducers/passwordResetReducer';
+import {
+  passwordResetReducer,
+  passwordResetRquestReducer
+} from './reducers/passwordResetReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -36,7 +39,8 @@ const reducer = combineReducers({
   missingPostsStore: missingAllPostReducer,
   missingPostByIdStore: missingPostByIdReducer,
   missingPostsByUserId: missingPostsByUserIdReducer,
-  passwordResetRequestStore: passwordResetRquestReducer
+  passwordResetRequestStore: passwordResetRquestReducer,
+  passwordResetStore: passwordResetReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

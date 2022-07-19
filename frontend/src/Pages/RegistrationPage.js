@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Components/Loader';
-import Error from '../Components/Error';
+import Message from '../Components/Message';
 
 export default function RegistrationPage({ history, location }) {
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function RegistrationPage({ history, location }) {
           <h3 className="text-[14px] font-regular text-gray-light mb-10 request-form-animation">
             Sign up to get Started
           </h3>
-          {error && <Error message={error} />}
+          {error && <Message message={error} variant={'danger'} />}
           <div className="request-form-animation">
             <TextInput
               label="Name"
