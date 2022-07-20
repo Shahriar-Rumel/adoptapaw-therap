@@ -2,16 +2,19 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { adoptionPostCreateAction } from '../actions/adoptionActions';
-import Button from '../Components/Button';
-import Checkbox from '../Components/IO/Checkbox';
-import ChoiceInput from '../Components/IO/ChoiceInput';
-import ImageInput from '../Components/IO/ImageInput';
-import SelectBox from '../Components/IO/SelectBox';
-import TextInput from '../Components/IO/TextInput';
-import Loader from '../Components/Loader';
-import UploadLoader from '../Components/UploadLoader/UploadLoader';
-import Message from '../Components/Message';
+import {
+  adoptionPostCreateAction,
+  adoptionPostUpdateAction
+} from '../../actions/adoptionActions';
+import Button from '../Button';
+import Checkbox from '../IO/Checkbox';
+import ChoiceInput from '../IO/ChoiceInput';
+import ImageInput from '../IO/ImageInput';
+import SelectBox from '../IO/SelectBox';
+import TextInput from '../IO/TextInput';
+import Loader from '../Loader';
+import UploadLoader from '../UploadLoader/UploadLoader';
+import Message from '../Message';
 
 const FileUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
   const uploadFileHandler = async (e) => {
@@ -69,33 +72,34 @@ const FileUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
   );
 };
 
-export default function CreateAdoptionPost({ history }) {
-  const [name, setName] = useState('');
-  const [behaviour, setBehaviour] = useState('');
-  const [location, setLocation] = useState('');
-  const [food, setFood] = useState('');
-  const [description, setDescription] = useState('');
-  const [gender, setGender] = useState('');
-  const [breed, setBreed] = useState('');
-  const [physicalcondition, setPhysicalcondition] = useState('');
-  const [vaccine, setVaccine] = useState('');
+export default function UserAdoptionPostDetailsEdit({
+  data,
+  setModal,
+  setRefresh
+}) {
+  const [name, setName] = useState(data.name);
+  const [behaviour, setBehaviour] = useState(data.behaviour);
+  const [location, setLocation] = useState(data.location);
+  const [food, setFood] = useState(data.food);
+  const [description, setDescription] = useState(data.description);
+  const [gender, setGender] = useState(data.gender);
+  const [breed, setBreed] = useState(data.breed);
+  const [physicalcondition, setPhysicalcondition] = useState(
+    data.physicalcondition
+  );
+  const [vaccine, setVaccine] = useState(data.vaccine);
   const [stray, setStray] = useState('');
-  const [type, setType] = useState('');
-  const [training, setTraining] = useState('');
-  const [color, setColor] = useState('');
+  const [type, setType] = useState(data.type);
+  const [training, setTraining] = useState(data.training);
+  const [color, setColor] = useState(data.color);
 
   const [empty, setEmpty] = useState(false);
 
-  const [imageOne, setImageOne] = useState(
-    '/assets/Icons/ImagePlaceholder.svg'
-  );
-  const [imageTwo, setImageTwo] = useState(
-    '/assets/Icons/ImagePlaceholder.svg'
-  );
-  const [imageThree, setImageThree] = useState(
-    '/assets/Icons/ImagePlaceholder.svg'
-  );
+  const [imageOne, setImageOne] = useState(data.imageone);
+  const [imageTwo, setImageTwo] = useState(data.imagetwo);
+  const [imageThree, setImageThree] = useState(data.imagethree);
 
+  console.log(data.imageone);
   const [uploading, setUploading] = useState('');
 
   const dispatch = useDispatch();
@@ -108,8 +112,6 @@ export default function CreateAdoptionPost({ history }) {
   const createAdoptionPost = useSelector((state) => state.adoptionPostCreated);
 
   const { loading, success, adoptionPost } = createAdoptionPost;
-
-  // const redirect = location ? location.split('=')[1] : '/';
 
   const navigate = useNavigate();
   const dataport = {
@@ -132,14 +134,12 @@ export default function CreateAdoptionPost({ history }) {
 
   useEffect(() => {
     if (!userInfo) {
-      // history.push(redirect);
       navigate('/login');
     }
-  }, [history, userInfo]);
+  }, [userInfo]);
 
   var petType = ['Cat', 'Dog'];
   var genderType = ['Male', 'Female'];
-  var breedType = ['Breed one', 'Breed Two'];
   var healthType = ['Healthy', 'Conditioned'];
   var behaviourType = ['Playful', 'Calm'];
 
@@ -160,20 +160,9 @@ export default function CreateAdoptionPost({ history }) {
       dataport.imagetwo &&
       dataport.imagethree
     ) {
-      dispatch(adoptionPostCreateAction(id, dataport));
-      setEmpty(false);
-      setBehaviour('');
-      setBreed('');
-      setColor('');
-      setDescription('');
-      setFood('');
-      setGender('');
-      setLocation('');
-      setName('');
-      setPhysicalcondition('');
-      setTraining('');
-      setVaccine('');
-      setType('');
+      dispatch(adoptionPostUpdateAction(id, dataport));
+      setRefresh(true);
+      setModal(false);
     } else {
       setEmpty(true);
       console.log('Data is empty');
@@ -181,10 +170,17 @@ export default function CreateAdoptionPost({ history }) {
   };
 
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[120px] mb-[100px] ">
-      <h1 className="text-[30px] font-extrabold mt-14 text-primary  tracking-tighter">
-        Please enter the details of your pet
-      </h1>
+    <div className=" lg:w-3/4 w-[90vw] mx-auto  mb-[100px] absolute top-[80px] bg-white  z-[700]  shadow-lg p-8 custom-round">
+      <div className="flex justify-between items-center ">
+        <h1 className="text-[30px] font-extrabold text-primary   tracking-tighter">
+          Edit Post
+        </h1>
+        <div onClick={() => setModal(false)} className="cursor-pointer">
+          <div className="w-[24px] h-[3px] bg-primary rotate-45 mt-1"></div>
+          <div className="w-[24px] h-[3px] bg-primary -rotate-45 mt-[-3px] "></div>
+        </div>
+      </div>
+
       <p className="text-[14px] text-gray-light mb-8">
         Please enter the details of your pet
       </p>
@@ -203,8 +199,8 @@ export default function CreateAdoptionPost({ history }) {
           <div className="lg:w-[32%]">
             <TextInput
               label={'Pet name'}
-              placeholder={'Tommy'}
               type={'text'}
+              data={name}
               setData={setName}
             />
           </div>
@@ -213,6 +209,7 @@ export default function CreateAdoptionPost({ history }) {
               label={'Location'}
               placeholder={'Dhaka,Bangladesh'}
               type={'text'}
+              data={location}
               setData={setLocation}
             />
           </div>
@@ -233,7 +230,8 @@ export default function CreateAdoptionPost({ history }) {
             <TextInput
               label={'Pet description'}
               placeholder={'Lorep impsum ...'}
-              type={'text'}
+              type={'textarea'}
+              data={description}
               setData={setDescription}
             />
           </div>
@@ -275,6 +273,7 @@ export default function CreateAdoptionPost({ history }) {
               label={"Pet's food"}
               placeholder={'Meat'}
               type={'text'}
+              data={food}
               setData={setFood}
             />
           </div>
@@ -283,6 +282,7 @@ export default function CreateAdoptionPost({ history }) {
               label={"Pet's color"}
               placeholder={'Dhaka,Bangladesh'}
               type={'text'}
+              data={color}
               setData={setColor}
             />
           </div>
@@ -337,6 +337,7 @@ export default function CreateAdoptionPost({ history }) {
             placeholder={'Tommy'}
             type={'checkbox'}
             width={'w-[90px]'}
+            data={vaccine}
             setData={setVaccine}
           />
           <Checkbox
@@ -344,6 +345,7 @@ export default function CreateAdoptionPost({ history }) {
             placeholder={'Tommy'}
             type={'checkbox'}
             width={'w-[50px]'}
+            data={stray}
             setData={setStray}
           />
           <Checkbox
@@ -351,11 +353,12 @@ export default function CreateAdoptionPost({ history }) {
             placeholder={'Tommy'}
             type={'checkbox'}
             width={'w-[70px]'}
+            data={training}
             setData={setTraining}
           />
         </div>
         <div onClick={submitHandler}>
-          <Button text={'Create Post'} />
+          <Button text={'Update Post'} />
         </div>
       </form>
     </div>

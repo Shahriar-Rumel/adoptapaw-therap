@@ -1,20 +1,24 @@
 package com.adptapaw.backend.service.implementation;
 
+import com.adptapaw.backend.context.AccountPasswordResetEmailContext;
 import com.adptapaw.backend.entity.AdoptionAnimal;
 import com.adptapaw.backend.entity.AdoptionRequest;
+import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.User;
 import com.adptapaw.backend.payload.adoption.*;
 import com.adptapaw.backend.repository.AdoptionAnimalRepository;
 import com.adptapaw.backend.repository.AdoptionRequestRepository;
 import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.AdoptionRequestService;
+import com.adptapaw.backend.service.email.EmailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import javax.mail.MessagingException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,8 +27,13 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
     private final AdoptionRequestRepository adoptionRequestRepository;
 
     private final AdoptionAnimalRepository adoptionAnimalRepository;
+
+    private String currentRole ;
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private EmailService emailService;
 
     public AdoptionRequestServiceImplementation(ModelMapper mapper, AdoptionRequestRepository adoptionRequestRepository,AdoptionAnimalRepository adoptionAnimalRepository) {
         this.mapper = mapper;
@@ -71,6 +80,20 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
         }
         this.adoptionRequestRepository.save(request);
 
+        AccountPasswordResetEmailContext mail = new AccountPasswordResetEmailContext();
+        mail.setFrom("adoptapawofficial@gmail.com");
+        mail.setTemplateLocation("adoptionrequest.html");
+        mail.setSubject("Your adoption request has been placed successfully!");
+        mail.setTo(user.getEmail());
+        mail.put("name",user.getName());
+        mail.put("pet",pet.getName());
+
+        try{
+            emailService.sendMail(mail);
+        }catch (MessagingException e){
+            e.printStackTrace();
+        }
+
         AdoptionAnimalDTO adoptionAnimalDTO = mapToDTO(pet);
 
         AdoptionUserDTO adoptionUserDTO = mapTouserDTO(user);
@@ -100,5 +123,35 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
         }
         return mapToRequestDTO(adoptionRequest);
     }
+
+    @Override
+    public AdoptionRequestDTO approveRequest(String uid,String id) {
+        AdoptionRequest adoptionRequest = adoptionRequestRepository.findById(Long.valueOf(id)).get();
+        AdoptionAnimal animal  = adoptionAnimalRepository.findById(adoptionRequest.getPet().getId()).get();
+
+
+        User user = userRepository.findById(Long.valueOf(uid)).get();
+
+
+        for (Roles authority : user.getRoles()) {
+            currentRole = authority.getName();
+        }
+
+        if(currentRole.equals("ROLE_ADMIN")){
+            adoptionRequest.setStatus(true);
+            adoptionRequestRepository.save(adoptionRequest);
+
+            animal.setAvailability(false);
+            animal.setOwner(adoptionRequest.getAdoptionseeker());
+            adoptionAnimalRepository.save(animal);
+
+            return mapToRequestDTO(adoptionRequest);
+        }
+
+      return null;
+
+    }
+
+
 }
 

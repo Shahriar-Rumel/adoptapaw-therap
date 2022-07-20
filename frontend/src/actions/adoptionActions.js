@@ -12,6 +12,9 @@ import {
   ADOPTION_POST_FAIL,
   ADOPTION_POST_REQUEST,
   ADOPTION_POST_SUCCESS,
+  ADOPTION_POST_UPDATE_FAIL,
+  ADOPTION_POST_UPDATE_REQUEST,
+  ADOPTION_POST_UPDATE_SUCCESS,
   ADOPTION_REQUEST_FAIL,
   ADOPTION_REQUEST_REQUEST,
   ADOPTION_REQUEST_SUCCESS
@@ -137,6 +140,42 @@ export const adoptionPostCreateAction =
     } catch (error) {
       dispatch({
         type: ADOPTION_POST_CREATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };
+
+export const adoptionPostUpdateAction =
+  (id, dataport) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ADOPTION_POST_UPDATE_REQUEST
+      });
+
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      await axios.post(`${BASE_URL}/${id}`, dataport, config);
+
+      dispatch({
+        type: ADOPTION_POST_UPDATE_SUCCESS
+      });
+
+      // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: ADOPTION_POST_UPDATE_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

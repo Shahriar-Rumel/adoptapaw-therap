@@ -33,14 +33,14 @@ export default function SelectBox({
       <div
         className={`drop-down focus:border-2 flex z-[12] justify-between w-full mx-auto ${
           !showDropDown ? 'border-0' : 'border border-brand'
-        } bg-input custom-round py-4 px-4 my-3 cursor-pointer`}
+        } bg-input custom-round h-[53px] px-4 my-3 cursor-pointer items-center`}
         ref={dropDownRef}
         onClick={() => setShowDropDown((prev) => !prev)}
       >
         <h3 className="text-[black] text-[14px]">{data}</h3>
         <img
           src="/assets/Icons/dropdown.svg"
-          className="w-[20px] z-1 absolute right-4 mt-2"
+          className="w-[20px] z-1 absolute right-4 "
         ></img>
       </div>
       <div

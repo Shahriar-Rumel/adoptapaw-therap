@@ -212,7 +212,7 @@ export default function CreateMissingPost({ history }) {
                   <UploadLoader />
                 </div>
               )}
-              <div className="w-[100%] lg:border-dashed lg:border-2 custom-round lg:py-5 border-gray-light flex items-center justify-center">
+              <div className="w-[100%] lg:border-dashed lg:border-2 custom-round lg:py-5 border-offwhite flex items-center justify-center">
                 <label
                   htmlFor="filePicker"
                   style={{

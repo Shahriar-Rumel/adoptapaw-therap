@@ -122,7 +122,7 @@ public class AuthController {
             user.setUsername(signupDTO.getUsername());
             user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
 
-            Roles roles = roleRepository.findByName("ROLE_ADMIN").get();
+            Roles roles = roleRepository.findByName("ROLE_USER").get();
             user.setRoles(Collections.singleton(roles));
 
             userRepository.save(user);

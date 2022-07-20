@@ -10,6 +10,7 @@ import {
   adoptionAllPostReducer,
   adoptionPostCreateReducer,
   adoptionPostsByUserIdReducer,
+  adoptionPostUpdateReducer,
   adoptionRequestReducer
 } from './reducers/adoptionReducer';
 import {
@@ -40,7 +41,8 @@ const reducer = combineReducers({
   missingPostByIdStore: missingPostByIdReducer,
   missingPostsByUserId: missingPostsByUserIdReducer,
   passwordResetRequestStore: passwordResetRquestReducer,
-  passwordResetStore: passwordResetReducer
+  passwordResetStore: passwordResetReducer,
+  adoptionPostUpdateStore: adoptionPostUpdateReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

@@ -19,8 +19,14 @@ export default function AnimalProfileMid({ poster, data }) {
           <div className=" flex items-center justify-between my-3 ">
             <div className="inline-flex">
               <img src="/assets/tick.svg"></img>
-              <h3 className="text-[12px] text-green mx-2">
-                Available for adoption
+              <h3
+                className={`text-[12px] ${
+                  data.availability ? `text-green` : `text-gray-light`
+                } mx-2`}
+              >
+                {data.availability
+                  ? 'Available for adoption'
+                  : 'Unavailable for adoption'}
               </h3>
             </div>
 
@@ -40,15 +46,25 @@ export default function AnimalProfileMid({ poster, data }) {
                 </h3>
                 <h3 className="gray-dark">19 June 2022</h3>
               </div>
-              <Link
-                to={
-                  userInfo
-                    ? `/adoption/${data.id}/user/${userInfo.id}/createadoptionrequest`
-                    : '/login'
-                }
-              >
-                <Button text={`Adopt ${data.name}`} />
-              </Link>
+              {data.availability && data.user.id != userInfo.id && (
+                <Link
+                  to={
+                    userInfo
+                      ? `/adoption/${data.id}/user/${userInfo.id}/createadoptionrequest`
+                      : '/login'
+                  }
+                >
+                  <Button text={`Adopt ${data.name}`} />
+                </Link>
+              )}
+              {(!data.availability || data.user.id == userInfo.id) && (
+                <button
+                  className="bg-gray-light cursor-not-allowed w-[100%] custom-round h-[55px] text-white"
+                  disabled
+                >
+                  Adopt {data.name}
+                </button>
+              )}
             </>
           )}
         </div>

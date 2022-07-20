@@ -12,7 +12,9 @@ public class AdoptionAnimalDTO {
     private String color;
     private String description;
     private String physicalcondition;
-    public  String image;
+    public  String imageone;
+    public  String imagetwo;
+    public  String imagethree;
     private String location;
     private String behaviour;
     private String food;

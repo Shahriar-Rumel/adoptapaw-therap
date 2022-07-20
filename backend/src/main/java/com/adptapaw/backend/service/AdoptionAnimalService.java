@@ -12,4 +12,9 @@ public interface AdoptionAnimalService {
     AdoptionAnimalDTO createAdoptionAnimal(String id,AdoptionAnimalDTO adoptionAnimalDTO);
 
     AdoptionAnimalDTO getAllById(String id);
+
+
+    AdoptionAnimalDTO updateById(String id, AdoptionAnimalDTO adoptionAnimalPostDTO);
+
+    String DeleteById(String id);
 }

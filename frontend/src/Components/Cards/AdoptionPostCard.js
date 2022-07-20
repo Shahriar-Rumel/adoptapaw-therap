@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Button';
 export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
   return (
@@ -14,16 +15,18 @@ export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
               <h1 className="text-primary font-extrabold text-[14px] md:text-[16px] md:leading-[18px] leading-[16px] tracking-tighter mr-3">
                 {item.name}
               </h1>
-              <Button
-                text="View"
-                brand={true}
-                height={true}
-                heightClass="h-[35px] md:h-[45px]"
-                width={true}
-                widthClass="w-[25px] md:w-[65px]"
-                textSize={true}
-                textSizeClass="text-[12px] md:text-[14px]"
-              />
+              <Link to={`/user/adoption/${item.id}`}>
+                <Button
+                  text="View"
+                  brand={true}
+                  height={true}
+                  heightClass="h-[35px] md:h-[45px]"
+                  width={true}
+                  widthClass="w-[25px] md:w-[65px]"
+                  textSize={true}
+                  textSizeClass="text-[12px] md:text-[14px]"
+                />
+              </Link>
             </div>
 
             <div className="flex mt-2 mb-5">

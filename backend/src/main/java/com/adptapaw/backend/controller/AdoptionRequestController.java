@@ -3,6 +3,7 @@ package com.adptapaw.backend.controller;
 import com.adptapaw.backend.payload.adoption.AdoptionRequestDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionRequestListDTO;
 import com.adptapaw.backend.service.AdoptionRequestService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,5 +32,11 @@ public class AdoptionRequestController {
     @GetMapping("/user/{id}/adoption/request")
     public AdoptionRequestListDTO getAdoptionRequestsByCreator(@PathVariable(name = "id") String id){
         return adoptionRequestService.getAllByCreator(id);
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping("/user/{uid}/adoption/request/{id}")
+    public AdoptionRequestDTO approveAdoptionRequest(@PathVariable(name = "uid") String uid,@PathVariable(name = "id") String id){
+        return adoptionRequestService.approveRequest(uid,id);
     }
 }

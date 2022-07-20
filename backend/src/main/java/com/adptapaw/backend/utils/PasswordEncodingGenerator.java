@@ -11,9 +11,6 @@ public class PasswordEncodingGenerator {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         System.out.println(passwordEncoder.encode("okay"));
 
-
-        Check c = new Check();
-        c.check();
     }
 
 }

@@ -15,7 +15,10 @@ import {
   ADOPTION_REQUEST_REQUEST,
   ADOPTION_REQUEST_SUCCESS,
   ADOPTION_REQUEST_FAIL,
-  ADOPTION_REQUEST_RESET
+  ADOPTION_REQUEST_RESET,
+  ADOPTION_POST_UPDATE_REQUEST,
+  ADOPTION_POST_UPDATE_SUCCESS,
+  ADOPTION_POST_UPDATE_FAIL
 } from '../constants/adoptionConstants';
 
 export const adoptionAllPostReducer = (
@@ -68,12 +71,27 @@ export const adoptionPostCreateReducer = (state = {}, action) => {
     case ADOPTION_POST_CREATE_REQUEST:
       return { loading: true };
     case ADOPTION_POST_CREATE_SUCCESS:
-      return { loading: false, adoptionPost: action.payload };
+      return { loading: false, success: true, adoptionPost: action.payload };
 
     case ADOPTION_POST_CREATE_FAIL:
       return { loading: false, error: action.payload };
     case ADOPTION_POST_CREATE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const adoptionPostUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADOPTION_POST_UPDATE_REQUEST:
+      return { loading: true };
+    case ADOPTION_POST_UPDATE_SUCCESS:
+      return { loading: false, success: true, adoptionPost: action.payload };
+
+    case ADOPTION_POST_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+
     default:
       return state;
   }
