@@ -1,10 +1,13 @@
 package com.adptapaw.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -39,5 +42,7 @@ public class Donations {
     @Column(length = 1000)
     private String image;
 
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "donationpost")
+    private Set<DonationGiver> donationGiver = new HashSet<>();
 }
