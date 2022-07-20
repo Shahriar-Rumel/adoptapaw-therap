@@ -1,17 +1,20 @@
 package com.adptapaw.backend.service.implementation;
 
 import com.adptapaw.backend.entity.AdoptionAnimal;
+import com.adptapaw.backend.entity.AdoptionRequest;
 import com.adptapaw.backend.entity.User;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionUserDTO;
 import com.adptapaw.backend.repository.AdoptionAnimalRepository;
+import com.adptapaw.backend.repository.AdoptionRequestRepository;
 import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.AdoptionAnimalService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,16 +23,19 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
 
     private ModelMapper mapper;
 
-    private AdoptionAnimalRepository adoptionAnimalRepository;
+    private final AdoptionAnimalRepository adoptionAnimalRepository;
+
+    private final AdoptionRequestRepository adoptionRequestRepository;
 
 
     @Autowired
     private UserRepository userRepository;
 
 
-    public AdoptionAnimalServiceImplementation(ModelMapper mapper, AdoptionAnimalRepository adoptionAnimalRepository) {
+    public AdoptionAnimalServiceImplementation(ModelMapper mapper, AdoptionAnimalRepository adoptionAnimalRepository, AdoptionRequestRepository adoptionRequestRepository) {
         this.mapper = mapper;
         this.adoptionAnimalRepository = adoptionAnimalRepository;
+        this.adoptionRequestRepository = adoptionRequestRepository;
     }
 
     private AdoptionAnimalDTO mapToDTO(AdoptionAnimal adoptionAnimal){
@@ -150,6 +156,22 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
 
         return mapToDTO(adoptionAnimal);
 
+    }
+
+    @Override
+    public String DeleteById(String id) {
+        AdoptionAnimal animal = adoptionAnimalRepository.findById(Long.valueOf(id)).get();
+        List<AdoptionRequest>animalRequestList = adoptionRequestRepository.findAllByPet(animal);
+
+        for (AdoptionRequest adoptionRequest : animalRequestList) {
+            adoptionRequest.setAdoptionseeker(null);
+            adoptionRequest.setPet(null);
+            adoptionRequestRepository.deleteById(adoptionRequest.getId());
+        }
+
+        animal.setUser(null);
+        adoptionAnimalRepository.delete(animal);
+        return "Post Deleted Successfully " + animal.getId();
     }
 
 

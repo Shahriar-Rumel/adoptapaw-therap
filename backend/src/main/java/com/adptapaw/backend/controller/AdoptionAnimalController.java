@@ -47,4 +47,8 @@ public class AdoptionAnimalController {
         return adoptionAnimalService.updateById(id,adoptionAnimalPostDTO);
     }
 
+    @DeleteMapping("/{id}")
+    public String DeleteAdoptionAnimal(@PathVariable (name="id") String  id){
+        return adoptionAnimalService.DeleteById(id);
+    }
 }

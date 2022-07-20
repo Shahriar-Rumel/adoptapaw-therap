@@ -22,9 +22,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
-import java.util.Collection;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -57,11 +55,8 @@ public  class UserServiceSecurity implements UserDetailsService {
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found with username or email:" + usernameOrEmail));
 
-        System.out.println(user.isAccountVerified());
         if(user.isAccountVerified()){
-            System.out.println(user.getPassword());
-            System.out.println(new org.springframework.security.core.userdetails.User(user.getEmail(),
-                    user.getPassword(), user.isAccountVerified(),true,true,true,mapRolesToAuthorities(user.getRoles())).isEnabled());
+
 
             return new org.springframework.security.core.userdetails.User(user.getEmail(),
                     user.getPassword(), user.isAccountVerified(),true,true,true,mapRolesToAuthorities(user.getRoles()));
@@ -92,8 +87,10 @@ public  class UserServiceSecurity implements UserDetailsService {
     }
 
     private Collection< ? extends GrantedAuthority> mapRolesToAuthorities(Set<Roles> roles){
+
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
+
 
 
     public boolean verifyUser(String token) throws InvalidTokenException {
@@ -142,43 +139,6 @@ public  class UserServiceSecurity implements UserDetailsService {
 
     }
 
-//    public String ResetPassword(String password,String token) throws InvalidTokenException {
-//        try {
-//
-//            Token usertoken = tokenService.findByToken(token);
-//            if (Objects.isNull(usertoken) || !StringUtils.equals(token, usertoken.getToken()) || usertoken.isExpired()) {
-//                throw new InvalidTokenException("Token is not valid");
-//            }
-//            User user = userRepository.findById(usertoken.getUsertoken().getId()).get();
-//            if (Objects.isNull(user)) {
-//                return "Can't reset Password";
-//            }
-//            user.setPassword(passwordEncoder.encode(password));
-//            userRepository.save(user);
-//
-//            tokenService.removeToken(usertoken);
-//
-//
-//
-//            AccountPasswordResetEmailContext mail = new AccountPasswordResetEmailContext();
-//            mail.setFrom("adoptapawofficial@gmail.com");
-//            mail.setTemplateLocation("passwordresetsuccess.html");
-//            mail.setSubject("Password Reset Confirmation");
-//            mail.setTo(user.getEmail());
-//            mail.put("name",user.getName());
-//
-//            try{
-//                emailService.sendMail(mail);
-//            }catch (MessagingException e){
-//                e.printStackTrace();
-//            }
-//
-//            return "Password Changed";
-//
-//        } catch (UsernameNotFoundException e) {
-//            return "No user found";
-//        }
-//
-//    }
+
 
 }

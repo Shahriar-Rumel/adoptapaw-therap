@@ -15,4 +15,6 @@ public interface AdoptionAnimalService {
 
 
     AdoptionAnimalDTO updateById(String id, AdoptionAnimalDTO adoptionAnimalPostDTO);
+
+    String DeleteById(String id);
 }

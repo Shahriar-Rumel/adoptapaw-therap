@@ -46,9 +46,12 @@ export default function UserAdoptionRequestDetailsPage() {
       ) : (
         <div className=" lg:w-[80vw] w-[95vw] mx-auto mt-[100px] lg:mt-[150px]  mb-[100px]">
           <div className="flex items-center justify-center w-full">
-            <h1 className="text-[32px] text-primary font-extrabold tracking-tight text-center mb-[50px]">
-              Adoption Requests
-            </h1>
+            {adoptionRequest && (
+              <h1 className="text-[32px] text-primary font-extrabold tracking-tight text-center mb-[50px]">
+                Adoption Request :
+                {adoptionRequest.id ? adoptionRequest.id : 'N/A'}
+              </h1>
+            )}
           </div>
           <div className="lg:flex lg:flex-row-reverse justify-between items-center ">
             <div className="lg:w-[48%] lg:mr-6 request-adoption-gallery-animation lg:flex flex-col justify-between lg:min-h-[580px] xl:min-h-full ">
