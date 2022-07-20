@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { adoptionPostByUserIdAction } from '../actions/adoptionActions';
 import Button from '../Components/Button';
 import AdoptionPostCard from '../Components/Cards/AdoptionPostCard';
@@ -69,29 +69,33 @@ export default function UserProfilepage({ history }) {
                   Dhaka,Bangladesh
                 </h1>
               </div>
-              <div className="mt-5">
-                <Button
-                  text={'Edit Profile'}
-                  brand={true}
-                  width={true}
-                  widthClass={'w-[130px]'}
-                  height={true}
-                  heightClass={'h-[45px]'}
-                />
-              </div>
+              <Link to={`/user/profile/${userInfo.id}/edit`}>
+                <div className="mt-5">
+                  <Button
+                    text={'Edit Profile'}
+                    brand={true}
+                    width={true}
+                    widthClass={'w-[130px]'}
+                    height={true}
+                    heightClass={'h-[45px]'}
+                  />
+                </div>
+              </Link>
             </div>
             <div className=" flex flex-col  items-start justify-start mt-[50px] ">
-              <div>
-                <h1 className="text-[18px] font-bold text-primary tracking-tight mt-3 mb-3">
-                  Bio
-                </h1>
-                <p className="text-[14px] text-gray-light lg:w-[90%]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  scelerisque mauris pellentes lorem porttitor. Sed orci, fusce
-                  proin risus, ornare id lacus cras. Justo dolor est congue
-                  pulvinar scelerisque. Vulputate felis luctus urna risus
-                </p>
-              </div>
+              {userInfo && (
+                <div>
+                  <h1 className="text-[18px] font-bold text-primary tracking-tight mt-3 mb-3">
+                    Bio
+                  </h1>
+                  <p className="text-[14px] text-gray-light lg:w-[90%]">
+                    {userInfo.bio
+                      ? userInfo.bio
+                      : ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque mauris pellentes lorem porttitor. Sed orci, fusce proin risus, ornare id lacus cras. Justo dolor est congue pulvinar scelerisque. Vulputate felis luctus urna risus'}
+                  </p>
+                </div>
+              )}
+
               <div>
                 <h1 className="text-[18px] font-bold text-primary tracking-tight mt-[30px] mb-3">
                   Adoption Posts

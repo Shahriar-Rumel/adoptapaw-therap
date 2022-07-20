@@ -33,6 +33,7 @@ import ForgotPasswordPage from './Pages/ForgotPasswordPage';
 import PasswordResetRequestSentPage from './Pages/PasswordResetRequestSentPage';
 import ForgotPasswordResetPage from './Pages/ForgotPasswordResetPage';
 import UserAdoptionDetailsPage from './Pages/UserAdoptionPostDetailsPage';
+import UserProfileEditPage from './Pages/UserProfileEditPage';
 
 function App() {
   return (
@@ -120,6 +121,11 @@ function App() {
           <Route
             path="/user/profile/:id/adoptionposts"
             element={<UserAdoptionPostsPage />}
+            exact
+          />
+          <Route
+            path="/user/profile/:id/edit"
+            element={<UserProfileEditPage />}
             exact
           />
           <Route path="/user/profile/:id" element={<UserProfilepage />} exact />
