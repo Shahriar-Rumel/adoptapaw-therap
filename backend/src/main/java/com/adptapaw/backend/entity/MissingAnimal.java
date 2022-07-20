@@ -66,11 +66,7 @@ public class MissingAnimal {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id",referencedColumnName = "id")
-    private User user;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "owner_id",referencedColumnName = "id")
-    private User owner;
+    private User creator;
 
     @JsonIgnore
     @OneToMany(mappedBy = "pet")

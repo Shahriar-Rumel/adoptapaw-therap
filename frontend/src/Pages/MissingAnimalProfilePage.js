@@ -34,8 +34,6 @@ const MissingFeature = ({ data }) => {
   );
 };
 export default function MissingAnimalProfilePage() {
-  const [image, setImage] = useState(adoptionListGallery[0].img);
-
   useEffect(() => {
     gsap.from('.missing-gallery-animation', {
       //   y: '+=110',
@@ -90,15 +88,18 @@ export default function MissingAnimalProfilePage() {
       ) : (
         <div className="lg:flex lg:justify-between lg:flex-row mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
           <div className="lg:w-[50%] lg:mr-10">
-            <div
-              className=" w-[90vw] h-[300px] lg:w-[35vw] mx-auto  missing-gallery-animation"
-              style={{
-                backgroundImage: `url(${image})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
-              }}
-            ></div>
+            {missingPostById && (
+              <div
+                className=" w-[90vw] h-[300px] lg:w-[35vw] mx-auto custom-round  missing-gallery-animation"
+                style={{
+                  backgroundImage: `url(${missingPostById.image})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat'
+                }}
+              ></div>
+            )}
+
             <div className=" flex justify-between items-center mt-10 lg:mb-10 missing-animation">
               <h1 className="font-extrabold text-[32px] tracking-tight text-primary -mt-[4px]">
                 Tommy
@@ -130,9 +131,24 @@ export default function MissingAnimalProfilePage() {
               )}
             </div>
           </div>
+
           <div className="lg:w-[50%] lg:ml-10">
             {missingPostById && (
               <>
+                <div className="py-5 px-5 bg-white custom-round Attribute-card-shadow flex justify-between items-center">
+                  <h1 className="font-bold text-[14px] text-gray-light">
+                    Status
+                  </h1>
+                  {missingPostById.stillmissing && (
+                    <h1
+                      className={`${
+                        missingPostById.stillmissing ? `text-red` : `text-green`
+                      } font-extrabold tracking-tight`}
+                    >
+                      {missingPostById.stillmissing ? 'Missing' : 'Found'}
+                    </h1>
+                  )}
+                </div>
                 <AttributeCard
                   Attribute={'Specific Attribute'}
                   feature={missingPostById.specificattribute}

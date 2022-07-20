@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { adoptionPostCreateAction } from '../actions/adoptionActions';
+import { missingPostCreateAction } from '../actions/missingAnimalActions';
 import Button from '../Components/Button';
 import Checkbox from '../Components/IO/Checkbox';
 import ChoiceInput from '../Components/IO/ChoiceInput';
@@ -11,6 +12,7 @@ import SelectBox from '../Components/IO/SelectBox';
 import TextInput from '../Components/IO/TextInput';
 import Loader from '../Components/Loader';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
+import Message from '../Components/Message';
 
 export default function CreateMissingPost({ history }) {
   const [name, setName] = useState('');
@@ -24,8 +26,9 @@ export default function CreateMissingPost({ history }) {
 
   const [vaccine, setVaccine] = useState('');
   const [type, setType] = useState("Choose pet's type");
-  const [training, setTraining] = useState('');
   const [color, setColor] = useState('');
+
+  const [empty, setEmpty] = useState(false);
 
   const [imageOne, setImageOne] = useState(
     '/assets/Icons/ImagePlaceholder.svg'
@@ -39,24 +42,27 @@ export default function CreateMissingPost({ history }) {
 
   const userLogin = useSelector((state) => state.userLogin);
 
-  const { loading, error, userInfo } = userLogin;
+  const { error, userInfo } = userLogin;
   const { id } = useParams();
 
-  const createAdoptionPost = useSelector((state) => state.CreateAdoptionPost);
+  const createMissingPost = useSelector((state) => state.missingPostCreated);
 
-  // const redirect = location ? location.split('=')[1] : '/';
+  const { loading, success, missingPost } = createMissingPost;
 
   const navigate = useNavigate();
   const dataport = {
-    breed: breed,
-    color: color,
-    reward: reward,
-    location: location,
     name: name,
-    training: training,
+    breed: breed,
     vaccine: vaccine,
-    type: type,
-    image: imageOne
+    color: color,
+    datemissing: date,
+    specificattribute: attribute,
+    location: location,
+    accessorieslastworn: accessory,
+    image: imageOne,
+    rewards: reward,
+    gender: gender,
+    type: type
   };
 
   useEffect(() => {
@@ -74,9 +80,31 @@ export default function CreateMissingPost({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (dataport) {
-      dispatch(adoptionPostCreateAction(id, dataport));
+    if (
+      dataport.name &&
+      dataport.breed &&
+      dataport.vaccine &&
+      dataport.color &&
+      dataport.datemissing &&
+      dataport.specificattribute &&
+      dataport.location &&
+      dataport.accessorieslastworn &&
+      dataport.image &&
+      dataport.rewards &&
+      dataport.gender &&
+      dataport.type
+    ) {
+      dispatch(missingPostCreateAction(id, dataport));
+      setEmpty(false);
+      setBreed('');
+      setColor('');
+      setGender('');
+      setLocation('');
+      setName('');
+      setVaccine('');
+      setType('');
     } else {
+      setEmpty(true);
       console.log('Data is empty');
     }
   };
@@ -115,9 +143,23 @@ export default function CreateMissingPost({ history }) {
 
   return (
     <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[100px] mb-[100px] ">
-      <h1 className="text-[24px] font-extrabold  text-primary text-center tracking-tight">
+      <h1 className="text-[30px] font-extrabold mt-14 text-primary  tracking-tighter">
         Please provide details of missing pet
       </h1>
+      <p className="text-[14px] text-gray-light mb-8">
+        Please enter the details of your pet
+      </p>
+
+      {empty && (
+        <Message
+          message={'Please fill in all the fields !'}
+          variant={'danger'}
+        />
+      )}
+      {success && (
+        <Message message={'Post created successfully!'} variant={'success'} />
+      )}
+      {loading && <Loader />}
       <form>
         <div className="lg:flex justify-between items-center">
           <div className="lg:w-[32%]">
@@ -248,15 +290,6 @@ export default function CreateMissingPost({ history }) {
             />
           </div>
           <div className="flex justify-between lg:w-[60%]">
-            <div className="lg:w-[32%]">
-              <Checkbox
-                label={'Trained'}
-                placeholder={'Tommy'}
-                type={'checkbox'}
-                width={'w-[70px]'}
-                setData={setTraining}
-              />
-            </div>
             <div className="lg:w-[32%]">
               <Checkbox
                 label={'Vaccinated'}

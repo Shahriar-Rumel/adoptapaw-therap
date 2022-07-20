@@ -49,7 +49,7 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
     public MissingAnimalResponseDTO getAllByCreator(String id) {
 
         User user  = userRepository.findById(Long.valueOf(id)).get();
-        List<MissingAnimal> missingAnimal = missingAnimalRepository.findAllByUser(user);
+        List<MissingAnimal> missingAnimal = missingAnimalRepository.findAllByCreator(user);
 
         List<MissingAnimalDTO> content = missingAnimal.stream().map(missingAnimalItem -> mapToDTO(missingAnimalItem)).collect(Collectors.toList());
         MissingAnimalResponseDTO missingAnimalResponse = new MissingAnimalResponseDTO();
@@ -63,7 +63,6 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
         List<MissingAnimal> missingAnimal = missingAnimalRepository.findAll();
 
         List<MissingAnimalDTO> content= missingAnimal.stream().map(missingAnimalItem -> mapToDTO(missingAnimalItem)).collect(Collectors.toList());
-
 
         MissingAnimalResponseDTO missingAnimalResponse = new MissingAnimalResponseDTO();
         missingAnimalResponse.setContentfile(content);
@@ -91,27 +90,20 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
         animal.setImage(missingAnimalDTO.getImage());
 
         User user = userRepository.findById(Long.valueOf(id)).orElse(null);
-        animal.setUser(user);
+        animal.setCreator(user);
 
         missingAnimalRepository.save(animal);
 
         MissingUserDTO missingUserDTO = new MissingUserDTO();
 
+        assert user != null;
         missingUserDTO.setUsername(user.getUsername());
         missingUserDTO.setId(user.getId());
-
-        missingAnimalDTO.setUser(missingUserDTO);
-
-
+        missingAnimalDTO.setCreator(missingUserDTO);
         missingAnimalDTO.setId(animal.getId());
 
 
-
-
         return missingAnimalDTO;
-
-
-
 
     }
 

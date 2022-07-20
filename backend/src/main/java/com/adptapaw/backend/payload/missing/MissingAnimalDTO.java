@@ -19,5 +19,5 @@ public class MissingAnimalDTO {
     private String gender;
     private String type;
     private Boolean stillmissing;
-    private MissingUserDTO user;
+    private MissingUserDTO creator;
 }

@@ -6,6 +6,9 @@ import {
   MISSING_POST_BY_ID_FAIL,
   MISSING_POST_BY_ID_REQUEST,
   MISSING_POST_BY_ID_SUCCESS,
+  MISSING_POST_CREATE_FAIL,
+  MISSING_POST_CREATE_REQUEST,
+  MISSING_POST_CREATE_SUCCESS,
   MISSING_POST_FAIL,
   MISSING_POST_REQUEST,
   MISSING_POST_SUCCESS
@@ -96,3 +99,39 @@ export const missingPostByUserIdAction = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const missingPostCreateAction =
+  (id, dataport) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: MISSING_POST_CREATE_REQUEST
+      });
+
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      await axios.post(`${BASE_URL}/${id}/createmissingpost`, dataport, config);
+
+      dispatch({
+        type: MISSING_POST_CREATE_SUCCESS
+      });
+
+      // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: MISSING_POST_CREATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };

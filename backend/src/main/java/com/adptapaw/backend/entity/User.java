@@ -61,6 +61,17 @@ public class User {
     private Set<Token> tokens = new HashSet<>();
 
 
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "creator")
+    private Set<MissingAnimal> missinganimals = new HashSet<>();
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "donationgiver")
+    private Set<DonationGiver> donations = new HashSet<>();
+
+
     public void addAnimal(AdoptionAnimal newAdoptionAnimal){
         animals.add(newAdoptionAnimal);
     }
@@ -83,6 +94,22 @@ public class User {
 
     public void setAdoptedpets(Set<AdoptionAnimal> adoptedpets) {
         this.adoptedpets = adoptedpets;
+    }
+
+    public Set<MissingAnimal> getMissinganimals() {
+        return missinganimals;
+    }
+
+    public void setMissinganimals(Set<MissingAnimal> missinganimals) {
+        this.missinganimals = missinganimals;
+    }
+
+    public Set<DonationGiver> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(Set<DonationGiver> donations) {
+        this.donations = donations;
     }
 
 }

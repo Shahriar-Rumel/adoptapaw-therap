@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface MissingAnimalRepository extends JpaRepository<MissingAnimal,Long> {
 
-    List<MissingAnimal> findAllByUser(User user);
+    List<MissingAnimal> findAllByCreator(User user);
 }
