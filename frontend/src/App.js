@@ -34,6 +34,7 @@ import PasswordResetRequestSentPage from './Pages/PasswordResetRequestSentPage';
 import ForgotPasswordResetPage from './Pages/ForgotPasswordResetPage';
 import UserAdoptionDetailsPage from './Pages/UserAdoptionPostDetailsPage';
 import UserProfileEditPage from './Pages/UserProfileEditPage';
+import AdminDashboardPage from './Pages/AdminDashboardPage';
 
 function App() {
   return (
@@ -131,6 +132,7 @@ function App() {
           <Route path="/user/profile/:id" element={<UserProfilepage />} exact />
           <Route path="/adoption" element={<Adoptionpage />} exact />
           <Route path="/contact" element={<ContactPage />} exact />
+          <Route path="/dashboard" element={<AdminDashboardPage />} exact />
           <Route path="/home" element={<Homepage />} exact />
           <Route path="/" element={<Onboarding />} exact />
           <Route path="*" element={<Navigate to="/" replace />} />

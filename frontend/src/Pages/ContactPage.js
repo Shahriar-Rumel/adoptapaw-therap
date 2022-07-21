@@ -4,8 +4,8 @@ import TextInput from '../Components/IO/TextInput';
 
 const Banner = () => {
   return (
-    <div className="py-[30px] bg-white shadow-md md:shadow-none custom-round px-5 mb-10 md:mb-0 w-[100%]  md:ml-5">
-      <h1 className=" text-center text-[24px] font-extrabold tracking-tighter  bg-opacity-30  text-gray-light italic w-[100%] leading-5">
+    <div className="py-[30px] bg-white  md:shadow-none custom-round px-5 mb-10 md:mb-0 w-[100%]  md:ml-5">
+      <h1 className=" text-center text-[18px] font-bold tracking-tighter  bg-opacity-30  text-gray  w-[100%] leading-5">
         We would love to hear from you
       </h1>
       <img src="/assets/icons/feedback.svg" className="w-[90%] mt-5 "></img>

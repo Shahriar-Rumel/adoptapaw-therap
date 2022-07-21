@@ -65,7 +65,7 @@ export default function LoginPage({ location, history }) {
         ></img>
         <div className="lg:w-[50%]">
           <h1 className="font-extrabold text-[24px] tracking-tight text-primary request-form-animation">
-            Hey, welcome back !
+            Hey, Welcome back yo adoptapaw !
           </h1>
           <h3 className="text-[14px] font-regular text-gray-light mb-10 request-form-animation">
             Login to adopt paws
