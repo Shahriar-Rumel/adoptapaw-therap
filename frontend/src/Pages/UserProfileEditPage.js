@@ -145,7 +145,7 @@ export default function UserProfileEditPage() {
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             required
-            className="bg-input py-4 cursor-not-allowed custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
+            className="bg-input py-4  custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
           ></textarea>
         </div>
         <Button text={'Update Profile'} />

@@ -56,7 +56,7 @@ export default function UserProfilepage({ history }) {
               </div>
 
               <h1 className="text-[18px] font-bold text-primary tracking-tight text-center mt-3">
-                {userInfo.username}
+                {userInfo.name}
               </h1>
 
               <h1 className="text-[14px] font-medium text-gray-light tracking-tight text-center mb-1">

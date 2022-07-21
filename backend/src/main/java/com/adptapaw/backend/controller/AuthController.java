@@ -5,7 +5,9 @@ import com.adptapaw.backend.context.AccountVerificationEmailContext;
 import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.Token;
 import com.adptapaw.backend.entity.User;
+import com.adptapaw.backend.exception.AdoptapawAPIExceptions;
 import com.adptapaw.backend.exception.InvalidTokenException;
+import com.adptapaw.backend.exception.ResourceNotFoundException;
 import com.adptapaw.backend.payload.*;
 import com.adptapaw.backend.repository.RolesRepository;
 import com.adptapaw.backend.repository.UserRepository;
@@ -121,6 +123,10 @@ public class AuthController {
             user.setEmail(signupDTO.getEmail());
             user.setUsername(signupDTO.getUsername());
             user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
+            user.setBio(null);
+            user.setBanned(false);
+            user.setDp(null);
+            user.setLocation(null);
 
             Roles roles = roleRepository.findByName("ROLE_USER").get();
             user.setRoles(Collections.singleton(roles));
@@ -210,6 +216,39 @@ public class AuthController {
 
         } catch (UsernameNotFoundException e) {
             return "No user found";
+        }
+
+    }
+
+    @PutMapping("/user/{id}/update")
+    public ResponseEntity<?> updateUser(@PathVariable String id,@RequestBody SignupDTO signupDTO){
+
+        try {
+            User user = userRepository.findById(Long.valueOf(id)).orElseThrow(()-> new ResourceNotFoundException("Update User","ID",Long.parseLong(id)));
+
+            user.setName(signupDTO.getName());
+            if(!signupDTO.getPassword().isBlank())
+                user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
+
+            user.setBio(signupDTO.getBio());
+            user.setLocation(signupDTO.getLocation());
+            user.setDp(signupDTO.getDp());
+
+            userRepository.save(user);
+
+            UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
+
+            userDetailsDTO.setName(user.getName());
+            userDetailsDTO.setEmail(user.getEmail());
+            userDetailsDTO.setUsername(user.getUsername());
+            userDetailsDTO.setLocation(user.getLocation());
+            userDetailsDTO.setBio(user.getBio());
+            userDetailsDTO.setDp(user.getDp());
+
+            return new ResponseEntity<>(userDetailsDTO, HttpStatus.OK);
+        }
+        catch (UsernameNotFoundException e){
+            return new ResponseEntity<>("User not found", HttpStatus.BAD_REQUEST);
         }
 
     }

@@ -37,6 +37,18 @@ public class User {
     @Column(nullable = false)
     private boolean accountVerified;
 
+    @Column(nullable = false)
+    private boolean banned;
+
+    @Column()
+    private String location;
+
+    @Column(length = 1000)
+    private String bio;
+
+    @Column(length = 1000)
+    private String dp;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -71,45 +83,5 @@ public class User {
     @OneToMany(mappedBy = "donationgiver")
     private Set<DonationGiver> donations = new HashSet<>();
 
-
-    public void addAnimal(AdoptionAnimal newAdoptionAnimal){
-        animals.add(newAdoptionAnimal);
-    }
-
-    public void setAnimals(Set<AdoptionAnimal> animals) {
-        this.animals = animals;
-    }
-
-    public Set<AdoptionRequest> getAdoptionrequests() {
-        return adoptionrequests;
-    }
-
-    public void setAdoptionrequests(Set<AdoptionRequest> adoptionrequests) {
-        this.adoptionrequests = adoptionrequests;
-    }
-
-    public Set<AdoptionAnimal> getAdoptedpets() {
-        return adoptedpets;
-    }
-
-    public void setAdoptedpets(Set<AdoptionAnimal> adoptedpets) {
-        this.adoptedpets = adoptedpets;
-    }
-
-    public Set<MissingAnimal> getMissinganimals() {
-        return missinganimals;
-    }
-
-    public void setMissinganimals(Set<MissingAnimal> missinganimals) {
-        this.missinganimals = missinganimals;
-    }
-
-    public Set<DonationGiver> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(Set<DonationGiver> donations) {
-        this.donations = donations;
-    }
 
 }

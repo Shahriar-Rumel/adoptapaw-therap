@@ -55,7 +55,7 @@ public  class UserServiceSecurity implements UserDetailsService {
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found with username or email:" + usernameOrEmail));
 
-        if(user.isAccountVerified()){
+        if(user.isAccountVerified() && !user.isBanned()){
 
 
             return new org.springframework.security.core.userdetails.User(user.getEmail(),
