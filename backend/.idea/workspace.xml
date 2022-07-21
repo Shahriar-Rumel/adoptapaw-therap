@@ -6,8 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="e6db3950-41fd-42d2-b3bb-eb8cf9375558" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/MissingAnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/MissingAnimalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/MissingRequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/MissingRequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/MissingAnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/MissingAnimalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/MissingAnimalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/MissingAnimalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.class" afterDir="false" />
+>>>>>>> b5248b576ff9abc97047f64f0c3108ddcacb50fa
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +51,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
@@ -60,6 +70,26 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;b43fdd98b1fd705ae4c3a10cf25aad8a&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/adoptapaw-misingcodecleanup/backend",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "spring.configuration.checksum": "b43fdd98b1fd705ae4c3a10cf25aad8a"
+>>>>>>> b5248b576ff9abc97047f64f0c3108ddcacb50fa
   }
 }</component>
   <component name="RecentsManager">
@@ -142,9 +172,14 @@
       <workItem from="1658168311680" duration="3134000" />
       <workItem from="1658227281108" duration="12264000" />
       <workItem from="1658299362427" duration="18645000" />
+<<<<<<< HEAD
       <workItem from="1658324321871" duration="6506000" />
       <workItem from="1658417419412" duration="5516000" />
       <workItem from="1658426782924" duration="3097000" />
+=======
+      <workItem from="1658324321871" duration="4820000" />
+      <workItem from="1658424390957" duration="3705000" />
+>>>>>>> b5248b576ff9abc97047f64f0c3108ddcacb50fa
     </task>
     <servers />
   </component>
