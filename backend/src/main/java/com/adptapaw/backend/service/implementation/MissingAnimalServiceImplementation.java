@@ -1,12 +1,16 @@
 package com.adptapaw.backend.service.implementation;
 
 
+
 import com.adptapaw.backend.entity.MissingAnimal;
+import com.adptapaw.backend.entity.MissingRequest;
 import com.adptapaw.backend.entity.User;
+
 import com.adptapaw.backend.payload.missing.MissingAnimalDTO;
 import com.adptapaw.backend.payload.missing.MissingAnimalResponseDTO;
 import com.adptapaw.backend.payload.missing.MissingUserDTO;
 import com.adptapaw.backend.repository.MissingAnimalRepository;
+import com.adptapaw.backend.repository.MissingRequestRepository;
 import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.MissingAnimalService;
 import org.modelmapper.ModelMapper;
@@ -23,14 +27,17 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
 
     private MissingAnimalRepository missingAnimalRepository;
 
+    private MissingRequestRepository missingRequestRepository;
+
 
     @Autowired
     private UserRepository userRepository;
 
 
-    public MissingAnimalServiceImplementation(ModelMapper mapper, MissingAnimalRepository missingAnimalRepository) {
+    public MissingAnimalServiceImplementation(ModelMapper mapper, MissingAnimalRepository missingAnimalRepository, MissingRequestRepository missingRequestRepository) {
         this.mapper = mapper;
         this.missingAnimalRepository = missingAnimalRepository;
+        this.missingRequestRepository = missingRequestRepository;
     }
 
     private MissingAnimalDTO mapToDTO(MissingAnimal missingAnimal){
@@ -113,6 +120,46 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
         MissingAnimal missingAnimal = missingAnimalRepository.findById(Long.valueOf(id)).get();
 
         return mapToDTO(missingAnimal);
+    }
+    @Override
+    public MissingAnimalDTO updateById(String id, MissingAnimalDTO missingAnimalDTO) {
+        MissingAnimal missingAnimal = missingAnimalRepository.findById(Long.valueOf(id)).get();
+
+
+        missingAnimal.setBreed(missingAnimalDTO.getBreed());
+        missingAnimal.setColor(missingAnimalDTO.getColor());
+        missingAnimal.setDatemissing(missingAnimalDTO.getDatemissing());
+        missingAnimal.setGender(missingAnimalDTO.getGender());
+        missingAnimal.setType(missingAnimalDTO.getType());
+        missingAnimal.setLocation(missingAnimalDTO.getLocation());
+        missingAnimal.setName(missingAnimalDTO.getName());
+        missingAnimal.setVaccine(missingAnimalDTO.getVaccine());
+        missingAnimal.setStillmissing(true);
+        missingAnimal.setSpecificattribute(missingAnimalDTO.getSpecificattribute());
+        missingAnimal.setAccessorieslastworn(missingAnimalDTO.getAccessorieslastworn());
+        missingAnimal.setRewards(missingAnimalDTO.getRewards());
+        missingAnimal.setImage(missingAnimalDTO.getImage());
+
+
+        missingAnimalRepository.save( missingAnimal);
+
+        return mapToDTO(missingAnimal);
+
+    }
+
+    @Override
+    public String DeleteById(String id) {
+        MissingAnimal animal = missingAnimalRepository.findById(Long.valueOf(id)).get();
+        List<MissingRequest>animalRequestList = missingRequestRepository.findAllByPet(animal);
+
+        for (MissingRequest missingRequest : animalRequestList) {
+            missingRequest.setPet(null);
+            missingRequestRepository.deleteById(missingRequest.getId());
+        }
+
+        animal.setCreator(null);
+        missingAnimalRepository.delete(animal);
+        return "Post Deleted Successfully " + animal.getId();
     }
 
 }

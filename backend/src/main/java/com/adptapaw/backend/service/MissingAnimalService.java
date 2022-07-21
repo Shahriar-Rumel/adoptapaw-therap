@@ -13,4 +13,8 @@ public interface MissingAnimalService {
     MissingAnimalDTO createMissingAnimal(String id, MissingAnimalDTO missingAnimalDTO);
 
     MissingAnimalDTO getAllById(String id);
+
+    MissingAnimalDTO updateById(String id, MissingAnimalDTO missingAnimalDTO);
+
+    String DeleteById(String id);
 }

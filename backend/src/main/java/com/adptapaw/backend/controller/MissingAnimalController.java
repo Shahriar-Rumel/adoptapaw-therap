@@ -1,6 +1,7 @@
 package com.adptapaw.backend.controller;
 
 
+
 import com.adptapaw.backend.payload.missing.MissingAnimalDTO;
 import com.adptapaw.backend.payload.missing.MissingAnimalResponseDTO;
 import com.adptapaw.backend.service.MissingAnimalService;
@@ -39,5 +40,15 @@ public class MissingAnimalController {
     @GetMapping("/user/{id}")
     public MissingAnimalResponseDTO getMissingAnimalByCreator(@PathVariable(name = "id") String id){
         return missingAnimalService.getAllByCreator(id);
+    }
+
+    @PutMapping("/{id}")
+    public MissingAnimalDTO UpdateMissingAnimal(@PathVariable (name="id") String  id, @RequestBody MissingAnimalDTO missingAnimalPostDTO){
+        return missingAnimalService.updateById(id,missingAnimalPostDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public String DeleteMissingAnimal(@PathVariable (name="id") String  id){
+        return missingAnimalService.DeleteById(id);
     }
 }
