@@ -198,7 +198,6 @@ public class AuthController {
             tokenService.removeToken(usertoken);
 
 
-
             AccountPasswordResetEmailContext mail = new AccountPasswordResetEmailContext();
             mail.setFrom("adoptapawofficial@gmail.com");
             mail.setTemplateLocation("passwordresetsuccess.html");
@@ -227,7 +226,7 @@ public class AuthController {
             User user = userRepository.findById(Long.valueOf(id)).orElseThrow(()-> new ResourceNotFoundException("Update User","ID",Long.parseLong(id)));
 
             user.setName(signupDTO.getName());
-            if(!signupDTO.getPassword().isBlank())
+            if(signupDTO.getPassword() != null)
                 user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
 
             user.setBio(signupDTO.getBio());
@@ -244,6 +243,8 @@ public class AuthController {
             userDetailsDTO.setLocation(user.getLocation());
             userDetailsDTO.setBio(user.getBio());
             userDetailsDTO.setDp(user.getDp());
+            userDetailsDTO.setId(user.getId());
+            userDetailsDTO.setRole(user.getRoles());
 
             return new ResponseEntity<>(userDetailsDTO, HttpStatus.OK);
         }

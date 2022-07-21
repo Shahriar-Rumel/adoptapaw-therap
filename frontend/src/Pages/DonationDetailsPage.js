@@ -150,9 +150,9 @@ const DonationModal = ({ modal, setModal }) => {
               <CrossIcon />
             </div>
             <h2 className=" donation-animation font-bold tracking-tight mt-10">
-              Payment Type
+              Payment Amount
             </h2>
-            <div className="mt-5 flex justify-between donation-animation">
+            {/* <div className="mt-5 flex justify-between donation-animation">
               <div
                 className={`${
                   monthly ? `bg-[#000000]` : 'bg-none border border-[#000000]'
@@ -179,7 +179,7 @@ const DonationModal = ({ modal, setModal }) => {
                   Yearly
                 </h2>
               </div>
-            </div>
+            </div> */}
             <input
               type="number"
               placeholder="Amount"
