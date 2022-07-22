@@ -81,6 +81,9 @@ public  class UserServiceSecurity implements UserDetailsService {
         userDetails.setName(user.getName());
         userDetails.setEmail(user.getEmail());
         userDetails.setId(user.getId());
+        userDetails.setDp(user.getDp());
+        userDetails.setLocation(user.getLocation());
+        userDetails.setBio(user.getBio());
 
         return userDetails;
 

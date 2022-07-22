@@ -80,11 +80,16 @@ export default function UserAdoptionDetailsPage() {
             </h1>
             <div className="flex justify-between items-center my-4">
               <div className="" onClick={() => setModal(true)}>
-                <Button text={'Edit'} width={true} />
+                <Button text={'Edit'} width={true} widthClass={'w-[100px]'} />
               </div>
 
               <div className="" onClick={() => setDeleteModal(true)}>
-                <Button text={'Delete'} secondary={true} width={true} />
+                <Button
+                  text={'Delete'}
+                  secondary={true}
+                  width={true}
+                  widthClass={'w-[100px]'}
+                />
               </div>
             </div>
 

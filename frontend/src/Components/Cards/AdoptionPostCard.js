@@ -4,12 +4,10 @@ import Button from '../Button';
 export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
   return (
     <div
-      className={`grid mb-[30px]   grid-cols-1 md:grid-cols-2 ${
-        'lg:grid-cols-' + columnSize
-      } ${'xl:grid-cols-' + columnSizeXl} gap-3 mx-auto `}
+      className={`grid mb-[30px]   grid-cols-1 md:grid-cols-2 ${columnSize} ${columnSizeXl} gap-3 mx-auto `}
     >
       {data.map((item) => (
-        <div className="bg-card-light py-3  custom-round flex justify-between px-3 donation-list-animation cursor-pointer ">
+        <div className="bg-card-light py-3  custom-round flex justify-between px-3 donation-list-animation cursor-pointer w-full">
           <div className="w-[70%] flex flex-col justify-between">
             <div className="flex justify-between">
               <h1 className="text-primary font-extrabold text-[14px] md:text-[16px] md:leading-[18px] leading-[16px] tracking-tighter mr-3">
@@ -20,9 +18,9 @@ export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
                   text="View"
                   brand={true}
                   height={true}
-                  heightClass="h-[35px] md:h-[45px]"
+                  heightClass="h-[40px] md:h-[40px] "
                   width={true}
-                  widthClass="w-[25px] md:w-[65px]"
+                  widthClass="w-[80px] md:w-[70px] lg:w-[100px]"
                   textSize={true}
                   textSizeClass="text-[12px] md:text-[14px]"
                 />

@@ -2,13 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 
-export default function Error({ message, text, link, variant, button }) {
+export default function Error({
+  message,
+  text,
+  link,
+  variant,
+  button,
+  active
+}) {
   const [show, setShow] = useState(true);
 
   const delay = 10;
-
+  let timer1;
   useEffect(() => {
-    let timer1 = setTimeout(() => setShow(false), delay * 5000);
+    if (!active) {
+      timer1 = setTimeout(() => setShow(false), delay * 2000);
+    }
+
     return () => {
       clearTimeout(timer1);
     };

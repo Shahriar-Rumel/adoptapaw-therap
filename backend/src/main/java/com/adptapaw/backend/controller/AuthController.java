@@ -235,6 +235,18 @@ public class AuthController {
 
             userRepository.save(user);
 
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                    user.getEmail(), signupDTO.getPassword()));
+
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            String token = tokenProvider.generateToken(authentication);
+
+            UserServiceSecurity userServiceSecurity = new UserServiceSecurity(userRepository, tokenService);
+
+            JWTDTO jwtdto = new JWTDTO(token);
+
+
             UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
 
             userDetailsDTO.setName(user.getName());
@@ -245,6 +257,7 @@ public class AuthController {
             userDetailsDTO.setDp(user.getDp());
             userDetailsDTO.setId(user.getId());
             userDetailsDTO.setRole(user.getRoles());
+            userDetailsDTO.setJwtdto(jwtdto);
 
             return new ResponseEntity<>(userDetailsDTO, HttpStatus.OK);
         }

@@ -4,7 +4,11 @@ import thunk from 'redux-thunk';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
+import {
+  userLoginReducer,
+  userProfileEditReducer,
+  userRegisterReducer
+} from './reducers/userReducer';
 import {
   adoptionAdoptionPostByIdReducer,
   adoptionAllPostReducer,
@@ -31,6 +35,7 @@ import {
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userUpdate: userProfileEditReducer,
   adoptionPosts: adoptionAllPostReducer,
   adoptionPostByIdStore: adoptionAdoptionPostByIdReducer,
   adoptionPostCreated: adoptionPostCreateReducer,
