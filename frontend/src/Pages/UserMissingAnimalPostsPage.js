@@ -5,6 +5,7 @@ import { adoptionPostByUserIdAction } from '../actions/adoptionActions';
 import { missingPostByUserIdAction } from '../actions/missingAnimalActions';
 import Button from '../Components/Button';
 import AdoptionPostCard from '../Components/Cards/AdoptionPostCard';
+import MissingPostCard from '../Components/Cards/MissingPostCard';
 import Loader from '../Components/Loader';
 
 export default function UserMissingAnimalPostsPage() {
@@ -43,7 +44,7 @@ export default function UserMissingAnimalPostsPage() {
                 Missing Posts
               </h1>
               {missingPostByUserId.contentfile && (
-                <AdoptionPostCard
+                <MissingPostCard
                   data={missingPostByUserId.contentfile}
                   columnSize={3}
                   columnSizeXl={3}

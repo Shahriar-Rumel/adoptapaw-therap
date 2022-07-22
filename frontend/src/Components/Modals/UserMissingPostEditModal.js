@@ -2,39 +2,45 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { adoptionPostCreateAction } from '../actions/adoptionActions';
-import { missingPostCreateAction } from '../actions/missingAnimalActions';
-import Button from '../Components/Button';
-import Checkbox from '../Components/IO/Checkbox';
-import ChoiceInput from '../Components/IO/ChoiceInput';
-import ImageInput from '../Components/IO/ImageInput';
-import SelectBox from '../Components/IO/SelectBox';
-import TextInput from '../Components/IO/TextInput';
-import Loader from '../Components/Loader';
-import UploadLoader from '../Components/UploadLoader/UploadLoader';
-import Message from '../Components/Message';
+import {
+  adoptionPostCreateAction,
+  adoptionPostUpdateAction
+} from '../../actions/adoptionActions';
+import Button from '../Button';
+import Checkbox from '../IO/Checkbox';
+import ChoiceInput from '../IO/ChoiceInput';
+import ImageInput from '../IO/ImageInput';
+import SelectBox from '../IO/SelectBox';
+import TextInput from '../IO/TextInput';
+import Loader from '../Loader';
+import UploadLoader from '../UploadLoader/UploadLoader';
+import Message from '../Message';
+import {
+  missingPostCreateAction,
+  missingPostUpdateAction
+} from '../../actions/missingAnimalActions';
 
-export default function CreateMissingPost({ history }) {
-  const [name, setName] = useState('');
-  const [location, setLocation] = useState('');
-  const [reward, setReward] = useState('');
-  const [gender, setGender] = useState("Choose pet's  gender");
-  const [breed, setBreed] = useState("Choose pet's  breed");
-  const [accessory, setAccessory] = useState('');
-  const [date, setDate] = useState('');
-  const [attribute, setAttribute] = useState('');
+export default function UserMissingPostEditModal({
+  data,
+  setModal,
+  setRefresh
+}) {
+  const [name, setName] = useState(data.name);
+  const [location, setLocation] = useState(data.location);
+  const [reward, setReward] = useState(data.rewards);
+  const [gender, setGender] = useState(data.gender);
+  const [breed, setBreed] = useState(data.breed);
+  const [accessory, setAccessory] = useState(data.accessorieslastworn);
+  const [date, setDate] = useState(data.datemissing);
+  const [attribute, setAttribute] = useState(data.specificattribute);
 
-  const [vaccine, setVaccine] = useState('');
-  const [type, setType] = useState("Choose pet's type");
-  const [color, setColor] = useState('');
+  const [vaccine, setVaccine] = useState(data.vaccine);
+  const [type, setType] = useState(data.type);
+  const [color, setColor] = useState(data.color);
 
   const [empty, setEmpty] = useState(false);
 
-  const [imageOne, setImageOne] = useState(
-    '/assets/Icons/ImagePlaceholder.svg'
-  );
-
-  const [image, setImage] = useState('');
+  const [imageOne, setImageOne] = useState(data.image);
 
   const [uploading, setUploading] = useState('');
 
@@ -45,9 +51,11 @@ export default function CreateMissingPost({ history }) {
   const { error, userInfo } = userLogin;
   const { id } = useParams();
 
-  const createMissingPost = useSelector((state) => state.missingPostCreated);
+  const createMissingPost = useSelector(
+    (state) => state.missingPostUpdateStore
+  );
 
-  const { loading, success, missingPost } = createMissingPost;
+  const { loading, success } = createMissingPost;
 
   const navigate = useNavigate();
   const dataport = {
@@ -69,13 +77,10 @@ export default function CreateMissingPost({ history }) {
     if (!userInfo) {
       navigate('/login');
     }
-  }, [history, userInfo]);
+  }, [userInfo]);
 
   var petType = ['Cat', 'Dog'];
   var genderType = ['Male', 'Female'];
-  var breedType = ['Breed one', 'Breed Two'];
-  var healthType = ['Healthy', 'Conditioned'];
-  var behaviourType = ['Calm', 'Angry'];
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -93,17 +98,8 @@ export default function CreateMissingPost({ history }) {
       dataport.gender &&
       dataport.type
     ) {
-      dispatch(missingPostCreateAction(id, dataport));
-      setEmpty(false);
-      setBreed('');
-      setColor('');
-      setGender('');
-      setLocation('');
-      setName('');
-      setVaccine('');
-      setType('');
+      dispatch(missingPostUpdateAction(id, dataport));
     } else {
-      setEmpty(true);
       console.log('Data is empty');
     }
   };
@@ -141,14 +137,20 @@ export default function CreateMissingPost({ history }) {
   };
 
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[100px] mb-[100px] ">
-      <h1 className="text-[30px] font-extrabold mt-14 text-primary  tracking-tighter">
-        Please provide details of missing pet
-      </h1>
-      <p className="text-[14px] text-gray-light mb-8">
-        Please enter the details of your pet
-      </p>
+    <div className=" lg:w-3/4 w-[90vw] mx-auto  mb-[100px] absolute top-[80px] bg-white  z-[700]  shadow-lg p-8 custom-round">
+      <div className="flex justify-between items-center ">
+        <h1 className="text-[30px] font-extrabold text-primary   tracking-tighter">
+          Edit Missing Post
+        </h1>
+        <div onClick={() => setModal(false)} className="cursor-pointer">
+          <div className="w-[24px] h-[3px] bg-primary rotate-45 mt-1"></div>
+          <div className="w-[24px] h-[3px] bg-primary -rotate-45 mt-[-3px] "></div>
+        </div>
+      </div>
 
+      <p className="text-[14px] text-gray-light mb-8">
+        Please enter the details of your missing pet
+      </p>
       {empty && (
         <Message
           message={'Please fill in all the fields !'}
@@ -156,9 +158,9 @@ export default function CreateMissingPost({ history }) {
         />
       )}
       {success && (
-        <Message message={'Post created successfully!'} variant={'success'} />
+        <Message message={'Post updated successfully!'} variant={'success'} />
       )}
-      {loading && <Loader />}
+      {loading && <UploadLoader />}
       <form>
         <div className="lg:flex justify-between items-center">
           <div className="lg:w-[32%]">
@@ -166,6 +168,7 @@ export default function CreateMissingPost({ history }) {
               label={'Pet name'}
               placeholder={'Tommy'}
               type={'text'}
+              data={name}
               setData={setName}
             />
           </div>
@@ -174,6 +177,7 @@ export default function CreateMissingPost({ history }) {
               label={"Pet's color"}
               placeholder={'Dhaka,Bangladesh'}
               type={'text'}
+              data={color}
               setData={setColor}
             />
           </div>
@@ -182,6 +186,7 @@ export default function CreateMissingPost({ history }) {
               label={"Pet's specific attribute"}
               placeholder={'Any marks or sign'}
               type={'text'}
+              data={attribute}
               setData={setAttribute}
             />
           </div>
@@ -193,15 +198,15 @@ export default function CreateMissingPost({ history }) {
               label={"Pet's last seen location"}
               placeholder={'Dhaka,Bangladesh'}
               type={'text'}
+              data={location}
               setData={setLocation}
             />
           </div>
 
           <div className="lg:w-[32%]">
-            <SelectBox
+            <TextInput
               minHeight={200}
               label={'Pet breed'}
-              choiceList={breedType}
               data={breed}
               setData={setBreed}
             />
@@ -211,6 +216,7 @@ export default function CreateMissingPost({ history }) {
               label={'Accessories last worn'}
               placeholder={'Accessories'}
               type={'text'}
+              data={accessory}
               setData={setAccessory}
             />
           </div>
@@ -220,7 +226,8 @@ export default function CreateMissingPost({ history }) {
             <TextInput
               label={'Reward'}
               placeholder={'Rewards amount in BDT'}
-              type={'text'}
+              type={'number'}
+              data={reward}
               setData={setReward}
             />
           </div>
@@ -229,6 +236,7 @@ export default function CreateMissingPost({ history }) {
               label={'Went missing on'}
               placeholder={'27/06/2022'}
               type={'date'}
+              data={date}
               setData={setDate}
             />
           </div>
@@ -295,6 +303,7 @@ export default function CreateMissingPost({ history }) {
                 placeholder={'Tommy'}
                 type={'checkbox'}
                 width={'w-[90px]'}
+                data={vaccine}
                 setData={setVaccine}
               />
             </div>

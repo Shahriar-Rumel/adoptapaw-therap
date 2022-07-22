@@ -46,10 +46,20 @@ export default function DesktopMenu({ theme }) {
           className="cursor-pointer flex items-center flex-row justify-center relative"
         >
           <div className="mr-8">
-            <div className="w-[30px] h-[30px] bg-brand rounded-[100%] flex items-center justify-center">
-              <h1 className="uppercase font-bold text-white">
-                {userInfo.username.split('')[0]}
-              </h1>
+            <div
+              className="w-[30px] h-[30px] bg-brand rounded-[100%] flex items-center justify-center"
+              style={{
+                backgroundImage: `url(${userInfo.dp})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
+              }}
+            >
+              {!userInfo.dp && (
+                <h1 className="uppercase font-bold text-white">
+                  {userInfo.username.split('')[0]}
+                </h1>
+              )}
             </div>
             {/* <h2 className=" text-primary font-semibold text-[14px]">
               {userInfo.username}

@@ -35,6 +35,9 @@ import ForgotPasswordResetPage from './Pages/ForgotPasswordResetPage';
 import UserAdoptionDetailsPage from './Pages/UserAdoptionPostDetailsPage';
 import UserProfileEditPage from './Pages/UserProfileEditPage';
 import AdminDashboardPage from './Pages/AdminDashboardPage';
+import UserAdoptionPostDetailsPage from './Pages/UserAdoptionPostDetailsPage';
+import UserMissingPostDetailsPage from './Pages/UserMissingPostDetailsPage';
+import RegistrationCompletePage from './Pages/RegistrationCompletePage';
 
 function App() {
   return (
@@ -73,6 +76,11 @@ function App() {
           />
           <Route path="/forgot" element={<ForgotPasswordPage />} exact />
           <Route path="/login" element={<LoginPage />} exact />
+          <Route
+            path="/registration/complete"
+            element={<RegistrationCompletePage />}
+            exact
+          />
           <Route path="/registration" element={<RegistrationPage />} exact />
           <Route
             path="/adoption/request/success"
@@ -100,10 +108,16 @@ function App() {
             exact
           />
           <Route
-            path="/user/adoption/:id"
-            element={<UserAdoptionDetailsPage />}
+            path="/user/missing/:id"
+            element={<UserMissingPostDetailsPage />}
             exact
           />
+          <Route
+            path="/user/adoption/:id"
+            element={<UserAdoptionPostDetailsPage />}
+            exact
+          />
+
           <Route
             path="/user/:uid/adoption/request/:id"
             element={<UserAdoptionRequestDetailsPage />}

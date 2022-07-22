@@ -4,7 +4,11 @@ import thunk from 'redux-thunk';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
+import {
+  userLoginReducer,
+  userProfileEditReducer,
+  userRegisterReducer
+} from './reducers/userReducer';
 import {
   adoptionAdoptionPostByIdReducer,
   adoptionAllPostReducer,
@@ -21,7 +25,8 @@ import {
   missingAllPostReducer,
   missingPostByIdReducer,
   missingPostCreateReducer,
-  missingPostsByUserIdReducer
+  missingPostsByUserIdReducer,
+  missingPostUpdateReducer
 } from './reducers/missingAnimalReducer';
 import {
   passwordResetReducer,
@@ -31,6 +36,7 @@ import {
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userUpdate: userProfileEditReducer,
   adoptionPosts: adoptionAllPostReducer,
   adoptionPostByIdStore: adoptionAdoptionPostByIdReducer,
   adoptionPostCreated: adoptionPostCreateReducer,
@@ -44,7 +50,8 @@ const reducer = combineReducers({
   passwordResetRequestStore: passwordResetRquestReducer,
   passwordResetStore: passwordResetReducer,
   adoptionPostUpdateStore: adoptionPostUpdateReducer,
-  missingPostCreated: missingPostCreateReducer
+  missingPostCreated: missingPostCreateReducer,
+  missingPostUpdateStore: missingPostUpdateReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

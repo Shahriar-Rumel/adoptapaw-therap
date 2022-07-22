@@ -100,17 +100,23 @@ export default function MissingAnimalProfilePage() {
               ></div>
             )}
 
-            <div className=" flex justify-between items-center mt-10 lg:mb-10 missing-animation">
-              <h1 className="font-extrabold text-[32px] tracking-tight text-primary -mt-[4px]">
-                Tommy
-              </h1>
-              <div className="flex">
-                <img src="/assets/fav.svg" className="w-[20px]"></img>
-                <h3 className="mx-2 text-[12px] font-medium text-gray-light">
-                  Dhanmondi,Dhaka
-                </h3>
+            {missingPostById && (
+              <div className=" flex justify-between items-center mt-10 lg:mb-10 missing-animation">
+                <h1 className="font-extrabold text-[32px] tracking-tight text-primary -mt-[4px]">
+                  {missingPostById.name}
+                </h1>
+                <div className="flex items-center">
+                  <img
+                    src="/assets/Icons/location.svg"
+                    className="w-[12px]"
+                  ></img>
+                  <h3 className="mx-2 text-[12px] font-medium text-gray-light">
+                    {missingPostById.location}
+                  </h3>
+                </div>
               </div>
-            </div>
+            )}
+
             <div className="missing-animation">
               <MissingFeature data={missingPostById} />
             </div>
@@ -166,7 +172,8 @@ export default function MissingAnimalProfilePage() {
 
             <div className="missing-animation">
               <h3 className="text-[12px] text-gray-light mt-10 mb-4">
-                Do you have information about Tommy?
+                {missingPostById &&
+                  `Do you have information about ${missingPostById.name}?`}
               </h3>
               <Link to={'/missing/cat/information'}>
                 <Button text="Send Information" />

@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4e2ab0a-f128-44a4-9377-a16aa8518f88" name="Changes" comment="">
+    <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/DonationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/DonationsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/DonationGiverRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/DonationGiverRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/DonationsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/repository/DonationsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/DonationsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/DonationsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/DonationsServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/DonationsServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/UserProfileEditPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/UserProfileEditPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/userReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +24,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2CIlaSrH13qxFV3AwuRzfPkj2Ua" />
+  <component name="ProjectId" id="2CHnjA8cGWpTGXhK9KIRaFQVvd9" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -63,16 +64,28 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a4e2ab0a-f128-44a4-9377-a16aa8518f88" name="Changes" comment="" />
-      <created>1658498045165</created>
+      <changelist id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="" />
+      <created>1658468512514</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1658498045165</updated>
-      <workItem from="1658498047791" duration="1260000" />
+      <updated>1658468512514</updated>
+      <workItem from="1658468515138" duration="780000" />
+      <workItem from="1658470998453" duration="4909000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

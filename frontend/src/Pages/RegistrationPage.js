@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import Message from '../Components/Message';
 
-export default function RegistrationPage({ history, location }) {
+export default function RegistrationPage() {
   useEffect(() => {
     gsap.from('.request-form-animation', {
       y: '+=60',
@@ -39,7 +39,7 @@ export default function RegistrationPage({ history, location }) {
 
   const userRegister = useSelector((state) => state.userRegister);
 
-  const { loading, error } = userRegister;
+  const { loading, success, error } = userRegister;
 
   const userLogin = useSelector((state) => state.userLogin);
 
@@ -48,14 +48,13 @@ export default function RegistrationPage({ history, location }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userInfo) {
-      navigate('/home');
+    if (success) {
+      navigate('/registration/complete');
     }
-  }, [history, userInfo]);
+  }, [success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-
     dispatch(register(name, email, password, username));
   };
   return (

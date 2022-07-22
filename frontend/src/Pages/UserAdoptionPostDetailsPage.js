@@ -8,10 +8,10 @@ import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
 import { useParams } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import Button from '../Components/Button';
-import UserAdoptionPostDetailsEditPage from '../Components/Modals/UserAdoptionDetailsEditModal';
+import UserAdoptionPostDetailsEditModal from '../Components/Modals/UserAdoptionDetailsEditModal';
 import UserAdoptionPostDeleteModal from '../Components/Modals/UserAdoptionPostDeleteModal';
 
-export default function UserAdoptionDetailsPage() {
+export default function UserAdoptionPostDetailsPage() {
   const [modal, setModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [refresh, setRefresh] = useState(false);
@@ -80,16 +80,21 @@ export default function UserAdoptionDetailsPage() {
             </h1>
             <div className="flex justify-between items-center my-4">
               <div className="" onClick={() => setModal(true)}>
-                <Button text={'Edit'} width={true} />
+                <Button text={'Edit'} width={true} widthClass={'w-[100px]'} />
               </div>
 
               <div className="" onClick={() => setDeleteModal(true)}>
-                <Button text={'Delete'} secondary={true} width={true} />
+                <Button
+                  text={'Delete'}
+                  secondary={true}
+                  width={true}
+                  widthClass={'w-[100px]'}
+                />
               </div>
             </div>
 
             {modal && (
-              <UserAdoptionPostDetailsEditPage
+              <UserAdoptionPostDetailsEditModal
                 data={adoptionPostById}
                 setModal={setModal}
                 setRefresh={setRefresh}

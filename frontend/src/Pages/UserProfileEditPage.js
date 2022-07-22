@@ -1,9 +1,13 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { update } from '../actions/userActions';
 import Button from '../Components/Button';
 import TextInput from '../Components/IO/TextInput';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
+import Loader from '../Components/Loader';
+import Message from '../Components/Message';
 
 const DpUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
   const uploadFileHandler = async (e) => {
@@ -76,79 +80,131 @@ export default function UserProfileEditPage() {
   const userLogin = useSelector((state) => state.userLogin);
 
   const { userInfo } = userLogin;
-  const [dp, setDp] = useState('');
+
+  const userUpdateData = useSelector((state) => state.userUpdate);
+
+  const { loading, success, error } = userUpdateData;
+
+  const [dp, setDp] = useState(userInfo.dp);
   const [uploading, setUploading] = useState('');
-  const [name, setName] = useState();
-  const [location, setLocation] = useState();
+  const [name, setName] = useState(userInfo.name);
+  const [location, setLocation] = useState(userInfo.location);
   const [password, setpPassword] = useState();
-  const [bio, setBio] = useState();
+  const [bio, setBio] = useState(userInfo.bio);
+
+  const { id } = useParams();
+  // useEffect(() => {
+  //   dispatch(update(id));
+  // }, [dispatch]);
+
+  const updateHandler = (e) => {
+    e.preventDefault();
+    dispatch(update(id, name, dp, password, location, bio));
+  };
   return (
-    <div className="lg:w-3/4 w-[90vw]   mx-auto mt-[100px] mb-[40px] lg:flex justify-between ">
+    <div className="lg:w-3/4 w-[90vw]   mx-auto mt-[100px] mb-[40px] ">
       {uploading && (
         <div className="fixed z-[999] top-[80px] bg-primary-light bg-opacity-25 left-0 right-0 bottom-0 flex items-center justify-center">
           <UploadLoader />
         </div>
       )}
-      <DpUpload
-        rawData={dp}
-        setData={setDp}
-        setUploading={setUploading}
-        id={'dpid'}
-        userInfo={userInfo}
-      />
-      <div className="lg:w-[60%] lg:ml-5">
-        <TextInput
-          type={'text'}
-          label={'Name'}
-          data={userInfo.name}
-          setData={setName}
-        />
-        <div className="flex flex-col my-3 request-form-animation">
-          <label className="font-bold text-primary text-[14px]">Email</label>
-          <input
-            type="text"
-            placeholder={'Okay'}
-            value={userInfo.email}
-            required
-            disabled
-            className="bg-input py-4 cursor-not-allowed custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
-          ></input>
+      {loading && (
+        <div className="fixed top-[80px] bottom-0 left-0 right-0 bg-primary-light bg-opacity-25 z-[880]  flex items-center justify-center">
+          <UploadLoader />
         </div>
-        <div className="flex flex-col my-3 request-form-animation">
-          <label className="font-bold text-primary text-[14px]">Username</label>
-          <input
-            type="text"
-            placeholder={'Okay'}
-            value={userInfo.username}
-            required
-            disabled
-            className="bg-input py-4 cursor-not-allowed custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
-          ></input>
+      )}
+      {success && (
+        <div className="">
+          <Message
+            message={'Profile updated successfully!'}
+            variant={'success'}
+          />
         </div>
-        <TextInput
-          type={'text'}
-          label={'Location'}
-          data={userInfo.name}
-          setData={setName}
-        />
-        <TextInput
-          type={'password'}
-          label={'Password'}
-          data={password}
-          setData={setpPassword}
-        />
-        <div className="flex flex-col my-3 request-form-animation">
-          <label className="font-bold text-primary text-[14px]">Bio</label>
-          <textarea
-            type="text"
-            placeholder={'Okay'}
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            required
-            className="bg-input py-4  custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
-          ></textarea>
+      )}
+      {error && (
+        <div className="">
+          <Message message={error} variant={'danger'} />
         </div>
-        <Button text={'Update Profile'} />
+      )}
+      <div className="lg:flex justify-between">
+        <DpUpload
+          rawData={dp}
+          setData={setDp}
+          setUploading={setUploading}
+          id={'dpid'}
+          userInfo={userInfo}
+        />
+        <form className="w-full lg:ml-[200px]">
+          <div className="md:w-[100%] lg:ml-5">
+            <TextInput
+              type={'text'}
+              label={'Name'}
+              data={name}
+              setData={setName}
+            />
+            <div className="flex flex-col my-3 request-form-animation">
+              <label className="font-bold text-primary text-[14px]">
+                Email
+              </label>
+              <input
+                type="text"
+                placeholder={'Okay'}
+                value={userInfo.email}
+                required
+                disabled
+                className="bg-input py-4 cursor-not-allowed custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
+              ></input>
+            </div>
+            <div className="flex flex-col my-3 request-form-animation">
+              <label className="font-bold text-primary text-[14px]">
+                Username
+              </label>
+              <input
+                type="text"
+                placeholder={'Okay'}
+                value={userInfo.username}
+                required
+                disabled
+                className="bg-input py-4 cursor-not-allowed custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
+              ></input>
+            </div>
+
+            <TextInput
+              type={'text'}
+              label={'Location'}
+              data={location}
+              setData={setLocation}
+            />
+            <div className="flex flex-col my-3 request-form-animation">
+              <label className="font-bold text-primary text-[14px]">
+                Password
+              </label>
+              <input
+                type="password"
+                placeholder={''}
+                value={password}
+                onChange={(e) => {
+                  setpPassword(e.target.value);
+                }}
+                className="bg-input py-4 custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
+              ></input>
+            </div>
+            <div className="flex flex-col my-3 request-form-animation">
+              <label className="font-bold text-primary text-[14px]">Bio</label>
+              <textarea
+                type="text"
+                placeholder={'Okay'}
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                required
+                className="bg-input py-4  custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
+              ></textarea>
+            </div>
+            <div onClick={updateHandler}>
+              <Button text={'Update Profile'} />
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

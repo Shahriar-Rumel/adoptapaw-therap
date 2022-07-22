@@ -5,6 +5,7 @@ import { adoptionPostByUserIdAction } from '../actions/adoptionActions';
 import Button from '../Components/Button';
 import AdoptionPostCard from '../Components/Cards/AdoptionPostCard';
 import Loader from '../Components/Loader';
+import Message from '../Components/Message';
 
 export default function UserProfilepage({ history }) {
   const dispatch = useDispatch();
@@ -43,16 +44,18 @@ export default function UserProfilepage({ history }) {
             <div className=" flex flex-col items-center   lg:w-[50%] xl:w-[60%]  lg:mt-[100px]  lg:mr-[30px] ">
               <div
                 className="w-[140px] h-[140px] lg:w-[240px] lg:h-[240px] flex items-center justify-center rounded-[100%] bg-brand"
-                // style={{
-                //   backgroundImage: `url("/assets/adoption/cat.jpg")`,
-                //   backgroundPosition: 'center',
-                //   backgroundSize: 'cover',
-                //   backgroundRepeat: 'no-repeat'
-                // }}
+                style={{
+                  backgroundImage: `url(${userInfo.dp})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat'
+                }}
               >
-                <h1 className="uppercase font-bold text-[70px] lg:text-[124px] text-white">
-                  {userInfo.username.split('')[0]}
-                </h1>
+                {!userInfo.dp && (
+                  <h1 className="uppercase font-bold text-[70px] lg:text-[124px] text-white">
+                    {userInfo.username.split('')[0]}
+                  </h1>
+                )}
               </div>
 
               <h1 className="text-[18px] font-bold text-primary tracking-tight text-center mt-3">
@@ -66,7 +69,9 @@ export default function UserProfilepage({ history }) {
               <div className="flex">
                 <img src="/assets/icons/location.svg"></img>
                 <h1 className="text-[14px] font-medium text-gray-light tracking-tight text-center mt-0 ml-2">
-                  Dhaka,Bangladesh
+                  {userInfo.location
+                    ? userInfo.location
+                    : 'No Location available'}
                 </h1>
               </div>
               <Link to={`/user/profile/${userInfo.id}/edit`}>
@@ -82,27 +87,38 @@ export default function UserProfilepage({ history }) {
                 </div>
               </Link>
             </div>
-            <div className=" flex flex-col  items-start justify-start mt-[50px] ">
+            <div className=" flex flex-col  items-start justify-start mt-[50px] lg:w-[50%]">
               {userInfo && (
-                <div>
+                <div className="w-full ">
                   <h1 className="text-[18px] font-bold text-primary tracking-tight mt-3 mb-3">
                     Bio
                   </h1>
                   <p className="text-[14px] text-gray-light lg:w-[90%]">
-                    {userInfo.bio
-                      ? userInfo.bio
-                      : ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque mauris pellentes lorem porttitor. Sed orci, fusce proin risus, ornare id lacus cras. Justo dolor est congue pulvinar scelerisque. Vulputate felis luctus urna risus'}
+                    {userInfo.bio ? userInfo.bio : "You haven't set up bio yet"}
                   </p>
                 </div>
               )}
 
-              <div>
+              <div className="w-full ">
                 <h1 className="text-[18px] font-bold text-primary tracking-tight mt-[30px] mb-3">
                   Adoption Posts
                 </h1>
-                {adoptionPostByUserId.content && (
-                  <AdoptionPostCard data={adoptionPostByUserId.content} />
-                )}
+                {adoptionPostByUserId.content &&
+                  (adoptionPostByUserId.content.length > 0 ? (
+                    <div className="w-full ">
+                      <AdoptionPostCard
+                        data={adoptionPostByUserId.content}
+                        columnSize={'lg:grid-cols-1'}
+                        columnSizeXl={`xl:grid-cols-1`}
+                      />
+                    </div>
+                  ) : (
+                    <Message
+                      variant={'danger'}
+                      message={'No post available'}
+                      active={true}
+                    />
+                  ))}
               </div>
             </div>
           </div>

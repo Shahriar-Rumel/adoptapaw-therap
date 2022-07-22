@@ -37,15 +37,15 @@ export default function UserAdoptionPostsPage() {
       ) : (
         userInfo && (
           <div className="lg:w-3/4 w-[90vw]   mx-auto mt-[100px] mb-[40px] lg:flex justify-between ">
-            <div>
-              <h1 className="text-[18px] font-bold text-primary tracking-tight mt-[30px] mb-3">
-                Adoption Posts
+            <div className="w-full ">
+              <h1 className="text-[24px] font-extrabold text-primary tracking-tighter mt-[30px] mb-3">
+                Adoption posts
               </h1>
               {adoptionPostByUserId.content && (
                 <AdoptionPostCard
                   data={adoptionPostByUserId.content}
-                  columnSize={3}
-                  columnSizeXl={3}
+                  columnSize={'lg:grid-cols-3'}
+                  columnSizeXl={`xl:grid-cols-3`}
                 />
               )}
             </div>

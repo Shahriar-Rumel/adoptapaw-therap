@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
-export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
+export default function MissingPostCard({ data, columnSize, columnSizeXl }) {
   return (
     <div
       className={`grid mb-[30px]   grid-cols-1 md:grid-cols-2 ${columnSize} ${columnSizeXl} gap-3 mx-auto `}
@@ -13,7 +13,7 @@ export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
               <h1 className="text-primary font-extrabold text-[14px] md:text-[16px] md:leading-[18px] leading-[16px] tracking-tighter mr-3">
                 {item.name}
               </h1>
-              <Link to={`/user/adoption/${item.id}`}>
+              <Link to={`/user/missing/${item.id}`}>
                 <Button
                   text="View"
                   brand={true}
@@ -37,7 +37,7 @@ export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
           <div
             className="w-[110px] min-h-[100px] h-[100%]  ml-2 custom-round"
             style={{
-              backgroundImage: `url(${item.imageone})`,
+              backgroundImage: `url(${item.image})`,
               backgroundPosition: 'center',
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat'
