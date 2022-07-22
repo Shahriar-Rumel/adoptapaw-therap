@@ -6,7 +6,7 @@ import lombok.Data;
 public class DonationGiverDTO {
     private Long id;
 
-    private String requestdate;
+    private String donationdate;
     private Long amountofmoney;
     private DonationUserDTO donationgiver;
     private DonationsDTO donationpost;

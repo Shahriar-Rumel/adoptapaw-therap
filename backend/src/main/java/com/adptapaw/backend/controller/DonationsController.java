@@ -1,6 +1,7 @@
 package com.adptapaw.backend.controller;
 
 
+
 import com.adptapaw.backend.payload.donations.DonationsDTO;
 import com.adptapaw.backend.payload.donations.DonationsResponseDTO;
 import com.adptapaw.backend.service.DonationsService;
@@ -17,9 +18,9 @@ public class DonationsController {
     }
 
 
-    @PostMapping("/{id}/createdonationspost")
-    public DonationsDTO createDonationsPost(@PathVariable(name="id") String  id, @RequestBody DonationsDTO donationsPostDTO){
-        return donationsService.createDonationsPost(id,donationsPostDTO);
+    @PostMapping("/createdonationspost")
+    public DonationsDTO createDonationsPost(@RequestBody DonationsDTO donationsPostDTO){
+        return donationsService.createDonationsPost(donationsPostDTO);
 
     }
 
@@ -41,5 +42,14 @@ public class DonationsController {
         return donationsService.getAllById(id);
     }
 
+    @PostMapping("/{id}")
+    public DonationsDTO UpdateDonations(@PathVariable (name="id") String  id, @RequestBody DonationsDTO donationsDTO){
+        return donationsService.updateById(id,donationsDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public String DeleteAdoptionAnimal(@PathVariable (name="id") String  id){
+        return donationsService.DeleteById(id);
+    }
 
 }

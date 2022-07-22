@@ -1,9 +1,13 @@
 package com.adptapaw.backend.service.implementation;
 
 
+
+import com.adptapaw.backend.entity.DonationGiver;
 import com.adptapaw.backend.entity.Donations;
+
 import com.adptapaw.backend.payload.donations.DonationsDTO;
 import com.adptapaw.backend.payload.donations.DonationsResponseDTO;
+import com.adptapaw.backend.repository.DonationGiverRepository;
 import com.adptapaw.backend.repository.DonationsRepository;
 import com.adptapaw.backend.service.DonationsService;
 import org.modelmapper.ModelMapper;
@@ -19,15 +23,17 @@ public class DonationsServiceImplementation implements DonationsService {
 
 
     private DonationsRepository donationsRepository;
+    private DonationGiverRepository donationGiverRepository;
 
 
 //    @Autowired
 //    private UserRepository userRepository;
 
 
-    public DonationsServiceImplementation(ModelMapper mapper, DonationsRepository donationsRepository) {
+    public DonationsServiceImplementation(ModelMapper mapper, DonationsRepository donationsRepository, DonationGiverRepository donationGiverRepository) {
         this.mapper = mapper;
         this.donationsRepository = donationsRepository;
+        this.donationGiverRepository = donationGiverRepository;
     }
 
 
@@ -65,7 +71,7 @@ public class DonationsServiceImplementation implements DonationsService {
     }
 
     @Override
-    public DonationsDTO createDonationsPost(String id, DonationsDTO donationsDTO) {
+    public DonationsDTO createDonationsPost(DonationsDTO donationsDTO) {
 
 
         Donations feeds = new Donations();
@@ -80,7 +86,7 @@ public class DonationsServiceImplementation implements DonationsService {
 
 
         donationsRepository.save(feeds);
-
+        donationsDTO.setId(feeds.getId());
 
 
         return donationsDTO;
@@ -93,6 +99,40 @@ public class DonationsServiceImplementation implements DonationsService {
         Donations donations = donationsRepository.findById(Long.valueOf(id)).get();
 
         return mapToDTO(donations);
+    }
+
+    @Override
+    public DonationsDTO updateById(String id, DonationsDTO donationsDTO) {
+        Donations feeds =donationsRepository.findById(Long.valueOf(id)).get();
+
+        feeds.setName(donationsDTO.getName());
+        feeds.setType(donationsDTO.getType());
+        feeds.setDescription(donationsDTO.getDescription());
+        feeds.setTargetamount(donationsDTO.getTargetamount());
+        feeds.setRemainingamount(donationsDTO.getRemainingamount());
+        feeds.setPeopledonated(donationsDTO.getPeopledonated());
+        feeds.setImage(donationsDTO.getImage());
+
+        donationsRepository.save(feeds);
+
+        return mapToDTO(feeds);
+
+    }
+
+    @Override
+    public String DeleteById(String id) {
+        Donations post = donationsRepository.findById(Long.valueOf(id)).get();
+        List<DonationGiver>donationGiverList = donationGiverRepository.findAllByDonationpost(post);
+
+        for (DonationGiver donationGiver :donationGiverList) {
+            donationGiver.setDonationgiver(null);
+            donationGiver.setDonationpost(null);
+            donationGiverRepository.deleteById(donationGiver.getId());
+        }
+
+
+        donationsRepository.delete(post);
+        return "Post Deleted Successfully " + post.getId();
     }
 
 }
