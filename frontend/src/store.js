@@ -32,6 +32,11 @@ import {
   passwordResetReducer,
   passwordResetRquestReducer
 } from './reducers/passwordResetReducer';
+import {
+  donationAllPostReducer,
+  donationPostByIdReducer,
+  donationPostCreateReducer
+} from './reducers/donationReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -51,7 +56,10 @@ const reducer = combineReducers({
   passwordResetStore: passwordResetReducer,
   adoptionPostUpdateStore: adoptionPostUpdateReducer,
   missingPostCreated: missingPostCreateReducer,
-  missingPostUpdateStore: missingPostUpdateReducer
+  missingPostUpdateStore: missingPostUpdateReducer,
+  donationPostCreated: donationPostCreateReducer,
+  donationPosts: donationAllPostReducer,
+  donationPostByIdStore: donationPostByIdReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

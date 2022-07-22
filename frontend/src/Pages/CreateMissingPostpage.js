@@ -34,8 +34,6 @@ export default function CreateMissingPost({ history }) {
     '/assets/Icons/ImagePlaceholder.svg'
   );
 
-  const [image, setImage] = useState('');
-
   const [uploading, setUploading] = useState('');
 
   const dispatch = useDispatch();
@@ -74,8 +72,6 @@ export default function CreateMissingPost({ history }) {
   var petType = ['Cat', 'Dog'];
   var genderType = ['Male', 'Female'];
   var breedType = ['Breed one', 'Breed Two'];
-  var healthType = ['Healthy', 'Conditioned'];
-  var behaviourType = ['Calm', 'Angry'];
 
   const submitHandler = (e) => {
     e.preventDefault();

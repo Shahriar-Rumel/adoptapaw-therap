@@ -23,11 +23,11 @@ import java.util.stream.Collectors;
 @Service
 public class MissingAnimalServiceImplementation implements MissingAnimalService {
 
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
 
-    private MissingAnimalRepository missingAnimalRepository;
+    private final MissingAnimalRepository missingAnimalRepository;
 
-    private MissingRequestRepository missingRequestRepository;
+    private final MissingRequestRepository missingRequestRepository;
 
 
     @Autowired

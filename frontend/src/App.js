@@ -38,6 +38,7 @@ import AdminDashboardPage from './Pages/AdminDashboardPage';
 import UserAdoptionPostDetailsPage from './Pages/UserAdoptionPostDetailsPage';
 import UserMissingPostDetailsPage from './Pages/UserMissingPostDetailsPage';
 import RegistrationCompletePage from './Pages/RegistrationCompletePage';
+import CreateDonationPage from './Pages/CreateDonationPage';
 
 function App() {
   return (
@@ -90,6 +91,11 @@ function App() {
           <Route
             path="/missing/:id/createpost"
             element={<CreateMissingPost />}
+            exact
+          />
+          <Route
+            path="/donation/createpost"
+            element={<CreateDonationPage />}
             exact
           />
           <Route

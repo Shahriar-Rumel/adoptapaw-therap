@@ -79,11 +79,9 @@ public class DonationsServiceImplementation implements DonationsService {
         feeds.setType(donationsDTO.getType());
         feeds.setDescription(donationsDTO.getDescription());
         feeds.setTargetamount(donationsDTO.getTargetamount());
-        feeds.setRemainingamount(donationsDTO.getRemainingamount());
-        feeds.setPeopledonated(donationsDTO.getPeopledonated());
+        feeds.setRemainingamount(donationsDTO.getTargetamount());
+        feeds.setPeopledonated(0L);
         feeds.setImage(donationsDTO.getImage());
-
-
 
         donationsRepository.save(feeds);
         donationsDTO.setId(feeds.getId());

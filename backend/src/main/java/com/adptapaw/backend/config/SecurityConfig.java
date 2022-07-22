@@ -57,6 +57,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/api/signup").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/adoption/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/donations/{id}").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/missing/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/adoption/request/**").access("hasRole('ADMIN')")
                 .anyRequest()

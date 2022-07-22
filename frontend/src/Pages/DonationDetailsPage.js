@@ -1,63 +1,71 @@
 import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../Components/Button';
-import TextInput from '../Components/IO/TextInput';
+import { useParams } from 'react-router-dom';
+import { donationPostByIdAction } from '../actions/donationActions';
+import Loader from '../Components/Loader';
+import { stringify } from 'postcss';
 
-const DonationCover = () => {
+const DonationCover = ({ data }) => {
   return (
     <>
       <div
         className="w-[100%]  h-[300px] lg:h-[400px] custom-round"
         style={{
-          backgroundImage: `url("/assets/adoption/cat.jpg")`,
+          backgroundImage: `url(${data.image})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}
       ></div>
       <div className="bg-primary-light w-[100px] flex items-center justify-center py-3 custom-round mt-5">
-        <h2 className="text-[14px] font-bold text-gray-light">Cheap</h2>
+        <h2 className="text-[14px] font-bold text-gray-light">{data.type}</h2>
       </div>
     </>
   );
 };
-const DonationHeader = () => {
+const DonationHeader = ({ data }) => {
   return (
     <>
       <h1 className="font-extrabold tracking-tight text-[24px] text-primary leading-7 my-4">
-        Make a <span className="text-brand">donation</span> ; Help Doggo live a
-        healthy life
+        Make a <span className="text-brand">donation</span> ; Help {data.name}
+        live a healthy life
       </h1>
       <p className="text-[14px] text-gray-light leading-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat felis
-        eu tincidunt cursus. Quam venenatis, id cras viverra at volutpat
-        dictumst in fringilla.
+        {data.description}
       </p>
     </>
   );
 };
-const DonationBar = () => {
+const DonationBar = ({ data }) => {
+  let target = Number.parseInt(data.targetamount);
+  let remainingamount = Number.parseInt(data.remainingamount);
+  let width = ((target - remainingamount) * 100) / target;
+  let widthClass = 'w-[' + width + '%]';
+  let ans = String(widthClass);
+
   return (
     <>
       <div className="w-full h-[8px] bg-gray mt-8">
-        <div className="bg-brand h-full w-[70%]"></div>
+        <div className={`bg-brand h-full ${ans}`}></div>
       </div>
       <div className="flex mt-3 justify-between">
         <div className="flex">
           <h3 className="text-gray-light mr-5">Target</h3>
-          <h3 className="font-bold mr-5">10000</h3>
+          <h3 className="font-bold mr-5">{data.targetamount}</h3>
         </div>
         <div className="flex">
           <h3 className="text-gray-light mr-5">Remaining</h3>
-          <h3 className="font-bold">5000</h3>
+          <h3 className="font-bold">{data.remainingamount}</h3>
         </div>
       </div>
     </>
   );
 };
 
-const DonatorAvatar = () => {
+const DonatorAvatar = ({ data }) => {
   return (
     <div className="flex items-center">
       <div
@@ -88,7 +96,7 @@ const DonatorAvatar = () => {
         className="ml-[-15px] w-[30px] h-[30px] rounded-full"
       ></div>
       <h3 className="text-gray-light font-bold tracking-tight ml-5">
-        500+ Donations
+        {data.peopledonated}+ Donations
       </h3>
     </div>
   );
@@ -209,21 +217,47 @@ const DonationModal = ({ modal, setModal }) => {
 
 export default function DonationDetailsPage() {
   const [modal, setModal] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const donationPostByIdDataSet = useSelector(
+    (state) => state.donationPostByIdStore
+  );
+
+  const { loading, error, donationPostById } = donationPostByIdDataSet;
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(donationPostByIdAction(id));
+  }, [dispatch]);
   return (
-    <div className="lg:w-3/4 w-[90vw] mx-auto mt-[100px] mb-[40px] lg:flex justify-start items-center">
-      <div className="lg:mr-10 ">
-        <DonationCover />
-        <DonationHeader />
-        <DonationBar />
-        <div className=" flex  justify-between mt-5">
-          <DonatorAvatar />
-          <div onClick={() => setModal(true)}>
-            <Button width={true} text={'Donate Now'} />
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        donationPostById && (
+          <div className="lg:w-3/4 w-[90vw] mx-auto mt-[100px] mb-[40px] lg:flex justify-start items-center">
+            <div className="lg:mr-10 lg:w-[80%] ">
+              <DonationCover data={donationPostById} />
+              <DonationHeader data={donationPostById} />
+              <DonationBar data={donationPostById} />
+              <div className=" flex  justify-between mt-5">
+                <DonatorAvatar data={donationPostById} />
+                <div onClick={() => setModal(true)}>
+                  <Button
+                    width={true}
+                    text={'Donate Now'}
+                    widthClass={'w-[100px]'}
+                  />
+                </div>
+              </div>
+            </div>
+            <DonationPurpose />
+            <DonationModal modal={modal} setModal={setModal} />
           </div>
-        </div>
-      </div>
-      <DonationPurpose />
-      <DonationModal modal={modal} setModal={setModal} />
-    </div>
+        )
+      )}
+    </>
   );
 }

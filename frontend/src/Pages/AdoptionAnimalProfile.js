@@ -60,13 +60,15 @@ export default function AdoptionAnimalProfile() {
       {loading ? (
         <Loader />
       ) : (
-        <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
-          <div className=" lg:w-[50%]  lg:mr-10">
-            <AnimalProfileLeft data={adoptionPostById} />
-            <AnimalProfileMid data={adoptionPostById} />
+        adoptionPostById && (
+          <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+            <div className=" lg:w-[50%]  lg:mr-10">
+              <AnimalProfileLeft data={adoptionPostById} />
+              <AnimalProfileMid data={adoptionPostById} />
+            </div>
+            <AnimalProfileBottom data={adoptionPostById} />
           </div>
-          <AnimalProfileBottom data={adoptionPostById} />
-        </div>
+        )
       )}
     </>
   );

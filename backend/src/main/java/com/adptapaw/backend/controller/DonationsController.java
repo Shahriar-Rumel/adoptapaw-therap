@@ -5,6 +5,7 @@ package com.adptapaw.backend.controller;
 import com.adptapaw.backend.payload.donations.DonationsDTO;
 import com.adptapaw.backend.payload.donations.DonationsResponseDTO;
 import com.adptapaw.backend.service.DonationsService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins  = "http://localhost:3000")
@@ -18,6 +19,7 @@ public class DonationsController {
     }
 
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/createdonationspost")
     public DonationsDTO createDonationsPost(@RequestBody DonationsDTO donationsPostDTO){
         return donationsService.createDonationsPost(donationsPostDTO);

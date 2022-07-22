@@ -24,6 +24,7 @@ const navItems = [
     link: '/contact'
   }
 ];
+
 const navItemsLeft = [
   {
     imgprimary: '/assets/primary/registration.svg',

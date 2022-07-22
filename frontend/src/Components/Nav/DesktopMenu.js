@@ -73,7 +73,7 @@ export default function DesktopMenu({ theme }) {
           </div>
 
           {showProfileMenu && (
-            <div className="w-[200px] h-[400px] menu-blur shadow-md absolute flex flex-col mr-[100px] items-center justify-between mt-[460px] custom-round px-4 py-4">
+            <div className="w-[200px] h-[450px] menu-blur shadow-md absolute flex flex-col mr-[100px] items-center justify-between mt-[500px] custom-round px-4 py-4">
               <Link
                 to={`/user/profile/${userInfo.id}`}
                 className="w-[100%]"
@@ -85,28 +85,56 @@ export default function DesktopMenu({ theme }) {
                   </h2>
                 </div>
               </Link>
-              <Link
-                to={`/user/profile/${userInfo.id}/adoptionposts`}
-                className="w-[100%]"
-                onClick={() => setShowProfileMenu((prev) => !prev)}
-              >
-                <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
-                  <h2 className="px-2 text-[14px] font-semibold ml-2 ">
-                    My adoption posts
-                  </h2>
-                </div>
-              </Link>
-              <Link
-                to={`/user/profile/${userInfo.id}/missingposts`}
-                className="w-[100%]"
-                onClick={() => setShowProfileMenu((prev) => !prev)}
-              >
-                <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
-                  <h2 className="px-2 text-[14px] font-semibold ml-2 ">
-                    My missing posts
-                  </h2>
-                </div>
-              </Link>
+              {userInfo.role[0].id === 2 ? (
+                <Link
+                  to={`/user/profile/${userInfo.id}/adoptionposts`}
+                  className="w-[100%]"
+                  onClick={() => setShowProfileMenu((prev) => !prev)}
+                >
+                  <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
+                    <h2 className="px-2 text-[14px] font-semibold ml-2 ">
+                      My adoption posts
+                    </h2>
+                  </div>
+                </Link>
+              ) : (
+                <Link
+                  to={`/user/profile/${userInfo.id}/adoptionposts`}
+                  className="w-[100%]"
+                  onClick={() => setShowProfileMenu((prev) => !prev)}
+                >
+                  <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
+                    <h2 className="px-2 text-[14px] font-semibold ml-2 ">
+                      Adoption Requests
+                    </h2>
+                  </div>
+                </Link>
+              )}
+              {userInfo.role[0].id === 2 ? (
+                <Link
+                  to={`/user/profile/${userInfo.id}/missingposts`}
+                  className="w-[100%]"
+                  onClick={() => setShowProfileMenu((prev) => !prev)}
+                >
+                  <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
+                    <h2 className="px-2 text-[14px] font-semibold ml-2 ">
+                      My missing posts
+                    </h2>
+                  </div>
+                </Link>
+              ) : (
+                <Link
+                  to={`/user/profile/${userInfo.id}/adoptionposts`}
+                  className="w-[100%]"
+                  onClick={() => setShowProfileMenu((prev) => !prev)}
+                >
+                  <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
+                    <h2 className="px-2 text-[14px] font-semibold ml-2 ">
+                      Missing Leads
+                    </h2>
+                  </div>
+                </Link>
+              )}
               <Link
                 to={`/user/profile/${userInfo.id}/adoptionrequests`}
                 className="w-[100%]"
@@ -114,10 +142,24 @@ export default function DesktopMenu({ theme }) {
               >
                 <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
                   <h2 className="px-2 text-[14px] font-semibold ml-2 ">
-                    Adoptions
+                    Adoption Posts
                   </h2>
                 </div>
               </Link>
+              {userInfo.role[0].id === 1 && (
+                <Link
+                  to={`/user/profile/${userInfo.id}/adoptionrequests`}
+                  className="w-[100%]"
+                  onClick={() => setShowProfileMenu((prev) => !prev)}
+                >
+                  <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand">
+                    <h2 className="px-2 text-[14px] font-semibold ml-2 ">
+                      Missing Posts
+                    </h2>
+                  </div>
+                </Link>
+              )}
+
               <Link
                 to={`/user/profile/${userInfo.id}`}
                 className="w-[100%]"
@@ -129,6 +171,19 @@ export default function DesktopMenu({ theme }) {
                   </h2>
                 </div>
               </Link>
+              {userInfo.role[0].id === 1 && (
+                <Link
+                  to={`/user/profile/${userInfo.id}`}
+                  className="w-[100%]"
+                  onClick={() => setShowProfileMenu((prev) => !prev)}
+                >
+                  <div className="border-b w-[100%] py-3 border-gray text-gray-light hover:text-brand mb-5">
+                    <h2 className="px-2 text-[14px] font-semibold ml-2 ">
+                      Users
+                    </h2>
+                  </div>
+                </Link>
+              )}
 
               <div onClick={LogoutHandler}>
                 <Button

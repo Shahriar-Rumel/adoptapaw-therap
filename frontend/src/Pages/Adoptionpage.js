@@ -6,9 +6,8 @@ import AdoptionHeader from '../Components/Adoption/AdoptionHeader';
 import Button from '../Components/Button';
 import CardList from '../Components/Cards/CardList';
 import Loader from '../Components/Loader';
-import Searchbox from '../Components/IO/Searchbox';
 
-export default function Adoptionpage({ history }) {
+export default function Adoptionpage() {
   const dispatch = useDispatch();
 
   const adoptionPostsData = useSelector((state) => state.adoptionPosts);

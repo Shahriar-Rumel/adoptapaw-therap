@@ -46,7 +46,18 @@ export default function AnimalProfileMid({ poster, data }) {
                 </h3>
                 <h3 className="gray-dark">19 June 2022</h3>
               </div>
-              {data.availability && data.user.id != userInfo.id && (
+              {/* {userInfo && data.availability && data.user.id != userInfo.id && (
+                <Link
+                  to={
+                    userInfo
+                      ? `/adoption/${data.id}/user/${userInfo.id}/createadoptionrequest`
+                      : '/login'
+                  }
+                >
+                  <Button text={`Adopt ${data.name}`} />
+                </Link>
+              )} */}
+              {data.availability && (
                 <Link
                   to={
                     userInfo
@@ -57,7 +68,7 @@ export default function AnimalProfileMid({ poster, data }) {
                   <Button text={`Adopt ${data.name}`} />
                 </Link>
               )}
-              {(!data.availability || data.user.id == userInfo.id) && (
+              {!data.availability && (
                 <button
                   className="bg-gray-light cursor-not-allowed w-[100%] custom-round h-[55px] text-white"
                   disabled

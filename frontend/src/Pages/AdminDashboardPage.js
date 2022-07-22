@@ -8,10 +8,10 @@ const StatCard = ({ title, data, src, text, variant, brand }) => {
     <div className="shadow-md bg-primary-light bg-opacity-10 py-5 px-4 custom-round my-3 lg:my-0 lg:w-[33%] ">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-bold text-gray-light tracking-tighter text-[18px]">
+          <h1 className="font-bold text-gray-light tracking-tighter text-[16px]">
             {title}
           </h1>
-          <h1 className="font-black text-primary tracking-tight text-[16px] mt-3">
+          <h1 className="font-black text-primary tracking-tight text-[32px] mt-2">
             {data}
           </h1>
         </div>

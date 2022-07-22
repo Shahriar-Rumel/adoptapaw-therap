@@ -59,8 +59,6 @@ export const adoptionPostByIdAction = (id) => async (dispatch) => {
       type: ADOPTION_POST_BY_ID_SUCCESS,
       payload: data
     });
-
-    // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: ADOPTION_POST_BY_ID_FAIL,
