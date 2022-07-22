@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Message.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Message.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/UserProfileEditPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/UserProfileEditPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/UserProfilePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/UserProfilePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/constants/userConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constants/userConstants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/userReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store.js" afterDir="false" />
     </list>
@@ -76,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1658468512514</updated>
       <workItem from="1658468515138" duration="780000" />
-      <workItem from="1658470998453" duration="2417000" />
+      <workItem from="1658470998453" duration="4909000" />
     </task>
     <servers />
   </component>

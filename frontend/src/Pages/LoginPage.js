@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import Message from '../Components/Message';
 
-export default function LoginPage({ location, history }) {
+export default function LoginPage() {
   useEffect(() => {
     gsap.from('.request-form-animation', {
       y: '+=60',
@@ -35,25 +35,24 @@ export default function LoginPage({ location, history }) {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
-
   const userLogin = useSelector((state) => state.userLogin);
-
   const { loading, error, userInfo } = userLogin;
-
-  // const redirect = location ? location.split('=')[1] : '/';
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (userInfo) {
-      // history.push(redirect);
-      navigate('/home');
+      if (userInfo.role[0].id === 1) {
+        navigate('/dashboard');
+      }
+      if (userInfo.role[0].id === 2) {
+        navigate('/home');
+      }
     }
-  }, [history, userInfo]);
+  }, [userInfo]);
 
   const submitHandler = () => {
     dispatch(login(email, password));
-    console.log(email);
   };
   return (
     <>

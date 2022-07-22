@@ -8,10 +8,10 @@ import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
 import { useParams } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import Button from '../Components/Button';
-import UserAdoptionPostDetailsEditPage from '../Components/Modals/UserAdoptionDetailsEditModal';
+import UserAdoptionPostDetailsEditModal from '../Components/Modals/UserAdoptionDetailsEditModal';
 import UserAdoptionPostDeleteModal from '../Components/Modals/UserAdoptionPostDeleteModal';
 
-export default function UserAdoptionDetailsPage() {
+export default function UserAdoptionPostDetailsPage() {
   const [modal, setModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [refresh, setRefresh] = useState(false);
@@ -94,7 +94,7 @@ export default function UserAdoptionDetailsPage() {
             </div>
 
             {modal && (
-              <UserAdoptionPostDetailsEditPage
+              <UserAdoptionPostDetailsEditModal
                 data={adoptionPostById}
                 setModal={setModal}
                 setRefresh={setRefresh}

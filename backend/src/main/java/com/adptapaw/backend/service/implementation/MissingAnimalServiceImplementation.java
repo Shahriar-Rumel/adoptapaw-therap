@@ -123,8 +123,8 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
     }
     @Override
     public MissingAnimalDTO updateById(String id, MissingAnimalDTO missingAnimalDTO) {
-        MissingAnimal missingAnimal = missingAnimalRepository.findById(Long.valueOf(id)).get();
 
+        MissingAnimal missingAnimal = missingAnimalRepository.findById(Long.valueOf(id)).get();
 
         missingAnimal.setBreed(missingAnimalDTO.getBreed());
         missingAnimal.setColor(missingAnimalDTO.getColor());

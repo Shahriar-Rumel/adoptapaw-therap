@@ -186,7 +186,7 @@ export default function UserProfileEditPage() {
                 onChange={(e) => {
                   setpPassword(e.target.value);
                 }}
-                className="bg-input py-4 cursor-not-allowed custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
+                className="bg-input py-4 custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
               ></input>
             </div>
             <div className="flex flex-col my-3 request-form-animation">

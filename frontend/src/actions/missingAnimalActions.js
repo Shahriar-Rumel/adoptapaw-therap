@@ -9,6 +9,9 @@ import {
   MISSING_POST_CREATE_FAIL,
   MISSING_POST_CREATE_REQUEST,
   MISSING_POST_CREATE_SUCCESS,
+  MISSING_POST_EDIT_FAIL,
+  MISSING_POST_EDIT_REQUEST,
+  MISSING_POST_EDIT_SUCCESS,
   MISSING_POST_FAIL,
   MISSING_POST_REQUEST,
   MISSING_POST_SUCCESS
@@ -93,8 +96,8 @@ export const missingPostByUserIdAction = (id) => async (dispatch, getState) => {
     dispatch({
       type: MISSING_POSTS_BY_USERID_FAIL,
       payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
+        error.response && error.response.data
+          ? error.response.data
           : error.message
     });
   }
@@ -128,6 +131,40 @@ export const missingPostCreateAction =
     } catch (error) {
       dispatch({
         type: MISSING_POST_CREATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };
+
+export const missingPostUpdateAction =
+  (id, dataport) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: MISSING_POST_EDIT_REQUEST
+      });
+
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      await axios.put(`${BASE_URL}/${id}`, dataport, config);
+
+      dispatch({
+        type: MISSING_POST_EDIT_SUCCESS
+      });
+    } catch (error) {
+      dispatch({
+        type: MISSING_POST_EDIT_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

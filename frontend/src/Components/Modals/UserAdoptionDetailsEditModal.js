@@ -109,9 +109,11 @@ export default function UserAdoptionPostDetailsEdit({
   const { userInfo } = userLogin;
   const { id } = useParams();
 
-  const createAdoptionPost = useSelector((state) => state.adoptionPostCreated);
+  const createAdoptionPost = useSelector(
+    (state) => state.adoptionPostUpdateStore
+  );
 
-  const { loading, success, adoptionPost } = createAdoptionPost;
+  const { loading, success } = createAdoptionPost;
 
   const navigate = useNavigate();
   const dataport = {
@@ -162,7 +164,6 @@ export default function UserAdoptionPostDetailsEdit({
     ) {
       dispatch(adoptionPostUpdateAction(id, dataport));
       setRefresh(true);
-      setModal(false);
     } else {
       setEmpty(true);
       console.log('Data is empty');
@@ -191,7 +192,7 @@ export default function UserAdoptionPostDetailsEdit({
         />
       )}
       {success && (
-        <Message message={'Post created successfully!'} variant={'success'} />
+        <Message message={'Post updated successfully!'} variant={'success'} />
       )}
       {loading && <Loader />}
       <form>
