@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { update } from '../actions/userActions';
 import Button from '../Components/Button';
 import TextInput from '../Components/IO/TextInput';
@@ -93,9 +93,16 @@ export default function UserProfileEditPage() {
   const [bio, setBio] = useState(userInfo.bio);
 
   const { id } = useParams();
-  // useEffect(() => {
-  //   dispatch(update(id));
-  // }, [dispatch]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userInfo) {
+      if (userInfo.id != id) {
+        navigate('/home');
+      }
+    }
+  }, [userInfo]);
 
   const updateHandler = (e) => {
     e.preventDefault();

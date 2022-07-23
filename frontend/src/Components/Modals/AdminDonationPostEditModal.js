@@ -1,33 +1,38 @@
 import React, { useState } from 'react';
-import TextInput from '../Components/IO/TextInput';
-import SelectBox from '../Components/IO/SelectBox';
-import UploadLoader from '../Components/UploadLoader/UploadLoader';
+import TextInput from '../IO/TextInput';
+import SelectBox from '../IO/SelectBox';
+import UploadLoader from '../UploadLoader/UploadLoader';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
-import Button from '../Components/Button';
-import { donationPostCreateAction } from '../actions/donationActions';
+import Button from '../Button';
+import { donationPostUpdateAction } from '../../actions/donationActions';
+import { useParams } from 'react-router-dom';
+import Loader from '../Loader';
+import Message from '../Message';
 
-
-export default function CreateDonationPage() {
-  const [name, setName] = useState();
-  const [type, setType] = useState();
-  const [description, setDescription] = useState();
-  const [targetAmount, setTargetAmount] = useState();
-  const [remainingAmount, setRemainingAmount] = useState();
-  const [peopleDonated, setPeopleDonated] = useState();
-  const [image, setImage] = useState();
-
-  const [empty, setEmpty] = useState(true);
+export default function AdminDonationPostEditModal({ data, setModal }) {
+  const [name, setName] = useState(data.name);
+  const [type, setType] = useState(data.type);
+  const [description, setDescription] = useState(data.description);
+  const [targetAmount, setTargetAmount] = useState(data.targetamount);
+  const [image, setImage] = useState(data.image);
 
   const [uploading, setUploading] = useState('');
 
   const typeArray = ['Cat', 'Dog'];
 
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const userLogin = useSelector((state) => state.userLogin);
 
   const { error, userInfo } = userLogin;
+
+  const createDonationPost = useSelector(
+    (state) => state.donationPostUpdateStore
+  );
+
+  const { loading, success } = createDonationPost;
 
   const dataport = {
     name: name,
@@ -77,26 +82,29 @@ export default function CreateDonationPage() {
       dataport.targetamount &&
       dataport.image
     ) {
-      dispatch(donationPostCreateAction(dataport));
-      setEmpty(false);
-      setName('');
-      setType('');
-      setDescription('');
-      setTargetAmount('');
-      setImage('');
-    } else {
-      setEmpty(true);
-      console.log('Data is empty');
+      dispatch(donationPostUpdateAction(id, dataport));
     }
   };
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[120px] mb-[100px] ">
-      <h1 className="text-[24px] tracking-tight font-extrabold text-primary">
-        Create Donation Post
-      </h1>
+    <div className=" lg:w-[1000px] w-[90vw] top-[100px] absolute shadow-xl bg-white px-4 py-5 ">
+      <div className="flex justify-between items-center">
+        <h1 className="text-[24px] tracking-tight font-extrabold text-primary">
+          Edit Donation Post
+        </h1>
+        <div onClick={() => setModal(false)} className="cursor-pointer">
+          <div className="w-[24px] h-[3px] bg-primary rotate-45 mt-1"></div>
+          <div className="w-[24px] h-[3px] bg-primary -rotate-45 mt-[-3px] "></div>
+        </div>
+      </div>
+
       <p className="text-[16px]  text-gray-light">
         Provide all the necessary information to set up a donation
       </p>
+
+      {success && (
+        <Message message={'Post updated successfully!'} variant={'success'} />
+      )}
+      {loading && <Loader />}
       <form onSubmit={submitHandler}>
         <TextInput
           label={'Title'}
@@ -157,7 +165,6 @@ export default function CreateDonationPage() {
                 <input
                   id="filePicker"
                   onChange={uploadFileHandler}
-                  required
                   style={{ visibility: 'hidden' }}
                   className="absolute"
                   type={'file'}
@@ -167,7 +174,7 @@ export default function CreateDonationPage() {
             </div>
           </div>
         </div>
-        <Button text={'Create donation post'} />
+        <Button text={'Update donation post'} />
       </form>
     </div>
   );

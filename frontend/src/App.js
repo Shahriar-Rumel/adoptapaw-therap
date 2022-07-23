@@ -39,6 +39,8 @@ import UserAdoptionPostDetailsPage from './Pages/UserAdoptionPostDetailsPage';
 import UserMissingPostDetailsPage from './Pages/UserMissingPostDetailsPage';
 import RegistrationCompletePage from './Pages/RegistrationCompletePage';
 import CreateDonationPage from './Pages/CreateDonationPage';
+import AdminDonationPostsPage from './Pages/AdminDonationPostsPage';
+import AdminDonationPostDetailsPage from './Pages/AdminDonationPostDetailsPage';
 
 function App() {
   return (
@@ -147,6 +149,16 @@ function App() {
           <Route
             path="/user/profile/:id/edit"
             element={<UserProfileEditPage />}
+            exact
+          />
+          <Route
+            path="/admin/donation/post/:id/edit"
+            element={<AdminDonationPostDetailsPage />}
+            exact
+          />
+          <Route
+            path="/admin/donation/posts"
+            element={<AdminDonationPostsPage />}
             exact
           />
           <Route path="/user/profile/:id" element={<UserProfilepage />} exact />

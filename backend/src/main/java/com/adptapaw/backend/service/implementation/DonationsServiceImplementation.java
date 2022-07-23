@@ -101,14 +101,13 @@ public class DonationsServiceImplementation implements DonationsService {
 
     @Override
     public DonationsDTO updateById(String id, DonationsDTO donationsDTO) {
+
         Donations feeds =donationsRepository.findById(Long.valueOf(id)).get();
 
         feeds.setName(donationsDTO.getName());
         feeds.setType(donationsDTO.getType());
         feeds.setDescription(donationsDTO.getDescription());
         feeds.setTargetamount(donationsDTO.getTargetamount());
-        feeds.setRemainingamount(donationsDTO.getRemainingamount());
-        feeds.setPeopledonated(donationsDTO.getPeopledonated());
         feeds.setImage(donationsDTO.getImage());
 
         donationsRepository.save(feeds);

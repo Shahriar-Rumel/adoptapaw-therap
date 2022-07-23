@@ -43,7 +43,7 @@ public class DonationsController {
     public DonationsDTO geDonationsById(@PathVariable(name = "id") String id){
         return donationsService.getAllById(id);
     }
-
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/{id}")
     public DonationsDTO UpdateDonations(@PathVariable (name="id") String  id, @RequestBody DonationsDTO donationsDTO){
         return donationsService.updateById(id,donationsDTO);

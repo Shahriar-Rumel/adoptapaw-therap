@@ -8,7 +8,10 @@ import {
   DONATION_POST_CREATE_FAIL,
   DONATION_POST_CREATE_REQUEST,
   DONATION_POST_CREATE_RESET,
-  DONATION_POST_CREATE_SUCCESS
+  DONATION_POST_CREATE_SUCCESS,
+  DONATION_POST_UPDATE_FAIL,
+  DONATION_POST_UPDATE_REQUEST,
+  DONATION_POST_UPDATE_SUCCESS
 } from '../constants/donationConstants';
 
 export const donationPostCreateReducer = (state = {}, action) => {
@@ -50,6 +53,21 @@ export const donationPostByIdReducer = (state = {}, action) => {
       return { loading: false, donationPostById: action.payload };
     case DONATION_POST_BY_ID_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const donationPostUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case DONATION_POST_UPDATE_REQUEST:
+      return { loading: true };
+    case DONATION_POST_UPDATE_SUCCESS:
+      return { loading: false, success: true, donationPost: action.payload };
+
+    case DONATION_POST_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+
     default:
       return state;
   }

@@ -30,7 +30,7 @@ const DonationHeader = ({ data }) => {
   return (
     <>
       <h1 className="font-extrabold tracking-tight text-[24px] text-primary leading-7 my-4">
-        Make a <span className="text-brand">donation</span> ; Help {data.name}
+        Make a <span className="text-brand">donation</span> ; Help {data.name}{' '}
         live a healthy life
       </h1>
       <p className="text-[14px] text-gray-light leading-4">
@@ -43,13 +43,12 @@ const DonationBar = ({ data }) => {
   let target = Number.parseInt(data.targetamount);
   let remainingamount = Number.parseInt(data.remainingamount);
   let width = ((target - remainingamount) * 100) / target;
-  let widthClass = 'w-[' + width + '%]';
-  let ans = String(widthClass);
+  let widthClass = width + '%';
 
   return (
     <>
-      <div className="w-full h-[8px] bg-gray mt-8">
-        <div className={`bg-brand h-full ${ans}`}></div>
+      <div className="w-full h-[8px] bg-gray bg-opacity-40 mt-8">
+        <div className={`bg-brand h-full`} style={{ width: widthClass }}></div>
       </div>
       <div className="flex mt-3 justify-between">
         <div className="flex">

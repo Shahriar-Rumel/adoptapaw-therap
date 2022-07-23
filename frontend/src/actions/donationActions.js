@@ -8,7 +8,10 @@ import {
   DONATION_POST_BY_ID_SUCCESS,
   DONATION_POST_CREATE_FAIL,
   DONATION_POST_CREATE_REQUEST,
-  DONATION_POST_CREATE_SUCCESS
+  DONATION_POST_CREATE_SUCCESS,
+  DONATION_POST_UPDATE_FAIL,
+  DONATION_POST_UPDATE_REQUEST,
+  DONATION_POST_UPDATE_SUCCESS
 } from '../constants/donationConstants';
 
 const BASE_URL = 'http://localhost:8081/api/donations';
@@ -110,3 +113,39 @@ export const donationPostByIdAction = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const donationPostUpdateAction =
+  (id, dataport) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: DONATION_POST_UPDATE_REQUEST
+      });
+
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      await axios.post(`${BASE_URL}/${id}`, dataport, config);
+
+      dispatch({
+        type: DONATION_POST_UPDATE_SUCCESS
+      });
+
+      // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: DONATION_POST_UPDATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };
