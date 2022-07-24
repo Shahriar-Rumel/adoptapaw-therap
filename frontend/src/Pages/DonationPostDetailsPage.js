@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../Components/Button';
 import { useParams } from 'react-router-dom';
-import { donationPostByIdAction } from '../actions/donationActions';
+import { donationPostByIdAction } from '../actions/donationPostActions';
 import Loader from '../Components/Loader';
 import { stringify } from 'postcss';
-import { donationCreateAction } from '../actions/donationGiverActions';
+import { donationCreateAction } from '../actions/donationActions';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
 import Message from '../Components/Message';
 
@@ -246,7 +246,7 @@ const DonationModal = ({
   );
 };
 
-export default function DonationDetailsPage() {
+export default function DonationPostDetailsPage() {
   const [modal, setModal] = useState(false);
   const [amountofmoney, setAmountofmoney] = useState();
 

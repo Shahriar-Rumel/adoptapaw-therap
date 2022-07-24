@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { donationPostsAction } from '../actions/donationActions';
+import { donationPostsAction } from '../actions/donationPostActions';
 import Button from '../Components/Button';
 import AdminDonationListCard from '../Components/Cards/AdminDonationListCard';
 import DonationListCard from '../Components/Cards/DonationListCard';

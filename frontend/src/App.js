@@ -17,7 +17,7 @@ import AdoptionRequestConfirmationPage from './Pages/AdoptionRequestConfirmation
 import RegistrationPage from './Pages/RegistrationPage';
 import LoginPage from './Pages/LoginPage';
 import MissingAnimalPage from './Pages/MissingAnimalPage';
-import DonationPage from './Pages/DonationPage';
+import DonationPostPage from './Pages/DonationPostPage';
 import MissingAnimalProfilePage from './Pages/MissingAnimalProfilePage';
 import MissingAnimalDataPage from './Pages/MissingAnimalDataPage';
 import CreateAdoptionPost from './Pages/CreateAdoptionPost';
@@ -26,7 +26,7 @@ import UserAdoptionPostsPage from './Pages/UserAdoptionPostsPage';
 import UserAdoptionRequestsPage from './Pages/UserAdoptionRequestsPage';
 import UserAdoptionRequestDetailsPage from './Pages/UserAdoptionRequestDetailsPage';
 import UserMissingAnimalPostsPage from './Pages/UserMissingAnimalPostsPage';
-import DonationDetailsPage from './Pages/DonationDetailsPage';
+import DonationPostDetailsPage from './Pages/DonationPostDetailsPage';
 import ContactPage from './Pages/ContactPage';
 import CreateMissingPost from './Pages/CreateMissingPostpage';
 import ForgotPasswordPage from './Pages/ForgotPasswordPage';
@@ -38,7 +38,7 @@ import AdminDashboardPage from './Pages/AdminDashboardPage';
 import UserAdoptionPostDetailsPage from './Pages/UserAdoptionPostDetailsPage';
 import UserMissingPostDetailsPage from './Pages/UserMissingPostDetailsPage';
 import RegistrationCompletePage from './Pages/RegistrationCompletePage';
-import CreateDonationPage from './Pages/CreateDonationPage';
+import CreateDonationPage from './Pages/CreateDonationPostPage';
 import AdminDonationPostsPage from './Pages/AdminDonationPostsPage';
 import AdminDonationPostDetailsPage from './Pages/AdminDonationPostDetailsPage';
 
@@ -61,10 +61,14 @@ function App() {
           />
           <Route
             path="/ongoingdonations/:id"
-            element={<DonationDetailsPage />}
+            element={<DonationPostDetailsPage />}
             exact
           />
-          <Route path="/ongoingdonations" element={<DonationPage />} exact />
+          <Route
+            path="/ongoingdonations"
+            element={<DonationPostPage />}
+            exact
+          />
           <Route path="/missing" element={<MissingAnimalPage />} exact />
 
           <Route

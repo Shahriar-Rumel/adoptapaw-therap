@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../Components/Button';
 import { useParams } from 'react-router-dom';
-import { donationPostByIdAction } from '../actions/donationActions';
+import { donationPostByIdAction } from '../actions/donationPostActions';
 import Loader from '../Components/Loader';
 import AdminDonationPostEditModal from '../Components/Modals/AdminDonationPostEditModal';
 

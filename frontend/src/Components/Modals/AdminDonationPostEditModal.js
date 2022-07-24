@@ -5,7 +5,7 @@ import UploadLoader from '../UploadLoader/UploadLoader';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import Button from '../Button';
-import { donationPostUpdateAction } from '../../actions/donationActions';
+import { donationPostUpdateAction } from '../../actions/donationPostActions';
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader';
 import Message from '../Message';

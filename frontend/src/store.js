@@ -37,8 +37,8 @@ import {
   donationPostByIdReducer,
   donationPostCreateReducer,
   donationPostUpdateReducer
-} from './reducers/donationReducer';
-import { donationCreateReducer } from './reducers/donationGiverReducer';
+} from './reducers/donationPostReducer';
+import { donationCreateReducer } from './reducers/donationReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -63,7 +63,7 @@ const reducer = combineReducers({
   donationPosts: donationAllPostReducer,
   donationPostByIdStore: donationPostByIdReducer,
   donationPostUpdateStore: donationPostUpdateReducer,
-  donationGiverStore: donationCreateReducer
+  donationStore: donationCreateReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

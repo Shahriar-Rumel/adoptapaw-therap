@@ -3,10 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from '../Components/Button';
 import DonationListCard from '../Components/Cards/DonationListCard';
 import { useDispatch, useSelector } from 'react-redux/es';
-import { donationPostsAction } from '../actions/donationActions';
+import { donationPostsAction } from '../actions/donationPostActions';
 import Loader from '../Components/Loader';
 
-export default function DonationPage() {
+export default function DonationPostPage() {
   const dispatch = useDispatch();
 
   const donationPostsData = useSelector((state) => state.donationPosts);

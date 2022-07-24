@@ -5,8 +5,7 @@ import UploadLoader from '../Components/UploadLoader/UploadLoader';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import Button from '../Components/Button';
-import { donationPostCreateAction } from '../actions/donationActions';
-
+import { donationPostCreateAction } from '../actions/donationPostActions';
 
 export default function CreateDonationPage() {
   const [name, setName] = useState();
