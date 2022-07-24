@@ -9,6 +9,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DonationGivenListDTO {
-    List<DonationGiverDTO> content;
+public class DonationPostResponseDTO {
+    List<DonationPostDTO> content;
 }

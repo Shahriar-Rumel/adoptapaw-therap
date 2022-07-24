@@ -1,20 +1,17 @@
 package com.adptapaw.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
 @ToString
 @Entity
-@Table(name = "donationgiver")
-public class DonationGiver {
+@Table(name = "donation")
+public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -27,11 +24,11 @@ public class DonationGiver {
     private Long amountofmoney;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "donationgiver_id",referencedColumnName = "id")
-    private User donationgiver;
+    @JoinColumn(name = "donator_id",referencedColumnName = "id")
+    private User donator;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "donationpost_id",referencedColumnName = "id")
-    private Donations donationpost;
+    private DonationPost donationpost;
 
 }

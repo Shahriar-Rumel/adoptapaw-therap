@@ -3,13 +3,13 @@ package com.adptapaw.backend.payload.donations;
 import lombok.Data;
 
 @Data
-public class DonationGiverDTO {
+public class DonationDTO {
     private Long id;
 
     private String donationdate;
     private Long amountofmoney;
-    private DonationUserDTO donationgiver;
-    private DonationsDTO donationpost;
+    private DonationUserDTO donator;
+    private DonationPostDTO donationpost;
 
 
 }
