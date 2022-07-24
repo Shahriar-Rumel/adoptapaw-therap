@@ -14,8 +14,8 @@ import java.util.Set;
 @ToString
 @Entity
 
-@Table(name = "donations")
-public class Donations {
+@Table(name = "donationposts")
+public class DonationPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -44,5 +44,5 @@ public class Donations {
 
     @JsonIgnore
     @OneToMany(mappedBy = "donationpost")
-    private Set<DonationGiver> donationGiver = new HashSet<>();
+    private Set<Donation> donator = new HashSet<>();
 }

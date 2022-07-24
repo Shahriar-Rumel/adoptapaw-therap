@@ -2,7 +2,6 @@ package com.adptapaw.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -80,8 +79,8 @@ public class User {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "donationgiver")
-    private Set<DonationGiver> donations = new HashSet<>();
+    @OneToMany(mappedBy = "donator")
+    private Set<Donation> donationpost = new HashSet<>();
 
 
 }
