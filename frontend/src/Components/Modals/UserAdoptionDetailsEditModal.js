@@ -113,7 +113,7 @@ export default function UserAdoptionPostDetailsEdit({
     (state) => state.adoptionPostUpdateStore
   );
 
-  const { loading, success } = createAdoptionPost;
+  const { loading, error, success } = createAdoptionPost;
 
   const navigate = useNavigate();
   const dataport = {
@@ -194,6 +194,7 @@ export default function UserAdoptionPostDetailsEdit({
       {success && (
         <Message message={'Post updated successfully!'} variant={'success'} />
       )}
+      {error && <Message message={error} variant={'danger'} />}
       {loading && <Loader />}
       <form>
         <div className="lg:flex justify-between items-center">

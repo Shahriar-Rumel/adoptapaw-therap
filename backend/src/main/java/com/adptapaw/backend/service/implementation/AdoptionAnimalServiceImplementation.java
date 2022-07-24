@@ -12,16 +12,21 @@ import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.AdoptionAnimalService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
 public class AdoptionAnimalServiceImplementation implements AdoptionAnimalService {
 
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
 
     private final AdoptionAnimalRepository adoptionAnimalRepository;
 
@@ -49,13 +54,6 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         return adoptionAnimal;
     }
 
-//    @Override
-//    public AdoptionAnimalDTO getByCreator(Long creator) {
-//        AdoptionAnimal adoptionAnimal = (AdoptionAnimal) AdoptionAnimalRepository.findByCreator(String.valueOf(creator));
-////                .orElseThrow(() -> new ResourceNotFoundException("Adoption Animal", "id", creator));
-//        return mapToDTO(adoptionAnimal);
-//    }
-//
     @Override
     public AdoptionAnimalResponseDTO getAllByCreator(String id) {
 
@@ -133,8 +131,16 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
     }
 
     @Override
-    public AdoptionAnimalDTO updateById(String id,AdoptionAnimalDTO adoptionAnimalDTO) {
+    public ResponseEntity<?> updateById(String id, AdoptionAnimalDTO adoptionAnimalDTO) {
+
         AdoptionAnimal adoptionAnimal = adoptionAnimalRepository.findById(Long.valueOf(id)).get();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if(!Objects.equals(adoptionAnimal.getUser().getEmail(), auth.getName())){
+            return new ResponseEntity<>("Not authorized to make changes",HttpStatus.BAD_REQUEST);
+        }
+
 
         adoptionAnimal.setBreed(adoptionAnimalDTO.getBreed());
         adoptionAnimal.setBehaviour(adoptionAnimalDTO.getBehaviour());
@@ -154,12 +160,14 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
 
         adoptionAnimalRepository.save(adoptionAnimal);
 
-        return mapToDTO(adoptionAnimal);
+        return new ResponseEntity<>(mapToDTO(adoptionAnimal),HttpStatus.OK);
+
 
     }
 
     @Override
     public String DeleteById(String id) {
+
         AdoptionAnimal animal = adoptionAnimalRepository.findById(Long.valueOf(id)).get();
         List<AdoptionRequest>animalRequestList = adoptionRequestRepository.findAllByPet(animal);
 
@@ -171,6 +179,7 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
 
         animal.setUser(null);
         adoptionAnimalRepository.delete(animal);
+
         return "Post Deleted Successfully " + animal.getId();
     }
 

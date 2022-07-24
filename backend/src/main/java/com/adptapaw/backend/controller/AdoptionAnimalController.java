@@ -3,6 +3,7 @@ package com.adptapaw.backend.controller;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
 import com.adptapaw.backend.service.AdoptionAnimalService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins  = "http://localhost:3000")
@@ -43,7 +44,7 @@ public class AdoptionAnimalController {
     }
 
     @PostMapping("/{id}")
-    public AdoptionAnimalDTO UpdateAdoptionAnimal(@PathVariable (name="id") String  id, @RequestBody AdoptionAnimalDTO adoptionAnimalPostDTO){
+    public ResponseEntity<?> UpdateAdoptionAnimal(@PathVariable (name="id") String  id, @RequestBody AdoptionAnimalDTO adoptionAnimalPostDTO){
         return adoptionAnimalService.updateById(id,adoptionAnimalPostDTO);
     }
 

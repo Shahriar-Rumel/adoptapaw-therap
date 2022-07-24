@@ -2,6 +2,7 @@ package com.adptapaw.backend.service;
 
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
+import org.springframework.http.ResponseEntity;
 
 public interface AdoptionAnimalService {
 
@@ -14,7 +15,7 @@ public interface AdoptionAnimalService {
     AdoptionAnimalDTO getAllById(String id);
 
 
-    AdoptionAnimalDTO updateById(String id, AdoptionAnimalDTO adoptionAnimalPostDTO);
+    ResponseEntity<?> updateById(String id, AdoptionAnimalDTO adoptionAnimalPostDTO);
 
     String DeleteById(String id);
 }

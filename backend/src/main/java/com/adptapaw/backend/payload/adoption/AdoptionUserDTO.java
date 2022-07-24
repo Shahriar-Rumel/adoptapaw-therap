@@ -6,4 +6,5 @@ import lombok.Data;
 public class AdoptionUserDTO {
     private Long Id;
     private String username;
+    private String email;
 }

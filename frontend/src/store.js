@@ -13,6 +13,7 @@ import {
   adoptionAdoptionPostByIdReducer,
   adoptionAllPostReducer,
   adoptionPostCreateReducer,
+  adoptionPostDeleteReducer,
   adoptionPostsByUserIdReducer,
   adoptionPostUpdateReducer,
   adoptionRequestReducer
@@ -63,7 +64,8 @@ const reducer = combineReducers({
   donationPosts: donationAllPostReducer,
   donationPostByIdStore: donationPostByIdReducer,
   donationPostUpdateStore: donationPostUpdateReducer,
-  donationStore: donationCreateReducer
+  donationStore: donationCreateReducer,
+  adoptionPostDelete: adoptionPostDeleteReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

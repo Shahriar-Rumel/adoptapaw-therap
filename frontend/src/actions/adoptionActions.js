@@ -9,6 +9,10 @@ import {
   ADOPTION_POST_CREATE_FAIL,
   ADOPTION_POST_CREATE_REQUEST,
   ADOPTION_POST_CREATE_SUCCESS,
+  ADOPTION_POST_DELETE_FAIL,
+  ADOPTION_POST_DELETE_REQUEST,
+  ADOPTION_POST_DELETE_RESET,
+  ADOPTION_POST_DELETE_SUCCESS,
   ADOPTION_POST_FAIL,
   ADOPTION_POST_REQUEST,
   ADOPTION_POST_SUCCESS,
@@ -222,3 +226,41 @@ export const adoptionRequestAction =
       });
     }
   };
+
+export const adoptionPostDeleteAction = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ADOPTION_POST_DELETE_REQUEST
+    });
+
+    const {
+      userLogin: { userInfo }
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+      }
+    };
+
+    await axios.delete(`${BASE_URL}/${id}`, config);
+
+    dispatch({
+      type: ADOPTION_POST_DELETE_SUCCESS
+    });
+    // dispatch({
+    //   type: ADOPTION_POST_DELETE_RESET
+    // });
+
+    // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: ADOPTION_POST_DELETE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    });
+  }
+};

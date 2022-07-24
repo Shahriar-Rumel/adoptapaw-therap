@@ -18,7 +18,11 @@ import {
   ADOPTION_REQUEST_RESET,
   ADOPTION_POST_UPDATE_REQUEST,
   ADOPTION_POST_UPDATE_SUCCESS,
-  ADOPTION_POST_UPDATE_FAIL
+  ADOPTION_POST_UPDATE_FAIL,
+  ADOPTION_POST_DELETE_REQUEST,
+  ADOPTION_POST_DELETE_SUCCESS,
+  ADOPTION_POST_DELETE_FAIL,
+  ADOPTION_POST_DELETE_RESET
 } from '../constants/adoptionConstants';
 
 export const adoptionAllPostReducer = (
@@ -110,6 +114,22 @@ export const adoptionRequestReducer = (
     case ADOPTION_REQUEST_FAIL:
       return { loading: false, error: action.payload };
     case ADOPTION_REQUEST_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const adoptionPostDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADOPTION_POST_DELETE_REQUEST:
+      return { loading: true };
+    case ADOPTION_POST_DELETE_SUCCESS:
+      return { loading: false, success: true };
+
+    case ADOPTION_POST_DELETE_FAIL:
+      return { loading: false, error: action.payload };
+    case ADOPTION_POST_DELETE_RESET:
       return {};
     default:
       return state;

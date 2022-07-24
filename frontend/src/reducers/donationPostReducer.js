@@ -72,3 +72,16 @@ export const donationPostUpdateReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const donationPostDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case DONATION_POST_UPDATE_REQUEST:
+      return { loading: true };
+    case DONATION_POST_UPDATE_SUCCESS:
+      return { loading: false, success: true };
+    case DONATION_POST_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
