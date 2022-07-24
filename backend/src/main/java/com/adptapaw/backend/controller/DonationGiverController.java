@@ -16,7 +16,7 @@ public class DonationGiverController {
         this.donationGiverService = donationGiverService;
     }
 
-    @PostMapping("/donation/{id}/user/{uid}/createdonationrequest")
+    @PostMapping("/donation/{id}/user/{uid}/createdonation")
     public DonationGiverDTO createDonationGiverPost(@PathVariable(name="uid") String  uid, @PathVariable(name="id") String id, @RequestBody DonationGiverDTO donationGiverDTO){
         return donationGiverService.createDonationRequest(uid,id,donationGiverDTO);
     }

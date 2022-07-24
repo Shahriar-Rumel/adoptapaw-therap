@@ -7,6 +7,9 @@ import { useParams } from 'react-router-dom';
 import { donationPostByIdAction } from '../actions/donationActions';
 import Loader from '../Components/Loader';
 import { stringify } from 'postcss';
+import { donationCreateAction } from '../actions/donationGiverActions';
+import UploadLoader from '../Components/UploadLoader/UploadLoader';
+import Message from '../Components/Message';
 
 const DonationCover = ({ data }) => {
   return (
@@ -41,7 +44,9 @@ const DonationHeader = ({ data }) => {
 };
 const DonationBar = ({ data }) => {
   let target = Number.parseInt(data.targetamount);
-  let remainingamount = Number.parseInt(data.remainingamount);
+  let remainingamount = Number.parseInt(
+    data.remainingamount > 0 ? data.remainingamount : 0
+  );
   let width = ((target - remainingamount) * 100) / target;
   let widthClass = width + '%';
 
@@ -57,7 +62,9 @@ const DonationBar = ({ data }) => {
         </div>
         <div className="flex">
           <h3 className="text-gray-light mr-5">Remaining</h3>
-          <h3 className="font-bold">{data.remainingamount}</h3>
+          <h3 className="font-bold">
+            {data.remainingamount > 0 ? data.remainingamount : '0'}
+          </h3>
         </div>
       </div>
     </>
@@ -95,7 +102,10 @@ const DonatorAvatar = ({ data }) => {
         className="ml-[-15px] w-[30px] h-[30px] rounded-full"
       ></div>
       <h3 className="text-gray-light font-bold tracking-tight ml-5">
-        {data.peopledonated}+ Donations
+        <span className="text-primary text-extrabold mr-1">
+          {data.peopledonated}+
+        </span>
+        Donations
       </h3>
     </div>
   );
@@ -133,7 +143,16 @@ const CrossIcon = () => {
     </div>
   );
 };
-const DonationModal = ({ modal, setModal }) => {
+const DonationModal = ({
+  modal,
+  setModal,
+  handleDonation,
+  amountofmoney,
+  setAmountofmoney,
+  target,
+  remains,
+  success
+}) => {
   const [monthly, setMonthly] = useState(true);
   const [yearly, setYearly] = useState(false);
   useEffect(() => {
@@ -147,8 +166,8 @@ const DonationModal = ({ modal, setModal }) => {
           className={`fixed z-[990] top-[80px] bg-primary-light bg-opacity-25 left-0 right-0 bottom-0 flex items-center justify-center`}
         >
           <div
-            className={` donation-animation w-[90vw] lg:w-[600px] h-[400px] bg-white shadow-xl
-               absolute z-[999] py-4 px-6 mx-auto custom-round overflow-hidden`}
+            className={` donation-animation w-[90vw] lg:w-[600px]  bg-white shadow-xl
+               absolute z-[999] py-8 px-6 mx-auto custom-round overflow-hidden`}
           >
             <div
               className={` w-[40px] h-[40px] absolute right-3 cursor-pointer flex items-center justify-center`}
@@ -156,9 +175,13 @@ const DonationModal = ({ modal, setModal }) => {
             >
               <CrossIcon />
             </div>
+
             <h2 className=" donation-animation font-bold tracking-tight mt-10">
               Payment Amount
             </h2>
+            {success && (
+              <Message message={'Donated successfully!'} variant={'success'} />
+            )}
             {/* <div className="mt-5 flex justify-between donation-animation">
               <div
                 className={`${
@@ -187,20 +210,29 @@ const DonationModal = ({ modal, setModal }) => {
                 </h2>
               </div>
             </div> */}
-            <input
-              type="number"
-              placeholder="Amount"
-              onChange={(e) => {}}
-              required
-              className="donation-animation w-[100%] py-4 border border-[#000000] custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
-            ></input>
-            <button
-              text="Donate with Bkash"
-              className=" donation-animation text-white custom-round bg-[#D12053]  hover:bg-[#a61a41] w-[100%] py-4 flex items-center justify-center"
-            >
-              <img src="/assets/icons/bkash.svg" className="mr-2"></img>
-              Donate with Bkash
-            </button>
+            <form onSubmit={(e) => handleDonation(e, amountofmoney)}>
+              <input
+                type="number"
+                placeholder="Amount"
+                value={amountofmoney}
+                onChange={(e) => setAmountofmoney(e.target.value)}
+                required
+                className="donation-animation w-[100%] py-4 border border-[#000000] custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
+              ></input>
+              <button
+                text="Donate with Bkash"
+                disabled={remains <= 0}
+                className={` donation-animation text-white custom-round ${
+                  remains <= 0
+                    ? `bg-gray-light`
+                    : `bg-[#D12053] hover:bg-[#a61a41]`
+                }    w-[100%] py-4 flex items-center justify-center`}
+              >
+                <img src="/assets/icons/bkash.svg" className="mr-2"></img>
+                Donate with Bkash
+              </button>
+            </form>
+
             <h2
               className="donation-animation font-bold tracking-tight  text-gray-light w-[100px] mt-8 cursor-pointer"
               onClick={() => setModal(false)}
@@ -216,13 +248,24 @@ const DonationModal = ({ modal, setModal }) => {
 
 export default function DonationDetailsPage() {
   const [modal, setModal] = useState(false);
+  const [amountofmoney, setAmountofmoney] = useState();
 
   const dispatch = useDispatch();
 
   const donationPostByIdDataSet = useSelector(
     (state) => state.donationPostByIdStore
   );
+  const donationCreateDataSet = useSelector(
+    (state) => state.donationGiverStore
+  );
 
+  const {
+    loading: donationCreateLoading,
+    success,
+    donationGiver
+  } = donationCreateDataSet;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
   const { loading, error, donationPostById } = donationPostByIdDataSet;
 
   const { id } = useParams();
@@ -230,6 +273,12 @@ export default function DonationDetailsPage() {
   useEffect(() => {
     dispatch(donationPostByIdAction(id));
   }, [dispatch]);
+
+  const handleDonation = (e, amountofmoney) => {
+    e.preventDefault();
+    console.log(amountofmoney);
+    dispatch(donationCreateAction(amountofmoney, id, userInfo.id));
+  };
   return (
     <>
       {loading ? (
@@ -252,8 +301,18 @@ export default function DonationDetailsPage() {
                 </div>
               </div>
             </div>
+            {donationCreateLoading && <UploadLoader />}
             <DonationPurpose />
-            <DonationModal modal={modal} setModal={setModal} />
+            <DonationModal
+              modal={modal}
+              setModal={setModal}
+              handleDonation={handleDonation}
+              amountofmoney={amountofmoney}
+              setAmountofmoney={setAmountofmoney}
+              target={donationPostById.targetamount}
+              remains={donationPostById.remainingamount}
+              success={success}
+            />
           </div>
         )
       )}

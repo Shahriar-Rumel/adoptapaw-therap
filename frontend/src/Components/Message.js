@@ -16,7 +16,7 @@ export default function Error({
   let timer1;
   useEffect(() => {
     if (!active) {
-      timer1 = setTimeout(() => setShow(false), delay * 2000);
+      timer1 = setTimeout(() => setShow(false), delay * 1000);
     }
 
     return () => {

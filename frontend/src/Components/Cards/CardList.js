@@ -5,14 +5,14 @@ import gsap from 'gsap';
 
 export default function CardList({ link, buttonText, list }) {
   useEffect(() => {
-    gsap.from('.image-animation', { y: '+=120', opacity: 0, stagger: 0.2 });
+    gsap.from('.image-animation', { y: '+=60', opacity: 0, stagger: 0.2 });
     gsap.to('.image-animation', { y: '0', opacity: 1, stagger: 0.2 });
   });
   return (
     <div className="my-5 mt-[20px] grid mb-[200px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
       {list.map((item) => (
-        <Link to={`/adoption/${item.id}`}>
-          <div className="image-animation card-item flex  relative justify-center overflow-hidden mx-2 w-[100%] text-offwhite h-[300px] md:w-[100%] ">
+        <Link to={`/adoption/${item.id}`} key={item.id}>
+          <div className="image-animation card-item flex custom-round  relative justify-center overflow-hidden mx-2 w-[100%] text-offwhite h-[300px] md:w-[100%] ">
             <div
               className=" card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300"
               style={{

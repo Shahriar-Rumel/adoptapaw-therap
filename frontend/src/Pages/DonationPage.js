@@ -28,14 +28,16 @@ export default function DonationPage() {
         <Loader />
       ) : (
         <div className="lg:w-3/4 w-[90vw] mx-auto mt-[100px]">
-          <div className="flex justify-between items-center">
-            <div className="">
+          <div className="lg:flex justify-between items-center mb-5 lg:mb-0">
+            <div className="lg:w-[60%]">
               <h1 className="font-extrabold text-primary text-[24px] text-left mb-2 tracking-tight">
                 Ongoing Donations
               </h1>
               <p className="text-[14px] text-gray-light font-medium text-left mb-12 ">
-                You can donate to help us ensure better life for stranded
-                animals
+                Please donate to save the lives of the animals in need. These
+                animals have encountered a cruel life where people mistreated or
+                abandoned them and threw them away in unsafe environments. Help
+                us raise money for their treatment and rehabilitation.
               </p>
             </div>
             {userInfo && userInfo.role[0].id === 1 && (

@@ -17,7 +17,7 @@ export default function DonationListCard({ data, userInfo }) {
         <div className="bg-card-light py-3  custom-round flex justify-between px-3 donation-list-animation cursor-pointer ">
           <div className="w-[70%] flex flex-col justify-between">
             <div className="flex justify-between">
-              <h1 className="text-primary font-extrabold text-[18px] md:text-[20px] md:leading-[24px] leading-[22px] tracking-tighter mr-3">
+              <h1 className="text-primary font-extrabold text-[18px] md:text-[18px] md:leading-[20px] leading-[18px] tracking-tighter mr-3">
                 {item.name}
               </h1>
               <Link to={userInfo ? `/ongoingdonations/${item.id}` : '/login'}>
@@ -40,20 +40,22 @@ export default function DonationListCard({ data, userInfo }) {
               </h3>
             </div> */}
             <div className="flex justify-between">
-              <h4 className="font-extrabold text-primary text-[12px]">
-                Target
-              </h4>
-              <h6 className="font-extrabold text-gray-light text-[12px]">
-                {item.targetamount} bdt
-              </h6>
-            </div>
-            <div className="flex justify-between">
-              <h4 className="font-extrabold text-primary text-[12px]">
-                Remaining
-              </h4>
-              <h6 className="font-extrabold text-gray-light text-[12px]">
-                {item.remainingamount} bdt
-              </h6>
+              <div className="flex flex-col justify-between">
+                <h4 className="font-bold text-gray-light text-[12px]">
+                  Target
+                </h4>
+                <h6 className="font-extrabold text-primary text-[12px]">
+                  {item.targetamount} BDT
+                </h6>
+              </div>
+              <div className="flex flex-col justify-between ">
+                <h4 className="font-bold text-gray-light text-[12px]">
+                  Remaining
+                </h4>
+                <h6 className="font-extrabold text-primary text-[12px]">
+                  {item.remainingamount} BDT
+                </h6>
+              </div>
             </div>
           </div>
           <div

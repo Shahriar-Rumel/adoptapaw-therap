@@ -31,7 +31,13 @@ export default function Adoptionpage() {
       ) : (
         <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[100px] mb-[100px] ">
           <div className="flex flex-col w-[100%]  md:flex-row md:justify-between md:items-center">
-            <AdoptionHeader />
+            <AdoptionHeader
+              link={'/assets/adoption/dogowner.svg'}
+              header={'Adopt helpless animals today'}
+              content={
+                'We’re presenting you an opportunity to give a home to a misfortunate animal today. These animals are deprived of shelter, food, and love. We are sure these animals will fill your life with laughter, recreation, and happiness.'
+              }
+            />
             {userInfo && (
               <Link to={`/adoption/${userInfo.id}/createpost`}>
                 <Button

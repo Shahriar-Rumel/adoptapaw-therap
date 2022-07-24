@@ -54,7 +54,7 @@ public class DonationGiverServiceImplementation implements DonationGiverService 
 
         Date date = new Date();
         request.setDonationdate(String.valueOf(date));
-        request.setAmountofmoney(donationGiverDTO.getAmountofmoney());
+        request.setAmountofmoney(Long.valueOf(donationGiverDTO.getAmountofmoney()));
 
 
 

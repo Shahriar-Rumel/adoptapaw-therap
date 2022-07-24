@@ -76,6 +76,7 @@ export default function MissingAnimalPage() {
             <AdoptionHeader
               link="/assets/Lost-dog.svg"
               header="Missing Animals"
+              content="Every pet is precious to their owners. Perform a noble deed by reuniting pets with their owners. We express our gratitude to every person who is willing to come forward to help find a missing animal."
             />
             {userInfo && (
               <Link to={`/missing/${userInfo.id}/createpost`}>
