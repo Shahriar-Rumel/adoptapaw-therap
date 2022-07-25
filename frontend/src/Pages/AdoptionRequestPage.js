@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   adoptionPostByIdAction,
   adoptionRequestAction
@@ -20,6 +20,18 @@ export default function AdoptionRequestPage() {
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
 
+  const dispatch = useDispatch();
+
+  const adoptionPostByIdDataSet = useSelector(
+    (state) => state.adoptionPostByIdStore
+  );
+  const { loading, error, adoptionPostById } = adoptionPostByIdDataSet;
+
+  const adoptionRequestdata = useSelector(
+    (state) => state.adoptionRequestCreated
+  );
+
+  const navigate = useNavigate();
   const { id, uid } = useParams();
 
   const dataset = {
@@ -43,23 +55,9 @@ export default function AdoptionRequestPage() {
     setEmail: setEmail
   };
 
-  const dispatch = useDispatch();
-
-  const adoptionPostByIdDataSet = useSelector(
-    (state) => state.adoptionPostByIdStore
-  );
-
-  const { loading, error, adoptionPostById } = adoptionPostByIdDataSet;
-
   useEffect(() => {
     dispatch(adoptionPostByIdAction(id));
   }, [dispatch]);
-
-  const adoptionRequestdata = useSelector(
-    (state) => state.adoptionRequestCreated
-  );
-  // const { success, adoptionRequest } = adoptionRequestdata;
-  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();

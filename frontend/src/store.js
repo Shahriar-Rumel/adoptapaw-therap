@@ -26,6 +26,7 @@ import {
   missingAllPostReducer,
   missingPostByIdReducer,
   missingPostCreateReducer,
+  missingPostDeleteReducer,
   missingPostsByUserIdReducer,
   missingPostUpdateReducer
 } from './reducers/missingAnimalReducer';
@@ -65,7 +66,8 @@ const reducer = combineReducers({
   donationPostByIdStore: donationPostByIdReducer,
   donationPostUpdateStore: donationPostUpdateReducer,
   donationStore: donationCreateReducer,
-  adoptionPostDelete: adoptionPostDeleteReducer
+  adoptionPostDelete: adoptionPostDeleteReducer,
+  missingPostDelete: missingPostDeleteReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

@@ -7,29 +7,25 @@ import AdoptionPostCard from '../Components/Cards/AdoptionPostCard';
 import Loader from '../Components/Loader';
 import Message from '../Components/Message';
 
-export default function UserProfilepage({ history }) {
+export default function UserProfilepage() {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
-
-  const createAdoptionPost = useSelector((state) => state.CreateAdoptionPost);
-
-  const navigate = useNavigate();
 
   const adoptionPostByUserIdData = useSelector(
     (state) => state.adoptionPostsByUserId
   );
-
   const { loading, error, adoptionPostByUserId } = adoptionPostByUserIdData;
 
+  const navigate = useNavigate();
   const { id } = useParams();
+
   useEffect(() => {
     if (!userInfo) {
       navigate('/login');
     }
-  }, [history, userInfo]);
+  }, [userInfo]);
   useEffect(() => {
     dispatch(adoptionPostByUserIdAction(id));
   }, [dispatch]);

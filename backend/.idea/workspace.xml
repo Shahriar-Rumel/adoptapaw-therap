@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AdoptionAnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AdoptionAnimalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/adoption/AdoptionUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/adoption/AdoptionUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/AdoptionAnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/AdoptionAnimalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AdoptionAnimalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AdoptionAnimalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/actions/donationPostActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/actions/donationPostActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingAnimalServiceImplementation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +74,7 @@
       <workItem from="1658663390646" duration="3288000" />
       <workItem from="1658670082585" duration="389000" />
       <workItem from="1658675226801" duration="3594000" />
+      <workItem from="1658750894548" duration="3461000" />
     </task>
     <servers />
   </component>

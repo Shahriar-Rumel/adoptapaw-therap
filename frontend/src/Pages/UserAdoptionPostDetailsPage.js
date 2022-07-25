@@ -1,4 +1,3 @@
-import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -7,65 +6,30 @@ import {
 } from '../actions/adoptionActions';
 import AnimalProfileBottom from '../Components/Adoption/AnimalProfileBottom';
 import AnimalProfileLeft from '../Components/Adoption/AnimalProfileLeft';
-import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
 import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import Button from '../Components/Button';
 import UserAdoptionPostDetailsEditModal from '../Components/Modals/UserAdoptionDetailsEditModal';
-import UserAdoptionPostDeleteModal from '../Components/Modals/UserAdoptionPostDeleteModal';
+import UserAdoptionPostDeleteModal from '../Components/Modals/UserPostDeleteModal';
 import { ADOPTION_POST_DELETE_RESET } from '../constants/adoptionConstants';
 
 export default function UserAdoptionPostDetailsPage() {
   const [modal, setModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [refresh, setRefresh] = useState(false);
-  useEffect(() => {
-    gsap.from('.description-gallery-animation', {
-      y: '+=110',
-      opacity: 0
-    });
-    gsap.to('.description-gallery-animation', {
-      y: '0',
-      opacity: 1,
-      stagger: 0.2
-    });
-  });
-  useEffect(() => {
-    gsap.from('.description-image-animation', {
-      opacity: 0
-    });
-    gsap.to('.description-image-animation', {
-      opacity: 1,
-      stagger: 0.2
-    });
-  });
-  useEffect(() => {
-    gsap.from('.description-animation', {
-      y: '+=120',
-      opacity: 0
-    });
-    gsap.to('.description-animation', {
-      y: '0',
-      opacity: 1,
-      stagger: 0.3
-    });
-  });
 
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
 
   const adoptionPostByIdDataSet = useSelector(
     (state) => state.adoptionPostByIdStore
   );
+  const { loading, error, adoptionPostById } = adoptionPostByIdDataSet;
+
   const adoptionPostDeleteData = useSelector(
     (state) => state.adoptionPostDelete
   );
-
-  const { loading, error, adoptionPostById } = adoptionPostByIdDataSet;
-
   const { loading: deleteLoading, success } = adoptionPostDeleteData;
 
   const { id } = useParams();
@@ -80,12 +44,6 @@ export default function UserAdoptionPostDetailsPage() {
   useEffect(() => {
     dispatch(adoptionPostByIdAction(id));
   }, [dispatch]);
-
-  useEffect(() => {
-    if (refresh) {
-      dispatch(adoptionPostByIdAction(id));
-    }
-  }, [refresh]);
 
   useEffect(() => {
     if (success) {
@@ -130,7 +88,6 @@ export default function UserAdoptionPostDetailsPage() {
               <UserAdoptionPostDetailsEditModal
                 data={adoptionPostById}
                 setModal={setModal}
-                setRefresh={setRefresh}
               />
             )}
             {deleteModal && (

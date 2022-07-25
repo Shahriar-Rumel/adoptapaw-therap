@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { resetPasswordRequest } from '../actions/passwordResetAction';
 import Button from '../Components/Button';
@@ -8,7 +8,6 @@ export default function PasswordResetRequestSentPage() {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-
   const { email } = useParams();
 
   useEffect(() => {

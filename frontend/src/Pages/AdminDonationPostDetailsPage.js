@@ -1,4 +1,3 @@
-import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../Components/Button';
@@ -66,12 +65,12 @@ const DonationBar = ({ data }) => {
 export default function AdminDonationPostDetailsPage() {
   const [modal, setModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+
   const dispatch = useDispatch();
 
   const donationPostByIdDataSet = useSelector(
     (state) => state.donationPostByIdStore
   );
-
   const { loading, error, donationPostById } = donationPostByIdDataSet;
 
   const { id } = useParams();

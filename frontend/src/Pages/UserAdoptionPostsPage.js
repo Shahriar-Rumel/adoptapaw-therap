@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useNavigate, useParams } from 'react-router-dom';
 import { adoptionPostByUserIdAction } from '../actions/adoptionActions';
-import Button from '../Components/Button';
 import AdoptionPostCard from '../Components/Cards/AdoptionPostCard';
 import Loader from '../Components/Loader';
 
@@ -10,18 +9,16 @@ export default function UserAdoptionPostsPage() {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
-
-  const navigate = useNavigate();
 
   const adoptionPostByUserIdData = useSelector(
     (state) => state.adoptionPostsByUserId
   );
-
   const { loading, error, adoptionPostByUserId } = adoptionPostByUserIdData;
 
+  const navigate = useNavigate();
   const { id } = useParams();
+
   useEffect(() => {
     if (!userInfo) {
       navigate('/login');
@@ -29,7 +26,7 @@ export default function UserAdoptionPostsPage() {
   }, [userInfo]);
   useEffect(() => {
     dispatch(adoptionPostByUserIdAction(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
   return (
     <>
       {loading ? (

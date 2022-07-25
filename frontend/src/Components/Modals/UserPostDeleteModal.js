@@ -3,7 +3,7 @@ import Button from '../Button';
 import Message from '../Message';
 import UploadLoader from '../UploadLoader/UploadLoader';
 
-export default function UserAdoptionPostDeleteModal({
+export default function UserPostDeleteModal({
   setModal,
   success,
   deletePosthandler,

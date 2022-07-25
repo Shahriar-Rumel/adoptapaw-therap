@@ -12,12 +12,8 @@ export default function CreateDonationPage() {
   const [type, setType] = useState();
   const [description, setDescription] = useState();
   const [targetAmount, setTargetAmount] = useState();
-  const [remainingAmount, setRemainingAmount] = useState();
-  const [peopleDonated, setPeopleDonated] = useState();
   const [image, setImage] = useState();
-
   const [empty, setEmpty] = useState(true);
-
   const [uploading, setUploading] = useState('');
 
   const typeArray = ['Cat', 'Dog'];
@@ -25,7 +21,6 @@ export default function CreateDonationPage() {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { error, userInfo } = userLogin;
 
   const dataport = {

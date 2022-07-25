@@ -5,8 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { adoptionPostCreateAction } from '../actions/adoptionActions';
 import Button from '../Components/Button';
 import Checkbox from '../Components/IO/Checkbox';
-import ChoiceInput from '../Components/IO/ChoiceInput';
-import ImageInput from '../Components/IO/ImageInput';
 import SelectBox from '../Components/IO/SelectBox';
 import TextInput from '../Components/IO/TextInput';
 import Loader from '../Components/Loader';
@@ -69,7 +67,7 @@ const FileUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
   );
 };
 
-export default function CreateAdoptionPost({ history }) {
+export default function CreateAdoptionPost() {
   const [name, setName] = useState('');
   const [behaviour, setBehaviour] = useState('');
   const [location, setLocation] = useState('');
@@ -83,9 +81,7 @@ export default function CreateAdoptionPost({ history }) {
   const [type, setType] = useState('');
   const [training, setTraining] = useState('');
   const [color, setColor] = useState('');
-
   const [empty, setEmpty] = useState(false);
-
   const [imageOne, setImageOne] = useState(
     '/assets/Icons/ImagePlaceholder.svg'
   );
@@ -101,17 +97,14 @@ export default function CreateAdoptionPost({ history }) {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
-  const { id } = useParams();
 
   const createAdoptionPost = useSelector((state) => state.adoptionPostCreated);
-
   const { loading, success, adoptionPost } = createAdoptionPost;
 
-  // const redirect = location ? location.split('=')[1] : '/';
-
   const navigate = useNavigate();
+  const { id } = useParams();
+
   const dataport = {
     behaviour: behaviour,
     breed: breed,
@@ -132,14 +125,12 @@ export default function CreateAdoptionPost({ history }) {
 
   useEffect(() => {
     if (!userInfo) {
-      // history.push(redirect);
       navigate('/login');
     }
-  }, [history, userInfo]);
+  }, [userInfo]);
 
   var petType = ['Cat', 'Dog'];
   var genderType = ['Male', 'Female'];
-  var breedType = ['Breed one', 'Breed Two'];
   var healthType = ['Healthy', 'Conditioned'];
   var behaviourType = ['Playful', 'Calm'];
 

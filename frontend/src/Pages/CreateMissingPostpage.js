@@ -2,12 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { adoptionPostCreateAction } from '../actions/adoptionActions';
 import { missingPostCreateAction } from '../actions/missingAnimalActions';
 import Button from '../Components/Button';
 import Checkbox from '../Components/IO/Checkbox';
-import ChoiceInput from '../Components/IO/ChoiceInput';
-import ImageInput from '../Components/IO/ImageInput';
 import SelectBox from '../Components/IO/SelectBox';
 import TextInput from '../Components/IO/TextInput';
 import Loader from '../Components/Loader';
@@ -23,31 +20,26 @@ export default function CreateMissingPost({ history }) {
   const [accessory, setAccessory] = useState('');
   const [date, setDate] = useState('');
   const [attribute, setAttribute] = useState('');
-
   const [vaccine, setVaccine] = useState('');
   const [type, setType] = useState("Choose pet's type");
   const [color, setColor] = useState('');
-
   const [empty, setEmpty] = useState(false);
-
   const [imageOne, setImageOne] = useState(
     '/assets/Icons/ImagePlaceholder.svg'
   );
-
   const [uploading, setUploading] = useState('');
 
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { error, userInfo } = userLogin;
-  const { id } = useParams();
 
   const createMissingPost = useSelector((state) => state.missingPostCreated);
-
   const { loading, success, missingPost } = createMissingPost;
 
   const navigate = useNavigate();
+  const { id } = useParams();
+
   const dataport = {
     name: name,
     breed: breed,

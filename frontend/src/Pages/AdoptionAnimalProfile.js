@@ -46,7 +46,6 @@ export default function AdoptionAnimalProfile() {
   const adoptionPostByIdDataSet = useSelector(
     (state) => state.adoptionPostByIdStore
   );
-
   const { loading, error, adoptionPostById } = adoptionPostByIdDataSet;
 
   const { id } = useParams();

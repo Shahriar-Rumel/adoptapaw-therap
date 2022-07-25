@@ -10,13 +10,11 @@ import Loader from '../Components/Loader';
 export default function Adoptionpage() {
   const dispatch = useDispatch();
 
-  const adoptionPostsData = useSelector((state) => state.adoptionPosts);
-
-  const { loading, error, adoptionPosts } = adoptionPostsData;
-
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
+
+  const adoptionPostsData = useSelector((state) => state.adoptionPosts);
+  const { loading, error, adoptionPosts } = adoptionPostsData;
 
   const navigate = useNavigate();
 

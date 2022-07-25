@@ -11,13 +11,11 @@ export default function ForgotPasswordResetPage() {
   const [password, setPassword] = useState();
 
   const dispatch = useDispatch();
+  const resetPasswordData = useSelector((state) => state.passwordResetStore);
+  const { loading, success, error, passwordReset } = resetPasswordData;
 
   const navigate = useNavigate();
-
   const { token } = useParams();
-  const resetPasswordData = useSelector((state) => state.passwordResetStore);
-
-  const { loading, success, error, passwordReset } = resetPasswordData;
 
   const submitHandler = (e) => {
     e.preventDefault();

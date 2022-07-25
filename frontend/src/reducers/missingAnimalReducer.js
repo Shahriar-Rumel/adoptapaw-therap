@@ -9,6 +9,10 @@ import {
   MISSING_POST_CREATE_REQUEST,
   MISSING_POST_CREATE_RESET,
   MISSING_POST_CREATE_SUCCESS,
+  MISSING_POST_DELETE_FAIL,
+  MISSING_POST_DELETE_REQUEST,
+  MISSING_POST_DELETE_RESET,
+  MISSING_POST_DELETE_SUCCESS,
   MISSING_POST_EDIT_FAIL,
   MISSING_POST_EDIT_REQUEST,
   MISSING_POST_EDIT_SUCCESS,
@@ -82,6 +86,22 @@ export const missingPostUpdateReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case MISSING_POST_EDIT_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const missingPostDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case MISSING_POST_DELETE_REQUEST:
+      return { loading: true };
+    case MISSING_POST_DELETE_SUCCESS:
+      return { loading: false, success: true };
+
+    case MISSING_POST_DELETE_FAIL:
+      return { loading: false, error: action.payload };
+    case MISSING_POST_DELETE_RESET:
+      return {};
     default:
       return state;
   }

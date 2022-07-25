@@ -9,6 +9,9 @@ import {
   MISSING_POST_CREATE_FAIL,
   MISSING_POST_CREATE_REQUEST,
   MISSING_POST_CREATE_SUCCESS,
+  MISSING_POST_DELETE_FAIL,
+  MISSING_POST_DELETE_REQUEST,
+  MISSING_POST_DELETE_SUCCESS,
   MISSING_POST_EDIT_FAIL,
   MISSING_POST_EDIT_REQUEST,
   MISSING_POST_EDIT_SUCCESS,
@@ -54,8 +57,6 @@ export const missingPostByIdAction = (id) => async (dispatch) => {
       type: MISSING_POST_BY_ID_SUCCESS,
       payload: data
     });
-
-    // localStorage.setItem('MISSINGPostByIdData', JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: MISSING_POST_BY_ID_FAIL,
@@ -90,8 +91,6 @@ export const missingPostByUserIdAction = (id) => async (dispatch, getState) => {
       type: MISSING_POSTS_BY_USERID_SUCCESS,
       payload: data
     });
-
-    // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: MISSING_POSTS_BY_USERID_FAIL,
@@ -126,8 +125,6 @@ export const missingPostCreateAction =
       dispatch({
         type: MISSING_POST_CREATE_SUCCESS
       });
-
-      // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
     } catch (error) {
       dispatch({
         type: MISSING_POST_CREATE_FAIL,
@@ -172,3 +169,36 @@ export const missingPostUpdateAction =
       });
     }
   };
+
+export const missingPostDeleteAction = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: MISSING_POST_DELETE_REQUEST
+    });
+
+    const {
+      userLogin: { userInfo }
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+      }
+    };
+
+    await axios.delete(`${BASE_URL}/${id}`, config);
+
+    dispatch({
+      type: MISSING_POST_DELETE_SUCCESS
+    });
+  } catch (error) {
+    dispatch({
+      type: MISSING_POST_DELETE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    });
+  }
+};

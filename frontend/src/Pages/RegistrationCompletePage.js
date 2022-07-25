@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { resetPasswordRequest } from '../actions/passwordResetAction';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../Components/Button';
 
 export default function RegistrationCompletePage() {

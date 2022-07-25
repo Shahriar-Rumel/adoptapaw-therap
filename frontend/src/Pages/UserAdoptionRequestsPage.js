@@ -9,19 +9,17 @@ export default function UserAdoptionRequestsPage() {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
 
   const adoptionRequestByUserIdData = useSelector(
     (state) => state.adoptionRequestsByUserId
   );
-
   const { loading, error, adoptionRequestsByUserId } =
     adoptionRequestByUserIdData;
 
   const navigate = useNavigate();
-
   const { id } = useParams();
+
   useEffect(() => {
     if (!userInfo) {
       navigate('/login');

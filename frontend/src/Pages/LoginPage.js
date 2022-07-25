@@ -61,6 +61,7 @@ export default function LoginPage() {
         <img
           src="/assets/dogcat secondary.svg"
           className="w-[50vw] mx-auto lg:mr-5 mb-12 mt-[-50px] lg:mt-0 md:w-[40vw] lg:w-[35vw] xl:w-[25vw] request-form-image-animation"
+          alt="Dogcat Secondary"
         ></img>
         <div className="lg:w-[50%]">
           <h1 className="font-extrabold text-[24px] tracking-tight text-primary request-form-animation">
@@ -69,7 +70,6 @@ export default function LoginPage() {
           <h3 className="text-[14px] font-regular text-gray-light mb-10 request-form-animation">
             Login to adopt paws
           </h3>
-
           {error && (
             <Message
               message={"Username or Email doesn't exist !"}
@@ -78,7 +78,6 @@ export default function LoginPage() {
               variant={'danger'}
             />
           )}
-
           <div className="request-form-animation">
             <TextInput
               label="Email or Username"
@@ -88,7 +87,6 @@ export default function LoginPage() {
               setData={setEmail}
             />
           </div>
-
           <div className="request-form-animation">
             <TextInput
               label="Password"
@@ -98,11 +96,9 @@ export default function LoginPage() {
               setData={setPassword}
             />
           </div>
-
           <div className="request-form-animation " onClick={submitHandler}>
             <Button text="Login" />
           </div>
-
           <div className="mt-5 request-form-animation flex justify-between">
             <h3 className="text-gray-light tracking-tight">
               Don't have an account ?

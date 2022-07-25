@@ -33,16 +33,16 @@ const StatCard = ({ title, data, src, text, variant, brand }) => {
 };
 export default function AdminDashboardPage() {
   const dispatch = useDispatch();
-  const userLogin = useSelector((state) => state.userLogin);
 
+  const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const adoptionRequestByUserIdData = useSelector(
     (state) => state.adoptionRequestsByUserId
   );
-
   const { loading, error, adoptionRequestsByUserId } =
     adoptionRequestByUserIdData;
+
   return (
     <div className="  mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
       <div className="lg:flex lg:justify-between">

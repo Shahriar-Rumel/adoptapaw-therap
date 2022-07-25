@@ -6,15 +6,14 @@ import { update } from '../actions/userActions';
 import Button from '../Components/Button';
 import TextInput from '../Components/IO/TextInput';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
-import Loader from '../Components/Loader';
 import Message from '../Components/Message';
 
 const DpUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
   const uploadFileHandler = async (e) => {
     const BASE_URL = 'http://localhost:8081';
-
     const file = e.target.files[0];
     const formData = new FormData();
+
     formData.append('file', file);
     setUploading(true);
 
@@ -31,7 +30,6 @@ const DpUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
         formData,
         config
       );
-
       setData(data);
       setUploading(false);
     } catch (error) {
@@ -75,14 +73,15 @@ const DpUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
 };
 
 export default function UserProfileEditPage() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
 
   const userUpdateData = useSelector((state) => state.userUpdate);
-
   const { loading, success, error } = userUpdateData;
 
   const [dp, setDp] = useState(userInfo.dp);
@@ -91,10 +90,6 @@ export default function UserProfileEditPage() {
   const [location, setLocation] = useState(userInfo.location);
   const [password, setpPassword] = useState();
   const [bio, setBio] = useState(userInfo.bio);
-
-  const { id } = useParams();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (userInfo) {

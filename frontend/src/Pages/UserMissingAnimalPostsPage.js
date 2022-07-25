@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useNavigate, useParams } from 'react-router-dom';
-import { adoptionPostByUserIdAction } from '../actions/adoptionActions';
 import { missingPostByUserIdAction } from '../actions/missingAnimalActions';
-import Button from '../Components/Button';
-import AdoptionPostCard from '../Components/Cards/AdoptionPostCard';
 import MissingPostCard from '../Components/Cards/MissingPostCard';
 import Loader from '../Components/Loader';
 
@@ -12,18 +9,15 @@ export default function UserMissingAnimalPostsPage() {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
-
-  const navigate = useNavigate();
-
   const missingPostByUserIdData = useSelector(
     (state) => state.missingPostsByUserId
   );
-
   const { loading, error, missingPostByUserId } = missingPostByUserIdData;
 
+  const navigate = useNavigate();
   const { id } = useParams();
+
   useEffect(() => {
     if (!userInfo) {
       navigate('/login');
@@ -31,7 +25,7 @@ export default function UserMissingAnimalPostsPage() {
   }, [userInfo]);
   useEffect(() => {
     dispatch(missingPostByUserIdAction(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
   return (
     <>
       {loading ? (

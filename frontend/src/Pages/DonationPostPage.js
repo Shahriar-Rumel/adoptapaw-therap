@@ -7,21 +7,21 @@ import { donationPostsAction } from '../actions/donationPostActions';
 import Loader from '../Components/Loader';
 
 export default function DonationPostPage() {
+
   const dispatch = useDispatch();
 
-  const donationPostsData = useSelector((state) => state.donationPosts);
-
-  const { loading, error, donationPosts } = donationPostsData;
-
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
+
+  const donationPostsData = useSelector((state) => state.donationPosts);
+  const { loading, error, donationPosts } = donationPostsData;
 
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(donationPostsAction());
   }, [dispatch]);
+
   return (
     <>
       {loading ? (

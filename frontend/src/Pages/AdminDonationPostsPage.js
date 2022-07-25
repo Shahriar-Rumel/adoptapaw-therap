@@ -4,19 +4,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { donationPostsAction } from '../actions/donationPostActions';
 import Button from '../Components/Button';
 import AdminDonationListCard from '../Components/Cards/AdminDonationListCard';
-import DonationListCard from '../Components/Cards/DonationListCard';
 import Loader from '../Components/Loader';
 
 export default function AdminDonationPostsPage() {
   const dispatch = useDispatch();
 
-  const donationPostsData = useSelector((state) => state.donationPosts);
-
-  const { loading, error, donationPosts } = donationPostsData;
-
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
+
+  const donationPostsData = useSelector((state) => state.donationPosts);
+  const { loading, error, donationPosts } = donationPostsData;
 
   const navigate = useNavigate();
 

@@ -1,15 +1,13 @@
 import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import Button from '../Components/Button';
 import { useParams } from 'react-router-dom';
 import { donationPostByIdAction } from '../actions/donationPostActions';
-import Loader from '../Components/Loader';
-import { stringify } from 'postcss';
 import { donationCreateAction } from '../actions/donationActions';
+import Loader from '../Components/Loader';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
 import Message from '../Components/Message';
+import Button from '../Components/Button';
 
 const DonationCover = ({ data }) => {
   return (
@@ -252,21 +250,22 @@ export default function DonationPostDetailsPage() {
 
   const dispatch = useDispatch();
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const donationPostByIdDataSet = useSelector(
     (state) => state.donationPostByIdStore
   );
+  const { loading, error, donationPostById } = donationPostByIdDataSet;
+
   const donationCreateDataSet = useSelector(
     (state) => state.donationGiverStore
   );
-
   const {
     loading: donationCreateLoading,
     success,
     donationGiver
   } = donationCreateDataSet;
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-  const { loading, error, donationPostById } = donationPostByIdDataSet;
 
   const { id } = useParams();
 
@@ -276,7 +275,6 @@ export default function DonationPostDetailsPage() {
 
   const handleDonation = (e, amountofmoney) => {
     e.preventDefault();
-    console.log(amountofmoney);
     dispatch(donationCreateAction(amountofmoney, id, userInfo.id));
   };
   return (

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import AttributeCard from '../Components/Cards/AttributeCard';
-import Features from '../Components/Adoption/Features';
 import RewardCard from '../Components/Cards/RewardCard';
 import { Link, useParams } from 'react-router-dom';
-import { adoptionListGallery } from '../Data/adoption';
 import Button from '../Components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import gsap from 'gsap';
@@ -36,7 +34,6 @@ const MissingFeature = ({ data }) => {
 export default function MissingAnimalProfilePage() {
   useEffect(() => {
     gsap.from('.missing-gallery-animation', {
-      //   y: '+=110',
       opacity: 0
     });
     gsap.to('.missing-gallery-animation', {
@@ -72,7 +69,6 @@ export default function MissingAnimalProfilePage() {
   const missingPostByIdDataSet = useSelector(
     (state) => state.missingPostByIdStore
   );
-
   const { loading, error, missingPostById } = missingPostByIdDataSet;
 
   const { id } = useParams();

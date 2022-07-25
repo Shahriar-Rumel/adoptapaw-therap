@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link, useParams } from 'react-router-dom';
-import {
-  missingPostByIdAction,
-  missingPostsAction
-} from '../actions/missingAnimalActions';
+import { useNavigate, Link } from 'react-router-dom';
+import { missingPostsAction } from '../actions/missingAnimalActions';
 import Loader from '../Components/Loader';
-
 import AdoptionHeader from '../Components/Adoption/AdoptionHeader';
-import CardList from '../Components/Cards/CardList';
 import Button from '../Components/Button';
 
 const MissingCardList = ({ list, buttonText }) => {
@@ -53,13 +48,11 @@ const MissingCardList = ({ list, buttonText }) => {
 export default function MissingAnimalPage() {
   const dispatch = useDispatch();
 
-  const missingPostsData = useSelector((state) => state.missingPostsStore);
-
-  const { loading, error, missingPosts } = missingPostsData;
-
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
+
+  const missingPostsData = useSelector((state) => state.missingPostsStore);
+  const { loading, error, missingPosts } = missingPostsData;
 
   const navigate = useNavigate();
 

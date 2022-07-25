@@ -34,15 +34,13 @@ export default function RegistrationPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-  const [message, setMessage] = useState('');
+
   const dispatch = useDispatch();
 
   const userRegister = useSelector((state) => state.userRegister);
-
   const { loading, success, error } = userRegister;
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
 
   const navigate = useNavigate();

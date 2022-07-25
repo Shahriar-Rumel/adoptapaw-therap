@@ -13,16 +13,12 @@ export default function Onboarding() {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { loading, error, userInfo } = userLogin;
-
-  // const redirect = location ? location.split('=')[1] : '/';
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (userInfo) {
-      // history.push(redirect);
       navigate('/home');
     }
   }, [userInfo]);

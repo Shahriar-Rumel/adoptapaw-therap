@@ -1,32 +1,24 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { adoptionPostByIdAction } from '../actions/adoptionActions';
 import { adoptionRequestByIdAction } from '../actions/adoptionRequestActions';
-import AnimalProfileLeft from '../Components/Adoption/AnimalProfileLeft';
-import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
-import Features from '../Components/Adoption/Features';
 import UserAdoptionDetailsLeft from '../Components/Adoption/UserAdoptionDetailsLeft';
 import UserAdoptionDetailsRight from '../Components/Adoption/UserAdoptionDetailsRight';
 import Button from '../Components/Button';
 import Loader from '../Components/Loader';
-import TextBlock from '../Components/TextBlock';
 
 export default function UserAdoptionRequestDetailsPage() {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
-
-  const navigate = useNavigate();
 
   const adoptionRequestByIdData = useSelector(
     (state) => state.adoptionRequestById
   );
-
   const { loading, error, adoptionRequest } = adoptionRequestByIdData;
 
+  const navigate = useNavigate();
   const { uid, id } = useParams();
 
   useEffect(() => {

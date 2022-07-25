@@ -20,7 +20,6 @@ const MissingCardList = ({ list, buttonText }) => {
                 backgroundRepeat: 'no-repeat'
               }}
             ></div>
-
             <div className="overlay w-[100%] h-[100%] px-5  absolute mx-auto flex flex-col justify-center bg-[#000000] bg-opacity-[0.6]">
               <div className="flex justify-between items-center relative mt-[120px] ">
                 <h2 className="capitalize text-[20px] font-semibold tracking-tight ease-in-out duration-300 ">
@@ -28,7 +27,6 @@ const MissingCardList = ({ list, buttonText }) => {
                 </h2>
                 <img src="/assets/fav.svg" className="w-[25px]"></img>
               </div>
-
               <Link to={`/missing/${item.id}`}>
                 <div className="relative mt-[20px]  mx-auto">
                   <button className="bg-brand primary-button  w-[120px] h-[45px] text-[12px] text-offwhite px-20 py-3 ">
@@ -44,13 +42,11 @@ const MissingCardList = ({ list, buttonText }) => {
   );
 };
 export default function Homepage() {
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const adoptionPostsData = useSelector((state) => state.adoptionPosts);
   const missingPostsData = useSelector((state) => state.missingPostsStore);
-
   const { missingPosts } = missingPostsData;
-
   const { loading, error, adoptionPosts } = adoptionPostsData;
 
   useEffect(() => {

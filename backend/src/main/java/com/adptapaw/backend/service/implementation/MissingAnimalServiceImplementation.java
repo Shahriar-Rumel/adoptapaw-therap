@@ -149,6 +149,7 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
 
     @Override
     public String DeleteById(String id) {
+       
         MissingAnimal animal = missingAnimalRepository.findById(Long.valueOf(id)).get();
         List<MissingRequest>animalRequestList = missingRequestRepository.findAllByPet(animal);
 

@@ -1,16 +1,14 @@
-import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { adoptionPostByIdAction } from '../actions/adoptionActions';
-import AnimalProfileBottom from '../Components/Adoption/AnimalProfileBottom';
-import AnimalProfileLeft from '../Components/Adoption/AnimalProfileLeft';
-import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
 import { Link, useParams } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import Button from '../Components/Button';
 import UserMissingPostEditModal from '../Components/Modals/UserMissingPostEditModal';
-import UserAdoptionPostDeleteModal from '../Components/Modals/UserAdoptionPostDeleteModal';
-import { missingPostByIdAction } from '../actions/missingAnimalActions';
+import UserPostDeleteModal from '../Components/Modals/UserPostDeleteModal';
+import {
+  missingPostByIdAction,
+  missingPostDeleteAction
+} from '../actions/missingAnimalActions';
 import AttributeCard from '../Components/Cards/AttributeCard';
 import RewardCard from '../Components/Cards/RewardCard';
 import FeaturesCol from '../Components/FeaturesCol';
@@ -68,6 +66,7 @@ const MissingAnimalProfileLayout = ({
                 <img
                   src="/assets/Icons/location.svg"
                   className="w-[12px]"
+                  alt="location icon"
                 ></img>
                 <h3 className="mx-2 text-[12px] font-medium text-gray-light">
                   {missingPostById.location}
@@ -89,6 +88,7 @@ const MissingAnimalProfileLayout = ({
               <img
                 src="/assets/icons/bannerfordate.svg"
                 className="h-[30px]"
+                alt="Banner for Date"
               ></img>
               <h3 className="ml-[20px] text-[12px] absolute  mt-[-25px] font-bold text-white">
                 {missingPostById.datemissing}
@@ -158,71 +158,46 @@ const MissingAnimalProfileLayout = ({
 export default function UserMissingPostDetailsPage() {
   const [modal, setModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [refresh, setRefresh] = useState(false);
-  useEffect(() => {
-    gsap.from('.description-gallery-animation', {
-      y: '+=110',
-      opacity: 0
-    });
-    gsap.to('.description-gallery-animation', {
-      y: '0',
-      opacity: 1,
-      stagger: 0.2
-    });
-  });
-  useEffect(() => {
-    gsap.from('.description-image-animation', {
-      opacity: 0
-    });
-    gsap.to('.description-image-animation', {
-      opacity: 1,
-      stagger: 0.2
-    });
-  });
-  useEffect(() => {
-    gsap.from('.description-animation', {
-      y: '+=120',
-      opacity: 0
-    });
-    gsap.to('.description-animation', {
-      y: '0',
-      opacity: 1,
-      stagger: 0.3
-    });
-  });
 
   const dispatch = useDispatch();
 
   const missingPostByIdDataSet = useSelector(
     (state) => state.missingPostByIdStore
   );
-
   const { loading, error, missingPostById } = missingPostByIdDataSet;
+
+  const missingPostDeleteData = useSelector((state) => state.missingPostDelete);
+  const { loading: deleteLoading, success } = missingPostDeleteData;
 
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(missingPostByIdAction(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
+
+  const deletePosthandler = () => {
+    dispatch(missingPostDeleteAction(id));
+  };
 
   return (
     <>
       {loading ? (
         <Loader />
       ) : (
-        <div className=" lg:flex   lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+        <div className="lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw] mt-[100px] lg:mt-[150px] mb-[100px]">
           {modal && (
             <UserMissingPostEditModal
               data={missingPostById}
               setModal={setModal}
-              setRefresh={setRefresh}
             />
           )}
           {deleteModal && (
-            <UserAdoptionPostDeleteModal
+            <UserPostDeleteModal
               data={missingPostById}
               setModal={setDeleteModal}
-              setRefresh={setRefresh}
+              success={success}
+              deleteLoading={deleteLoading}
+              deletePosthandler={deletePosthandler}
             />
           )}
 
