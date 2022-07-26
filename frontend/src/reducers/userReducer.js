@@ -8,7 +8,10 @@ import {
   USER_PROFILE_EDIT_SUCCESS,
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
-  USER_REGISTER_SUCCESS
+  USER_REGISTER_SUCCESS,
+  USER_VERIFY_FAIL,
+  USER_VERIFY_REQUEST,
+  USER_VERIFY_SUCCESS
 } from '../constants/userConstants';
 
 export const userLoginReducer = (state = {}, action) => {
@@ -50,6 +53,19 @@ export const userProfileEditReducer = (state = {}, action) => {
 
     case USER_PROFILE_EDIT_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userVerifyReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_VERIFY_REQUEST:
+      return { loading: true, success: false };
+    case USER_VERIFY_SUCCESS:
+      return { loading: false, success: true };
+    case USER_VERIFY_FAIL:
+      return { loading: false, success: false, error: action.payload };
     default:
       return state;
   }

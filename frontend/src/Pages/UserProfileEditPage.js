@@ -7,6 +7,7 @@ import Button from '../Components/Button';
 import TextInput from '../Components/IO/TextInput';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
 import Message from '../Components/Message';
+import Topbar from '../Components/Topbar';
 
 const DpUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
   const uploadFileHandler = async (e) => {
@@ -104,7 +105,11 @@ export default function UserProfileEditPage() {
     dispatch(update(id, name, dp, password, location, bio));
   };
   return (
-    <div className="lg:w-3/4 w-[90vw]   mx-auto mt-[100px] mb-[40px] ">
+    <div className="lg:w-3/4 w-[90vw]   mx-auto mt-[140px] mb-[40px] ">
+      <Topbar
+        address={'Home/Profile/Edit'}
+        link={`/user/profile/${userInfo.id}`}
+      />
       {uploading && (
         <div className="fixed z-[999] top-[80px] bg-primary-light bg-opacity-25 left-0 right-0 bottom-0 flex items-center justify-center">
           <UploadLoader />
@@ -170,13 +175,6 @@ export default function UserProfileEditPage() {
                 className="bg-input py-4 cursor-not-allowed custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
               ></input>
             </div>
-
-            <TextInput
-              type={'text'}
-              label={'Location'}
-              data={location}
-              setData={setLocation}
-            />
             <div className="flex flex-col my-3 request-form-animation">
               <label className="font-bold text-primary text-[14px]">
                 Password
@@ -191,6 +189,13 @@ export default function UserProfileEditPage() {
                 className="bg-input py-4 custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
               ></input>
             </div>
+            <TextInput
+              type={'text'}
+              label={'Location'}
+              data={location}
+              setData={setLocation}
+            />
+
             <div className="flex flex-col my-3 request-form-animation">
               <label className="font-bold text-primary text-[14px]">Bio</label>
               <textarea

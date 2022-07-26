@@ -8,7 +8,10 @@ import {
   USER_LOGIN_LOGOUT,
   USER_PROFILE_EDIT_FAIL,
   USER_PROFILE_EDIT_SUCCESS,
-  USER_PROFILE_EDIT_REQUEST
+  USER_PROFILE_EDIT_REQUEST,
+  USER_VERIFY_REQUEST,
+  USER_VERIFY_SUCCESS,
+  USER_VERIFY_FAIL
 } from '../constants/userConstants';
 import axios from 'axios';
 
@@ -82,6 +85,38 @@ export const register =
       });
     }
   };
+
+export const verify = (token) => async (dispatch) => {
+  try {
+    dispatch({
+      type: USER_VERIFY_REQUEST
+    });
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const { data } = await axios.post(
+      `${BASE_URL}/api/auth/verify?token=${token}`,
+      config
+    );
+
+    dispatch({
+      type: USER_VERIFY_SUCCESS,
+      payload: data
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_VERIFY_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    });
+  }
+};
 
 export const update =
   (id, name, dp, password, location, bio) => async (dispatch, getState) => {

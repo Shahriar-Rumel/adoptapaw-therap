@@ -41,6 +41,7 @@ import RegistrationCompletePage from './Pages/RegistrationCompletePage';
 import CreateDonationPage from './Pages/CreateDonationPostPage';
 import AdminDonationPostsPage from './Pages/AdminDonationPostsPage';
 import AdminDonationPostDetailsPage from './Pages/AdminDonationPostDetailsPage';
+import AccountVerificationConfirmationPage from './Pages/AccountVerificationConfirmationPage';
 
 function App() {
   return (
@@ -163,6 +164,11 @@ function App() {
           <Route
             path="/admin/donation/posts"
             element={<AdminDonationPostsPage />}
+            exact
+          />
+          <Route
+            path="/auth/verify/:token"
+            element={<AccountVerificationConfirmationPage />}
             exact
           />
           <Route path="/user/profile/:id" element={<UserProfilepage />} exact />

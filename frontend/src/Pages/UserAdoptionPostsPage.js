@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { adoptionPostByUserIdAction } from '../actions/adoptionActions';
 import AdoptionPostCard from '../Components/Cards/AdoptionPostCard';
 import Loader from '../Components/Loader';
+import Message from '../Components/Message';
 
 export default function UserAdoptionPostsPage() {
   const dispatch = useDispatch();
@@ -38,13 +39,21 @@ export default function UserAdoptionPostsPage() {
               <h1 className="text-[24px] font-extrabold text-primary tracking-tighter mt-[30px] mb-3">
                 Adoption posts
               </h1>
-              {adoptionPostByUserId.content && (
-                <AdoptionPostCard
-                  data={adoptionPostByUserId.content}
-                  columnSize={'lg:grid-cols-3'}
-                  columnSizeXl={`xl:grid-cols-3`}
-                />
-              )}
+              <div>
+                {adoptionPostByUserId && adoptionPostByUserId > 0 ? (
+                  <AdoptionPostCard
+                    data={adoptionPostByUserId.content}
+                    columnSize={'lg:grid-cols-3'}
+                    columnSizeXl={`xl:grid-cols-3`}
+                  />
+                ) : (
+                  <Message
+                    message={'No adoption post available!'}
+                    variant={'danger'}
+                    active={true}
+                  />
+                )}
+              </div>
             </div>
           </div>
         )

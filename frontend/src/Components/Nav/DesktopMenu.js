@@ -129,7 +129,7 @@ const ProfileMenuSection = ({
             <ProfileMenuNestedItem
               userInfo={userInfo}
               setShowProfileMenu={setShowProfileMenu}
-              link={`/user/profile/${userInfo.id}/adoptionposts`}
+              link={`/adoption/${userInfo.id}/createpost`}
               title={'Create new post'}
             />
             <ProfileMenuNestedItem
@@ -142,7 +142,7 @@ const ProfileMenuSection = ({
             <ProfileMenuNestedItem
               userInfo={userInfo}
               setShowProfileMenu={setShowProfileMenu}
-              link={`/user/profile/${userInfo.id}/adoptionposts`}
+              link={`/user/profile/${userInfo.id}/adoptionrequests`}
               title={'Requests'}
             />
           </div>

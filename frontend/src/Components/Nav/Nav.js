@@ -56,10 +56,12 @@ export default function Nav() {
   return (
     <>
       <div
-        className={`${scrolled ? 'shadow-md' : 'shadow-none'}
-            fixed top-0 left-0 right-0 ease-in-out z-[999] bg-white`}
+        className={`${scrolled ? 'shadow-none' : 'shadow-none'}
+            fixed top-0 left-0 right-0 ease-in-out z-[999] ${
+              theme && 'bg-white'
+            } `}
       >
-        <div className="flex items-center  justify-center lg:justify-between md:w-[90vw] w-[95vw] mx-auto py-4  md:py-2 z-[999]">
+        <div className="flex items-center   justify-center lg:justify-between md:w-[90vw] w-[95vw] mx-auto py-4  md:py-2 z-[999]">
           <Link
             to={userInfo && userInfo.role[0].id === 1 ? '/dashboard' : '/home'}
           >

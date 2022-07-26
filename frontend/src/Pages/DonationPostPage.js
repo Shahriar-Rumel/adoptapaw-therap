@@ -5,9 +5,10 @@ import DonationListCard from '../Components/Cards/DonationListCard';
 import { useDispatch, useSelector } from 'react-redux/es';
 import { donationPostsAction } from '../actions/donationPostActions';
 import Loader from '../Components/Loader';
+import Topbar from '../Components/Topbar';
+import Message from '../Components/Message';
 
 export default function DonationPostPage() {
-
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -27,7 +28,8 @@ export default function DonationPostPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[100px]">
+        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[140px]">
+          <Topbar address={'Home/Donation'} link={'/home'} />
           <div className="lg:flex justify-between items-center mb-5 lg:mb-0">
             <div className="lg:w-[60%]">
               <h1 className="font-extrabold text-primary text-[24px] text-left mb-2 tracking-tight">
@@ -51,8 +53,14 @@ export default function DonationPostPage() {
             )}
           </div>
 
-          {donationPosts && (
+          {donationPosts && donationPosts.length > 0 ? (
             <DonationListCard data={donationPosts} userInfo={userInfo} />
+          ) : (
+            <Message
+              message={'No donation post available!'}
+              variant={'danger'}
+              active={true}
+            />
           )}
         </div>
       )}

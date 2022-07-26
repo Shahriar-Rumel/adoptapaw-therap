@@ -6,6 +6,7 @@ import TextInput from '../Components/IO/TextInput';
 import { resetPassword } from '../actions/passwordResetAction';
 import Message from '../Components/Message';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
+import Topbar from '../Components/Topbar';
 
 export default function ForgotPasswordResetPage() {
   const [password, setPassword] = useState();
@@ -24,6 +25,7 @@ export default function ForgotPasswordResetPage() {
   };
   return (
     <div className=" lg:w-[600px] w-[90vw] mx-auto mt-[150px] ">
+      <Topbar address={'Home/Forgot Password / Reset'} link={'/home'} />
       {success && (
         <Message
           message={'Password reset success'}

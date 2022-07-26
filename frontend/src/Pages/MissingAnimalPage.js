@@ -5,6 +5,8 @@ import { missingPostsAction } from '../actions/missingAnimalActions';
 import Loader from '../Components/Loader';
 import AdoptionHeader from '../Components/Adoption/AdoptionHeader';
 import Button from '../Components/Button';
+import Topbar from '../Components/Topbar';
+import Message from '../Components/Message';
 
 const MissingCardList = ({ list, buttonText }) => {
   return (
@@ -64,7 +66,8 @@ export default function MissingAnimalPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[100px]">
+        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[140px]">
+          <Topbar address={'Home/Missing'} link={'/home'} />
           <div className="flex flex-col w-[100%]  md:flex-row md:justify-between md:items-center mb-5">
             <AdoptionHeader
               link="/assets/Lost-dog.svg"
@@ -99,7 +102,15 @@ export default function MissingAnimalPage() {
             Paws Missing
           </h1>
 
-          <MissingCardList list={missingPosts} buttonText={'Help me'} />
+          {missingPosts.length > 0 ? (
+            <MissingCardList list={missingPosts} buttonText={'Help me'} />
+          ) : (
+            <Message
+              message={'No adoption post available!'}
+              variant={'danger'}
+              active={true}
+            />
+          )}
         </div>
       )}
     </>

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../Components/Button';
+import Topbar from '../Components/Topbar';
 
 export default function RegistrationCompletePage() {
   const navigate = useNavigate();
 
   return (
     <div className=" lg:w-[600px] w-[90vw] mx-auto mt-[150px] ">
+      <Topbar address={'Home/Registration/Complete'} link={'/home'} />
       <img
         src="/assets/Icons/mail.svg"
         className="w-[150px] h-[150px] mx-auto mb-16"

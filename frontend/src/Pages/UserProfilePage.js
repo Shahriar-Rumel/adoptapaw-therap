@@ -6,6 +6,7 @@ import Button from '../Components/Button';
 import AdoptionPostCard from '../Components/Cards/AdoptionPostCard';
 import Loader from '../Components/Loader';
 import Message from '../Components/Message';
+import Topbar from '../Components/Topbar';
 
 export default function UserProfilepage() {
   const dispatch = useDispatch();
@@ -36,7 +37,8 @@ export default function UserProfilepage() {
         <Loader />
       ) : (
         userInfo && (
-          <div className="lg:w-3/4 w-[90vw]   mx-auto mt-[100px] mb-[40px] lg:flex justify-between ">
+          <div className="lg:w-3/4 w-[90vw]   mx-auto mt-[140px] mb-[40px] lg:flex justify-between ">
+            <Topbar address={'Home/Profile'} link={'/home'} />
             <div className=" flex flex-col items-center   lg:w-[50%] xl:w-[60%]  lg:mt-[100px]  lg:mr-[30px] ">
               <div
                 className="w-[140px] h-[140px] lg:w-[240px] lg:h-[240px] flex items-center justify-center rounded-[100%] bg-brand"

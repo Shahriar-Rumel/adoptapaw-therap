@@ -10,6 +10,7 @@ import TextInput from '../Components/IO/TextInput';
 import Loader from '../Components/Loader';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
 import Message from '../Components/Message';
+import Topbar from '../Components/Topbar';
 
 const FileUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
   const uploadFileHandler = async (e) => {
@@ -172,7 +173,11 @@ export default function CreateAdoptionPost() {
   };
 
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[120px] mb-[100px] ">
+    <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[140px] mb-[100px] ">
+      <Topbar
+        address={'Home/Adoption/Create adoption post'}
+        link={'/adoption'}
+      />
       <h1 className="text-[30px] font-extrabold mt-14 text-primary  tracking-tighter">
         Please enter the details of your pet
       </h1>

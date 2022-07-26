@@ -8,6 +8,7 @@ import { register } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import Message from '../Components/Message';
+import Topbar from '../Components/Topbar';
 
 export default function RegistrationPage() {
   useEffect(() => {
@@ -60,6 +61,7 @@ export default function RegistrationPage() {
       {loading && <Loader />}
 
       <div className=" lg:flex  lg:flex-row-reverse justify-between lg:items-center lg:w-3/4 w-[90vw] mx-auto mt-[150px] mb-[100px]">
+        <Topbar address={'Home/Registration'} link={'/home'} />
         <img
           src="/assets/dogcat.svg"
           className="w-[50vw] mx-auto lg:mr-5 mb-12 mt-[-50px] lg:mt-0 md:w-[40vw] lg:w-[35vw] xl:w-[25vw] request-form-image-animation"

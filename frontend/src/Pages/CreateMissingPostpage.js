@@ -10,6 +10,7 @@ import TextInput from '../Components/IO/TextInput';
 import Loader from '../Components/Loader';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
 import Message from '../Components/Message';
+import Topbar from '../Components/Topbar';
 
 export default function CreateMissingPost({ history }) {
   const [name, setName] = useState('');
@@ -129,7 +130,8 @@ export default function CreateMissingPost({ history }) {
   };
 
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[100px] mb-[100px] ">
+    <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[140px] mb-[100px] ">
+      <Topbar address={'Home/Missing/Create missing post'} link={'/missing'} />
       <h1 className="text-[30px] font-extrabold mt-14 text-primary  tracking-tighter">
         Please provide details of missing pet
       </h1>

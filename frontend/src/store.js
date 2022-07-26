@@ -7,7 +7,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   userLoginReducer,
   userProfileEditReducer,
-  userRegisterReducer
+  userRegisterReducer,
+  userVerifyReducer
 } from './reducers/userReducer';
 import {
   adoptionAdoptionPostByIdReducer,
@@ -67,7 +68,8 @@ const reducer = combineReducers({
   donationPostUpdateStore: donationPostUpdateReducer,
   donationStore: donationCreateReducer,
   adoptionPostDelete: adoptionPostDeleteReducer,
-  missingPostDelete: missingPostDeleteReducer
+  missingPostDelete: missingPostDeleteReducer,
+  userVerify: userVerifyReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

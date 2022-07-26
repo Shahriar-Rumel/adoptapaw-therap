@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Button from '../Components/Button';
 import TextInput from '../Components/IO/TextInput';
+import Topbar from '../Components/Topbar';
 
 const Banner = () => {
   return (
     <div className="py-[30px] bg-white  md:shadow-none custom-round px-5 mb-10 md:mb-0 w-[100%]  md:ml-5">
-      <h1 className=" text-center text-[18px] font-bold tracking-tighter  bg-opacity-30  text-gray  w-[100%] leading-5">
+      <h1 className=" text-center text-[16px]  tracking-tight  bg-opacity-30  text-primary  w-[100%] leading-5">
         We would love to hear from you
       </h1>
       <img src="/assets/icons/feedback.svg" className="w-[90%] mt-5 "></img>
@@ -49,7 +50,8 @@ export default function ContactPage() {
   const [rating, setRating] = useState();
 
   return (
-    <div className=" mx-auto lg:w-3/4 w-[90vw] md:flex flex-row-reverse md:shadow-md  custom-round md:px-[30px] md:py-10 justify-between mt-[100px] lg:mt-[150px] mb-[100px]">
+    <div className=" mx-auto lg:w-3/4 w-[90vw] md:flex flex-row-reverse md:shadow-md  custom-round md:px-[30px] md:py-10 justify-between mt-[120px] lg:mt-[150px] mb-[100px]">
+      <Topbar address={'Home/Feedback'} link={'/home'} />
       <div className="md:w-[48%] flex items-center justify-center">
         <Banner />
       </div>

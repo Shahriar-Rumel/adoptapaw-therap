@@ -4,6 +4,8 @@ import CardList from '../Components/Cards/CardList';
 import Loader from '../Components/Loader';
 import { adoptionPostsAction } from '../actions/adoptionActions';
 import { Link } from 'react-router-dom';
+import Message from '../Components/Message';
+import { missingPostsAction } from '../actions/missingAnimalActions';
 
 const MissingCardList = ({ list, buttonText }) => {
   return (
@@ -42,7 +44,6 @@ const MissingCardList = ({ list, buttonText }) => {
   );
 };
 export default function Homepage() {
-
   const dispatch = useDispatch();
   const adoptionPostsData = useSelector((state) => state.adoptionPosts);
   const missingPostsData = useSelector((state) => state.missingPostsStore);
@@ -53,20 +54,40 @@ export default function Homepage() {
     dispatch(adoptionPostsAction());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(missingPostsAction());
+  }, [dispatch]);
+
   return (
     <>
       {loading ? (
         <Loader />
       ) : (
-        <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[100px] ">
-          <h1 className="image-animation font-black tracking-tighter text-[24px] px-3 text-primary border-l-4 border-l-green">
+        <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[140px] ">
+          <h1 className="image-animation font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-green">
             Paws for adoption
           </h1>
-          <CardList list={adoptionPosts} />
-          <h1 className="image-animation font-black tracking-tighter text-[24px] px-3 text-primary border-l-4 border-l-red mt-[-100px]">
+          {adoptionPosts.length > 0 ? (
+            <CardList list={adoptionPosts} />
+          ) : (
+            <Message
+              message={'No adoption post available!'}
+              variant={'danger'}
+              active={true}
+            />
+          )}
+          <h1 className="image-animation font-black tracking-tighter text-[24px] mb-[30px] px-3 text-primary border-l-4 border-l-red mt-[60px]">
             Paws Missing
           </h1>
-          <MissingCardList list={missingPosts} buttonText={'Help me'} />
+          {missingPosts.length > 0 ? (
+            <MissingCardList list={missingPosts} buttonText={'Help me'} />
+          ) : (
+            <Message
+              message={'No adoption post available!'}
+              variant={'danger'}
+              active={true}
+            />
+          )}
         </div>
       )}
     </>

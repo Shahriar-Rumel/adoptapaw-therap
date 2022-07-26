@@ -158,7 +158,7 @@ public class AuthController {
 
     }
 
-    @GetMapping("/verify")
+    @PostMapping("/verify")
     public String verifyUser(@RequestParam(required = false) String token) throws InvalidTokenException {
 
         if(StringUtils.isEmpty(token)){

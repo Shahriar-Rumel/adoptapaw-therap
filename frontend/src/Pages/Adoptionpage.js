@@ -6,6 +6,8 @@ import AdoptionHeader from '../Components/Adoption/AdoptionHeader';
 import Button from '../Components/Button';
 import CardList from '../Components/Cards/CardList';
 import Loader from '../Components/Loader';
+import Topbar from '../Components/Topbar';
+import Message from '../Components/Message';
 
 export default function Adoptionpage() {
   const dispatch = useDispatch();
@@ -27,7 +29,8 @@ export default function Adoptionpage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[100px] mb-[100px] ">
+        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[140px] mb-[100px] ">
+          <Topbar address={'Home/Adoption'} link={'/home'} />
           <div className="flex flex-col w-[100%]  md:flex-row md:justify-between md:items-center">
             <AdoptionHeader
               link={'/assets/adoption/dogowner.svg'}
@@ -64,7 +67,15 @@ export default function Adoptionpage() {
             Paws for adoption
           </h1>
 
-          <CardList list={adoptionPosts} />
+          {adoptionPosts.length > 0 ? (
+            <CardList list={adoptionPosts} />
+          ) : (
+            <Message
+              message={'No adoption post available!'}
+              variant={'danger'}
+              active={true}
+            />
+          )}
         </div>
       )}
     </>

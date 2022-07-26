@@ -8,6 +8,7 @@ import { login } from '../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import Message from '../Components/Message';
+import Topbar from '../Components/Topbar';
 
 export default function LoginPage() {
   useEffect(() => {
@@ -58,6 +59,7 @@ export default function LoginPage() {
     <>
       {loading && <Loader />}
       <div className=" lg:flex  lg:flex-row-reverse justify-between lg:items-center lg:w-3/4 w-[90vw] mx-auto mt-[150px] ">
+        <Topbar address={'Home/Login'} link={'/home'} />
         <img
           src="/assets/dogcat secondary.svg"
           className="w-[50vw] mx-auto lg:mr-5 mb-12 mt-[-50px] lg:mt-0 md:w-[40vw] lg:w-[35vw] xl:w-[25vw] request-form-image-animation"
@@ -65,7 +67,7 @@ export default function LoginPage() {
         ></img>
         <div className="lg:w-[50%]">
           <h1 className="font-extrabold text-[24px] tracking-tight text-primary request-form-animation">
-            Hey, Welcome back yo adoptapaw !
+            Hey, Welcome back to adoptapaw !
           </h1>
           <h3 className="text-[14px] font-regular text-gray-light mb-10 request-form-animation">
             Login to adopt paws
