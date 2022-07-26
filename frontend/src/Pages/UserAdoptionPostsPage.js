@@ -40,7 +40,9 @@ export default function UserAdoptionPostsPage() {
                 Adoption posts
               </h1>
               <div>
-                {adoptionPostByUserId && adoptionPostByUserId > 0 ? (
+                {adoptionPostByUserId &&
+                adoptionPostByUserId.content &&
+                adoptionPostByUserId.content.length > 0 ? (
                   <AdoptionPostCard
                     data={adoptionPostByUserId.content}
                     columnSize={'lg:grid-cols-3'}

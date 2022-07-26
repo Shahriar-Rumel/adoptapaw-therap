@@ -1,8 +1,28 @@
-import React, { useState } from 'react';
+import gsap from 'gsap';
+import React, { useEffect, useState } from 'react';
 import { adoptionListGallery } from '../../Data/adoption';
 export default function AnimalProfileLeft({ poster, data }) {
   const [image, setImage] = useState(data ? data.imageone : '');
-
+  useEffect(() => {
+    gsap.from('.description-gallery-animation', {
+      y: '+=110',
+      opacity: 0
+    });
+    gsap.to('.description-gallery-animation', {
+      y: '0',
+      opacity: 1,
+      stagger: 0.2
+    });
+  }, []);
+  useEffect(() => {
+    gsap.from('.description-image-animation', {
+      opacity: 0
+    });
+    gsap.to('.description-image-animation', {
+      opacity: 1,
+      stagger: 0.2
+    });
+  }, []);
   return (
     <>
       {data && (

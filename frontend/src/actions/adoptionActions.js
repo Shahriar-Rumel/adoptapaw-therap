@@ -176,6 +176,7 @@ export const adoptionPostUpdateAction =
 
       // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));
     } catch (error) {
+      console.log(error);
       dispatch({
         type: ADOPTION_POST_UPDATE_FAIL,
         payload:

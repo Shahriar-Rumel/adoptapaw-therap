@@ -3,6 +3,7 @@ package com.adptapaw.backend.controller;
 import com.adptapaw.backend.payload.adoption.AdoptionRequestDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionRequestListDTO;
 import com.adptapaw.backend.service.AdoptionRequestService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class AdoptionRequestController {
     }
 
     @PostMapping("/adoption/{id}/user/{uid}/createadoptionrequest")
-    public AdoptionRequestDTO createAdoptionRequestPost(@PathVariable(name="uid") String  uid, @PathVariable(name="id") String id, @RequestBody AdoptionRequestDTO adoptionRequestDTO){
+    public ResponseEntity<?> createAdoptionRequestPost(@PathVariable(name="uid") String  uid, @PathVariable(name="id") String id, @RequestBody AdoptionRequestDTO adoptionRequestDTO){
         return adoptionRequestService.createAdoptionRequest(uid,id,adoptionRequestDTO);
     }
 

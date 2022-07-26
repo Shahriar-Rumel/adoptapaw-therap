@@ -258,13 +258,11 @@ export default function DonationPostDetailsPage() {
   );
   const { loading, error, donationPostById } = donationPostByIdDataSet;
 
-  const donationCreateDataSet = useSelector(
-    (state) => state.donationGiverStore
-  );
+  const donationCreateDataSet = useSelector((state) => state.donationStore);
   const {
     loading: donationCreateLoading,
     success,
-    donationGiver
+    donation
   } = donationCreateDataSet;
 
   const { id } = useParams();

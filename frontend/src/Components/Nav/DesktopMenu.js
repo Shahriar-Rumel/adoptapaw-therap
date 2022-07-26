@@ -63,6 +63,7 @@ const ProfileMenuSection = ({
   LogoutHandler
 }) => {
   const [adoption, setAdoption] = useState(false);
+  const [missing, setMissing] = useState(false);
   useEffect(() => {
     gsap.from('.profile-menu-animation', {
       y: '+=60',
@@ -84,7 +85,7 @@ const ProfileMenuSection = ({
       opacity: 1,
       stagger: 0.2
     });
-  }, [adoption]);
+  }, [adoption, missing]);
   useEffect(() => {
     gsap.from('.profile-menu-bg', {
       width: '0',
@@ -100,7 +101,7 @@ const ProfileMenuSection = ({
 
   return (
     <div
-      className={`profile-menu-bg z-[999] bg-white shadow-lg fixed top-[80px] linear bottom-0  right-0 flex flex-col items-center 
+      className={`profile-menu-bg z-[999] bg-white shadow-lg fixed top-[80px]  bottom-0  right-0 flex flex-col items-center 
         px-4 py-4`}
     >
       <ProfileMenuItem
@@ -149,30 +150,47 @@ const ProfileMenuSection = ({
         )}
       </div>
 
-      {userInfo.role[0].id === 2 ? (
-        <ProfileMenuItem
-          userInfo={userInfo}
-          setShowProfileMenu={setShowProfileMenu}
-          link={`/user/profile/${userInfo.id}/missingposts`}
-          title={' My missing posts'}
-        />
-      ) : (
-        <ProfileMenuItem
-          userInfo={userInfo}
-          setShowProfileMenu={setShowProfileMenu}
-          link={`/user/profile/${userInfo.id}/adoptionposts`}
-          title={'Missing Leads'}
-        />
-      )}
+      <div className="w-[200px]">
+        <div
+          className=" flex flex-col profile-menu-animation opacity-0 border-b w-[100%]  py-6 border-gray text-primary hover:text-primary-hover"
+          onClick={() => setMissing((prev) => !prev)}
+        >
+          <h2 className="px-2 text-[14px] font-semibold tracking-tight ml-2  ">
+            Missing
+          </h2>
+          <div className="absolute ml-[160px] mt-2">
+            <div className="w-[12px] h-[2px] bg-primary"></div>
+            {!missing && (
+              <div className="w-[12px] h-[2px] bg-primary rotate-90 mt-[-2px]"></div>
+            )}
+          </div>
+        </div>
+        {missing && (
+          <div className="ml-[20px]">
+            <ProfileMenuNestedItem
+              userInfo={userInfo}
+              setShowProfileMenu={setShowProfileMenu}
+              link={`/missing/${userInfo.id}/createpost`}
+              title={'Create new post'}
+            />
+            <ProfileMenuNestedItem
+              userInfo={userInfo}
+              setShowProfileMenu={setShowProfileMenu}
+              link={`/user/profile/${userInfo.id}/missingposts`}
+              title={'Posts'}
+            />
+            {userInfo.role[0].id === 1 && (
+              <ProfileMenuItem
+                userInfo={userInfo}
+                setShowProfileMenu={setShowProfileMenu}
+                link={`/admin/donation/posts`}
+                title={'Donation Posts'}
+              />
+            )}
+          </div>
+        )}
+      </div>
 
-      {userInfo.role[0].id === 1 && (
-        <ProfileMenuItem
-          userInfo={userInfo}
-          setShowProfileMenu={setShowProfileMenu}
-          link={`/user/profile/${userInfo.id}/adoptionrequests`}
-          title={'Missing Posts'}
-        />
-      )}
       {userInfo.role[0].id === 1 && (
         <ProfileMenuItem
           userInfo={userInfo}
@@ -187,7 +205,6 @@ const ProfileMenuSection = ({
         link={`/user/profile/${userInfo.id}`}
         title={'Donations'}
       />
-
       {userInfo.role[0].id === 1 && (
         <ProfileMenuItem
           userInfo={userInfo}
@@ -210,6 +227,24 @@ const ProfileMenuSection = ({
           secondary={true}
         />
       </div>
+      <div
+        className="mt-16 profile-menu-animation bg-brand opacity-0 w-[80px] h-[80px] rounded-[100%] flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${userInfo.dp})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {!userInfo.dp && (
+          <h1 className="font-black text-[24px] text-white">
+            {userInfo.name.split('')[0]}
+          </h1>
+        )}
+      </div>
+      <h2 className="profile-menu-animation text-gray-light text-[14px] tracking-tight opacity-0">
+        {userInfo.name}
+      </h2>
     </div>
   );
 };

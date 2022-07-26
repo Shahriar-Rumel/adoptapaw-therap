@@ -68,7 +68,7 @@ export default function Nav() {
             <img
               src={!theme ? 'assets/logo.svg' : 'assets/logo-primary.svg'}
               className="w-[160px] md:w-[160px]"
-              alt={!theme ? 'assets/logo.svg' : 'assets/logo-primary.svg'}
+              alt={!theme ? 'Adoptapaw Logo' : 'Adoptapaw Logo'}
             ></img>
           </Link>
           {!mobile && <DesktopMenu theme={theme} />}

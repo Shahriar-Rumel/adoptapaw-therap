@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/context/AccountVerificationEmailContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/context/AccountVerificationEmailContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AdoptionRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AdoptionRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/AdoptionRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/AdoptionRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AdoptionRequestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AdoptionRequestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +83,7 @@
       <workItem from="1658781557830" duration="2000" />
       <workItem from="1658781570583" duration="30000" />
       <workItem from="1658781611510" duration="670000" />
-      <workItem from="1658819472276" duration="3652000" />
+      <workItem from="1658819472276" duration="10369000" />
     </task>
     <servers />
   </component>

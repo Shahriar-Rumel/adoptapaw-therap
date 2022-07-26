@@ -66,7 +66,7 @@ export default function List({ title, data, limit, query, page, uid }) {
                               <Button
                                 text={'Details'}
                                 width={true}
-                                widthClass={'w-[30px]'}
+                                widthClass={'w-[80px]'}
                                 height={true}
                                 heightClass={'h-[40px]'}
                                 brand={true}
@@ -91,7 +91,7 @@ export default function List({ title, data, limit, query, page, uid }) {
                               <Button
                                 text={'Details'}
                                 width={true}
-                                widthClass={'w-[30px]'}
+                                widthClass={'w-[80px]'}
                                 height={true}
                                 heightClass={'h-[40px]'}
                                 brand={true}

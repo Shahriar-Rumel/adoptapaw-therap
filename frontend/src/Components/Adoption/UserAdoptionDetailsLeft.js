@@ -13,16 +13,16 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
             </h2>
             <div className="flex items-center">
               <img
-                src={`${
-                  !data.sataus
+                src={
+                  data.status
                     ? `/assets/icons/confirmed.svg`
                     : `/assets/icons/pending.svg`
-                }`}
+                }
                 className="w-[16px]"
               ></img>
               <h2
                 className={`ml-2 ${
-                  !data.sataus ? `text-green` : `text-blue`
+                  data.status ? `text-green` : `text-blue`
                 } font-bold`}
               >
                 {data.status ? 'Approved' : 'Pending'}

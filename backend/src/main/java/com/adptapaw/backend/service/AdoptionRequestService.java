@@ -2,12 +2,13 @@ package com.adptapaw.backend.service;
 
 import com.adptapaw.backend.payload.adoption.AdoptionRequestDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionRequestListDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 
 public interface AdoptionRequestService {
-    AdoptionRequestDTO createAdoptionRequest(String uid,String id, AdoptionRequestDTO adoptionRequestDTO);
+    ResponseEntity<?> createAdoptionRequest(String uid, String id, AdoptionRequestDTO adoptionRequestDTO);
 
 
     AdoptionRequestListDTO getAllByCreator(String id);

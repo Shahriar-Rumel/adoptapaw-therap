@@ -4,6 +4,17 @@ import AdditionalFeatures from '../Adoption/AdditionalFeatures';
 import Features from './Features';
 
 export default function AnimalProfileBottom({ data }) {
+  useEffect(() => {
+    gsap.from('.description-animation', {
+      y: '+=120',
+      opacity: 0
+    });
+    gsap.to('.description-animation', {
+      y: '0',
+      opacity: 1,
+      stagger: 0.3
+    });
+  });
   return (
     <>
       {data && (

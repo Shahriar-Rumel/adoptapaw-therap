@@ -89,7 +89,7 @@ export const adoptionPostCreateReducer = (state = {}, action) => {
 export const adoptionPostUpdateReducer = (state = {}, action) => {
   switch (action.type) {
     case ADOPTION_POST_UPDATE_REQUEST:
-      return { loading: true };
+      return { loading: true, success: false };
     case ADOPTION_POST_UPDATE_SUCCESS:
       return { loading: false, success: true, adoptionPost: action.payload };
 
@@ -101,16 +101,12 @@ export const adoptionPostUpdateReducer = (state = {}, action) => {
   }
 };
 
-export const adoptionRequestReducer = (
-  state = { adoptionRequest: {}, loading: false, success: false },
-  action
-) => {
+export const adoptionRequestReducer = (state = {}, action) => {
   switch (action.type) {
     case ADOPTION_REQUEST_REQUEST:
-      return { loading: true, adoptionRequest: {} };
+      return { loading: true, success: false };
     case ADOPTION_REQUEST_SUCCESS:
-      return { loading: false, success: true, adoptionRequest: action.payload };
-
+      return { loading: false, success: true };
     case ADOPTION_REQUEST_FAIL:
       return { loading: false, error: action.payload };
     case ADOPTION_REQUEST_RESET:

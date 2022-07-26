@@ -12,6 +12,8 @@ import Button from '../Components/Button';
 import Features from '../Components/Adoption/Features';
 import Loader from '../Components/Loader';
 import RequestForm from '../Components/RequestForm';
+import UploadLoader from '../Components/UploadLoader/UploadLoader';
+import Message from '../Components/Message';
 
 export default function AdoptionRequestPage() {
   const [rfa, setRfa] = useState('');
@@ -27,9 +29,14 @@ export default function AdoptionRequestPage() {
   );
   const { loading, error, adoptionPostById } = adoptionPostByIdDataSet;
 
-  const adoptionRequestdata = useSelector(
-    (state) => state.adoptionRequestCreated
+  const adoptionRequestData = useSelector(
+    (state) => state.adoptionRequstCreated
   );
+  const {
+    loading: requestLoading,
+    success,
+    error: requestError
+  } = adoptionRequestData;
 
   const navigate = useNavigate();
   const { id, uid } = useParams();
@@ -63,11 +70,16 @@ export default function AdoptionRequestPage() {
     e.preventDefault();
     if (rfa && mobile && email) {
       dispatch(adoptionRequestAction(dataset, id, uid));
-      navigate(`/user/profile/${uid}/adoptionrequests`);
     } else {
       window.alert("Data can't be empty");
     }
   };
+
+  useEffect(() => {
+    if (success) {
+      navigate(`/user/profile/${uid}/adoptionrequests`);
+    }
+  }, [success]);
 
   useEffect(() => {
     gsap.from('.request-adoption-gallery-animation', {
@@ -98,6 +110,10 @@ export default function AdoptionRequestPage() {
                 Please provide information required for adoption request
               </h1>
             </div>
+            {requestLoading && <UploadLoader />}{' '}
+            {requestError && (
+              <Message message={requestError} variant={'danger'} />
+            )}
             <div className="request-adoption-gallery-animation">
               <form>
                 <RequestForm setObjects={setObjects} />

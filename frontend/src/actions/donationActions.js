@@ -26,7 +26,7 @@ export const donationCreateAction =
       };
 
       await axios.post(
-        `${BASE_URL}/donation/${id}/user/${uid}/createdonation`,
+        `${BASE_URL}/donationpost/${id}/user/${uid}/createdonation`,
         { amountofmoney },
         config
       );

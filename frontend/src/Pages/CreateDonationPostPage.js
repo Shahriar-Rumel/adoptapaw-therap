@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import Button from '../Components/Button';
 import { donationPostCreateAction } from '../actions/donationPostActions';
+import Topbar from '../Components/Topbar';
 
 export default function CreateDonationPage() {
   const [name, setName] = useState();
@@ -84,11 +85,15 @@ export default function CreateDonationPage() {
     }
   };
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[120px] mb-[100px] ">
+    <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[160px] mb-[100px] ">
+      <Topbar
+        address={'Home/Donation/Create Post'}
+        link={'/ongoingdonations'}
+      />
       <h1 className="text-[24px] tracking-tight font-extrabold text-primary">
         Create Donation Post
       </h1>
-      <p className="text-[16px]  text-gray-light">
+      <p className="text-[16px]  text-gray-light mb-10">
         Provide all the necessary information to set up a donation
       </p>
       <form onSubmit={submitHandler}>

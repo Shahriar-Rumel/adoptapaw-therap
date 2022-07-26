@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { adoptionRequestsByUserIdAction } from '../actions/adoptionRequestActions';
 import List from '../Components/List';
 import Loader from '../Components/Loader';
+import Topbar from '../Components/Topbar';
 
 export default function UserAdoptionRequestsPage() {
   const dispatch = useDispatch();
@@ -34,7 +35,11 @@ export default function UserAdoptionRequestsPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:w-[11/12] w-[95vw] mx-auto mt-[80px]  mb-[100px]">
+        <div className="lg:w-[11/12] w-[95vw] mx-auto mt-[160px]  mb-[100px]">
+          <Topbar
+            link={'/user/profile'}
+            address={'Home/User/Adoption/Requests'}
+          />
           {adoptionRequestsByUserId && (
             <List data={adoptionRequestsByUserId.content} query={''} uid={id} />
           )}

@@ -13,6 +13,8 @@ import com.adptapaw.backend.service.AdoptionRequestService;
 import com.adptapaw.backend.service.email.EmailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -53,13 +55,13 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
         return mapper.map(user, AdoptionUserDTO.class);
     }
 
-    public AdoptionRequestDTO createAdoptionRequest(String uid,String id, AdoptionRequestDTO adoptionRequestDTO) {
+    public ResponseEntity<?> createAdoptionRequest(String uid,String id, AdoptionRequestDTO adoptionRequestDTO) {
 
         AdoptionRequest request = new AdoptionRequest();
         request.setStatus(false);
         Date date = new Date();
         request.setRequestdate(String.valueOf(date));
-        request.setApproveddate(String.valueOf(date));
+        request.setApproveddate(null);
         request.setEmail(adoptionRequestDTO.getEmail());
         request.setRfa(adoptionRequestDTO.getRfa());
         request.setMobile(adoptionRequestDTO.getMobile());
@@ -75,8 +77,7 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
         assert user != null;
         assert pet != null;
         if(Objects.equals(pet.getUser().getEmail(), user.getEmail())){
-            System.out.println("Can't Adopt");
-            return null;
+            return new ResponseEntity<>("You can't adopt your own animal", HttpStatus.BAD_REQUEST);
         }
         this.adoptionRequestRepository.save(request);
 
@@ -98,7 +99,7 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
 
         AdoptionUserDTO adoptionUserDTO = mapTouserDTO(user);
 
-        return mapToRequestDTO(request);
+        return new ResponseEntity<>(mapToRequestDTO(request), HttpStatus.OK);
     }
 
 
@@ -138,7 +139,9 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
         }
 
         if(currentRole.equals("ROLE_ADMIN")){
+            Date date = new Date();
             adoptionRequest.setStatus(true);
+            adoptionRequest.setApproveddate(String.valueOf(date));
             adoptionRequestRepository.save(adoptionRequest);
 
             animal.setAvailability(false);
