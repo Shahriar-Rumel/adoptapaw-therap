@@ -59,15 +59,32 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
     }
 
     @Override
-    public AdoptionAnimalResponseDTO getAllByCreator(String id) {
+    public ResponseEntity<?> getAllByCreator(String id,int pageNo,  int pageSize, String sortBy,String sortDir) {
 
         User user  = userRepository.findById(Long.valueOf(id)).get();
-        List<AdoptionAnimal> adoptionAnimal = adoptionAnimalRepository.findAllByUser(user);
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(!Objects.equals(user.getEmail(), auth.getName())){
+            return new ResponseEntity<>("Not authorized to make changes",HttpStatus.BAD_REQUEST);
+        }
+
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        Page<AdoptionAnimal> animals =  adoptionAnimalRepository.findByUser(user,pageable);
+        List<AdoptionAnimal> adoptionAnimal = animals.getContent();
         List<AdoptionAnimalDTO> content= adoptionAnimal.stream().map(adoptionAnimalItem -> mapToDTO(adoptionAnimalItem)).collect(Collectors.toList());
+
         AdoptionAnimalResponseDTO adoptionAnimalResponse = new AdoptionAnimalResponseDTO();
         adoptionAnimalResponse.setContent(content);
-        return adoptionAnimalResponse;
+        adoptionAnimalResponse.setPageNo(animals.getNumber());
+        adoptionAnimalResponse.setPageSize(animals.getSize());
+        adoptionAnimalResponse.setTotalElements(animals.getTotalElements());
+        adoptionAnimalResponse.setTotalPages(animals.getTotalPages());
+        adoptionAnimalResponse.setLast(animals.isLast());
+
+        return new ResponseEntity<>(adoptionAnimalResponse,HttpStatus.OK);
     }
 
 
