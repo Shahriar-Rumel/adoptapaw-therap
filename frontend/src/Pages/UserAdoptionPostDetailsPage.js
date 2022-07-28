@@ -65,10 +65,13 @@ export default function UserAdoptionPostDetailsPage() {
         <Loader />
       ) : (
         <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[140px] lg:mt-[160px] mb-[100px]">
-          <Topbar
-            address={`Home/Profile/Adoption/Post/${adoptionPostById.id}`}
-            link={`/user/profile/${userInfo.id}/adoptionposts`}
-          />
+          {userInfo && adoptionPostById && (
+            <Topbar
+              address={`Home/Profile/Adoption/Post/${adoptionPostById.id}`}
+              link={`/user/profile/${userInfo.id}/adoptionposts`}
+            />
+          )}
+
           <div className=" lg:w-[50%]  lg:mr-10">
             <AnimalProfileLeft data={adoptionPostById} />
             <h1 className="text-[24px] font-black text-primary capitalize">

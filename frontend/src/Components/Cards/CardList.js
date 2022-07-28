@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import { adoptionList } from '../../Data/adoption';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -21,6 +21,7 @@ export default function CardList({ link, buttonText, list }) {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'
               }}
+              loading={lazy}
             ></div>
 
             <div className="overlay w-[100%] h-[100%] px-5  absolute mx-auto flex flex-col justify-center bg-[#000000] bg-opacity-[0.6]">

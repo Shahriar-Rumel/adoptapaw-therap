@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CardList from '../Components/Cards/CardList';
 import Loader from '../Components/Loader';
@@ -21,6 +21,7 @@ const MissingCardList = ({ list, buttonText }) => {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'
               }}
+              loading={lazy}
             ></div>
             <div className="overlay w-[100%] h-[100%] px-5  absolute mx-auto flex flex-col justify-center bg-[#000000] bg-opacity-[0.6]">
               <div className="flex justify-between items-center relative mt-[120px] ">
@@ -55,7 +56,7 @@ export default function Homepage() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(missingPostsAction());
+    dispatch(missingPostsAction(0, 8));
   }, [dispatch]);
 
   return (
@@ -79,8 +80,11 @@ export default function Homepage() {
           <h1 className="image-animation font-black tracking-tighter text-[24px] mb-[30px] px-3 text-primary border-l-4 border-l-red mt-[60px]">
             Paws Missing
           </h1>
-          {missingPosts.length > 0 ? (
-            <MissingCardList list={missingPosts} buttonText={'Help me'} />
+          {missingPosts && missingPosts.totalElements > 0 ? (
+            <MissingCardList
+              list={missingPosts.content}
+              buttonText={'Help me'}
+            />
           ) : (
             <Message
               message={'No adoption post available!'}

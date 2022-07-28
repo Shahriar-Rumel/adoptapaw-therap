@@ -261,7 +261,7 @@ export default function CreateMissingPost({ history }) {
                   style={{ visibility: 'hidden' }}
                   className="absolute"
                   type={'file'}
-                  accept="image/png, image/gif, image/jpeg"
+                  accept="image/*"
                 ></input>
               </div>
             </div>
