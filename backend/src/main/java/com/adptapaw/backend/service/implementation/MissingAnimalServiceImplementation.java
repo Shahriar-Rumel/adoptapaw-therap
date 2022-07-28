@@ -64,7 +64,7 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
 
         List<MissingAnimalDTO> content = missingAnimal.stream().map(missingAnimalItem -> mapToDTO(missingAnimalItem)).collect(Collectors.toList());
         MissingAnimalResponseDTO missingAnimalResponse = new MissingAnimalResponseDTO();
-        missingAnimalResponse.setContentfile(content);
+        missingAnimalResponse.setContent(content);
         return missingAnimalResponse;
     }
 
@@ -83,7 +83,7 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
         List<MissingAnimalDTO> content= missingAnimal.stream().map(missingAnimalItem -> mapToDTO(missingAnimalItem)).collect(Collectors.toList());
 
         MissingAnimalResponseDTO missingAnimalResponse = new MissingAnimalResponseDTO();
-        missingAnimalResponse.setContentfile(content);
+        missingAnimalResponse.setContent(content);
         missingAnimalResponse.setPageNo(animals.getNumber());
         missingAnimalResponse.setPageSize(animals.getSize());
         missingAnimalResponse.setTotalElements(animals.getTotalElements());

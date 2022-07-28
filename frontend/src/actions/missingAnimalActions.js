@@ -22,13 +22,15 @@ import {
 
 const BASE_URL = 'http://localhost:8081/api/missing';
 
-export const missingPostsAction = () => async (dispatch) => {
+export const missingPostsAction = (pageNo, pageSize) => async (dispatch) => {
   try {
     dispatch({
       type: MISSING_POST_REQUEST
     });
 
-    const { data } = await axios.get(`${BASE_URL}/all`);
+    const { data } = await axios.get(
+      `${BASE_URL}/all?pageNo=${pageNo}&pageSize=${pageSize}`
+    );
 
     dispatch({
       type: MISSING_POST_SUCCESS,

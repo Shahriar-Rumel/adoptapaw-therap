@@ -26,7 +26,7 @@ export const missingAllPostReducer = (state = { missingPosts: [] }, action) => {
     case MISSING_POST_REQUEST:
       return { loading: true, missingPosts: [] };
     case MISSING_POST_SUCCESS:
-      return { loading: false, missingPosts: action.payload.contentfile };
+      return { loading: false, missingPosts: action.payload };
     case MISSING_POST_FAIL:
       return { loading: false, error: action.payload };
     default:

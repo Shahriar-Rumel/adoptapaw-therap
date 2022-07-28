@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MissingAnimalResponseDTO {
-    private List<MissingAnimalDTO>contentfile;
+    private List<MissingAnimalDTO>content;
     private int pageNo;
     private int pageSize;
     private long totalElements;
