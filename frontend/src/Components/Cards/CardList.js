@@ -17,7 +17,7 @@ export default function CardList({ link, buttonText, list }) {
         <Link to={`/adoption/${item.id}`} key={item.id}>
           <div className="adoption-card-image-animation card-item flex custom-round  relative justify-center overflow-hidden w-[100%] text-offwhite h-[300px] md:w-[100%] ">
             <div
-              className=" card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300"
+              className="bg-primary card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300"
               style={{
                 backgroundImage: `url(${item.imageone})`,
                 backgroundPosition: 'center',

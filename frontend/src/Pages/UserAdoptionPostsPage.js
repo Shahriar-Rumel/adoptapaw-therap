@@ -1,3 +1,4 @@
+import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -8,6 +9,16 @@ import Message from '../Components/Message';
 import Pagination from '../Components/Pagination';
 import Topbar from '../Components/Topbar';
 
+const ForAnimation = () => {
+  useEffect(() => {
+    gsap.fromTo(
+      '.user-profile-adoption-posts-animation',
+      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
+      { y: '0', autoAlpha: 1, stagger: 0.2 }
+    );
+  }, []);
+  return;
+};
 export default function UserAdoptionPostsPage() {
   const [pageNo, setPageNo] = useState(0);
   const [postList, setPostList] = useState();
@@ -33,6 +44,7 @@ export default function UserAdoptionPostsPage() {
   useEffect(() => {
     dispatch(adoptionPostByUserIdAction(id, pageNo, 12));
   }, [dispatch, id, pageNo]);
+
   return (
     <>
       {loading ? (
@@ -44,8 +56,9 @@ export default function UserAdoptionPostsPage() {
               address={`Home/Profile/Adoption/Post/Page ${pageNo + 1}`}
               link={`/user/profile/${userInfo.id}`}
             />
+            <ForAnimation />
             <div className="w-full ">
-              <h1 className="text-[24px] font-extrabold text-primary tracking-tighter mt-[30px] mb-3">
+              <h1 className="user-profile-adoption-posts-animation text-[24px] font-extrabold text-primary tracking-tighter mt-[30px] mb-3">
                 Adoption posts
               </h1>
               <div>

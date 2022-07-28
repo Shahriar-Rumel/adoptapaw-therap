@@ -35,7 +35,7 @@ export default function MissingPostCard({ data, columnSize, columnSizeXl }) {
             </div>
           </div>
           <div
-            className="w-[110px] min-h-[100px] h-[100%]  ml-2 custom-round"
+            className="bg-primary w-[110px] min-h-[100px] h-[100%]  ml-2 custom-round"
             style={{
               backgroundImage: `url(${item.image})`,
               backgroundPosition: 'center',

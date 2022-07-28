@@ -14,19 +14,17 @@ import FilterBox from '../Components/IO/FilterBox';
 
 const MissingCardList = ({ list, buttonText }) => {
   useEffect(() => {
-    gsap.from('.missing-image-animation', {
-      y: '+=60',
-      duration: 0.4,
-      opacity: 0,
-      stagger: 0.2
-    });
-    gsap.to('.missing-image-animation', { y: '0', opacity: 1, stagger: 0.2 });
+    gsap.fromTo(
+      '.missing-card-animation',
+      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
+      { y: '0', autoAlpha: 1, stagger: 0.2 }
+    );
   }, []);
   return (
     <div className="my-5 mt-[20px] grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
       {list.map((item) => (
-        <Link to={`/missing/${item.id}`} className="missing-image-animation">
-          <div className=" card-item flex  custom-round relative justify-center overflow-hidden mx-2 w-[100%] text-offwhite h-[300px] md:w-[100%] ">
+        <Link to={`/missing/${item.id}`} className="missing-card-animation">
+          <div className="bg-primary card-item flex  custom-round relative justify-center overflow-hidden mx-2 w-[100%] text-offwhite h-[300px] md:w-[100%] ">
             <div
               className=" card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300"
               style={{

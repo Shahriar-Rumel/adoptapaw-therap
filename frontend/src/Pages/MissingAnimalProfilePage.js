@@ -10,10 +10,17 @@ import Loader from '../Components/Loader';
 import FeaturesCol from '../Components/FeaturesCol';
 
 const MissingFeature = ({ data }) => {
+  useEffect(() => {
+    gsap.fromTo(
+      '.missing-profile-animation',
+      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
+      { y: '0', autoAlpha: 1, stagger: 0.2 }
+    );
+  }, []);
   return (
     <>
       {data && (
-        <div className="description-animation missing-animation flex mt-[30px]  lg:mt-[0px] lg:mb-5 justify-between items-center  mx-auto bg-primary-light py-3 px-5 custom-round">
+        <div className="missing-profile-animation flex mt-[30px]  lg:mt-[0px] lg:mb-5 justify-between items-center  mx-auto bg-primary-light py-3 px-5 custom-round">
           <div>
             <FeaturesCol title={'Breed'} value={data.breed} />
           </div>
@@ -32,38 +39,6 @@ const MissingFeature = ({ data }) => {
   );
 };
 export default function MissingAnimalProfilePage() {
-  useEffect(() => {
-    gsap.from('.missing-gallery-animation', {
-      opacity: 0
-    });
-    gsap.to('.missing-gallery-animation', {
-      y: '0',
-      opacity: 1,
-      duration: 2,
-      stagger: 0.2
-    });
-  });
-  useEffect(() => {
-    gsap.from('.missing-image-animation', {
-      opacity: 0
-    });
-    gsap.to('.missing-image-animation', {
-      opacity: 1,
-      stagger: 0.2
-    });
-  });
-  useEffect(() => {
-    gsap.from('.missing-animation', {
-      y: '+=60',
-      opacity: 0
-    });
-    gsap.to('.missing-animation', {
-      y: '0',
-      opacity: 1,
-      stagger: 0.3
-    });
-  });
-
   const dispatch = useDispatch();
 
   const missingPostByIdDataSet = useSelector(
@@ -86,7 +61,7 @@ export default function MissingAnimalProfilePage() {
           <div className="lg:w-[50%] lg:mr-10">
             {missingPostById && (
               <div
-                className=" w-[90vw] h-[300px] lg:w-[35vw] mx-auto custom-round  missing-gallery-animation"
+                className="bg-primary w-[90vw] h-[300px] lg:w-[35vw] mx-auto custom-round  missing-profile-animation"
                 style={{
                   backgroundImage: `url(${missingPostById.image})`,
                   backgroundPosition: 'center',
@@ -97,7 +72,7 @@ export default function MissingAnimalProfilePage() {
             )}
 
             {missingPostById && (
-              <div className=" flex justify-between items-center mt-10 lg:mb-10 missing-animation">
+              <div className=" flex justify-between items-center mt-10 lg:mb-10 missing-profile-animation">
                 <h1 className="font-extrabold text-[32px] tracking-tight text-primary -mt-[4px]">
                   {missingPostById.name}
                 </h1>
@@ -113,10 +88,10 @@ export default function MissingAnimalProfilePage() {
               </div>
             )}
 
-            <div className="missing-animation">
+            <div className="missing-profile-animation">
               <MissingFeature data={missingPostById} />
             </div>
-            <div className="  my-5 flex mx-auto items-center justify-center py-5 bg-gray-dark custom-round">
+            <div className="  my-5 flex mx-auto items-center justify-center py-5 bg-gray-dark custom-round missing-profile-animation">
               <h3 className="mx-2 text-[12px] font-bold text-white">
                 Went missing on
               </h3>
@@ -137,7 +112,7 @@ export default function MissingAnimalProfilePage() {
           <div className="lg:w-[50%] lg:ml-10">
             {missingPostById && (
               <>
-                <div className="py-5 px-5 bg-white custom-round Attribute-card-shadow flex justify-between items-center">
+                <div className="py-5 px-5 bg-white custom-round Attribute-card-shadow flex justify-between items-center missing-profile-animation">
                   <h1 className="font-bold text-[14px] text-gray-light">
                     Status
                   </h1>
@@ -151,27 +126,44 @@ export default function MissingAnimalProfilePage() {
                     </h1>
                   )}
                 </div>
-                <AttributeCard
-                  Attribute={'Specific Attribute'}
-                  feature={missingPostById.specificattribute}
-                />
-                <AttributeCard
-                  Attribute={'Accessories Last Worn'}
-                  feature={missingPostById.accessorieslastworn}
-                />
-                <RewardCard
-                  name={missingPostById.name}
-                  reward={missingPostById.rewards}
-                />
+                <div className="missing-profile-animation">
+                  <AttributeCard
+                    Attribute={'Specific Attribute'}
+                    feature={missingPostById.specificattribute}
+                  />
+                </div>
+                <div className="missing-profile-animation">
+                  <AttributeCard
+                    Attribute={'Accessories Last Worn'}
+                    feature={missingPostById.accessorieslastworn}
+                  />
+                </div>
+                <div className="missing-profile-animation">
+                  <RewardCard
+                    name={missingPostById.name}
+                    reward={missingPostById.rewards}
+                  />
+                </div>
               </>
             )}
 
-            <div className="missing-animation">
-              <h3 className="text-[12px] text-gray-light mt-10 mb-4">
+            <div className="missing-profile-animation">
+              <h3
+                className="text-[12px] text-gray-light mt-10 mb-4  <RewardCard
+                  name={missingPostById.name}
+                  reward={missingPostById.rewards}
+                />"
+              >
                 {missingPostById &&
                   `Do you have information about ${missingPostById.name}?`}
               </h3>
-              <Link to={'/missing/cat/information'}>
+              <Link
+                to={'/missing/cat/information'}
+                className=" <RewardCard
+                  name={missingPostById.name}
+                  reward={missingPostById.rewards}
+                />"
+              >
                 <Button text="Send Information" />
               </Link>
             </div>

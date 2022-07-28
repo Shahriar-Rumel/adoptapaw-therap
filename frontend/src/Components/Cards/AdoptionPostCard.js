@@ -7,7 +7,7 @@ export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
       className={`grid mb-[30px]   grid-cols-1 md:grid-cols-2 ${columnSize} ${columnSizeXl} gap-3 mx-auto `}
     >
       {data.map((item) => (
-        <div className="bg-card-light py-3  custom-round flex justify-between px-3 donation-list-animation cursor-pointer w-full">
+        <div className="user-profile-adoption-posts-animation user-profile-animation donation-list-animation bg-card-light py-3  custom-round flex justify-between px-3  cursor-pointer w-full">
           <div className="w-[70%] flex flex-col justify-between">
             <div className="flex justify-between">
               <h1 className="text-primary font-extrabold text-[14px] md:text-[16px] md:leading-[18px] leading-[16px] tracking-tighter mr-3">
@@ -35,7 +35,7 @@ export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
             </div>
           </div>
           <div
-            className="w-[110px] min-h-[100px] h-[100%]  ml-2 custom-round"
+            className="w-[110px] min-h-[100px] bg-primary h-[100%]  ml-2 custom-round"
             style={{
               backgroundImage: `url(${item.imageone})`,
               backgroundPosition: 'center',

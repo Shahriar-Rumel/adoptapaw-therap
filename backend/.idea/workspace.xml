@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/CloudinaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/CloudinaryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/CloudinaryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/CloudinaryService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Cards/CardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Cards/CardList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Modals/UserAdoptionDetailsEditModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Modals/UserAdoptionDetailsEditModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/MissingAnimalDataPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/MissingAnimalDataPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/MissingAnimalPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/MissingAnimalPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +88,7 @@
       <workItem from="1658781611510" duration="670000" />
       <workItem from="1658819472276" duration="11617000" />
       <workItem from="1658930466724" duration="614000" />
-      <workItem from="1658991867107" duration="11285000" />
+      <workItem from="1658991867107" duration="11989000" />
     </task>
     <servers />
   </component>

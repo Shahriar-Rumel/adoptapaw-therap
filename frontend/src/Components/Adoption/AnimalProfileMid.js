@@ -16,7 +16,7 @@ export default function AnimalProfileMid({ poster, data }) {
     <>
       {data && (
         <div className="mt-[40px] lg:mt-[60px] description-gallery-animation">
-          <div className=" flex items-center justify-between my-3 ">
+          <div className=" flex items-center justify-between my-3 adoption-details-animation">
             <div className="inline-flex">
               <img src="/assets/tick.svg"></img>
               <h3
@@ -32,12 +32,12 @@ export default function AnimalProfileMid({ poster, data }) {
 
             <img src="/assets/fav.svg" className="w-[20px]"></img>
           </div>
-          <h1 className="text-[32px] font-black mb-5 text-primary tracking-tighter">
+          <h1 className="text-[32px] font-black mb-5 text-primary tracking-tighter adoption-details-animation">
             {data.name}
           </h1>
           {poster !== 2 && (
             <>
-              <div className="flex items-center justify-between text-[12px] mb-5">
+              <div className="flex items-center justify-between text-[12px] mb-5 adoption-details-animation">
                 <h3 className="gray-dark">
                   Posted by
                   <span className="text-primary font-bold">
@@ -64,13 +64,14 @@ export default function AnimalProfileMid({ poster, data }) {
                       ? `/adoption/${data.id}/user/${userInfo.id}/createadoptionrequest`
                       : '/login'
                   }
+                  className="adoption-details-animation"
                 >
                   <Button text={`Adopt ${data.name}`} />
                 </Link>
               )}
               {!data.availability && (
                 <button
-                  className="bg-gray-light cursor-not-allowed w-[100%] custom-round h-[55px] text-white"
+                  className="bg-gray-light adoption-details-animation cursor-not-allowed w-[100%] custom-round h-[55px] text-white"
                   disabled
                 >
                   Adopt {data.name}

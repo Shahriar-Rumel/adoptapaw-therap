@@ -171,7 +171,7 @@ export default function UserAdoptionPostDetailsEdit({
   };
 
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto  mb-[100px] absolute top-[80px] bg-white  z-[700]  shadow-lg p-8 custom-round">
+    <div className=" lg:w-3/4 w-[90vw] mx-auto  mb-[160px] absolute top-[160px] bg-white  z-[700]  shadow-lg p-8 custom-round">
       <div className="flex justify-between items-center ">
         <h1 className="text-[30px] font-extrabold text-primary   tracking-tighter">
           Edit Post
