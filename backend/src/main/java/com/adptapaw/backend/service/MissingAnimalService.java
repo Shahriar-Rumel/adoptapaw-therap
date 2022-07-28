@@ -8,7 +8,7 @@ import com.adptapaw.backend.payload.missing.MissingAnimalResponseDTO;
 public interface MissingAnimalService {
     MissingAnimalResponseDTO getAllByCreator(String id);
 
-    MissingAnimalResponseDTO getAllMissingAnimals();
+    MissingAnimalResponseDTO getAllMissingAnimals(int pageNo, int pageSize, String sortBy, String sortDir);
 
     MissingAnimalDTO createMissingAnimal(String id, MissingAnimalDTO missingAnimalDTO);
 

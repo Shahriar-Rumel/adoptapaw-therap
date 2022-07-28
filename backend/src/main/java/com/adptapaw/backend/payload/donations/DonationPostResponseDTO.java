@@ -11,4 +11,9 @@ import java.util.List;
 @NoArgsConstructor
 public class DonationPostResponseDTO {
     List<DonationPostDTO> content;
+    private int pageNo;
+    private int pageSize;
+    private long totalElements;
+    private int totalPages;
+    private boolean last;
 }

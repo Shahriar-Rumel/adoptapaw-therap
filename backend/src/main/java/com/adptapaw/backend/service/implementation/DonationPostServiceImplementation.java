@@ -11,6 +11,10 @@ import com.adptapaw.backend.repository.DonationRepository;
 import com.adptapaw.backend.repository.DonationPostRepository;
 import com.adptapaw.backend.service.DonationPostService;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -57,14 +61,25 @@ public class DonationPostServiceImplementation implements DonationPostService {
 
 
     @Override
-    public DonationPostResponseDTO getAllDonationsPosts() {
-        List<DonationPost> donationPost = donationPostRepository.findAll();
+    public DonationPostResponseDTO getAllDonationsPosts(int pageNo, int pageSize, String sortBy, String sortDir) {
+
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        Page<DonationPost> newpost = donationPostRepository.findAll(pageable);
+        List<DonationPost> donationPost = newpost.getContent();
 
         List<DonationPostDTO> content= donationPost.stream().map(donationPostItem -> mapToDTO(donationPostItem)).collect(Collectors.toList());
 
 
         DonationPostResponseDTO donationPostResponse = new DonationPostResponseDTO();
         donationPostResponse.setContent(content);
+        donationPostResponse.setPageNo(newpost.getNumber());
+        donationPostResponse.setPageSize(newpost.getSize());
+        donationPostResponse.setTotalElements(newpost.getTotalElements());
+        donationPostResponse.setTotalPages(newpost.getTotalPages());
+        donationPostResponse.setLast(newpost.isLast());
 
         return donationPostResponse;
     }

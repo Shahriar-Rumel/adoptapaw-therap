@@ -6,7 +6,7 @@ import com.adptapaw.backend.payload.donations.DonationPostDTO;
 import com.adptapaw.backend.payload.donations.DonationPostResponseDTO;
 
 public interface DonationPostService {
-    DonationPostResponseDTO getAllDonationsPosts();
+    DonationPostResponseDTO getAllDonationsPosts(int pageNo, int pageSize, String sortBy, String sortDir);
 
     DonationPostDTO createDonationsPost(DonationPostDTO donationsDTO);
 

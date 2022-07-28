@@ -5,6 +5,7 @@ package com.adptapaw.backend.controller;
 import com.adptapaw.backend.payload.donations.DonationPostDTO;
 import com.adptapaw.backend.payload.donations.DonationPostResponseDTO;
 import com.adptapaw.backend.service.DonationPostService;
+import com.adptapaw.backend.utils.AdoptapawConstants;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +29,11 @@ public class DonationPostController {
 
 
     @GetMapping("/all")
-    public DonationPostResponseDTO getDonationPosts(){
-        return donationPostService.getAllDonationsPosts();
+    public DonationPostResponseDTO getDonationPosts(@RequestParam(value = "pageNo", defaultValue = AdoptapawConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+                                                    @RequestParam(value = "pageSize", defaultValue = AdoptapawConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+                                                    @RequestParam(value = "sortBy", defaultValue = AdoptapawConstants.DEFAULT_SORT_BY, required = false) String sortBy,
+                                                    @RequestParam(value = "sortDir", defaultValue = AdoptapawConstants.DEFAULT_SORT_DIRECTION, required = false) String sortDir){
+        return donationPostService.getAllDonationsPosts(pageNo,  pageSize, sortBy,sortDir);
     }
 
 

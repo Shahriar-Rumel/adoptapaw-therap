@@ -12,4 +12,9 @@ import java.util.List;
 @NoArgsConstructor
 public class MissingAnimalResponseDTO {
     private List<MissingAnimalDTO>contentfile;
+    private int pageNo;
+    private int pageSize;
+    private long totalElements;
+    private int totalPages;
+    private boolean last;
 }

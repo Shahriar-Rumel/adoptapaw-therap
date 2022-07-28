@@ -15,6 +15,10 @@ import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.MissingAnimalService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -66,13 +70,25 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
 
 
     @Override
-    public MissingAnimalResponseDTO getAllMissingAnimals() {
-        List<MissingAnimal> missingAnimal = missingAnimalRepository.findAll();
+    public MissingAnimalResponseDTO getAllMissingAnimals(int pageNo,  int pageSize, String sortBy,String sortDir) {
+
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        Page<MissingAnimal> animals = missingAnimalRepository.findAll(pageable);
+        List<MissingAnimal>missingAnimal = animals.getContent();
+
 
         List<MissingAnimalDTO> content= missingAnimal.stream().map(missingAnimalItem -> mapToDTO(missingAnimalItem)).collect(Collectors.toList());
 
         MissingAnimalResponseDTO missingAnimalResponse = new MissingAnimalResponseDTO();
         missingAnimalResponse.setContentfile(content);
+        missingAnimalResponse.setPageNo(animals.getNumber());
+        missingAnimalResponse.setPageSize(animals.getSize());
+        missingAnimalResponse.setTotalElements(animals.getTotalElements());
+        missingAnimalResponse.setTotalPages(animals.getTotalPages());
+        missingAnimalResponse.setLast(animals.isLast());
 
         return missingAnimalResponse;
     }
