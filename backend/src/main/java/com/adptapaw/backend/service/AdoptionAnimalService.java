@@ -8,7 +8,7 @@ public interface AdoptionAnimalService {
 
     AdoptionAnimalResponseDTO getAllByCreator(String id);
 
-    AdoptionAnimalResponseDTO getAllAdoptionAnimals();
+    AdoptionAnimalResponseDTO getAllAdoptionAnimals(int pageNo, int pageSize, String sortBy, String sortDir);
 
     AdoptionAnimalDTO createAdoptionAnimal(String id,AdoptionAnimalDTO adoptionAnimalDTO);
 

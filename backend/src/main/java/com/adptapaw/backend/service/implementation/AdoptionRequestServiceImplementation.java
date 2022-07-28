@@ -61,7 +61,7 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
         request.setStatus(false);
         Date date = new Date();
         request.setRequestdate(String.valueOf(date));
-        request.setApproveddate(null);
+        request.setApproveddate(" ");
         request.setEmail(adoptionRequestDTO.getEmail());
         request.setRfa(adoptionRequestDTO.getRfa());
         request.setMobile(adoptionRequestDTO.getMobile());

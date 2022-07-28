@@ -3,6 +3,7 @@ package com.adptapaw.backend.controller;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
 import com.adptapaw.backend.service.AdoptionAnimalService;
+import com.adptapaw.backend.utils.AdoptapawConstants;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +27,11 @@ public class AdoptionAnimalController {
 
 
     @GetMapping("/all")
-    public AdoptionAnimalResponseDTO getAdoptionAnimals(){
-        return adoptionAnimalService.getAllAdoptionAnimals();
+    public AdoptionAnimalResponseDTO getAdoptionAnimals(@RequestParam(value = "pageNo", defaultValue = AdoptapawConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+                                                        @RequestParam(value = "pageSize", defaultValue = AdoptapawConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+                                                        @RequestParam(value = "sortBy", defaultValue = AdoptapawConstants.DEFAULT_SORT_BY, required = false) String sortBy,
+                                                        @RequestParam(value = "sortDir", defaultValue = AdoptapawConstants.DEFAULT_SORT_DIRECTION, required = false) String sortDir){
+        return adoptionAnimalService.getAllAdoptionAnimals( pageNo,  pageSize, sortBy,sortDir);
     }
 
 

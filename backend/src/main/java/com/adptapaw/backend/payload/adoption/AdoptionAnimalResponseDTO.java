@@ -11,9 +11,9 @@ import java.util.List;
 @NoArgsConstructor
 public class AdoptionAnimalResponseDTO {
     private List<AdoptionAnimalDTO> content;
-//    private int pageNo;
-//    private int pageSize;
-//    private long totalElements;
-//    private int totalPages;
-//    private boolean last;
+    private int pageNo;
+    private int pageSize;
+    private long totalElements;
+    private int totalPages;
+    private boolean last;
 }

@@ -8,7 +8,7 @@ export default function Topbar({ address, link }) {
       <div className="lg:w-3/4 w-[90vw] mx-auto flex justify-between items-center">
         <div className="flex">
           {addressArray.map((item, index) => (
-            <h2 className="text-white text-[14px]">
+            <h2 className="text-white text-[14px]" key={index}>
               {item}
               {index < addressArray.length - 1 && (
                 <span className="mx-2">/</span>

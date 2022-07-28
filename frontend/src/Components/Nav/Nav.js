@@ -6,7 +6,7 @@ import Burger from './Burger';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Nav() {
-  const [mobile, setMobile] = useState(true);
+  const [mobile, setMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [burger, setBurgerClicked] = useState(false);
   const [theme, setTheme] = useState(0);
@@ -66,7 +66,7 @@ export default function Nav() {
             to={userInfo && userInfo.role[0].id === 1 ? '/dashboard' : '/home'}
           >
             <img
-              src={!theme ? 'assets/logo.svg' : 'assets/logo-primary.svg'}
+              src={!theme ? '/assets/logo.svg' : '/assets/logo-primary.svg'}
               className="w-[160px] md:w-[160px]"
               alt={!theme ? 'Adoptapaw Logo' : 'Adoptapaw Logo'}
             ></img>

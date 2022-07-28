@@ -10,9 +10,12 @@ export default function MissingAnimalDataPage() {
         className="mx-auto lg:w-[400px] lg:pl-6"
       ></img>
       <div className="lg:w-[50%]">
-        <h1 className="font-extrabold text-[24px] lg:text-[32px] text-primary tracking-tight my-5 text-center lg:text-left w-[95%] lg:w-[100%] leading-6 lg:leading-8 ">
-          Did you find Tommy ? Please fill in the form to let us know
+        <h1 className="font-extrabold text-[24px]  text-primary tracking-tight  text-center lg:text-left w-[95%] lg:w-[100%] leading-6 ">
+          Do you have any information about Tommy?
         </h1>
+        <p className=" text-[14px]  text-gray-light mb-5 mt-3 ">
+          Please fill in the form to let us know
+        </p>
         <TextInput
           label={'Location of doggy'}
           placeholder={'Dhanmondi , Dhaka'}

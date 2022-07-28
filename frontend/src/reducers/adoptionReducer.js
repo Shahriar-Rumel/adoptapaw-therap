@@ -33,7 +33,7 @@ export const adoptionAllPostReducer = (
     case ADOPTION_POST_REQUEST:
       return { loading: true, adoptionPosts: [] };
     case ADOPTION_POST_SUCCESS:
-      return { loading: false, adoptionPosts: action.payload.content };
+      return { loading: false, adoptionPosts: action.payload };
     case ADOPTION_POST_FAIL:
       return { loading: false, error: action.payload };
     default:

@@ -51,7 +51,7 @@ export default function Homepage() {
   const { loading, error, adoptionPosts } = adoptionPostsData;
 
   useEffect(() => {
-    dispatch(adoptionPostsAction());
+    dispatch(adoptionPostsAction(0, 8));
   }, [dispatch]);
 
   useEffect(() => {
@@ -67,8 +67,8 @@ export default function Homepage() {
           <h1 className="image-animation font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-green">
             Paws for adoption
           </h1>
-          {adoptionPosts.length > 0 ? (
-            <CardList list={adoptionPosts} />
+          {adoptionPosts && adoptionPosts.totalElements > 0 ? (
+            <CardList list={adoptionPosts.content} />
           ) : (
             <Message
               message={'No adoption post available!'}

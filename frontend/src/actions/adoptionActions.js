@@ -26,13 +26,15 @@ import {
 
 const BASE_URL = 'http://localhost:8081/api/adoption';
 
-export const adoptionPostsAction = () => async (dispatch) => {
+export const adoptionPostsAction = (pageNo, pageSize) => async (dispatch) => {
   try {
     dispatch({
       type: ADOPTION_POST_REQUEST
     });
 
-    const { data } = await axios.get(`${BASE_URL}/all`);
+    const { data } = await axios.get(
+      `${BASE_URL}/all?pageNo=${pageNo}&pageSize=${pageSize}`
+    );
 
     dispatch({
       type: ADOPTION_POST_SUCCESS,

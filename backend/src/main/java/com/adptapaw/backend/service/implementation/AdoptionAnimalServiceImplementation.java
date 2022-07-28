@@ -12,6 +12,10 @@ import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.AdoptionAnimalService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -68,14 +72,28 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
 
 
     @Override
-    public AdoptionAnimalResponseDTO getAllAdoptionAnimals() {
-        List<AdoptionAnimal> adoptionAnimal = adoptionAnimalRepository.findAll();
+    public AdoptionAnimalResponseDTO getAllAdoptionAnimals(int pageNo,  int pageSize, String sortBy,String sortDir) {
+
+
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+        Page<AdoptionAnimal> animals = adoptionAnimalRepository.findAll(pageable);
+
+        List<AdoptionAnimal> adoptionAnimal = animals.getContent();
 
         List<AdoptionAnimalDTO> content= adoptionAnimal.stream().map(adoptionAnimalItem -> mapToDTO(adoptionAnimalItem)).collect(Collectors.toList());
 
 
         AdoptionAnimalResponseDTO adoptionAnimalResponse = new AdoptionAnimalResponseDTO();
         adoptionAnimalResponse.setContent(content);
+        adoptionAnimalResponse.setPageNo(animals.getNumber());
+        adoptionAnimalResponse.setPageSize(animals.getSize());
+        adoptionAnimalResponse.setTotalElements(animals.getTotalElements());
+        adoptionAnimalResponse.setTotalPages(animals.getTotalPages());
+        adoptionAnimalResponse.setLast(animals.isLast());
 
         return adoptionAnimalResponse;
     }
