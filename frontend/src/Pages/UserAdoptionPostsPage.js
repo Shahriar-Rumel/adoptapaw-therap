@@ -31,8 +31,8 @@ export default function UserAdoptionPostsPage() {
     }
   }, [userInfo]);
   useEffect(() => {
-    dispatch(adoptionPostByUserIdAction(id));
-  }, [dispatch, id]);
+    dispatch(adoptionPostByUserIdAction(id, pageNo, 12));
+  }, [dispatch, id, pageNo]);
   return (
     <>
       {loading ? (

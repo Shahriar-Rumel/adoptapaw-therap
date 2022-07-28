@@ -5,12 +5,12 @@ import { donationList } from '../../Data/donation';
 import Button from '../Button';
 export default function DonationListCard({ data, userInfo }) {
   useEffect(() => {
-    gsap.from('.donation-list-animation', {
-      y: '+=60',
-      opacity: 0
-    });
-    gsap.to('.donation-list-animation', { y: '0', opacity: 1, stagger: 0.1 });
-  });
+    gsap.fromTo(
+      '.donation-list-animation',
+      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
+      { y: '0', autoAlpha: 1, stagger: 0.2 }
+    );
+  }, []);
   return (
     <div className="grid mb-[200px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-3 mx-auto ">
       {data.map((item) => (

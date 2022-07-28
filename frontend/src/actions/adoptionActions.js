@@ -77,7 +77,7 @@ export const adoptionPostByIdAction = (id) => async (dispatch) => {
 };
 
 export const adoptionPostByUserIdAction =
-  (id) => async (dispatch, getState) => {
+  (id, pageNo, pageSize) => async (dispatch, getState) => {
     try {
       dispatch({
         type: ADOPTION_POSTS_BY_USERID_REQUEST
@@ -94,7 +94,10 @@ export const adoptionPostByUserIdAction =
         }
       };
 
-      const { data } = await axios.get(`${BASE_URL}/user/${id}`, config);
+      const { data } = await axios.get(
+        `${BASE_URL}/user/${id}?pageNo=${pageNo}&pageSize=${pageSize}`,
+        config
+      );
 
       dispatch({
         type: ADOPTION_POSTS_BY_USERID_SUCCESS,

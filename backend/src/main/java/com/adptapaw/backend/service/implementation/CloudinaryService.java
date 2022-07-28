@@ -16,9 +16,6 @@ public class CloudinaryService {
 
     public String upload(MultipartFile multipartFile) throws IOException {
         Map uploadResult = cloudinary.uploader().upload(multipartFile.getBytes(), ObjectUtils.emptyMap());
-//        https://res.cloudinary.com/adoptapaw/image/upload/v1657812086/my0rxrlvcewesnwe7izs.jpg
-
-//        String imageurl = "https://res.cloudinary.com/adoptapaw/image/upload/v1657812086/"+uploadResult.get("public_id").toString()+".jpg";
 
         String imageurl = uploadResult.get("url").toString();
 
