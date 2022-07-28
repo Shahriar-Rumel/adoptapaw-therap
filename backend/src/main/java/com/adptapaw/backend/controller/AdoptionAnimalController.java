@@ -43,8 +43,11 @@ public class AdoptionAnimalController {
     }
 
     @GetMapping("/user/{id}")
-    public AdoptionAnimalResponseDTO getAdoptionAnimalByCreator(@PathVariable(name = "id") String id){
-        return adoptionAnimalService.getAllByCreator(id);
+    public ResponseEntity<?> getAdoptionAnimalByCreator(@PathVariable(name = "id")String id,@RequestParam(value = "pageNo", defaultValue = AdoptapawConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = AdoptapawConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = AdoptapawConstants.DEFAULT_SORT_BY, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue = AdoptapawConstants.DEFAULT_SORT_DIRECTION, required = false) String sortDir ){
+        return adoptionAnimalService.getAllByCreator(id,pageNo, pageSize, sortBy,sortDir);
     }
 
     @PostMapping("/{id}")

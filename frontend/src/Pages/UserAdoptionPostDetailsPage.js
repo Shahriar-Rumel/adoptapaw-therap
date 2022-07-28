@@ -12,6 +12,7 @@ import Button from '../Components/Button';
 import UserAdoptionPostDetailsEditModal from '../Components/Modals/UserAdoptionDetailsEditModal';
 import UserAdoptionPostDeleteModal from '../Components/Modals/UserPostDeleteModal';
 import { ADOPTION_POST_DELETE_RESET } from '../constants/adoptionConstants';
+import Topbar from '../Components/Topbar';
 
 export default function UserAdoptionPostDetailsPage() {
   const [modal, setModal] = useState(false);
@@ -63,7 +64,11 @@ export default function UserAdoptionPostDetailsPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+        <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[140px] lg:mt-[160px] mb-[100px]">
+          <Topbar
+            address={`Home/Profile/Adoption/Post/${adoptionPostById.id}`}
+            link={`/user/profile/${userInfo.id}/adoptionposts`}
+          />
           <div className=" lg:w-[50%]  lg:mr-10">
             <AnimalProfileLeft data={adoptionPostById} />
             <h1 className="text-[24px] font-black text-primary capitalize">

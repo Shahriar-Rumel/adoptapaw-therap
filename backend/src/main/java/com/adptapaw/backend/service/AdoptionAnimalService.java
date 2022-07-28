@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface AdoptionAnimalService {
 
-    AdoptionAnimalResponseDTO getAllByCreator(String id);
+    ResponseEntity<?> getAllByCreator(String id,int pageNo,  int pageSize, String sortBy,String sortDir);
 
     AdoptionAnimalResponseDTO getAllAdoptionAnimals(int pageNo, int pageSize, String sortBy, String sortDir);
 
