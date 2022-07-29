@@ -11,7 +11,7 @@ import gsap from 'gsap';
 import Pagination from '../Components/Pagination';
 import Searchbox from '../Components/IO/Searchbox';
 import FilterBox from '../Components/IO/FilterBox';
-import MissingPostCard from '../Components/Cards/MissingPostCard';
+import MissingCardList from '../Components/Cards/MissingCardList';
 
 export default function MissingAnimalPage() {
   const [size, setSize] = useState();
@@ -151,7 +151,7 @@ export default function MissingAnimalPage() {
           </div>
 
           {missingPosts && missingPosts.totalElements > 0 ? (
-            <MissingPostCard
+            <MissingCardList
               list={postList ? postList : missingPosts.content}
               buttonText={'Help me'}
             />

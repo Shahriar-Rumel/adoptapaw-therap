@@ -70,39 +70,43 @@ export const missingPostByIdAction = (id) => async (dispatch) => {
   }
 };
 
-export const missingPostByUserIdAction = (id) => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: MISSING_POSTS_BY_USERID_REQUEST
-    });
+export const missingPostByUserIdAction =
+  (id, pageNo, pageSize) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: MISSING_POSTS_BY_USERID_REQUEST
+      });
 
-    const {
-      userLogin: { userInfo }
-    } = getState();
+      const {
+        userLogin: { userInfo }
+      } = getState();
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
-      }
-    };
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
 
-    const { data } = await axios.get(`${BASE_URL}/user/${id}`, config);
+      const { data } = await axios.get(
+        `${BASE_URL}/user/${id}?pageNo=${pageNo}&pageSize=${pageSize}`,
+        config
+      );
 
-    dispatch({
-      type: MISSING_POSTS_BY_USERID_SUCCESS,
-      payload: data
-    });
-  } catch (error) {
-    dispatch({
-      type: MISSING_POSTS_BY_USERID_FAIL,
-      payload:
-        error.response && error.response.data
-          ? error.response.data
-          : error.message
-    });
-  }
-};
+      dispatch({
+        type: MISSING_POSTS_BY_USERID_SUCCESS,
+        payload: data
+      });
+    } catch (error) {
+      dispatch({
+        type: MISSING_POSTS_BY_USERID_FAIL,
+        payload:
+          error.response && error.response.data
+            ? error.response.data
+            : error.message
+      });
+    }
+  };
 
 export const missingPostCreateAction =
   (id, dataport) => async (dispatch, getState) => {

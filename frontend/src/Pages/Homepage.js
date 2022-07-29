@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Message from '../Components/Message';
 import { missingPostsAction } from '../actions/missingAnimalActions';
 import MissingPostCard from '../Components/Cards/MissingPostCard';
+import MissingCardList from '../Components/Cards/MissingCardList';
 
 // const MissingCardList = ({ list, buttonText }) => {
 //   return (
@@ -82,7 +83,7 @@ export default function Homepage() {
             Paws Missing
           </h1>
           {missingPosts && missingPosts.totalElements > 0 ? (
-            <MissingPostCard
+            <MissingCardList
               list={missingPosts.content}
               buttonText={'Help me'}
             />
