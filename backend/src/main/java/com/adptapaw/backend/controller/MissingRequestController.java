@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins  = "http://localhost:3000")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/missing")
 public class MissingRequestController {
     private final MissingRequestService missingRequestService;
 
@@ -15,12 +15,12 @@ public class MissingRequestController {
         this.missingRequestService = missingRequestService;
     }
 
-    @PostMapping("/missing/{id}/createmissingrequest")
+    @PostMapping("/{id}/create")
     public MissingRequestDTO createMissingRequestPost( @PathVariable(name="id") String id, @RequestBody MissingRequestDTO missingRequestDTO){
         return missingRequestService.createMissingRequest(id,missingRequestDTO);
     }
 
-    @GetMapping("/missing/request/{id}")
+    @GetMapping("/request/{id}")
     public MissingRequestDTO getMissingRequestById(@PathVariable(name="id") String id){
         return missingRequestService.getById(id);
     }

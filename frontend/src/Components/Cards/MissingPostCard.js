@@ -1,50 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
-export default function MissingPostCard({ data, columnSize, columnSizeXl }) {
+export default function MissingPostCard({ list, buttonText }) {
   return (
-    <div
-      className={`grid mb-[30px]   grid-cols-1 md:grid-cols-2 ${columnSize} ${columnSizeXl} gap-3 mx-auto `}
-    >
-      {data.map((item) => (
-        <div className="bg-card-light py-3  custom-round flex justify-between px-3 donation-list-animation cursor-pointer w-full">
-          <div className="w-[70%] flex flex-col justify-between">
-            <div className="flex justify-between">
-              <h1 className="text-primary font-extrabold text-[14px] md:text-[16px] md:leading-[18px] leading-[16px] tracking-tighter mr-3">
-                {item.name}
-              </h1>
-              <Link to={`/user/missing/${item.id}`}>
-                <Button
-                  text="View"
-                  brand={true}
-                  height={true}
-                  heightClass="h-[40px] md:h-[40px] "
-                  width={true}
-                  widthClass="w-[80px] md:w-[70px] lg:w-[100px]"
-                  textSize={true}
-                  textSizeClass="text-[12px] md:text-[14px]"
-                />
-              </Link>
-            </div>
+    <div className="my-5 mt-[20px] grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
+      {list.map((item) => (
+        <Link to={`/missing/${item.id}`} className="missing-card-animation">
+          <div className="bg-primary card-item flex  custom-round relative justify-center overflow-hidden mx-2 w-[100%] text-offwhite h-[300px] md:w-[100%] ">
+            <div
+              className=" card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300"
+              style={{
+                backgroundImage: `url(${item.image})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
+              }}
+            ></div>
 
-            <div className="flex mt-2 mb-5">
-              <img src="/assets/Icons/location.svg"></img>{' '}
-              <h3 className="text-gray-light px-3 text-[14px]">
-                {item.location}
-              </h3>
+            <div className="overlay w-[100%] h-[100%] px-5  absolute mx-auto flex flex-col justify-center bg-[#000000] bg-opacity-[0.6]">
+              <div className="flex justify-between items-center relative mt-[120px] ">
+                <h2 className="capitalize text-[20px] font-semibold tracking-tight ease-in-out duration-300 ">
+                  {item.name}
+                </h2>
+                <div className="inline-flex">
+                  <img
+                    src="/assets/secondary/missing.svg"
+                    className="w-[16px]"
+                  ></img>
+                  <h3
+                    className={`text-[12px] ${
+                      item.stillmissing ? `text-white` : `text-gray-light`
+                    } mx-2`}
+                  >
+                    {item.stillmissing ? 'Still missing' : 'Found'}
+                  </h3>
+                </div>
+              </div>
+
+              {/* <Link to={`/adoption/${item.id}`}> */}
+              <div className="relative mt-[20px]">
+                <button className="bg-brand primary-button  w-[120px] h-[45px] text-[12px] text-offwhite px-20 py-3 ">
+                  <span>{buttonText ? buttonText : 'Adopt me'}</span>
+                </button>
+              </div>
+              {/* </Link> */}
             </div>
           </div>
-          <div
-            className="bg-primary w-[110px] min-h-[100px] h-[100%]  ml-2 custom-round"
-            style={{
-              backgroundImage: `url(${item.image})`,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
-            }}
-            key={item.id}
-          ></div>
-        </div>
+        </Link>
       ))}
     </div>
   );

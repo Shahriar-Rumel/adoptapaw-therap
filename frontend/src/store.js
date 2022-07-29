@@ -42,6 +42,8 @@ import {
   donationPostUpdateReducer
 } from './reducers/donationPostReducer';
 import { donationCreateReducer } from './reducers/donationReducer';
+import { feedbackCreateReducer } from './reducers/feedbackReducer';
+import { missingInfoReducer } from './reducers/missingInfoReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -69,7 +71,9 @@ const reducer = combineReducers({
   donationStore: donationCreateReducer,
   adoptionPostDelete: adoptionPostDeleteReducer,
   missingPostDelete: missingPostDeleteReducer,
-  userVerify: userVerifyReducer
+  userVerify: userVerifyReducer,
+  feedbackCreate: feedbackCreateReducer,
+  missingInfo: missingInfoReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

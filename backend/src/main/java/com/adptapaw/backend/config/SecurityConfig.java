@@ -61,6 +61,9 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/api/donationpost/{id}").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/donationpost/all").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/missing/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/missing/{id}/create").permitAll()
+                .antMatchers(HttpMethod.POST , "/api/feedback/create").permitAll()
+                .antMatchers(HttpMethod.POST , "/api/files/upload").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/adoption/request/**").access("hasRole('ADMIN')")
                 .anyRequest()
                 .authenticated();

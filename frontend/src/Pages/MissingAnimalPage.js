@@ -11,64 +11,7 @@ import gsap from 'gsap';
 import Pagination from '../Components/Pagination';
 import Searchbox from '../Components/IO/Searchbox';
 import FilterBox from '../Components/IO/FilterBox';
-
-const MissingCardList = ({ list, buttonText }) => {
-  useEffect(() => {
-    gsap.fromTo(
-      '.missing-card-animation',
-      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
-      { y: '0', autoAlpha: 1, stagger: 0.2 }
-    );
-  }, []);
-  return (
-    <div className="my-5 mt-[20px] grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
-      {list.map((item) => (
-        <Link to={`/missing/${item.id}`} className="missing-card-animation">
-          <div className="bg-primary card-item flex  custom-round relative justify-center overflow-hidden mx-2 w-[100%] text-offwhite h-[300px] md:w-[100%] ">
-            <div
-              className=" card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300"
-              style={{
-                backgroundImage: `url(${item.image})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
-              }}
-            ></div>
-
-            <div className="overlay w-[100%] h-[100%] px-5  absolute mx-auto flex flex-col justify-center bg-[#000000] bg-opacity-[0.6]">
-              <div className="flex justify-between items-center relative mt-[120px] ">
-                <h2 className="capitalize text-[20px] font-semibold tracking-tight ease-in-out duration-300 ">
-                  {item.name}
-                </h2>
-                <div className="inline-flex">
-                  <img
-                    src="/assets/secondary/missing.svg"
-                    className="w-[16px]"
-                  ></img>
-                  <h3
-                    className={`text-[12px] ${
-                      item.stillmissing ? `text-white` : `text-gray-light`
-                    } mx-2`}
-                  >
-                    {item.stillmissing ? 'Still missing' : 'Found'}
-                  </h3>
-                </div>
-              </div>
-
-              {/* <Link to={`/adoption/${item.id}`}> */}
-              <div className="relative mt-[20px]">
-                <button className="bg-brand primary-button  w-[120px] h-[45px] text-[12px] text-offwhite px-20 py-3 ">
-                  <span>{buttonText ? buttonText : 'Adopt me'}</span>
-                </button>
-              </div>
-              {/* </Link> */}
-            </div>
-          </div>
-        </Link>
-      ))}
-    </div>
-  );
-};
+import MissingPostCard from '../Components/Cards/MissingPostCard';
 
 export default function MissingAnimalPage() {
   const [size, setSize] = useState();
@@ -151,7 +94,7 @@ export default function MissingAnimalPage() {
         <Loader />
       ) : (
         <div className="lg:w-3/4 w-[90vw] mx-auto mt-[140px]">
-          <Topbar address={'Home/Missing'} link={'/home'} />
+          <Topbar address={`Home/Missing/Page/${pageNo + 1}`} link={'/home'} />
           <div className="flex flex-col w-[100%]  md:flex-row md:justify-between md:items-center mb-5">
             <AdoptionHeader
               link="/assets/Lost-dog.svg"
@@ -159,7 +102,10 @@ export default function MissingAnimalPage() {
               content="Every pet is precious to their owners. Perform a noble deed by reuniting pets with their owners. We express our gratitude to every person who is willing to come forward to help find a missing animal."
             />
             {userInfo && (
-              <Link to={`/missing/${userInfo.id}/createpost`}>
+              <Link
+                to={`/missing/${userInfo.id}/createpost`}
+                className="w-[120px]"
+              >
                 <Button
                   text="Create Post"
                   height={true}
@@ -170,7 +116,7 @@ export default function MissingAnimalPage() {
               </Link>
             )}
             {!userInfo && (
-              <Link to={`/login`}>
+              <Link to={`/login`} className="w-[120px]">
                 <Button
                   text="Create Post"
                   height={true}
@@ -205,7 +151,7 @@ export default function MissingAnimalPage() {
           </div>
 
           {missingPosts && missingPosts.totalElements > 0 ? (
-            <MissingCardList
+            <MissingPostCard
               list={postList ? postList : missingPosts.content}
               buttonText={'Help me'}
             />

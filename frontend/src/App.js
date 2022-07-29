@@ -50,11 +50,11 @@ function App() {
         {/* <ScrollToTop> */}
         <Nav />
         <Routes>
-          <Route
+          {/* <Route
             path="/missing/cat/information"
             element={<MissingAnimalDataPage />}
             exact
-          />
+          /> */}
           <Route
             path="/missing/:id"
             element={<MissingAnimalProfilePage />}

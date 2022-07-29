@@ -1,8 +1,12 @@
 import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { feedbackCreateAction } from '../actions/feedbackActions';
 import Button from '../Components/Button';
 import TextInput from '../Components/IO/TextInput';
 import Topbar from '../Components/Topbar';
+import Message from '../Components/Message';
+import UploadLoader from '../Components/UploadLoader/UploadLoader';
 
 const Banner = () => {
   return (
@@ -52,6 +56,13 @@ const Rating = ({ rating, setRating }) => {
 };
 export default function ContactPage() {
   const [rating, setRating] = useState();
+  const [description, setDescription] = useState();
+
+  const dispatch = useDispatch();
+
+  const feedbackCreateData = useSelector((state) => state.feedbackCreate);
+  const { loading, success, error } = feedbackCreateData;
+
   useEffect(() => {
     gsap.fromTo(
       '.contact-page-animation',
@@ -59,6 +70,16 @@ export default function ContactPage() {
       { y: '0', autoAlpha: 1, stagger: 0.2 }
     );
   }, []);
+  const dataPort = {
+    rating: rating,
+    description: description
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (dataPort.rating && dataPort.description)
+      dispatch(feedbackCreateAction(dataPort));
+  };
   return (
     <div className=" mx-auto lg:w-3/4 w-[90vw] md:flex flex-row-reverse md:shadow-md  custom-round md:px-[30px] md:py-10 justify-between mt-[120px] lg:mt-[150px] mb-[100px]">
       <Topbar address={'Home/Feedback'} link={'/home'} />
@@ -71,18 +92,32 @@ export default function ContactPage() {
           <h1 className="text-[30px] lg:text-[34px] contact-page-animation leading-8 text-primary font-black tracking-tight mb-8 lg:mb-12 mt-10 md:mt-0">
             Leave us your valuable feedback
           </h1>
+          {success && (
+            <Message
+              message={'Your feedback has sent successfully! Thanks.'}
+              variant={'success'}
+            />
+          )}
+          {error && <Message message={error} variant={'danger'} />}
+          {loading && (
+            <div className="mx-auto flex justify-center">
+              <UploadLoader />
+            </div>
+          )}
           <h2 className="text-[16px] leading-6 contact-page-animation text-primary font-bold tracking-tight">
             How would you rate your experiences so far with our platform?
           </h2>
-          <div className="contact-page-animation">
-            <Rating setRating={setRating} rating={rating} />
-          </div>
-
-          <form>
+          <form onSubmit={submitHandler}>
+            <div className="contact-page-animation">
+              <Rating setRating={setRating} rating={rating} />
+            </div>
             <div className="contact-page-animation">
               <TextInput
+                type={'text'}
                 label={'Tell us how we can improve'}
                 placeholder={'Your Feedback'}
+                data={description}
+                setData={setDescription}
               />
             </div>
             <div className="contact-page-animation">

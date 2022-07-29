@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AttributeCard from '../Components/Cards/AttributeCard';
 import RewardCard from '../Components/Cards/RewardCard';
 import { Link, useParams } from 'react-router-dom';
@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { missingPostByIdAction } from '../actions/missingAnimalActions';
 import Loader from '../Components/Loader';
 import FeaturesCol from '../Components/FeaturesCol';
+import MissingAnimalDataModal from '../Components/Modals/MissingAnimalDataModal';
 
 const MissingFeature = ({ data }) => {
   useEffect(() => {
@@ -39,6 +40,7 @@ const MissingFeature = ({ data }) => {
   );
 };
 export default function MissingAnimalProfilePage() {
+  const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
 
   const missingPostByIdDataSet = useSelector(
@@ -58,6 +60,12 @@ export default function MissingAnimalProfilePage() {
         <Loader />
       ) : (
         <div className="lg:flex lg:justify-between lg:flex-row mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+          {modal && (
+            <MissingAnimalDataModal
+              data={missingPostById}
+              setModal={setModal}
+            />
+          )}
           <div className="lg:w-[50%] lg:mr-10">
             {missingPostById && (
               <div
@@ -157,15 +165,9 @@ export default function MissingAnimalProfilePage() {
                 {missingPostById &&
                   `Do you have information about ${missingPostById.name}?`}
               </h3>
-              <Link
-                to={'/missing/cat/information'}
-                className=" <RewardCard
-                  name={missingPostById.name}
-                  reward={missingPostById.rewards}
-                />"
-              >
+              <div onClick={() => setModal(true)}>
                 <Button text="Send Information" />
-              </Link>
+              </div>
             </div>
           </div>
         </div>
