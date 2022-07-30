@@ -6,9 +6,11 @@ import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.Token;
 import com.adptapaw.backend.entity.User;
 import com.adptapaw.backend.exception.InvalidTokenException;
+import com.adptapaw.backend.payload.AllUserResponseDTO;
 import com.adptapaw.backend.payload.LoginDTO;
 import com.adptapaw.backend.payload.UserDetailsDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
+import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
 import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.email.EmailService;
 import com.adptapaw.backend.service.token.TokenService;
@@ -16,6 +18,10 @@ import org.apache.catalina.mapper.Mapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
@@ -148,17 +154,34 @@ public  class UserServiceSecurity implements UserDetailsService {
     }
 
 
-    public ResponseEntity<?> getAllUsers() {
-        List<User> userList = userRepository.findAll();
-        List<UserDetailsDTO> userListDTO = userList.stream().map(user -> {
+    public ResponseEntity<?> getAllUsers(int pageNo,  int pageSize, String sortBy,String sortDir) {
+
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        Page<User> userList =  userRepository.findAll(pageable);
+        List<User> userListContent = userList.getContent();
+        List<UserDetailsDTO> userListDTO = userListContent.stream().map(user -> {
             UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
             userDetailsDTO.setId(user.getId());
             userDetailsDTO.setDp(user.getDp());
             userDetailsDTO.setEmail(user.getEmail());
+            userDetailsDTO.setUsername(user.getUsername());
             userDetailsDTO.setName(user.getName());
             userDetailsDTO.setLocation(user.getLocation());
             return userDetailsDTO;
         }).collect(Collectors.toList());
-        return new ResponseEntity<>(userListDTO,HttpStatus.OK);
+
+        AllUserResponseDTO allUserResponseDTO = new AllUserResponseDTO();
+        allUserResponseDTO.setContent(userListDTO);
+        allUserResponseDTO.setPageNo(userList.getNumber());
+        allUserResponseDTO.setPageSize(userList.getSize());
+        allUserResponseDTO.setTotalElements(userList.getTotalElements());
+        allUserResponseDTO.setTotalPages(userList.getTotalPages());
+        allUserResponseDTO.setLast(userList.isLast());
+
+
+        return new ResponseEntity<>(allUserResponseDTO,HttpStatus.OK);
     }
 }

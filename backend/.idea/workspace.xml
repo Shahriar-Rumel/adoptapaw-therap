@@ -5,24 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/AllUserResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Adoption/AnimalProfileLeft.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Adoption/AnimalProfileLeft.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Adoption/UserAdoptionDetailsLeft.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Adoption/UserAdoptionDetailsLeft.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Cards/CardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Cards/CardList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Cards/MissingCardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Cards/MissingCardList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/List.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Nav/DesktopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Nav/DesktopMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/UserAdoptionRequestDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/UserAdoptionRequestDetailsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/UserAdoptionRequestsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/UserAdoptionRequestsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/actions/donationActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/actions/donationActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/animation.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/animation.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/constants/donationConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constants/donationConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/donationReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/donationReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/constants/userConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constants/userConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/userReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +98,7 @@
       <workItem from="1659077434786" duration="9187000" />
       <workItem from="1659171221205" duration="196000" />
       <workItem from="1659173384293" duration="1215000" />
-      <workItem from="1659187415657" duration="3193000" />
+      <workItem from="1659187415657" duration="4952000" />
     </task>
     <servers />
   </component>

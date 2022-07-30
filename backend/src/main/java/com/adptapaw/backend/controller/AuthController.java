@@ -15,6 +15,7 @@ import com.adptapaw.backend.security.JWTTokenProvider;
 import com.adptapaw.backend.security.UserServiceSecurity;
 import com.adptapaw.backend.service.email.EmailService;
 import com.adptapaw.backend.service.token.TokenService;
+import com.adptapaw.backend.utils.AdoptapawConstants;
 import com.cloudinary.utils.StringUtils;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -271,7 +272,10 @@ public class AuthController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/users")
-    public ResponseEntity<?> getAllUsers(){
-        return userServiceSecurity.getAllUsers();
+    public ResponseEntity<?> getAllUsers(@RequestParam(value = "pageNo", defaultValue = AdoptapawConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+                                         @RequestParam(value = "pageSize", defaultValue = AdoptapawConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+                                         @RequestParam(value = "sortBy", defaultValue = AdoptapawConstants.DEFAULT_SORT_BY, required = false) String sortBy,
+                                         @RequestParam(value = "sortDir", defaultValue = AdoptapawConstants.DEFAULT_SORT_DIRECTION, required = false) String sortDir){
+        return userServiceSecurity.getAllUsers(pageNo,pageSize,sortBy,sortDir);
     }
 }

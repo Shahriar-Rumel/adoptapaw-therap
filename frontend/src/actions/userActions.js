@@ -11,7 +11,10 @@ import {
   USER_PROFILE_EDIT_REQUEST,
   USER_VERIFY_REQUEST,
   USER_VERIFY_SUCCESS,
-  USER_VERIFY_FAIL
+  USER_VERIFY_FAIL,
+  GET_ALL_USER_REQUEST,
+  GET_ALL_USER_SUCCESS,
+  GET_ALL_USER_FAIL
 } from '../constants/userConstants';
 import axios from 'axios';
 
@@ -166,3 +169,40 @@ export const logOut = () => (dispatch) => {
   localStorage.removeItem('userInfo');
   dispatch({ type: USER_LOGIN_LOGOUT });
 };
+
+export const getAllUserAction =
+  (pageNo, pageSize) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: GET_ALL_USER_REQUEST
+      });
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      const { data } = await axios.get(
+        `${BASE_URL}/api/auth/users?pageNo=${pageNo}&pageSize=${pageSize}`,
+        config
+      );
+
+      dispatch({
+        type: GET_ALL_USER_SUCCESS,
+        payload: data
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_ALL_USER_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };

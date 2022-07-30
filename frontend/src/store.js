@@ -5,6 +5,8 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import {
+  getAllUserAction,
+  getAllUserReducer,
   userLoginReducer,
   userProfileEditReducer,
   userRegisterReducer,
@@ -77,7 +79,8 @@ const reducer = combineReducers({
   userVerify: userVerifyReducer,
   feedbackCreate: feedbackCreateReducer,
   missingInfo: missingInfoReducer,
-  donationByUserId: donationByUserIdReducer
+  donationByUserId: donationByUserIdReducer,
+  allUsers: getAllUserReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

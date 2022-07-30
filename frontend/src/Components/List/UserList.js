@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import Button from '../Button';
 import Message from '../Message';
 
-export default function UserList({ title, data, limit, query, page, uid }) {
+export default function UserList({ title, data, page }) {
   var count = 0;
-
   return (
     <>
       {data && (
@@ -21,22 +20,20 @@ export default function UserList({ title, data, limit, query, page, uid }) {
                 <thead className="bg-primary ">
                   <tr className="mb-5 py-4 text-[14px]  tracking-tight">
                     <th className=" text-white text-left py-4 min-w-[160px] px-6 ">
-                      Pet's Name
+                      User ID
                     </th>
                     <th className=" text-white text-left   min-w-[200px]">
-                      Pet's Location
+                      Name
                     </th>
                     <th className=" text-white text-left  min-w-[200px]">
-                      Request Date
+                      Username
                     </th>
                     <th className=" text-white text-left min-w-[200px]">
-                      Approved Date
+                      Email
                     </th>
+                    <th className=" text-white text-left min-w-[120px]">dp</th>
                     <th className=" text-white text-left min-w-[120px]">
                       Status
-                    </th>
-                    <th className=" text-white text-left min-w-[120px]">
-                      Details
                     </th>
                   </tr>
                 </thead>
@@ -46,16 +43,14 @@ export default function UserList({ title, data, limit, query, page, uid }) {
                       {count++ < data.length - 1 && (
                         <tr className="border-b border-gray font-medium tracking-tight text-[14px] text-gray-light align-middle">
                           <td scope="col" className="py-4 cursor-pointer px-6">
-                            {item.pet.name}
+                            {item.id}
                           </td>
-                          <td>{item.pet.location}</td>
-                          <td>{item.requestdate}</td>
-                          <td>{item.approveddate}</td>
-                          <td>{item.status ? 'Approved' : 'Pending'}</td>
+                          <td>{item.name}</td>
+                          <td>{item.username}</td>
+                          <td>{item.email}</td>
+                          <td>{item.dp ? 'Approved' : 'Pending'}</td>
                           <td>
-                            <Link
-                              to={`/user/${uid}/adoption/request/${item.id}`}
-                            >
+                            <Link to={`/adoption/request/${item.id}`}>
                               <Button
                                 text={'Details'}
                                 width={true}
@@ -71,16 +66,14 @@ export default function UserList({ title, data, limit, query, page, uid }) {
                       {count == data.length && (
                         <tr className="border-0 py-4 text-[14px] text-gray-light align-middle font-medium">
                           <td className="py-4 px-6 cursor-pointer">
-                            {item.pet.name}
+                            {item.id}
                           </td>
-                          <td>{item.pet.location}</td>
-                          <td>{item.requestdate}</td>
-                          <td>{item.approveddate}</td>
-                          <td>{item.status ? 'Approved' : 'Pending'}</td>
+                          <td>{item.name}</td>
+                          <td>{item.username}</td>
+                          <td>{item.email}</td>
+                          <td>{item.dp ? 'Approved' : 'Pending'}</td>
                           <td>
-                            <Link
-                              to={`/user/${uid}/adoption/request/${item.id}`}
-                            >
+                            <Link to={`/adoption/request/${item.id}`}>
                               <Button
                                 text={'Details'}
                                 width={true}

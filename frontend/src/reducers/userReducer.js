@@ -1,4 +1,7 @@
 import {
+  GET_ALL_USER_FAIL,
+  GET_ALL_USER_REQUEST,
+  GET_ALL_USER_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_LOGOUT,
   USER_LOGIN_REQUEST,
@@ -66,6 +69,19 @@ export const userVerifyReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case USER_VERIFY_FAIL:
       return { loading: false, success: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const getAllUserReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_ALL_USER_REQUEST:
+      return { loading: true };
+    case GET_ALL_USER_SUCCESS:
+      return { loading: false, allUser: action.payload };
+    case GET_ALL_USER_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }
