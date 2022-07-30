@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllUserAction } from '../actions/userActions';
 import UserList from '../Components/List/UserList';
 import Loader from '../Components/Loader';
+import Pagination from '../Components/Pagination';
+import Topbar from '../Components/Topbar';
 
 export default function AdminUserListPage() {
   const [pageNo, setPageNo] = useState(0);
@@ -20,11 +22,10 @@ export default function AdminUserListPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
-          <h1 className="font-extrabold text-[24px] tracking-tight text-primary">
-            Total user
-          </h1>
+        <div className="mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+          <Topbar address={'Dashboard/User List'} link={'/dashboard'} />
           {allUser && <UserList data={allUser.content} />}
+          {allUser && <Pagination data={allUser} setPageNo={setPageNo} />}
         </div>
       )}
     </>

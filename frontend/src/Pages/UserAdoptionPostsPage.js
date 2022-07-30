@@ -21,7 +21,6 @@ const ForAnimation = () => {
 };
 export default function UserAdoptionPostsPage() {
   const [pageNo, setPageNo] = useState(0);
-  const [postList, setPostList] = useState();
 
   const dispatch = useDispatch();
 
@@ -79,11 +78,7 @@ export default function UserAdoptionPostsPage() {
                 )}
               </div>
               {adoptionPostByUserId && (
-                <Pagination
-                  data={adoptionPostByUserId}
-                  setPageNo={setPageNo}
-                  setPostList={setPostList}
-                />
+                <Pagination data={adoptionPostByUserId} setPageNo={setPageNo} />
               )}
             </div>
           </div>

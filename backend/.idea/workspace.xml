@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/AllUserResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/actions/userActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/constants/userConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constants/userConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/reducers/userReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/List/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/List/UserList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/AdminUserListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/AdminUserListPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +91,7 @@
       <workItem from="1659077434786" duration="9187000" />
       <workItem from="1659171221205" duration="196000" />
       <workItem from="1659173384293" duration="1215000" />
-      <workItem from="1659187415657" duration="4952000" />
+      <workItem from="1659187415657" duration="5801000" />
     </task>
     <servers />
   </component>
