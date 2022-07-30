@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 export default function Burger({ setBurgerClicked, burger, theme }) {
   return (
     <div
-      className="burger w-[25px] cursor-pointer absolute right-5"
+      className="burger w-[25px] cursor-pointer absolute right-5 lg:hidden"
       onClick={() => setBurgerClicked((prev) => !prev)}
     >
       <div

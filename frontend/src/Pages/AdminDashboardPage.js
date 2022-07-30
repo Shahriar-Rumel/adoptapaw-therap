@@ -2,10 +2,11 @@ import React from 'react';
 import Button from '../Components/Button';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import List from '../Components/List';
+import { Link } from 'react-router-dom';
 
-const StatCard = ({ title, data, src, text, variant, brand }) => {
+const StatCard = ({ title, data, src, text, variant, brand, link }) => {
   return (
-    <div className="shadow-md bg-primary-light bg-opacity-10 py-5 px-4 custom-round my-3 lg:my-0 lg:w-[33%] ">
+    <div className="shadow-md bg-primary-light bg-opacity-10 py-5 px-4 custom-round my-5 lg:my-3 lg:w-[33%] ">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-bold text-gray-light tracking-tighter text-[16px]">
@@ -19,7 +20,7 @@ const StatCard = ({ title, data, src, text, variant, brand }) => {
           <img src={src} className="w-[50px]"></img>
         </div>
       </div>
-      <div className="mt-4">
+      <Link to={link} className="mt-4">
         <Button
           text={text}
           width={true}
@@ -27,7 +28,7 @@ const StatCard = ({ title, data, src, text, variant, brand }) => {
           brand={brand}
           secondary={variant}
         />
-      </div>
+      </Link>
     </div>
   );
 };
@@ -52,12 +53,14 @@ export default function AdminDashboardPage() {
           src={'/assets/Icons/users.svg'}
           text={'See all user'}
           brand={true}
+          link={'/admin/user'}
         />
         <StatCard
           title={'Adoption request'}
           data={1200}
           src={'/assets/Icons/adoption.svg'}
           text={'See all request'}
+          link={'/admin/user'}
         />
         <StatCard
           title={'Ongoing donation'}
@@ -65,8 +68,17 @@ export default function AdminDashboardPage() {
           src={'/assets/Icons/donation.svg'}
           text={'See all donation'}
           variant={true}
+          link={'/admin/user'}
         />
       </div>
+      <StatCard
+        title={'Ongoing donation'}
+        data={1200}
+        src={'/assets/Icons/donation.svg'}
+        text={'See all donation'}
+        variant={true}
+        link={'/admin/user'}
+      />
 
       <div className="lg:w-[11/12] w-[95vw] mx-auto mt-[80px]  mb-[100px]">
         {adoptionRequestsByUserId && (

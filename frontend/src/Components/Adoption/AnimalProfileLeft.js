@@ -15,21 +15,24 @@ export default function AnimalProfileLeft({ poster, data }) {
     <>
       {data && (
         <div className="w-[100%]  mr-10">
-          <div
-            className=" flex items-center justify-center  custom-round bg-primary adoption-details-animation w-[100%] h-[250px] mx-auto md:h-[600px] md:w-[100%] lg:h-[45vh] lg:w-[100%] "
-            style={{
-              backgroundImage: `url(${image})`,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat'
-            }}
-          >
-            {!data.imageone && <h1 className="text-gray">N / A</h1>}
+          <div className="linear-background custom-round">
+            <div
+              className="ease-in-out duration-300 flex items-center justify-center  custom-round   w-[100%] h-[250px] mx-auto md:h-[600px] md:w-[100%] lg:h-[45vh] lg:w-[100%] "
+              style={{
+                backgroundImage: `url(${image})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
+              }}
+            >
+              {!data.imageone && <h1 className="text-gray">N / A</h1>}
+            </div>
           </div>
+
           {poster !== 2 && (
             <div className="flex items-center justify-around my-5 w-[95%] mx-auto">
               <div
-                className="flex items-center justify-center adoption-details-animation custom-round w-[30%] h-[60px] md:h-[100px] bg-primary cursor-pointer hover:opacity-[0.5]"
+                className=" flex items-center justify-center adoption-details-animation custom-round w-[30%] h-[60px] md:h-[100px] bg-primary cursor-pointer hover:opacity-[0.5]"
                 style={{
                   backgroundImage: `url(${data.imageone})`,
                   backgroundPosition: 'center',

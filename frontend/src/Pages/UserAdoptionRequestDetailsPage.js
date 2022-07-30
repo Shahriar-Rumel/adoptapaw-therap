@@ -6,6 +6,7 @@ import UserAdoptionDetailsLeft from '../Components/Adoption/UserAdoptionDetailsL
 import UserAdoptionDetailsRight from '../Components/Adoption/UserAdoptionDetailsRight';
 import Button from '../Components/Button';
 import Loader from '../Components/Loader';
+import Topbar from '../Components/Topbar';
 
 export default function UserAdoptionRequestDetailsPage() {
   const dispatch = useDispatch();
@@ -36,7 +37,11 @@ export default function UserAdoptionRequestDetailsPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className=" lg:w-[80vw] w-[95vw] mx-auto mt-[100px] lg:mt-[150px]  mb-[100px]">
+        <div className="w-[95vw] lg:w-3/4  mx-auto mt-[100px] lg:mt-[150px]  mb-[100px]">
+          <Topbar
+            address={`Home/Profile/Adoption/Request/${id}`}
+            link={'/home'}
+          />
           <div className="flex items-center  w-full">
             {adoptionRequest && (
               <div className="flex flex-col">

@@ -202,7 +202,7 @@ const ProfileMenuSection = ({
       <ProfileMenuItem
         userInfo={userInfo}
         setShowProfileMenu={setShowProfileMenu}
-        link={`/user/profile/${userInfo.id}`}
+        link={`/user/profile/${userInfo.id}/donations`}
         title={'Donations'}
       />
       {userInfo.role[0].id === 1 && (
@@ -287,7 +287,7 @@ export default function DesktopMenu({ theme }) {
     dispatch(logOut());
   };
   return (
-    <div className="menu flex justify-between w-3/4">
+    <div className="menu lg:flex justify-between w-3/4 hidden  ">
       <div className=" flex justify-between md:w-[550px]">
         {navItems.map((item) => (
           <Link to={item.link} key={item.link}>

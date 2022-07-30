@@ -6,7 +6,6 @@ import Burger from './Burger';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Nav() {
-  const [mobile, setMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [burger, setBurgerClicked] = useState(false);
   const [theme, setTheme] = useState(0);
@@ -19,13 +18,6 @@ export default function Nav() {
     window.pageYOffset === 0 ? setScrolled(false) : setScrolled(true);
   };
 
-  window.onload = () => {
-    if (window.innerWidth < 1042) {
-      setMobile(true);
-    } else {
-      setMobile(false);
-    }
-  };
   useEffect(() => {
     if (burger) {
       document.body.style.overflow = 'hidden';
@@ -33,16 +25,6 @@ export default function Nav() {
       document.body.style.overflow = 'visible';
     }
   }, [burger]);
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 1042) {
-        setMobile(true);
-      } else {
-        setMobile(false);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-  }, [mobile]);
 
   const arr = useLocation();
   useEffect(() => {
@@ -71,17 +53,15 @@ export default function Nav() {
               alt={!theme ? 'Adoptapaw Logo' : 'Adoptapaw Logo'}
             ></img>
           </Link>
-          {!mobile && <DesktopMenu theme={theme} />}
-          {mobile && (
-            <Burger
-              burger={burger}
-              setBurgerClicked={setBurgerClicked}
-              theme={theme}
-            />
-          )}
+          <DesktopMenu theme={theme} />
+          <Burger
+            burger={burger}
+            setBurgerClicked={setBurgerClicked}
+            theme={theme}
+          />
         </div>
       </div>
-      {mobile && burger && <MobileMenu setBurgerClicked={setBurgerClicked} />}
+      <MobileMenu burger={burger} setBurgerClicked={setBurgerClicked} />
     </>
   );
 }

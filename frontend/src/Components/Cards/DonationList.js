@@ -1,18 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from './Button';
-import Message from './Message';
+import Button from '../Button';
+import Message from '../Message';
 
-export default function List({ title, data, limit, query, page, uid }) {
-  var count = 0;
-  let limitforSection = 0;
-  if (limit == 0) {
-    // limitforSection = data.length;
-  } else limitforSection = 5;
-
-  //   .filter((listdataitem) => listdataitem.district.includes(query))
-  //   .sort((a, b) => ('' + a.date).localeCompare(b.date))
-
+export default function DonationList({ title, data, limit, query, page, uid }) {
+  let count = 0;
   return (
     <>
       {data && (

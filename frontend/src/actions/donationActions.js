@@ -1,5 +1,8 @@
 import axios from 'axios';
 import {
+  DONATION_BY_USERID_FAIL,
+  DONATION_BY_USERID_REQUEST,
+  DONATION_BY_USERID_SUCCESS,
   DONATION_CREATE_FAIL,
   DONATION_CREATE_REQUEST,
   DONATION_CREATE_SUCCESS
@@ -37,6 +40,44 @@ export const donationCreateAction =
     } catch (error) {
       dispatch({
         type: DONATION_CREATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };
+
+export const donationByUserIdAction =
+  (id, pageNo, pageSize) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: DONATION_BY_USERID_REQUEST
+      });
+
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      const { data } = await axios.get(
+        `${BASE_URL}/user/${id}/donation?pageNo=${pageNo}&pageSize=${pageSize}`,
+        config
+      );
+
+      dispatch({
+        type: DONATION_BY_USERID_SUCCESS,
+        payload: data
+      });
+    } catch (error) {
+      dispatch({
+        type: DONATION_BY_USERID_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

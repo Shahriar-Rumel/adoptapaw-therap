@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { navItems, navItemsLeft } from '../../Data/nav';
-export default function MobileMenu({ setBurgerClicked }) {
+export default function MobileMenu({ burger, setBurgerClicked }) {
   useEffect(() => {
     gsap.from('.mobile-menu-animation', {
       y: '+=20',
@@ -13,7 +13,7 @@ export default function MobileMenu({ setBurgerClicked }) {
       opacity: 1,
       stagger: 0.2
     });
-  });
+  }, []);
   useEffect(() => {
     gsap.from('.mobile-menu-bg', {
       width: '0',
@@ -25,9 +25,13 @@ export default function MobileMenu({ setBurgerClicked }) {
       duration: 0.5,
       stagger: 0.1
     });
-  });
+  }, [burger]);
   return (
-    <div className="mobile-menu-bg flex flex-col w-0 bg-brand fixed top-0 right-0 bottom-0 linear menu-blur-2  z-50 overflow-hidden ">
+    <div
+      className={`mobile-menu-bg lg:hidden  ${
+        burger ? `flex flex-col` : 'hidden'
+      } bg-brand fixed top-0 right-0 bottom-0 linear menu-blur-2  z-50 overflow-hidden `}
+    >
       <div className="flex   md:w-[600px]  flex-col  mt-24">
         {navItems.map((item) => (
           <Link to={item.link}>
@@ -49,7 +53,7 @@ export default function MobileMenu({ setBurgerClicked }) {
           </Link>
         ))}
       </div>
-      <div className="flex flex-col  ">
+      <div className="flex flex-col">
         {navItemsLeft.map((item) => (
           <Link to={item.link}>
             <div

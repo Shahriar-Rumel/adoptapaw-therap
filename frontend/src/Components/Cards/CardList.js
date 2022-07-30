@@ -16,16 +16,20 @@ export default function CardList({ link, buttonText, list }) {
       {list.map((item) => (
         <Link to={`/adoption/${item.id}`} key={item.id}>
           <div className="adoption-card-image-animation card-item flex custom-round  relative justify-center overflow-hidden w-[100%] text-offwhite h-[300px] md:w-[100%] ">
-            <div
-              className="bg-primary card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300"
-              style={{
-                backgroundImage: `url(${item.imageone})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
-              }}
-              loading={lazy}
-            ></div>
+            <div className=" card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300">
+              <div className="linear-background">
+                <div
+                  className="card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300"
+                  style={{
+                    backgroundImage: `url(${item.imageone})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat'
+                  }}
+                  loading={lazy}
+                ></div>
+              </div>
+            </div>
 
             <div className="overlay w-[100%] h-[100%] px-5  absolute mx-auto flex flex-col justify-center bg-[#000000] bg-opacity-[0.6]">
               <div className="flex justify-between items-center relative mt-[120px] ">

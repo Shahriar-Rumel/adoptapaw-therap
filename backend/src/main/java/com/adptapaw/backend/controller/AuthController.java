@@ -16,11 +16,13 @@ import com.adptapaw.backend.security.UserServiceSecurity;
 import com.adptapaw.backend.service.email.EmailService;
 import com.adptapaw.backend.service.token.TokenService;
 import com.cloudinary.utils.StringUtils;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -265,5 +267,11 @@ public class AuthController {
             return new ResponseEntity<>("User not found", HttpStatus.BAD_REQUEST);
         }
 
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @GetMapping("/users")
+    public ResponseEntity<?> getAllUsers(){
+        return userServiceSecurity.getAllUsers();
     }
 }
