@@ -37,7 +37,7 @@ export const donationAllPostReducer = (
     case DONATION_POSTS_REQUEST:
       return { loading: true, donationPosts: [] };
     case DONATION_POSTS_SUCCESS:
-      return { loading: false, donationPosts: action.payload.content };
+      return { loading: false, donationPosts: action.payload };
     case DONATION_POSTS_FAIL:
       return { loading: false, error: action.payload };
     default:

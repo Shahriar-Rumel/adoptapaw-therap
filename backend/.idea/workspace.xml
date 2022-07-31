@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/StatsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/StatsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/StatsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/StatsSeriveImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/List/UserList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/List/UserList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/AdminUserListPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/AdminUserListPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/security/UserServiceSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/MissingRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/MissingRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/security/UserServiceSecurity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/AdminDashboardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/AdminDashboardPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +23,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -91,7 +98,8 @@
       <workItem from="1659077434786" duration="9187000" />
       <workItem from="1659171221205" duration="196000" />
       <workItem from="1659173384293" duration="1215000" />
-      <workItem from="1659187415657" duration="5801000" />
+      <workItem from="1659187415657" duration="5923000" />
+      <workItem from="1659279582491" duration="3103000" />
     </task>
     <servers />
   </component>

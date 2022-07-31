@@ -63,6 +63,31 @@ export default function AdminDashboardPage() {
           link={'/admin/user'}
         />
         <StatCard
+          title={'Missing Information'}
+          data={1200}
+          src={'/assets/Icons/donation.svg'}
+          text={'See all donation'}
+          variant={true}
+          link={'/admin/user'}
+        />
+      </div>
+      <div className="lg:flex lg:justify-between">
+        <StatCard
+          title={'Adoption Post'}
+          data={1200}
+          src={'/assets/Icons/users.svg'}
+          text={'See all user'}
+          brand={true}
+          link={'/admin/user'}
+        />
+        <StatCard
+          title={'Missing Post'}
+          data={1200}
+          src={'/assets/Icons/adoption.svg'}
+          text={'See all request'}
+          link={'/admin/user'}
+        />
+        <StatCard
           title={'Ongoing donation'}
           data={1200}
           src={'/assets/Icons/donation.svg'}
@@ -71,14 +96,6 @@ export default function AdminDashboardPage() {
           link={'/admin/user'}
         />
       </div>
-      <StatCard
-        title={'Ongoing donation'}
-        data={1200}
-        src={'/assets/Icons/donation.svg'}
-        text={'See all donation'}
-        variant={true}
-        link={'/admin/user'}
-      />
 
       <div className="lg:w-[11/12] w-[95vw] mx-auto mt-[80px]  mb-[100px]">
         {adoptionRequestsByUserId && (

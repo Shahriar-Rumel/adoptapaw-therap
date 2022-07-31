@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../Components/Button';
 import DonationListCard from '../Components/Cards/DonationListCard';
@@ -7,8 +7,10 @@ import { donationPostsAction } from '../actions/donationPostActions';
 import Loader from '../Components/Loader';
 import Topbar from '../Components/Topbar';
 import Message from '../Components/Message';
+import Pagination from '../Components/Pagination';
 
 export default function DonationPostPage() {
+  const [pageNo, setPageNo] = useState(0);
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -20,8 +22,8 @@ export default function DonationPostPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(donationPostsAction());
-  }, [dispatch]);
+    dispatch(donationPostsAction(pageNo, 8));
+  }, [dispatch, pageNo]);
 
   return (
     <>
@@ -53,14 +55,21 @@ export default function DonationPostPage() {
             )}
           </div>
 
-          {donationPosts && donationPosts.length > 0 ? (
-            <DonationListCard data={donationPosts} userInfo={userInfo} />
+          {donationPosts && donationPosts.totalElements > 0 ? (
+            <DonationListCard
+              data={donationPosts.content}
+              userInfo={userInfo}
+            />
           ) : (
             <Message
               message={'No donation post available!'}
               variant={'danger'}
               active={true}
             />
+          )}
+
+          {donationPosts && (
+            <Pagination data={donationPosts} setPageNo={setPageNo} />
           )}
         </div>
       )}

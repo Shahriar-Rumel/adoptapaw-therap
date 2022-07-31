@@ -50,36 +50,39 @@ export const donationPostCreateAction =
     }
   };
 
-export const donationPostsAction = () => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: DONATION_POSTS_REQUEST
-    });
+export const donationPostsAction =
+  (pageNo, pageSize) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: DONATION_POSTS_REQUEST
+      });
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
 
-    const { data } = await axios.get(`${BASE_URL}/all`);
+      const { data } = await axios.get(
+        `${BASE_URL}/all?pageNo=${pageNo}&pageSize=${pageSize}`
+      );
 
-    dispatch({
-      type: DONATION_POSTS_SUCCESS,
-      payload: data
-    });
+      dispatch({
+        type: DONATION_POSTS_SUCCESS,
+        payload: data
+      });
 
-    // localStorage.setItem('adoptionPosts', JSON.stringify(data));
-  } catch (error) {
-    dispatch({
-      type: DONATION_POSTS_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message
-    });
-  }
-};
+      // localStorage.setItem('adoptionPosts', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: DONATION_POSTS_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };
 
 export const donationPostByIdAction = (id) => async (dispatch, getState) => {
   try {

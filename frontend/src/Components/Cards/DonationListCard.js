@@ -12,7 +12,7 @@ export default function DonationListCard({ data, userInfo }) {
     );
   }, []);
   return (
-    <div className="grid mb-[200px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-3 mx-auto ">
+    <div className="grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-3 mx-auto ">
       {data.map((item) => (
         <div className="bg-card-light py-3  custom-round flex justify-between px-3 donation-list-animation cursor-pointer ">
           <div className="w-[70%] flex flex-col justify-between">

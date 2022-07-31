@@ -105,8 +105,6 @@ public  class UserServiceSecurity implements UserDetailsService {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
-
-
     public boolean verifyUser(String token) throws InvalidTokenException {
 
         Token usertoken = tokenService.findByToken(token);
