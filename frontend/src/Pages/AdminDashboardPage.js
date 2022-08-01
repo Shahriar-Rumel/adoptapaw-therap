@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Button from '../Components/Button';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import List from '../Components/List';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { adminStatsAction } from '../actions/adminActions';
+import Loader from '../Components/Loader';
 
 const StatCard = ({ title, data, src, text, variant, brand, link }) => {
   return (
@@ -12,7 +14,7 @@ const StatCard = ({ title, data, src, text, variant, brand, link }) => {
           <h1 className="font-bold text-gray-light tracking-tighter text-[16px]">
             {title}
           </h1>
-          <h1 className="font-black text-primary tracking-tight text-[32px] mt-2">
+          <h1 className="font-extrabold text-primary tracking-tight text-[32px] mb-4">
             {data}
           </h1>
         </div>
@@ -37,71 +39,82 @@ export default function AdminDashboardPage() {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const adminStatsData = useSelector((state) => state.adminStats);
 
-  const adoptionRequestByUserIdData = useSelector(
-    (state) => state.adoptionRequestsByUserId
-  );
-  const { loading, error, adoptionRequestsByUserId } =
-    adoptionRequestByUserIdData;
+  const {
+    loading: statsLoading,
+    error: statsError,
+    adminStat
+  } = adminStatsData;
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (userInfo.role[0].id != 1) {
+      navigate('/home');
+    }
+  }, [userInfo]);
+  useEffect(() => {
+    dispatch(adminStatsAction());
+  }, []);
 
   return (
-    <div className="  mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
-      <div className="lg:flex lg:justify-between">
-        <StatCard
-          title={'Active user'}
-          data={1200}
-          src={'/assets/Icons/users.svg'}
-          text={'See all user'}
-          brand={true}
-          link={'/admin/user'}
-        />
-        <StatCard
-          title={'Adoption request'}
-          data={1200}
-          src={'/assets/Icons/adoption.svg'}
-          text={'See all request'}
-          link={'/admin/user'}
-        />
-        <StatCard
-          title={'Missing Information'}
-          data={1200}
-          src={'/assets/Icons/donation.svg'}
-          text={'See all donation'}
-          variant={true}
-          link={'/admin/user'}
-        />
-      </div>
-      <div className="lg:flex lg:justify-between">
-        <StatCard
-          title={'Adoption Post'}
-          data={1200}
-          src={'/assets/Icons/users.svg'}
-          text={'See all user'}
-          brand={true}
-          link={'/admin/user'}
-        />
-        <StatCard
-          title={'Missing Post'}
-          data={1200}
-          src={'/assets/Icons/adoption.svg'}
-          text={'See all request'}
-          link={'/admin/user'}
-        />
-        <StatCard
-          title={'Ongoing donation'}
-          data={1200}
-          src={'/assets/Icons/donation.svg'}
-          text={'See all donation'}
-          variant={true}
-          link={'/admin/user'}
-        />
-      </div>
-
-      <div className="lg:w-[11/12] w-[95vw] mx-auto mt-[80px]  mb-[100px]">
-        {adoptionRequestsByUserId && (
-          <List data={adoptionRequestsByUserId.content} query={''} uid={'1'} />
-        )}
-      </div>
-    </div>
+    <>
+      {statsLoading ? (
+        <Loader />
+      ) : (
+        <div className="  mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+          <div className="lg:flex lg:justify-between">
+            <StatCard
+              title={'Active user'}
+              data={adminStat.userSize}
+              src={'/assets/Icons/users.svg'}
+              text={'All user'}
+              brand={true}
+              link={'/admin/user'}
+            />
+            <StatCard
+              title={'Adoption request'}
+              data={adminStat.adoptionRequestSize}
+              src={'/assets/Icons/adoption.svg'}
+              text={'All request'}
+              link={'/admin/user'}
+            />
+            <StatCard
+              title={'Missing Information'}
+              data={adminStat.missingInformationSize}
+              src={'/assets/Icons/missing.svg'}
+              text={'All missing information'}
+              variant={true}
+              link={'/admin/user'}
+            />
+          </div>
+          <div className="lg:flex lg:justify-between">
+            <StatCard
+              title={'Adoption Post'}
+              data={adminStat.adoptionAnimalSize}
+              src={'/assets/Icons/adoptionPost.svg'}
+              text={'All adoption post'}
+              brand={true}
+              link={'/admin/user'}
+            />
+            <StatCard
+              title={'Missing Post'}
+              data={adminStat.missingPostSize}
+              src={'/assets/Icons/missingPost.svg'}
+              text={'All missing post'}
+              link={'/admin/user'}
+            />
+            <StatCard
+              title={'Ongoing donation'}
+              data={adminStat.donationSize}
+              src={'/assets/Icons/donation.svg'}
+              text={'All donation'}
+              variant={true}
+              link={'/admin/user'}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }

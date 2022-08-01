@@ -49,6 +49,7 @@ import {
 } from './reducers/donationReducer';
 import { feedbackCreateReducer } from './reducers/feedbackReducer';
 import { missingInfoReducer } from './reducers/missingInfoReducer';
+import { adminStatReducer } from './reducers/adminReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -80,7 +81,8 @@ const reducer = combineReducers({
   feedbackCreate: feedbackCreateReducer,
   missingInfo: missingInfoReducer,
   donationByUserId: donationByUserIdReducer,
-  allUsers: getAllUserReducer
+  allUsers: getAllUserReducer,
+  adminStats: adminStatReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

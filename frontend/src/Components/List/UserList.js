@@ -45,7 +45,7 @@ export default function UserList({ title, data, page }) {
                         <tr className="border-b border-gray font-medium tracking-tight text-[14px] text-gray-light align-middle">
                           <td
                             scope="col"
-                            className="py-4 font-black text-primary cursor-pointer px-6"
+                            className="py-4 font-bold text-primary cursor-pointer px-6"
                           >
                             {item.id}
                           </td>
@@ -88,7 +88,7 @@ export default function UserList({ title, data, page }) {
                       )}
                       {count == data.length && (
                         <tr className="border-0 py-4 text-[14px] text-gray-light align-middle font-medium">
-                          <td className="py-4 font-black text-primary cursor-pointer px-6">
+                          <td className="py-4 font-bold text-primary cursor-pointer px-6">
                             {item.id}
                           </td>
                           <td>
