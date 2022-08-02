@@ -17,7 +17,6 @@ export default function MissingCardList({ list, buttonText }) {
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat'
                   }}
-                  loading={lazy}
                 ></div>
               </div>
             </div>

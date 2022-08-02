@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '../Button';
 import Message from '../Message';
 
-export default function UserList({ title, data, page }) {
+export default function UserList({ title, data, page, banHandler }) {
   var count = 0;
   return (
     <>
@@ -39,41 +39,52 @@ export default function UserList({ title, data, page }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((item) => (
+                  {data.map((item, index) => (
                     <>
-                      {count++ < data.length - 1 && (
-                        <tr className="border-b border-gray font-medium tracking-tight text-[14px] text-gray-light align-middle">
-                          <td
-                            scope="col"
-                            className="py-4 font-bold text-primary cursor-pointer px-6"
-                          >
-                            {item.id}
-                          </td>
-                          <td>
-                            <div className="w-[35px] h-[35px] overflow-hidden rounded-[100%] ">
-                              <div
-                                className="w-[35px] h-[35px] flex items-center justify-center bg-brand"
-                                style={{
-                                  backgroundImage: `url(${item.dp})`,
-                                  backgroundPosition: 'center',
-                                  backgroundSize: 'cover',
-                                  backgroundRepeat: 'no-repeat'
-                                }}
-                              >
-                                {!item.dp && (
-                                  <h1 className="text-[12px] font-bold uppercase text-white">
-                                    {item.name.split('')[0]}
-                                  </h1>
-                                )}
-                              </div>
+                      <tr
+                        className={` ${
+                          index < data.length - 1 && `border-b border-gray`
+                        } font-medium tracking-tight text-[14px] text-gray-light align-middle`}
+                      >
+                        <td
+                          scope="col"
+                          className="py-4 font-bold text-primary cursor-pointer px-6"
+                        >
+                          {item.id}
+                        </td>
+                        <td>
+                          <div className="w-[35px] h-[35px] overflow-hidden rounded-[100%] ">
+                            <div
+                              className="w-[35px] h-[35px] flex items-center justify-center bg-brand"
+                              style={{
+                                backgroundImage: `url(${item.dp})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat'
+                              }}
+                            >
+                              {!item.dp && (
+                                <h1 className="text-[12px] font-bold uppercase text-white">
+                                  {item.name.split('')[0]}
+                                </h1>
+                              )}
                             </div>
-                          </td>
-                          <td>{item.name}</td>
-                          <td>{item.username}</td>
-                          <td>{item.email}</td>
+                          </div>
+                        </td>
+                        <td>{item.name}</td>
+                        <td>{item.username}</td>
+                        <td>{item.email}</td>
 
-                          <td>
-                            <Link to={`/adoption/request/${item.id}`}>
+                        <td>
+                          {item.banned ? (
+                            <button
+                              disabled
+                              className="h-[40px] cursor-not-allowed bg-red text-white w-[80px] custom-round"
+                            >
+                              Banned
+                            </button>
+                          ) : (
+                            <div onClick={() => banHandler(item.id)}>
                               <Button
                                 text={'Ban'}
                                 width={true}
@@ -82,52 +93,10 @@ export default function UserList({ title, data, page }) {
                                 heightClass={'h-[40px]'}
                                 secondary={true}
                               />
-                            </Link>
-                          </td>
-                        </tr>
-                      )}
-                      {count == data.length && (
-                        <tr className="border-0 py-4 text-[14px] text-gray-light align-middle font-medium">
-                          <td className="py-4 font-bold text-primary cursor-pointer px-6">
-                            {item.id}
-                          </td>
-                          <td>
-                            <div className="w-[35px] h-[35px] overflow-hidden rounded-[100%] ">
-                              <div
-                                className="w-[35px] h-[35px] flex items-center justify-center bg-brand"
-                                style={{
-                                  backgroundImage: `url(${item.dp})`,
-                                  backgroundPosition: 'center',
-                                  backgroundSize: 'cover',
-                                  backgroundRepeat: 'no-repeat'
-                                }}
-                              >
-                                {!item.dp && (
-                                  <h1 className="text-[12px] font-bold uppercase text-white">
-                                    {item.name.split('')[0]}
-                                  </h1>
-                                )}
-                              </div>
                             </div>
-                          </td>
-                          <td>{item.name}</td>
-                          <td>{item.username}</td>
-                          <td>{item.email}</td>
-
-                          <td>
-                            <Link to={`/adoption/request/${item.id}`}>
-                              <Button
-                                text={'Ban'}
-                                width={true}
-                                widthClass={'w-[80px]'}
-                                height={true}
-                                heightClass={'h-[40px]'}
-                                secondary={true}
-                              />
-                            </Link>
-                          </td>
-                        </tr>
-                      )}
+                          )}
+                        </td>
+                      </tr>
                     </>
                   ))}
                 </tbody>

@@ -44,6 +44,7 @@ import java.util.Objects;
 public class AuthController {
 
     private static final String REDIRECT_LOGIN = "Your Account has been verified visit localhost:3000/signin to login";
+    private String currentRole ;
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -261,6 +262,7 @@ public class AuthController {
             userDetailsDTO.setId(user.getId());
             userDetailsDTO.setRole(user.getRoles());
             userDetailsDTO.setJwtdto(jwtdto);
+            userDetailsDTO.setBanned(user.isBanned());
 
             return new ResponseEntity<>(userDetailsDTO, HttpStatus.OK);
         }
@@ -270,6 +272,37 @@ public class AuthController {
 
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PutMapping("/admin/user/{id}/ban")
+    public ResponseEntity<?> banUser(@PathVariable String id){
+
+        try {
+            User user = userRepository.findById(Long.valueOf(id)).orElseThrow(()-> new ResourceNotFoundException("Update User","ID",Long.parseLong(id)));
+
+            for (Roles authority : user.getRoles()) {
+                currentRole = authority.getName();
+            }
+            if(Objects.equals(currentRole, "ROLE_ADMIN")){
+                return new ResponseEntity<>("Admin Can't be banned", HttpStatus.BAD_REQUEST);
+
+            }
+            user.setBanned(true);
+            userRepository.save(user);
+
+
+            UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
+
+            userDetailsDTO.setName(user.getName());
+            userDetailsDTO.setEmail(user.getEmail());
+            userDetailsDTO.setBanned(user.isBanned());
+
+            return new ResponseEntity<>(userDetailsDTO, HttpStatus.OK);
+        }
+        catch (UsernameNotFoundException e){
+            return new ResponseEntity<>("User not found", HttpStatus.BAD_REQUEST);
+        }
+
+    }
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/users")
     public ResponseEntity<?> getAllUsers(@RequestParam(value = "pageNo", defaultValue = AdoptapawConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,

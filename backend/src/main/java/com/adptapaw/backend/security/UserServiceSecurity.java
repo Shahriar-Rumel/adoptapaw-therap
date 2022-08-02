@@ -168,6 +168,7 @@ public  class UserServiceSecurity implements UserDetailsService {
             userDetailsDTO.setUsername(user.getUsername());
             userDetailsDTO.setName(user.getName());
             userDetailsDTO.setLocation(user.getLocation());
+            userDetailsDTO.setBanned(user.isBanned());
             return userDetailsDTO;
         }).collect(Collectors.toList());
 

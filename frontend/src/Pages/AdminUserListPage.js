@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { adminUserBanAction } from '../actions/adminActions';
 import { getAllUserAction } from '../actions/userActions';
 import UserList from '../Components/List/UserList';
 import Loader from '../Components/Loader';
@@ -17,6 +18,10 @@ export default function AdminUserListPage() {
     dispatch(getAllUserAction(pageNo, 8));
   }, [dispatch, pageNo]);
 
+  const banHandler = (id) => {
+    dispatch(adminUserBanAction(id));
+  };
+
   return (
     <>
       {loading ? (
@@ -27,7 +32,9 @@ export default function AdminUserListPage() {
             address={`Dashboard/User List/Page ${pageNo + 1}`}
             link={'/dashboard'}
           />
-          {allUser && <UserList data={allUser.content} />}
+          {allUser && (
+            <UserList data={allUser.content} banHandler={banHandler} />
+          )}
           {allUser && <Pagination data={allUser} setPageNo={setPageNo} />}
         </div>
       )}

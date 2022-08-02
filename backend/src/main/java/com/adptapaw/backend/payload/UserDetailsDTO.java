@@ -16,5 +16,6 @@ public class UserDetailsDTO {
     private String bio;
     private String location;
     private String dp;
+    private Boolean banned;
     private JWTDTO jwtdto;
 }

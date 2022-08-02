@@ -49,7 +49,7 @@ export default function AdminDashboardPage() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (userInfo.role[0].id != 1) {
+    if (!userInfo || userInfo.role[0].id != 1) {
       navigate('/home');
     }
   }, [userInfo]);
