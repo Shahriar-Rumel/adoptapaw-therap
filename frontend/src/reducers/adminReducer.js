@@ -1,4 +1,7 @@
 import {
+  ADMIN_ALL_ADOPTION_REQUEST_FAIL,
+  ADMIN_ALL_ADOPTION_REQUEST_REQUEST,
+  ADMIN_ALL_ADOPTION_REQUEST_SUCCESS,
   ADMIN_STATS_FAIL,
   ADMIN_STATS_REQUEST,
   ADMIN_STATS_SUCCESS,
@@ -26,6 +29,21 @@ export const adminUserBanReducer = (state = {}, action) => {
     case ADMIN_USER_BAN_SUCCESS:
       return { loading: false, success: true };
     case ADMIN_USER_BAN_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+export const adminAllAdoptionRequestReducer = (
+  state = { adoptionRequests: [] },
+  action
+) => {
+  switch (action.type) {
+    case ADMIN_ALL_ADOPTION_REQUEST_REQUEST:
+      return { loading: true, adoptionRequests: [] };
+    case ADMIN_ALL_ADOPTION_REQUEST_SUCCESS:
+      return { loading: false, adoptionRequests: action.payload };
+    case ADMIN_ALL_ADOPTION_REQUEST_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

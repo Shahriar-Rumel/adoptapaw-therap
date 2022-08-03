@@ -1,5 +1,8 @@
 import axios from 'axios';
 import {
+  ADMIN_ALL_ADOPTION_REQUEST_FAIL,
+  ADMIN_ALL_ADOPTION_REQUEST_REQUEST,
+  ADMIN_ALL_ADOPTION_REQUEST_SUCCESS,
   ADMIN_STATS_FAIL,
   ADMIN_STATS_REQUEST,
   ADMIN_STATS_SUCCESS,
@@ -83,3 +86,41 @@ export const adminUserBanAction = (id) => async (dispatch, getState) => {
     });
   }
 };
+export const adminAdoptionRequestsAction =
+  (id, pageNo, pageSize) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ADMIN_ALL_ADOPTION_REQUEST_REQUEST
+      });
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      const { data } = await axios.get(
+        `${BASE_URL}/admin/${id}/adoption/request/all?pageNo=${pageNo}&pageSize=${pageSize}`,
+        config
+      );
+
+      dispatch({
+        type: ADMIN_ALL_ADOPTION_REQUEST_SUCCESS,
+        payload: data
+      });
+
+      // localStorage.setItem('adoptionPosts', JSON.stringify(data));
+    } catch (error) {
+      dispatch({
+        type: ADMIN_ALL_ADOPTION_REQUEST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };

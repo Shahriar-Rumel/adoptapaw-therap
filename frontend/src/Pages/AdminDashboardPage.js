@@ -77,7 +77,7 @@ export default function AdminDashboardPage() {
               data={adminStat.adoptionRequestSize}
               src={'/assets/Icons/adoption.svg'}
               text={'All request'}
-              link={'/admin/user'}
+              link={'/admin/adoption/request'}
             />
             <StatCard
               title={'Missing Information'}

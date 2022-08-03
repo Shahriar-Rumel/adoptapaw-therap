@@ -49,7 +49,11 @@ import {
 } from './reducers/donationReducer';
 import { feedbackCreateReducer } from './reducers/feedbackReducer';
 import { missingInfoReducer } from './reducers/missingInfoReducer';
-import { adminStatReducer, adminUserBanReducer } from './reducers/adminReducer';
+import {
+  adminAllAdoptionRequestReducer,
+  adminStatReducer,
+  adminUserBanReducer
+} from './reducers/adminReducer';
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -83,7 +87,8 @@ const reducer = combineReducers({
   donationByUserId: donationByUserIdReducer,
   allUsers: getAllUserReducer,
   adminStats: adminStatReducer,
-  adminUserBan: adminUserBanReducer
+  adminUserBan: adminUserBanReducer,
+  adminAllAdoptionRequest: adminAllAdoptionRequestReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

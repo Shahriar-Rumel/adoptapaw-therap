@@ -15,10 +15,10 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
               <img
                 src={
                   data.status
-                    ? `/assets/icons/confirmed.svg`
+                    ? `/assets/icons/approvedgreen.svg`
                     : `/assets/icons/pending.svg`
                 }
-                className="w-[16px]"
+                className="w-[18px]"
               ></img>
               <h2
                 className={`ml-2 ${
@@ -73,12 +73,12 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
             </div>
           </div>
 
-          {userInfo.role[0].name === 'ROLE_ADMIN' && (
+          {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
             <div className="mt-5">
               <Button text="Approve Request" />
             </div>
           )}
-          {userInfo.role[0].name === 'ROLE_ADMIN' && (
+          {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
             <div className="mt-3">
               <Button text="Reject Request" secondary={true} />
             </div>

@@ -2,6 +2,7 @@ package com.adptapaw.backend.service;
 
 import com.adptapaw.backend.payload.adoption.AdoptionRequestDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionRequestListDTO;
+import com.adptapaw.backend.payload.donations.DonationPostDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 
@@ -17,4 +18,6 @@ public interface AdoptionRequestService {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     AdoptionRequestDTO approveRequest(String Uid,String id);
+
+    AdoptionRequestListDTO getAll(String id, int pageNo, int pageSize, String sortBy, String sortDir);
 }

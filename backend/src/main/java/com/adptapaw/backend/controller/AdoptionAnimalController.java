@@ -2,9 +2,11 @@ package com.adptapaw.backend.controller;
 
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
+import com.adptapaw.backend.payload.donations.DonationPostDTO;
 import com.adptapaw.backend.service.AdoptionAnimalService;
 import com.adptapaw.backend.utils.AdoptapawConstants;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins  = "http://localhost:3000")
@@ -59,4 +61,5 @@ public class AdoptionAnimalController {
     public String DeleteAdoptionAnimal(@PathVariable (name="id") String  id){
         return adoptionAnimalService.DeleteById(id);
     }
+
 }

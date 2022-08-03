@@ -13,6 +13,10 @@ import com.adptapaw.backend.service.AdoptionRequestService;
 import com.adptapaw.backend.service.email.EmailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -153,6 +157,32 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
 
       return null;
 
+    }
+
+    @Override
+    public AdoptionRequestListDTO getAll(String id, int pageNo, int pageSize, String sortBy, String sortDir) {
+
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+        Page<AdoptionRequest> requests = adoptionRequestRepository.findAll(pageable);
+
+        List<AdoptionRequest> adoptionRequests = requests.getContent();
+
+        List<AdoptionRequestDTO> content= adoptionRequests.stream().map(adoptionRequestsItem -> mapToRequestDTO(adoptionRequestsItem)).collect(Collectors.toList());
+
+
+        AdoptionRequestListDTO adoptionRequestListDTO = new AdoptionRequestListDTO();
+        adoptionRequestListDTO.setContent(content);
+        adoptionRequestListDTO.setPageNo(requests.getNumber());
+        adoptionRequestListDTO.setPageSize(requests.getSize());
+        adoptionRequestListDTO.setTotalElements(requests.getTotalElements());
+        adoptionRequestListDTO.setTotalPages(requests.getTotalPages());
+        adoptionRequestListDTO.setLast(requests.isLast());
+
+        return adoptionRequestListDTO;
     }
 
 
