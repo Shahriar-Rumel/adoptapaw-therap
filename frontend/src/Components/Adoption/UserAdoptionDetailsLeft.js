@@ -1,8 +1,15 @@
 import React from 'react';
 import Button from '../Button';
 import TextBlock from '../TextBlock';
+import { useDispatch } from 'react-redux';
+import { adminAdoptionRequestApproveAction } from '../../actions/adminActions';
 
 export default function UserAdoptionDetailsLeft({ data, userInfo }) {
+  const dispatch = useDispatch();
+  const approveHandler = (e, uid, id) => {
+    e.preventDefault();
+    dispatch(adminAdoptionRequestApproveAction(uid, id));
+  };
   return (
     <>
       {data && userInfo && (
@@ -64,7 +71,7 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
               <TextBlock
                 header={'Approved at'}
                 content={
-                  data && data.approveddate != ' '
+                  data && data.approveddate !== ' '
                     ? data.approveddate.split('20')[0] +
                       data.approveddate.split('BDT')[1].split(' ')[0]
                     : 'N/A'
@@ -74,9 +81,12 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
           </div>
 
           {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
-            <div className="mt-5">
+            <form
+              className="mt-5 "
+              onSubmit={(e) => approveHandler(e, userInfo.id, data.id)}
+            >
               <Button text="Approve Request" />
-            </div>
+            </form>
           )}
           {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
             <div className="mt-3">

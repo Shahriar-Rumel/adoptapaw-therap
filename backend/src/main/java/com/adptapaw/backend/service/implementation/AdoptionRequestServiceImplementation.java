@@ -21,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -131,31 +132,36 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
 
     @Override
     public AdoptionRequestDTO approveRequest(String uid,String id) {
+
         AdoptionRequest adoptionRequest = adoptionRequestRepository.findById(Long.valueOf(id)).get();
         AdoptionAnimal animal  = adoptionAnimalRepository.findById(adoptionRequest.getPet().getId()).get();
 
+         try{
+             User user = userRepository.findById(Long.valueOf(uid)).get();
 
-        User user = userRepository.findById(Long.valueOf(uid)).get();
 
+                for (Roles authority : user.getRoles()) {
+                    currentRole = authority.getName();
+                }
 
-        for (Roles authority : user.getRoles()) {
-            currentRole = authority.getName();
-        }
+                if(currentRole.equals("ROLE_ADMIN")){
 
-        if(currentRole.equals("ROLE_ADMIN")){
-            Date date = new Date();
-            adoptionRequest.setStatus(true);
-            adoptionRequest.setApproveddate(String.valueOf(date));
-            adoptionRequestRepository.save(adoptionRequest);
+                     Date date = new Date();
+                     adoptionRequest.setStatus(true);
+                     adoptionRequest.setApproveddate(String.valueOf(date));
+                     adoptionRequestRepository.save(adoptionRequest);
 
-            animal.setAvailability(false);
-            animal.setOwner(adoptionRequest.getAdoptionseeker());
-            adoptionAnimalRepository.save(animal);
+                     animal.setAvailability(false);
+                     animal.setOwner(adoptionRequest.getAdoptionseeker());
+                     adoptionAnimalRepository.save(animal);
 
-            return mapToRequestDTO(adoptionRequest);
-        }
+                     return mapToRequestDTO(adoptionRequest);
+                }
+         }catch (UsernameNotFoundException e){
+             return null;
+         }
 
-      return null;
+         return null;
 
     }
 

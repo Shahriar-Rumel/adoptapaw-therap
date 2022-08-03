@@ -19,6 +19,9 @@ export default function UserAdoptionRequestDetailsPage() {
   );
   const { loading, error, adoptionRequest } = adoptionRequestByIdData;
 
+  const approvedData = useSelector((state) => state.adoptionRequestApprove);
+  const { loading: approveLoading, success } = approvedData;
+
   const navigate = useNavigate();
   const { uid, id } = useParams();
 
@@ -30,7 +33,7 @@ export default function UserAdoptionRequestDetailsPage() {
 
   useEffect(() => {
     dispatch(adoptionRequestByIdAction(uid, id));
-  }, [dispatch, id]);
+  }, [dispatch, uid, id]);
 
   return (
     <>
@@ -73,6 +76,7 @@ export default function UserAdoptionRequestDetailsPage() {
               <UserAdoptionDetailsLeft
                 data={adoptionRequest}
                 userInfo={userInfo}
+                // approveHandler={approveHandler}
               />
             </div>
           </div>

@@ -61,10 +61,10 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/api/donationpost/{id}").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/donationpost/all").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/missing/**").permitAll()
+//                .antMatchers(HttpMethod.PUT, "/api/admin/{uid}/adoption/request/{id}/approve").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/missing/{id}/create").permitAll()
                 .antMatchers(HttpMethod.POST , "/api/feedback/create").permitAll()
                 .antMatchers(HttpMethod.POST , "/api/files/upload").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/adoption/request/**").access("hasRole('ADMIN')")
                 .anyRequest()
                 .authenticated();
         http.addFilterBefore(jWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -73,21 +73,9 @@ public class SecurityConfig {
 
     }
 
-
-//    @Override
-//    @Bean
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManagerBean();
-//    }
-
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService)
-//                .passwordEncoder(passwordEncoder());
-//    }
 }

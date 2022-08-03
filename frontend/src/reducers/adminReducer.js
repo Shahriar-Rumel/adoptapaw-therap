@@ -9,6 +9,11 @@ import {
   ADMIN_USER_BAN_REQUEST,
   ADMIN_USER_BAN_SUCCESS
 } from '../constants/adminConstants';
+import {
+  ADOPTION_REQUEST_APPROVE_FAIL,
+  ADOPTION_REQUEST_APPROVE_REQUEST,
+  ADOPTION_REQUEST_APPROVE_SUCCESS
+} from '../constants/adoptionRequestConstants';
 
 export const adminStatReducer = (state = { adminStat: [] }, action) => {
   switch (action.type) {
@@ -44,6 +49,19 @@ export const adminAllAdoptionRequestReducer = (
     case ADMIN_ALL_ADOPTION_REQUEST_SUCCESS:
       return { loading: false, adoptionRequests: action.payload };
     case ADMIN_ALL_ADOPTION_REQUEST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const adminAdoptionRequestApproveReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADOPTION_REQUEST_APPROVE_REQUEST:
+      return { loading: true };
+    case ADOPTION_REQUEST_APPROVE_SUCCESS:
+      return { loading: false, success: true };
+    case ADOPTION_REQUEST_APPROVE_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

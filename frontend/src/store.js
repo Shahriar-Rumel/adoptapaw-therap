@@ -50,6 +50,7 @@ import {
 import { feedbackCreateReducer } from './reducers/feedbackReducer';
 import { missingInfoReducer } from './reducers/missingInfoReducer';
 import {
+  adminAdoptionRequestApproveReducer,
   adminAllAdoptionRequestReducer,
   adminStatReducer,
   adminUserBanReducer
@@ -88,7 +89,8 @@ const reducer = combineReducers({
   allUsers: getAllUserReducer,
   adminStats: adminStatReducer,
   adminUserBan: adminUserBanReducer,
-  adminAllAdoptionRequest: adminAllAdoptionRequestReducer
+  adminAllAdoptionRequest: adminAllAdoptionRequestReducer,
+  adoptionRequestApprove: adminAdoptionRequestApproveReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

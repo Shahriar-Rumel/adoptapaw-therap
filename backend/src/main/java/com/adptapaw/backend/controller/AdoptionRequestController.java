@@ -22,6 +22,11 @@ public class AdoptionRequestController {
         this.adoptionRequestService = adoptionRequestService;
     }
 
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PutMapping("/admin/{uid}/adoption/request/{id}/approve")
+    public AdoptionRequestDTO approveAdoptionRequest(@PathVariable(name = "uid") String uid,@PathVariable(name = "id") String id){
+        return adoptionRequestService.approveRequest(uid,id);
+    }
     @PostMapping("/adoption/{id}/user/{uid}/createadoptionrequest")
     public ResponseEntity<?> createAdoptionRequestPost(@PathVariable(name="uid") String  uid, @PathVariable(name="id") String id, @RequestBody AdoptionRequestDTO adoptionRequestDTO){
         return adoptionRequestService.createAdoptionRequest(uid,id,adoptionRequestDTO);
@@ -37,11 +42,7 @@ public class AdoptionRequestController {
         return adoptionRequestService.getAllByCreator(id);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping("/user/{uid}/adoption/request/{id}")
-    public AdoptionRequestDTO approveAdoptionRequest(@PathVariable(name = "uid") String uid,@PathVariable(name = "id") String id){
-        return adoptionRequestService.approveRequest(uid,id);
-    }
+
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/admin/{id}/adoption/request/all")

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   ADMIN_ALL_ADOPTION_REQUEST_FAIL,
   ADMIN_ALL_ADOPTION_REQUEST_REQUEST,
@@ -10,7 +9,13 @@ import {
   ADMIN_USER_BAN_REQUEST,
   ADMIN_USER_BAN_SUCCESS
 } from '../constants/adminConstants';
-import { GET_ALL_USER_SUCCESS } from '../constants/userConstants';
+import {
+  ADOPTION_REQUEST_APPROVE_FAIL,
+  ADOPTION_REQUEST_APPROVE_REQUEST,
+  ADOPTION_REQUEST_APPROVE_SUCCESS
+} from '../constants/adoptionRequestConstants';
+
+import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8081/api';
 
@@ -72,10 +77,6 @@ export const adminUserBanAction = (id) => async (dispatch, getState) => {
     dispatch({
       type: ADMIN_USER_BAN_SUCCESS
     });
-    // dispatch({
-    //   type: GET_ALL_USER_SUCCESS,
-    //   payload: data
-    // });
   } catch (error) {
     dispatch({
       type: ADMIN_USER_BAN_FAIL,
@@ -117,6 +118,42 @@ export const adminAdoptionRequestsAction =
     } catch (error) {
       dispatch({
         type: ADMIN_ALL_ADOPTION_REQUEST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };
+
+export const adminAdoptionRequestApproveAction =
+  (uid, id) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ADOPTION_REQUEST_APPROVE_REQUEST
+      });
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      const { data } = await axios.put(
+        `${BASE_URL}/admin/${uid}/adoption/request/${id}/approve`,
+        config
+      );
+      dispatch({
+        type: ADOPTION_REQUEST_APPROVE_SUCCESS
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: ADOPTION_REQUEST_APPROVE_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message
