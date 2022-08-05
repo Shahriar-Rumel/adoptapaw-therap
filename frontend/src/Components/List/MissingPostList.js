@@ -59,13 +59,13 @@ export default function MissingPostList({ title, data, page }) {
                             <div
                               className="w-[35px] h-[35px] flex items-center justify-center bg-brand"
                               style={{
-                                backgroundImage: `url(${item.imageone})`,
+                                backgroundImage: `url(${item.image})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat'
                               }}
                             >
-                              {!item.imageone && (
+                              {!item.image && (
                                 <h1 className="text-[12px] font-bold uppercase text-white">
                                   {item.name.split('')[0]}
                                 </h1>

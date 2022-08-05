@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { donationPostsAction } from '../actions/donationPostActions';
 import Button from '../Components/Button';
 import AdminDonationListCard from '../Components/Cards/AdminDonationListCard';
 import Loader from '../Components/Loader';
+import Pagination from '../Components/Pagination';
 
 export default function AdminDonationPostsPage() {
+  const [pageNo, setPageNo] = useState(0);
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -18,8 +20,9 @@ export default function AdminDonationPostsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(donationPostsAction());
-  }, [dispatch]);
+    dispatch(donationPostsAction(pageNo, 8));
+  }, [dispatch, pageNo]);
+  console.log(donationPosts);
   return (
     <>
       {loading ? (
@@ -42,9 +45,14 @@ export default function AdminDonationPostsPage() {
               </Link>
             )}
           </div>
-
           {donationPosts && (
-            <AdminDonationListCard data={donationPosts} userInfo={userInfo} />
+            <AdminDonationListCard
+              data={donationPosts.content}
+              userInfo={userInfo}
+            />
+          )}
+          {donationPosts && (
+            <Pagination data={donationPosts} setPageNo={setPageNo} />
           )}
         </div>
       )}

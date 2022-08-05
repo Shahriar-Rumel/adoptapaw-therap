@@ -110,7 +110,7 @@ export default function AdminDashboardPage() {
               src={'/assets/Icons/donation.svg'}
               text={'All donation'}
               variant={true}
-              link={'/admin/user'}
+              link={'/admin/donation/posts'}
             />
           </div>
         </div>

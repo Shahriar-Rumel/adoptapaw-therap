@@ -160,10 +160,14 @@ export const missingPostUpdateAction =
         }
       };
 
-      await axios.put(`${BASE_URL}/${id}`, dataport, config);
+      const { data } = await axios.put(`${BASE_URL}/${id}`, dataport, config);
 
       dispatch({
         type: MISSING_POST_EDIT_SUCCESS
+      });
+      dispatch({
+        type: MISSING_POST_BY_ID_SUCCESS,
+        payload: data
       });
     } catch (error) {
       dispatch({

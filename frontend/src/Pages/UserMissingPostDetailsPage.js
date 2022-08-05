@@ -46,7 +46,7 @@ const MissingAnimalProfileLayout = ({
       <div className="lg:w-[50%] lg:mr-10">
         {missingPostById && (
           <div
-            className=" w-[90vw] h-[300px] lg:w-[35vw] mx-auto custom-round  missing-gallery-animation"
+            className=" w-[90vw] h-[400px] lg:w-[35vw] mx-auto custom-round  missing-gallery-animation"
             style={{
               backgroundImage: `url(${missingPostById.image})`,
               backgroundPosition: 'center',

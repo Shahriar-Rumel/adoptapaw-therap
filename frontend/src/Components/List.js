@@ -106,9 +106,9 @@ export default function List({ title, data, limit, query, page, uid }) {
               </table>
             </div>
           ) : (
-            <div className="w-3/4 mx-auto">
+            <div className="w-11/12 mx-auto">
               <Message
-                message={"You haven't make any requests!"}
+                message={"You haven't made any requests!"}
                 variant={'danger'}
                 active={true}
               />

@@ -44,7 +44,7 @@ export default function UserAdoptionPostDetailsPage() {
     ) {
       navigate('/home');
     }
-  }, [adoptionPostById]);
+  }, [adoptionPostById, userInfo]);
 
   useEffect(() => {
     dispatch(adoptionPostByIdAction(id));
@@ -68,52 +68,67 @@ export default function UserAdoptionPostDetailsPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[140px] lg:mt-[160px] mb-[100px]">
+        <div className=" mx-auto lg:w-3/4 w-[90vw]  mt-[140px] lg:mt-[160px] mb-[100px]">
           {userInfo && adoptionPostById && (
             <Topbar
               address={`Home/Profile/Adoption/Post/${adoptionPostById.id}`}
               link={`/user/profile/${userInfo.id}/adoptionposts`}
             />
           )}
-
-          <div className=" lg:w-[50%]  lg:mr-10">
-            <AnimalProfileLeft data={adoptionPostById} />
-            <h1 className="text-[24px] font-black text-primary capitalize">
-              {/* {adoptionPostById.name} */}
-            </h1>
-            <div className="flex justify-between items-center my-4">
-              <div className="" onClick={() => setModal(true)}>
-                <Button text={'Edit'} width={true} widthClass={'w-[100px]'} />
+          <div className="lg:flex lg:justify-between mt-[170px] ">
+            <div className=" lg:w-[50%]  lg:mr-10">
+              <div className="flex items-center  w-full mb-5">
+                {adoptionPostById && (
+                  <div className="flex flex-col">
+                    <h1 className=" w-full text-[32px]  text-primary font-extrabold text-left tracking-tight">
+                      Adoption Post
+                    </h1>
+                    <h2 className="font-bold text-gray-light mt-3 mb-3">
+                      Post ID :
+                      <span className="text-primary ml-3">
+                        {adoptionPostById.id ? adoptionPostById.id : 'N/A'}
+                      </span>
+                    </h2>
+                  </div>
+                )}
               </div>
+              <AnimalProfileLeft data={adoptionPostById} />
+              <h1 className="text-[24px] font-black text-primary capitalize">
+                {adoptionPostById && adoptionPostById.name}
+              </h1>
+              <div className="flex justify-between items-center my-4">
+                <div className="" onClick={() => setModal(true)}>
+                  <Button text={'Edit'} width={true} widthClass={'w-[100px]'} />
+                </div>
 
-              <div className="" onClick={() => setDeleteModal(true)}>
-                <Button
-                  text={'Delete'}
-                  secondary={true}
-                  width={true}
-                  widthClass={'w-[100px]'}
+                <div className="" onClick={() => setDeleteModal(true)}>
+                  <Button
+                    text={'Delete'}
+                    secondary={true}
+                    width={true}
+                    widthClass={'w-[100px]'}
+                  />
+                </div>
+              </div>
+              {modal && (
+                <UserAdoptionPostDetailsEditModal
+                  data={adoptionPostById}
+                  setModal={setModal}
                 />
-              </div>
+              )}
+              {deleteModal && (
+                <UserAdoptionPostDeleteModal
+                  data={adoptionPostById}
+                  setModal={setDeleteModal}
+                  success={success}
+                  deleteLoading={deleteLoading}
+                  deletePosthandler={deletePosthandler}
+                />
+              )}
+              {/* <AnimalProfileMid data={adoptionPostById} /> */}
             </div>
-
-            {modal && (
-              <UserAdoptionPostDetailsEditModal
-                data={adoptionPostById}
-                setModal={setModal}
-              />
-            )}
-            {deleteModal && (
-              <UserAdoptionPostDeleteModal
-                data={adoptionPostById}
-                setModal={setDeleteModal}
-                success={success}
-                deleteLoading={deleteLoading}
-                deletePosthandler={deletePosthandler}
-              />
-            )}
-            {/* <AnimalProfileMid data={adoptionPostById} /> */}
+            <AnimalProfileBottom data={adoptionPostById} />
           </div>
-          <AnimalProfileBottom data={adoptionPostById} />
         </div>
       )}
     </>

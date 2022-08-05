@@ -38,7 +38,7 @@ export default function Nav() {
   return (
     <>
       <div
-        className={`${scrolled ? 'shadow-none' : 'shadow-none'}
+        className={`${scrolled ? 'shadow-lg' : 'shadow-none'}
             fixed top-0 left-0 right-0 ease-in-out z-[999] ${
               theme && 'bg-white'
             } `}

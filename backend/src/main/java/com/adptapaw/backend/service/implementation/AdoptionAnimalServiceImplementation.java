@@ -2,6 +2,7 @@ package com.adptapaw.backend.service.implementation;
 
 import com.adptapaw.backend.entity.AdoptionAnimal;
 import com.adptapaw.backend.entity.AdoptionRequest;
+import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.User;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionAnimalResponseDTO;
@@ -29,7 +30,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class AdoptionAnimalServiceImplementation implements AdoptionAnimalService {
-
+    private String currentRole ;
     private final ModelMapper mapper;
 
     private final AdoptionAnimalRepository adoptionAnimalRepository;
@@ -172,7 +173,14 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        if(!Objects.equals(adoptionAnimal.getUser().getEmail(), auth.getName())){
+        User user = userRepository.findByEmail(auth.getName()).get();
+
+        for (Roles authority : user.getRoles()) {
+            currentRole = authority.getName();
+        }
+
+
+        if(!Objects.equals(currentRole, "ROLE_ADMIN") && !Objects.equals(adoptionAnimal.getUser().getEmail(), auth.getName())){
             return new ResponseEntity<>("Not authorized to make changes",HttpStatus.BAD_REQUEST);
         }
 

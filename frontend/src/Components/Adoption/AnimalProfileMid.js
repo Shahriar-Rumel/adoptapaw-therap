@@ -40,8 +40,8 @@ export default function AnimalProfileMid({ poster, data }) {
               <div className="flex items-center justify-between text-[12px] mb-5 adoption-details-animation">
                 <h3 className="gray-dark">
                   Posted by
-                  <span className="text-primary font-bold">
-                    {/* {data.user.username ? data.user.username : 'Dummy'} */}
+                  <span className="text-primary font-bold mx-1">
+                    {data.user.username ? data.user.username : 'Dummy'}
                   </span>
                 </h3>
                 <h3 className="gray-dark">19 June 2022</h3>

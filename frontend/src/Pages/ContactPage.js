@@ -64,11 +64,12 @@ export default function ContactPage() {
   const { loading, success, error } = feedbackCreateData;
 
   useEffect(() => {
-    gsap.fromTo(
-      '.contact-page-animation',
-      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
-      { y: '0', autoAlpha: 1, stagger: 0.2 }
-    );
+    gsap.from('.contact-page-animation', {
+      y: '+=60',
+      autoAlpha: 0,
+      stagger: 0.2
+    });
+    gsap.to('.contact-page-animation', { y: '0', autoAlpha: 1, stagger: 0.2 });
   }, []);
   const dataPort = {
     rating: rating,
@@ -77,8 +78,9 @@ export default function ContactPage() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (dataPort.rating && dataPort.description)
-      dispatch(feedbackCreateAction(dataPort));
+    // if (rating && description) {
+    dispatch(feedbackCreateAction(dataPort));
+    // }
   };
   return (
     <div className=" mx-auto lg:w-3/4 w-[90vw] md:flex flex-row-reverse md:shadow-md  custom-round md:px-[30px] md:py-10 justify-between mt-[120px] lg:mt-[150px] mb-[100px]">
