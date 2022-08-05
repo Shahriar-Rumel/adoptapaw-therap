@@ -71,6 +71,7 @@ export const adminUserBanAction = (id) => async (dispatch, getState) => {
 
     const { data } = await axios.put(
       `${BASE_URL}/auth/admin/user/${id}/ban`,
+      { withCredentials: true },
       config
     );
 
@@ -104,6 +105,7 @@ export const adminAdoptionRequestsAction =
         }
       };
 
+      console.log(config);
       const { data } = await axios.get(
         `${BASE_URL}/admin/${id}/adoption/request/all?pageNo=${pageNo}&pageSize=${pageSize}`,
         config
@@ -143,20 +145,23 @@ export const adminAdoptionRequestApproveAction =
         }
       };
 
-      const { data } = await axios.put(
+      console.log(config);
+      const { data } = await axios.post(
         `${BASE_URL}/admin/${uid}/adoption/request/${id}/approve`,
+        { withCredentials: true },
         config
       );
       dispatch({
-        type: ADOPTION_REQUEST_APPROVE_SUCCESS
+        type: ADOPTION_REQUEST_APPROVE_SUCCESS,
+        payload: data
       });
     } catch (error) {
       console.log(error);
       dispatch({
         type: ADOPTION_REQUEST_APPROVE_FAIL,
         payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
+          error.response && error.response.data
+            ? error.response.data
             : error.message
       });
     }

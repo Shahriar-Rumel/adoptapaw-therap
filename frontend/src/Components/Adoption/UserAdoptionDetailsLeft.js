@@ -8,6 +8,7 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
   const dispatch = useDispatch();
   const approveHandler = (e, uid, id) => {
     e.preventDefault();
+    console.log(uid, id);
     dispatch(adminAdoptionRequestApproveAction(uid, id));
   };
   return (

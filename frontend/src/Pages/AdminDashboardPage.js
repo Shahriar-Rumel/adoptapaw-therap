@@ -95,7 +95,7 @@ export default function AdminDashboardPage() {
               src={'/assets/Icons/adoptionPost.svg'}
               text={'All adoption post'}
               brand={true}
-              link={'/admin/user'}
+              link={`/admin/adoptionposts`}
             />
             <StatCard
               title={'Missing Post'}

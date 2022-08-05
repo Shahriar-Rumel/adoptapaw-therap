@@ -22,9 +22,10 @@ public class AdoptionRequestController {
         this.adoptionRequestService = adoptionRequestService;
     }
 
-//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PutMapping("/admin/{uid}/adoption/request/{id}/approve")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping("/admin/{uid}/adoption/request/{id}/approve")
     public AdoptionRequestDTO approveAdoptionRequest(@PathVariable(name = "uid") String uid,@PathVariable(name = "id") String id){
+        System.out.println("Rout hit");
         return adoptionRequestService.approveRequest(uid,id);
     }
     @PostMapping("/adoption/{id}/user/{uid}/createadoptionrequest")
