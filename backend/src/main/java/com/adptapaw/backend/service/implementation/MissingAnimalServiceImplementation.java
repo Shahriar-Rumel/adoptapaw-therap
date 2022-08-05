@@ -2,9 +2,11 @@ package com.adptapaw.backend.service.implementation;
 
 
 
+
 import com.adptapaw.backend.entity.MissingAnimal;
 import com.adptapaw.backend.entity.MissingRequest;
 import com.adptapaw.backend.entity.User;
+
 
 import com.adptapaw.backend.payload.missing.MissingAnimalDTO;
 import com.adptapaw.backend.payload.missing.MissingAnimalResponseDTO;
@@ -19,9 +21,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,15 +64,32 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
 
 
     @Override
-    public MissingAnimalResponseDTO getAllByCreator(String id) {
+    public ResponseEntity<?> getAllByCreator(String id,int pageNo,  int pageSize, String sortBy,String sortDir) {
 
         User user  = userRepository.findById(Long.valueOf(id)).get();
-        List<MissingAnimal> missingAnimal = missingAnimalRepository.findAllByCreator(user);
 
-        List<MissingAnimalDTO> content = missingAnimal.stream().map(missingAnimalItem -> mapToDTO(missingAnimalItem)).collect(Collectors.toList());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(!Objects.equals(user.getEmail(), auth.getName())){
+            return new ResponseEntity<>("Not authorized to make changes", HttpStatus.BAD_REQUEST);
+        }
+
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        Page<MissingAnimal> animals =  missingAnimalRepository.findByUser(user,pageable);
+        List<MissingAnimal> missingAnimal = animals.getContent();
+        List<MissingAnimalDTO> content= missingAnimal.stream().map(missingAnimalItem -> mapToDTO(missingAnimalItem)).collect(Collectors.toList());
+
         MissingAnimalResponseDTO missingAnimalResponse = new MissingAnimalResponseDTO();
         missingAnimalResponse.setContent(content);
-        return missingAnimalResponse;
+        missingAnimalResponse.setPageNo(animals.getNumber());
+        missingAnimalResponse.setPageSize(animals.getSize());
+        missingAnimalResponse.setTotalElements(animals.getTotalElements());
+        missingAnimalResponse.setTotalPages(animals.getTotalPages());
+        missingAnimalResponse.setLast(animals.isLast());
+
+        return new ResponseEntity<>(missingAnimalResponse,HttpStatus.OK);
     }
 
 
