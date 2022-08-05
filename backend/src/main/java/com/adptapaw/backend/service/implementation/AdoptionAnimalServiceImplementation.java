@@ -213,6 +213,7 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         }
 
         animal.setUser(null);
+        animal.setOwner(null);
         adoptionAnimalRepository.delete(animal);
 
         return "Post Deleted Successfully " + animal.getId();

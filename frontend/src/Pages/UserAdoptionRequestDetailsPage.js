@@ -66,7 +66,7 @@ export default function UserAdoptionRequestDetailsPage() {
               {adoptionRequest && (
                 <Link
                   to={`/adoption/${adoptionRequest.pet.id}`}
-                  className="mt-5"
+                  className="mt-2"
                 >
                   <Button secondary={true} text={'Visit Post'} />
                 </Link>

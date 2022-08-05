@@ -76,7 +76,7 @@ export default function AdoptionRequestPage() {
   };
 
   useEffect(() => {
-    if (success) {
+    if (success && email) {
       navigate(`/user/profile/${uid}/adoptionrequests`);
     }
   }, [success]);

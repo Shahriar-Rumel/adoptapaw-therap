@@ -46,6 +46,7 @@ import UserDonationListPage from './Pages/UserDonationListPage';
 import AdminUserListPage from './Pages/AdminUserListPage';
 import AdminAdoptionRequestsPage from './Pages/AdminAdoptionRequestsPage';
 import AdminAdoptionPostsPage from './Pages/AdminAdoptionPostsPage';
+import AdminMissingPostsPage from './Pages/AdminMissingPostspage';
 
 function App() {
   return (
@@ -164,6 +165,11 @@ function App() {
           <Route
             path="/user/profile/:id/edit"
             element={<UserProfileEditPage />}
+            exact
+          />
+          <Route
+            path="/admin/missingposts"
+            element={<AdminMissingPostsPage />}
             exact
           />
           <Route

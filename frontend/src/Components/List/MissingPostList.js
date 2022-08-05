@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '../Button';
 import Message from '../Message';
 
-export default function AdoptionPostList({ title, data, page }) {
+export default function MissingPostList({ title, data, page }) {
   var count = 0;
   return (
     <>
@@ -11,7 +11,7 @@ export default function AdoptionPostList({ title, data, page }) {
         <div className="mt-20 w-full">
           <div className="flex  items-center">
             <h3 className="font-extrabold text-[24px] text-left tracking-tight text-primary">
-              Adoption Posts
+              Missing Posts
             </h3>
           </div>
           {data && data.length > 0 ? (
@@ -29,7 +29,7 @@ export default function AdoptionPostList({ title, data, page }) {
                       Pet Name
                     </th>
                     <th className=" text-white text-left  min-w-[200px]">
-                      Location
+                      Went missing on
                     </th>
                     <th className=" text-white text-left min-w-[200px]">
                       Status
@@ -74,11 +74,11 @@ export default function AdoptionPostList({ title, data, page }) {
                           </div>
                         </td>
                         <td>{item.name}</td>
-                        <td>{item.location}</td>
-                        <td>{!item.status ? 'Available' : 'Unavailable'}</td>
+                        <td>{item.datemissing}</td>
+                        <td>{!item.status ? 'Missing' : 'Found'}</td>
 
                         <td>
-                          <Link to={`/user/adoption/${item.id}`}>
+                          <Link to={`/user/missing/${item.id}`}>
                             <Button
                               text={'Details'}
                               width={true}

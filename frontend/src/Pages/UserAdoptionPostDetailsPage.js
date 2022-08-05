@@ -37,7 +37,11 @@ export default function UserAdoptionPostDetailsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (adoptionPostById && userInfo.id != adoptionPostById.user.id) {
+    if (
+      adoptionPostById &&
+      userInfo.role[0].id != 1 &&
+      userInfo.id != adoptionPostById.user.id
+    ) {
       navigate('/home');
     }
   }, [adoptionPostById]);

@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AdoptionRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/controller/AdoptionRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AdoptionRequestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/controller/AdoptionRequestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Adoption/UserAdoptionDetailsLeft.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Adoption/UserAdoptionDetailsLeft.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/UserAdoptionRequestDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/UserAdoptionRequestDetailsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/actions/adminActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/actions/adminActions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +104,8 @@
       <workItem from="1659536657622" duration="9047000" />
       <workItem from="1659554099991" duration="1129000" />
       <workItem from="1659625506994" duration="616000" />
-      <workItem from="1659698586473" duration="2023000" />
+      <workItem from="1659698586473" duration="4847000" />
+      <workItem from="1659719822228" duration="2883000" />
     </task>
     <servers />
   </component>

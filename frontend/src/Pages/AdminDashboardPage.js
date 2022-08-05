@@ -102,7 +102,7 @@ export default function AdminDashboardPage() {
               data={adminStat.missingPostSize}
               src={'/assets/Icons/missingPost.svg'}
               text={'All missing post'}
-              link={'/admin/user'}
+              link={'/admin/missingposts'}
             />
             <StatCard
               title={'Ongoing donation'}
