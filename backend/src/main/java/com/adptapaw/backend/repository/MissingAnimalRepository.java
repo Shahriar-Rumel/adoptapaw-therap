@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface MissingAnimalRepository extends JpaRepository<MissingAnimal,Long> {
 
-    Page<MissingAnimal> findByUser(User user, Pageable pageable);
+    Page<MissingAnimal> findByCreator(User user, Pageable pageable);
 }

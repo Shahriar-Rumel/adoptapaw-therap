@@ -77,7 +77,7 @@ public class MissingAnimalServiceImplementation implements MissingAnimalService 
                 : Sort.by(sortBy).descending();
 
         Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
-        Page<MissingAnimal> animals =  missingAnimalRepository.findByUser(user,pageable);
+        Page<MissingAnimal> animals =  missingAnimalRepository.findByCreator(user,pageable);
         List<MissingAnimal> missingAnimal = animals.getContent();
         List<MissingAnimalDTO> content= missingAnimal.stream().map(missingAnimalItem -> mapToDTO(missingAnimalItem)).collect(Collectors.toList());
 
