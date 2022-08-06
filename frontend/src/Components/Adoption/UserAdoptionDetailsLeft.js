@@ -50,6 +50,29 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
               </h2>
             </div>
           </div>
+          {userInfo.role[0].id != 1 && data.status && (
+            <div className="flex w-full bg-green bg-opacity-10 justify-between items-center mt-[12px] shadow-md px-6 py-4 custom-round">
+              <div className="w-full">
+                <h2 className="text-[18px] font-extrabold tracking-tighter text-primary ">
+                  Your adoption request has been approved
+                </h2>
+                <p className="text-[12px] text-gray-light ">
+                  Contact the owner and get {data.pet.name}{' '}
+                </p>
+                <div className="flex justify-between items-center mt-5">
+                  <a href={`tel:${data.mobile}`}>
+                    <button className="bg-brand h-[45px] w-[120px] custom-round text-white font-regular">
+                      Call owner
+                    </button>
+                  </a>
+                  <h2 className="font-bold text-[16px] tracking-2 text-primary">
+                    {data.mobile}
+                  </h2>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="shadow-md px-6 py-6 custom-round">
             <TextBlock header={'Reason for Adoption'} content={data.rfa} />
             <div className="grid grid-cols-2 md:grid-cols-2">

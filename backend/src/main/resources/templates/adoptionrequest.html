@@ -31,14 +31,7 @@
             font-size: 18px;
             width:460px;
         }
-        .bg-image{
-            padding:10px;
-            height: 100px;
-            width:100px;
-            background-color: aquamarine;
-            background-image: url('https://unsplash.com/photos/LvLlOpu3vzM');
-            background-repeat: repeat;
-        }
+
         p{
             width:420px;
             color: #3b3b3b;
@@ -46,16 +39,25 @@
         .cover{
             background-color: #451E0E;
             width:460px;
-            height: 100px;
+            height:60px;
             border-top-left-radius: 12px;
             border-bottom-right-radius: 12px;
             padding:20px 0px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
 
         }
         .cover-text{
             color:white;
             text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
         }
+        .cover-text span{
+            color:#FF611E;
+        }
+
         .cover-text span{
             color:#FF611E;
         }
@@ -92,10 +94,10 @@
     </style>
 </head>
 <body>
+<h2 class="header">Adoption Request Placement Confirmation</h2>
 <div class="cover">
     <h1 class="cover-text">adopt<span>a</span>paw</h1>
 </div>
-<h2 class="header">Adoption Request Placement Confirmation</h2>
 <div>Hey, <b th:text="${name}">name</b> !</div>
 <p>
     We've received your request to adopt <h4 th:text="${pet}">pet</h4>

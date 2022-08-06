@@ -14,10 +14,10 @@ export default function RegistrationCompletePage() {
         className="w-[150px] h-[150px] mx-auto mb-16"
       />
       <h1 className="font-extrabold text-[24px] text-primary tracking-tight">
-        Check your mail
+        Your registration is complete !
       </h1>
       <p className="text-[14px] text-gray-light leading-4 mt-3 mb-8">
-        We've sent a password reset instructions to your email.
+        We've sent instructions to activate your acount in your email.
       </p>
 
       <div className="mt-3"></div>

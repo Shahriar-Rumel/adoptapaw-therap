@@ -22,5 +22,7 @@ public class AdoptionAnimalDTO {
     private String type;
     private Boolean availability;
     private AdoptionUserDTO user;
+    private String mobile;
+    private String postedon;
 
 }

@@ -61,10 +61,12 @@
         .cover-text span{
             color:#FF611E;
         }
+
         .footer{
             border-top: 1px solid #a9a9a9;
             width: 440px;
             padding: 20px 10px;
+            height: 100px;
 
         }
         .footer-title{
@@ -85,29 +87,57 @@
             justify-content: space-between;
             align-items: center;
             width: 100px;
-            margin:auto;
+            margin-left:50%;
+            transform:translateX(-60%);
+            margin-top: -30px;
+
         }
         .address h6{
             padding: 3px 5px;
             border-right: 1px solid gray;
         }
+
+        .owner-name{
+            background-color: coral;
+            padding: 4px 10px;
+            color:white;
+            border-radius: 5px;
+            margin-left: 10px;
+            margin-bottom: 30px;
+        }
+        .owner-mobile{
+              background-color: coral;
+              padding: 4px 10px;
+              color:white;
+              border-radius: 5px;
+              margin-left: 10px;
+              margin-top:40px;
+          }
     </style>
 </head>
 <body>
-<h2 class="header">Adoption Request Placement Confirmation</h2>
+<h2 class="header">Adoption request approval confirmation</h2>
 <div class="cover">
+
     <h1 class="cover-text">adopt<span>a</span>paw</h1>
+
 </div>
 <div>Hey, <b th:text="${name}">name</b> !</div>
 <p>
-    We've received your request to adopt <h4 th:text="${pet}">pet</h4>
-    <br/><br/>
-    Thanks.
+    We are very pleased to let you know that we have approved your adoption request for :  <h4 th:text="${pet}">pet</h4>
+    You can contact the owner to set a schedule to pick up <span th:text="${pet}">pet</span>.
+<br/>
 </p>
-
+<p>
+    Owner name  <span th:text="${owner}" class="owner-name">owner</span><br>
+</p>
+<p>
+    mobile  <span th:text="${mobile}" class="owner-mobile">mobile</span>
+</p>
+<br/>
+Thanks.
+</p>
 <br>
-
-
 <div class="footer">
 
     <h6>Made by</h6>

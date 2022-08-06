@@ -46,7 +46,7 @@ export default function MissingCardList({ list, buttonText }) {
                   ></img>
                   <h3
                     className={`text-[12px] ${
-                      item.stillmissing ? `text-white` : `text-gray-light`
+                      item.stillmissing ? `text-white` : `text-green`
                     } mx-2`}
                   >
                     {item.stillmissing ? 'Still missing' : 'Found'}

@@ -24,6 +24,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -119,6 +120,7 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
     @Override
     public AdoptionAnimalDTO createAdoptionAnimal(String id, AdoptionAnimalDTO adoptionAnimalDTO) {
 
+        Date date = new Date();
 
         AdoptionAnimal animal = new AdoptionAnimal();
         animal.setBreed(adoptionAnimalDTO.getBreed());
@@ -136,6 +138,8 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         animal.setImageone(adoptionAnimalDTO.getImageone());
         animal.setImagetwo(adoptionAnimalDTO.getImagetwo());
         animal.setImagethree(adoptionAnimalDTO.getImagethree());
+        animal.setMobile(adoptionAnimalDTO.getMobile());
+        animal.setPostedon(String.valueOf(date));
 
         animal.setAvailability(true);
 
@@ -200,6 +204,7 @@ public class AdoptionAnimalServiceImplementation implements AdoptionAnimalServic
         adoptionAnimal.setImageone(adoptionAnimalDTO.getImageone());
         adoptionAnimal.setImagetwo(adoptionAnimalDTO.getImagetwo());
         adoptionAnimal.setImagethree(adoptionAnimalDTO.getImagethree());
+        adoptionAnimal.setMobile(adoptionAnimalDTO.getMobile());
 
         adoptionAnimalRepository.save(adoptionAnimal);
 

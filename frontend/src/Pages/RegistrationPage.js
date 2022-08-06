@@ -46,15 +46,12 @@ export default function RegistrationPage() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (success) {
-      navigate('/registration/complete');
-    }
-  }, [success]);
-
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(register(name, email, password, username));
+    if (!loading && success) {
+      navigate('/registration/complete');
+    }
   };
   return (
     <>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AttributeCard from '../Components/Cards/AttributeCard';
 import RewardCard from '../Components/Cards/RewardCard';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Button from '../Components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import gsap from 'gsap';
@@ -12,9 +12,14 @@ import MissingAnimalDataModal from '../Components/Modals/MissingAnimalDataModal'
 
 const MissingFeature = ({ data }) => {
   useEffect(() => {
-    gsap.fromTo(
+    gsap.from('.missing-profile-animation', {
+      y: '+=60',
+      autoAlpha: 0,
+      stagger: 0.2
+    });
+    gsap.to(
       '.missing-profile-animation',
-      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
+
       { y: '0', autoAlpha: 1, stagger: 0.2 }
     );
   }, []);

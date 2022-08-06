@@ -29,12 +29,19 @@ export default function AnimalProfileMid({ poster, data }) {
                   : 'Unavailable for adoption'}
               </h3>
             </div>
-
-            <img src="/assets/fav.svg" className="w-[20px]"></img>
           </div>
-          <h1 className="text-[32px] font-black mb-5 text-primary tracking-tighter adoption-details-animation">
-            {data.name}
-          </h1>
+          <div className="flex justify-between items-center ">
+            <h1 className="text-[32px] font-black mb-5 text-primary tracking-tighter adoption-details-animation">
+              {data.name}
+            </h1>
+            <div className="flex justify-center items-center ">
+              <img src="/assets/Icons/location.svg"></img>{' '}
+              <h2 className="ml-2 text-[12px] font-bold text-primary">
+                {data.location}
+              </h2>
+            </div>
+          </div>
+
           {poster !== 2 && (
             <>
               <div className="flex items-center justify-between text-[12px] mb-5 adoption-details-animation">
@@ -44,7 +51,9 @@ export default function AnimalProfileMid({ poster, data }) {
                     {data.user.username ? data.user.username : 'Dummy'}
                   </span>
                 </h3>
-                <h3 className="gray-dark">19 June 2022</h3>
+                <h3 className="gray-dark">
+                  {data.postedon ? data.postedon.substring(0, 11) : 'N/A'}
+                </h3>
               </div>
               {/* {userInfo && data.availability && data.user.id != userInfo.id && (
                 <Link

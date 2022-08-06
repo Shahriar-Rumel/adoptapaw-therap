@@ -69,6 +69,12 @@ public class AdoptionAnimal {
     private String type;
 
     @Column(nullable = false)
+    private String mobile;
+
+    @Column(nullable = false)
+    private String postedon;
+
+    @Column(nullable = false)
     private Boolean availability;
 
     @ManyToOne(cascade = CascadeType.ALL)

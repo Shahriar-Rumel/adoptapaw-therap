@@ -78,11 +78,11 @@ export default function CreateAdoptionPost() {
   const [breed, setBreed] = useState('');
   const [physicalcondition, setPhysicalcondition] = useState('');
   const [vaccine, setVaccine] = useState('');
-  const [stray, setStray] = useState('');
   const [type, setType] = useState('');
   const [training, setTraining] = useState('');
   const [color, setColor] = useState('');
   const [empty, setEmpty] = useState(false);
+  const [mobile, setMobile] = useState();
   const [imageOne, setImageOne] = useState(
     '/assets/Icons/ImagePlaceholder.svg'
   );
@@ -121,7 +121,8 @@ export default function CreateAdoptionPost() {
     type: type,
     imageone: imageOne,
     imagetwo: imageTwo,
-    imagethree: imageThree
+    imagethree: imageThree,
+    mobile: mobile
   };
 
   useEffect(() => {
@@ -166,6 +167,7 @@ export default function CreateAdoptionPost() {
       setTraining('');
       setVaccine('');
       setType('');
+      setMobile('');
     } else {
       setEmpty(true);
       console.log('Data is empty');
@@ -276,10 +278,10 @@ export default function CreateAdoptionPost() {
           </div>
           <div className="lg:w-[32%]">
             <TextInput
-              label={"Pet's color"}
-              placeholder={'Dhaka,Bangladesh'}
-              type={'text'}
-              setData={setColor}
+              label={'Mobile Number'}
+              placeholder={'017xxxxxxx'}
+              type={'number'}
+              setData={setMobile}
             />
           </div>
         </div>
@@ -320,13 +322,26 @@ export default function CreateAdoptionPost() {
             </div>
           </div>
         </div>
-        <SelectBox
-          minHeight={200}
-          label={"Pet's physical condition"}
-          choiceList={healthType}
-          data={physicalcondition}
-          setData={setPhysicalcondition}
-        />
+        <div className="lg:flex relative justify-between items-center my-4">
+          <div className="lg:w-[48%]">
+            <TextInput
+              label={"Pet's color"}
+              placeholder={'Dhaka,Bangladesh'}
+              type={'text'}
+              setData={setColor}
+            />
+          </div>
+          <div className="lg:w-[48%]">
+            <SelectBox
+              minHeight={200}
+              label={"Pet's physical condition"}
+              choiceList={healthType}
+              data={physicalcondition}
+              setData={setPhysicalcondition}
+            />
+          </div>
+        </div>
+
         <div className="flex justify-between">
           <Checkbox
             label={'Vaccinated'}
@@ -334,13 +349,6 @@ export default function CreateAdoptionPost() {
             type={'checkbox'}
             width={'w-[90px]'}
             setData={setVaccine}
-          />
-          <Checkbox
-            label={'Stray'}
-            placeholder={'Tommy'}
-            type={'checkbox'}
-            width={'w-[50px]'}
-            setData={setStray}
           />
           <Checkbox
             label={'Trained'}

@@ -13,6 +13,7 @@ import com.adptapaw.backend.service.AdoptionRequestService;
 import com.adptapaw.backend.service.email.EmailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -157,11 +158,13 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
 
                     AccountPasswordResetEmailContext mail = new AccountPasswordResetEmailContext();
                     mail.setFrom("adoptapawofficial@gmail.com");
-                    mail.setTemplateLocation("passwordresetsuccess.html");
+                    mail.setTemplateLocation("adoptionapproved.html");
                     mail.setSubject("Congratulations! Your adoption request has been approved.");
                     mail.setTo(adoptionRequest.getEmail());
-                    mail.put("name",animal.getName());
-
+                    mail.put("name",animal.getOwner().getName());
+                    mail.put("pet",animal.getName());
+                    mail.put("owner",animal.getUser().getName());
+                    mail.put("mobile",animal.getMobile());
 
                     try{
                         emailService.sendMail(mail);
