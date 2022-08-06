@@ -48,10 +48,15 @@ import {
   donationCreateReducer
 } from './reducers/donationReducer';
 import { feedbackCreateReducer } from './reducers/feedbackReducer';
-import { missingInfoReducer } from './reducers/missingInfoReducer';
+import {
+  missingInfoApproveReducer,
+  missingInfoByIdReducer,
+  missingInfoReducer
+} from './reducers/missingInfoReducer';
 import {
   adminAdoptionRequestApproveReducer,
   adminAllAdoptionRequestReducer,
+  adminAllMissingInformationReducer,
   adminStatReducer,
   adminUserBanReducer
 } from './reducers/adminReducer';
@@ -90,7 +95,10 @@ const reducer = combineReducers({
   adminStats: adminStatReducer,
   adminUserBan: adminUserBanReducer,
   adminAllAdoptionRequest: adminAllAdoptionRequestReducer,
-  adoptionRequestApprove: adminAdoptionRequestApproveReducer
+  adoptionRequestApprove: adminAdoptionRequestApproveReducer,
+  adminAllMissingInfo: adminAllMissingInformationReducer,
+  missingInfoByIdStore: missingInfoByIdReducer,
+  missingInfoApprove: missingInfoApproveReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

@@ -85,7 +85,7 @@ export default function AdminDashboardPage() {
               src={'/assets/Icons/missing.svg'}
               text={'All missing information'}
               variant={true}
-              link={'/admin/user'}
+              link={'/admin/missing/info'}
             />
           </div>
           <div className="lg:flex lg:justify-between">

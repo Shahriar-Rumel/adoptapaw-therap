@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins  = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/missing")
+@RequestMapping("/api")
 public class MissingRequestController {
     private final MissingRequestService missingRequestService;
 
@@ -20,12 +20,12 @@ public class MissingRequestController {
         this.missingRequestService = missingRequestService;
     }
 
-    @PostMapping("/{id}/create")
+    @PostMapping("/missing/{id}/create")
     public MissingRequestDTO createMissingRequestPost( @PathVariable(name="id") String id, @RequestBody MissingRequestDTO missingRequestDTO){
         return missingRequestService.createMissingRequest(id,missingRequestDTO);
     }
 
-    @GetMapping("/request/{id}")
+    @GetMapping("/missing/request/{id}")
     public MissingRequestDTO getMissingRequestById(@PathVariable(name="id") String id){
         return missingRequestService.getById(id);
     }
@@ -42,7 +42,6 @@ public class MissingRequestController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/admin/{uid}/missing/request/{id}/approve")
     public MissingRequestDTO approveMissingInfo(@PathVariable(name = "uid") String uid, @PathVariable(name = "id") String id){
-        System.out.println("Rout hit");
         return missingRequestService.approveInfo(uid,id);
     }
 }

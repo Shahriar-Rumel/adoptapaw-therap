@@ -2,6 +2,9 @@ import {
   ADMIN_ALL_ADOPTION_REQUEST_FAIL,
   ADMIN_ALL_ADOPTION_REQUEST_REQUEST,
   ADMIN_ALL_ADOPTION_REQUEST_SUCCESS,
+  ADMIN_ALL_MISSING_INFO_FAIL,
+  ADMIN_ALL_MISSING_INFO_REQUEST,
+  ADMIN_ALL_MISSING_INFO_SUCCESS,
   ADMIN_STATS_FAIL,
   ADMIN_STATS_REQUEST,
   ADMIN_STATS_SUCCESS,
@@ -62,6 +65,22 @@ export const adminAdoptionRequestApproveReducer = (state = {}, action) => {
     case ADOPTION_REQUEST_APPROVE_SUCCESS:
       return { loading: false, success: true };
     case ADOPTION_REQUEST_APPROVE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const adminAllMissingInformationReducer = (
+  state = { missingInformations: [] },
+  action
+) => {
+  switch (action.type) {
+    case ADMIN_ALL_MISSING_INFO_REQUEST:
+      return { loading: true, missingInformations: [] };
+    case ADMIN_ALL_MISSING_INFO_SUCCESS:
+      return { loading: false, missingInformations: action.payload };
+    case ADMIN_ALL_MISSING_INFO_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

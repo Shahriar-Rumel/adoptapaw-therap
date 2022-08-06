@@ -288,7 +288,30 @@ export default function DesktopMenu({ theme }) {
   };
   return (
     <div className="menu lg:flex justify-between w-3/4 hidden  ">
-      <div className=" flex justify-between md:w-[550px]">
+      <div className="flex justify-between md:w-[680px]">
+        {userInfo && userInfo.role[0].id === 1 && (
+          <Link to="/dashboard">
+            <div className="menu-item-border flex items-center justify-left mx-2 cursor-pointer my-5   rounded-full">
+              <img
+                src={
+                  theme
+                    ? '/assets/Icons/dashboard-primary.svg'
+                    : '/assets/Icons/dashboard-secondary.svg'
+                }
+                className="w-[18px] absolute mt-1"
+              ></img>
+              <h1
+                className={
+                  theme
+                    ? 'px-2 text-primary font-semibold ml-6'
+                    : 'px-2 text-offwhite ml-6'
+                }
+              >
+                Dashboard
+              </h1>
+            </div>
+          </Link>
+        )}
         {navItems.map((item) => (
           <Link to={item.link} key={item.link}>
             <div className="menu-item-border flex items-center justify-left mx-2 cursor-pointer my-5   rounded-full">

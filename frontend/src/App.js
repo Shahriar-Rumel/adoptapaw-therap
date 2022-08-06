@@ -47,6 +47,8 @@ import AdminUserListPage from './Pages/AdminUserListPage';
 import AdminAdoptionRequestsPage from './Pages/AdminAdoptionRequestsPage';
 import AdminAdoptionPostsPage from './Pages/AdminAdoptionPostsPage';
 import AdminMissingPostsPage from './Pages/AdminMissingPostspage';
+import AdminMissingInformationsPage from './Pages/AdminMissingInformationsPage';
+import AdminMissingInformationDetailsPage from './Pages/AdminMissingInformationDetailsPage';
 
 function App() {
   return (
@@ -76,7 +78,6 @@ function App() {
             exact
           />
           <Route path="/missing" element={<MissingAnimalPage />} exact />
-
           <Route
             path="/reset/:token"
             element={<ForgotPasswordResetPage />}
@@ -135,7 +136,6 @@ function App() {
             element={<UserAdoptionPostDetailsPage />}
             exact
           />
-
           <Route
             path="/user/:uid/adoption/request/:id"
             element={<UserAdoptionRequestDetailsPage />}
@@ -146,7 +146,6 @@ function App() {
             element={<UserDonationListPage />}
             exact
           />
-
           <Route
             path="/user/profile/:id/adoptionrequests"
             element={<UserAdoptionRequestsPage />}
@@ -176,10 +175,20 @@ function App() {
             path="/admin/adoptionposts"
             element={<AdminAdoptionPostsPage />}
             exact
-          />
+          />{' '}
           <Route
             path="/admin/adoption/request"
             element={<AdminAdoptionRequestsPage />}
+            exact
+          />
+          <Route
+            path="/admin/missing/info/:id"
+            element={<AdminMissingInformationDetailsPage />}
+            exact
+          />
+          <Route
+            path="/admin/missing/info"
+            element={<AdminMissingInformationsPage />}
             exact
           />
           <Route path="/admin/user" element={<AdminUserListPage />} exact />

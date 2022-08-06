@@ -2,6 +2,9 @@ import {
   ADMIN_ALL_ADOPTION_REQUEST_FAIL,
   ADMIN_ALL_ADOPTION_REQUEST_REQUEST,
   ADMIN_ALL_ADOPTION_REQUEST_SUCCESS,
+  ADMIN_ALL_MISSING_INFO_FAIL,
+  ADMIN_ALL_MISSING_INFO_REQUEST,
+  ADMIN_ALL_MISSING_INFO_SUCCESS,
   ADMIN_STATS_FAIL,
   ADMIN_STATS_REQUEST,
   ADMIN_STATS_SUCCESS,
@@ -17,6 +20,12 @@ import {
 } from '../constants/adoptionRequestConstants';
 
 import axios from 'axios';
+import {
+  MISSING_INFO_APPROVE_FAIL,
+  MISSING_INFO_APPROVE_REQUEST,
+  MISSING_INFO_APPROVE_SUCCESS,
+  MISSING_INFO_BY_ID_SUCCESS
+} from '../constants/missingInfoConstants';
 
 const BASE_URL = 'http://localhost:8081/api';
 
@@ -106,7 +115,6 @@ export const adminAdoptionRequestsAction =
         }
       };
 
-      console.log(config);
       const { data } = await axios.get(
         `${BASE_URL}/admin/${id}/adoption/request/all?pageNo=${pageNo}&pageSize=${pageSize}`,
         config
@@ -146,7 +154,6 @@ export const adminAdoptionRequestApproveAction =
         }
       };
 
-      console.log(config);
       const { data } = await axios.post(
         `${BASE_URL}/admin/${uid}/adoption/request/${id}/approve`,
         { withCredentials: true },
@@ -165,6 +172,86 @@ export const adminAdoptionRequestApproveAction =
       console.log(error);
       dispatch({
         type: ADOPTION_REQUEST_APPROVE_FAIL,
+        payload:
+          error.response && error.response.data
+            ? error.response.data
+            : error.message
+      });
+    }
+  };
+
+export const adminAllMissingInfoAction =
+  (id, pageNo, pageSize) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ADMIN_ALL_MISSING_INFO_REQUEST
+      });
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      const { data } = await axios.get(
+        `${BASE_URL}/admin/${id}/missing/request/all?pageNo=${pageNo}&pageSize=${pageSize}`,
+        config
+      );
+
+      dispatch({
+        type: ADMIN_ALL_MISSING_INFO_SUCCESS,
+        payload: data
+      });
+    } catch (error) {
+      dispatch({
+        type: ADMIN_ALL_MISSING_INFO_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      });
+    }
+  };
+
+export const adminMissingInfoApproveAction =
+  (uid, id) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: MISSING_INFO_APPROVE_REQUEST
+      });
+      const {
+        userLogin: { userInfo }
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+        }
+      };
+
+      const { data } = await axios.post(
+        `${BASE_URL}/admin/${uid}/missing/request/${id}/approve`,
+        { withCredentials: true },
+        config
+      );
+      dispatch({
+        type: MISSING_INFO_APPROVE_SUCCESS,
+        payload: data
+      });
+
+      dispatch({
+        type: MISSING_INFO_BY_ID_SUCCESS,
+        payload: data
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: MISSING_INFO_APPROVE_FAIL,
         payload:
           error.response && error.response.data
             ? error.response.data
