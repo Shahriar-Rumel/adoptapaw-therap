@@ -17,7 +17,7 @@ export default function AnimalProfileLeft({ poster, data }) {
         <div className="w-[100%]  mr-10">
           <div className="linear-background custom-round">
             <div
-              className="ease-in-out duration-300 flex items-center justify-center  custom-round   w-[100%] h-[250px] mx-auto md:h-[600px] md:w-[100%] lg:h-[45vh] lg:w-[100%] "
+              className="ease-in-out duration-300 flex items-center justify-center  custom-round   w-[100%] h-[350px] mx-auto md:h-[600px] md:w-[100%] lg:h-[45vh] lg:w-[100%] "
               style={{
                 backgroundImage: `url(${image})`,
                 backgroundPosition: 'center',

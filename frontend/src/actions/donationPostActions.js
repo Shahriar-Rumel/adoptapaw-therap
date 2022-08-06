@@ -135,10 +135,14 @@ export const donationPostUpdateAction =
         }
       };
 
-      await axios.post(`${BASE_URL}/${id}`, dataport, config);
+      const { data } = await axios.post(`${BASE_URL}/${id}`, dataport, config);
 
       dispatch({
         type: DONATION_POST_UPDATE_SUCCESS
+      });
+      dispatch({
+        type: DONATION_POST_BY_ID_SUCCESS,
+        payload: data
       });
 
       // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));

@@ -26,7 +26,7 @@ const MissingFeature = ({ data }) => {
             <FeaturesCol title={'Breed'} value={data.breed} />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
-            <FeaturesCol title={'Went Missing'} value={data.datemissing} />
+            <FeaturesCol title={'Lost on'} value={data.datemissing} />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
             <FeaturesCol title={'Vaccinated'} value={data.vaccine} />
@@ -69,7 +69,7 @@ export default function MissingAnimalProfilePage() {
           <div className="lg:w-[50%] lg:mr-10">
             {missingPostById && (
               <div
-                className="bg-primary w-[90vw] h-[300px] lg:w-[35vw] mx-auto custom-round  missing-profile-animation"
+                className="bg-primary w-[90vw] h-[400px] lg:w-[35vw] mx-auto custom-round  missing-profile-animation"
                 style={{
                   backgroundImage: `url(${missingPostById.image})`,
                   backgroundPosition: 'center',

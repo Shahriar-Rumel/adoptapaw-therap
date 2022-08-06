@@ -1,7 +1,20 @@
-import React, { lazy } from 'react';
+import gsap from 'gsap';
+import React, { lazy, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
 export default function MissingCardList({ list, buttonText }) {
+  useEffect(() => {
+    gsap.from('.missing-card-animation', {
+      y: '+=60',
+      autoAlpha: 0,
+      stagger: 0.2
+    });
+    gsap.to('.missing-card-animation', {
+      y: '0',
+      autoAlpha: 1,
+      stagger: 0.2
+    });
+  }, []);
   return (
     <div className="my-5 mt-[20px] grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
       {list.map((item) => (

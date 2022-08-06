@@ -53,7 +53,7 @@ export default function DonationListCard({ data, userInfo }) {
                   Remaining
                 </h4>
                 <h6 className="font-extrabold text-primary text-[12px]">
-                  {item.remainingamount} BDT
+                  {item.remainingamount > 0 ? item.remainingamount : 0} BDT
                 </h6>
               </div>
             </div>

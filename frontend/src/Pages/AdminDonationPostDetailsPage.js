@@ -10,7 +10,7 @@ const DonationCover = ({ data }) => {
   return (
     <>
       <div
-        className="w-[100%]  h-[300px] lg:h-[400px] custom-round"
+        className="w-[100%]  h-[300px] lg:h-[500px] custom-round"
         style={{
           backgroundImage: `url(${data.image})`,
           backgroundPosition: 'center',
@@ -40,6 +40,7 @@ const DonationHeader = ({ data }) => {
 const DonationBar = ({ data }) => {
   let target = Number.parseInt(data.targetamount);
   let remainingamount = Number.parseInt(data.remainingamount);
+  if (remainingamount < 0) remainingamount = 0;
   let width = ((target - remainingamount) * 100) / target;
   let widthClass = width + '%';
 
@@ -55,7 +56,9 @@ const DonationBar = ({ data }) => {
         </div>
         <div className="flex">
           <h3 className="text-gray-light mr-5">Remaining</h3>
-          <h3 className="font-bold">{data.remainingamount}</h3>
+          <h3 className="font-bold">
+            {data.remainingamount > 0 ? data.remainingamount : 0}
+          </h3>
         </div>
       </div>
     </>

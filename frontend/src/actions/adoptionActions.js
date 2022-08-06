@@ -173,10 +173,14 @@ export const adoptionPostUpdateAction =
         }
       };
 
-      await axios.post(`${BASE_URL}/${id}`, dataport, config);
+      const { data } = await axios.post(`${BASE_URL}/${id}`, dataport, config);
 
       dispatch({
         type: ADOPTION_POST_UPDATE_SUCCESS
+      });
+      dispatch({
+        type: ADOPTION_POST_BY_ID_SUCCESS,
+        payload: data
       });
 
       // localStorage.setItem('adoptionPostByIdData', JSON.stringify(data));

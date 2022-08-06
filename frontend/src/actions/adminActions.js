@@ -12,7 +12,8 @@ import {
 import {
   ADOPTION_REQUEST_APPROVE_FAIL,
   ADOPTION_REQUEST_APPROVE_REQUEST,
-  ADOPTION_REQUEST_APPROVE_SUCCESS
+  ADOPTION_REQUEST_APPROVE_SUCCESS,
+  ADOPTION_REQUEST_BY_ID_SUCCESS
 } from '../constants/adoptionRequestConstants';
 
 import axios from 'axios';
@@ -153,6 +154,11 @@ export const adminAdoptionRequestApproveAction =
       );
       dispatch({
         type: ADOPTION_REQUEST_APPROVE_SUCCESS,
+        payload: data
+      });
+
+      dispatch({
+        type: ADOPTION_REQUEST_BY_ID_SUCCESS,
         payload: data
       });
     } catch (error) {

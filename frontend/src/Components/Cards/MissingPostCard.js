@@ -1,13 +1,26 @@
-import React from 'react';
+import gsap from 'gsap';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
 export default function MissingPostCard({ data, columnSize, columnSizeXl }) {
+  // useEffect(() => {
+  //   gsap.from('.adoption-card-image-animation', {
+  //     y: '+=60',
+  //     autoAlpha: 0,
+  //     stagger: 0.2
+  //   });
+  //   gsap.to('.adoption-card-image-animation', {
+  //     y: '0',
+  //     autoAlpha: 1,
+  //     stagger: 0.2
+  //   });
+  // }, []);
   return (
     <div
       className={`w-full grid mb-[30px]   grid-cols-1 md:grid-cols-2 ${columnSize} ${columnSizeXl} gap-3 mx-auto `}
     >
       {data.map((item) => (
-        <div className="bg-card-light py-3  custom-round flex justify-between px-3 donation-list-animation cursor-pointer w-full">
+        <div className="bg-card-light py-3  custom-round flex justify-between px-3  cursor-pointer w-full">
           <div className="w-[70%] flex flex-col justify-between">
             <div className="flex justify-between">
               <h1 className="text-primary font-extrabold text-[14px] md:text-[16px] md:leading-[18px] leading-[16px] tracking-tighter mr-3">

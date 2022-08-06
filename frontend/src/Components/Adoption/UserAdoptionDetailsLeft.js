@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../Button';
 import TextBlock from '../TextBlock';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { adminAdoptionRequestApproveAction } from '../../actions/adminActions';
+import Message from '../Message';
+import UploadLoader from '../UploadLoader/UploadLoader';
 
 export default function UserAdoptionDetailsLeft({ data, userInfo }) {
   const dispatch = useDispatch();
+  const adoptionRequestApprovedData = useSelector(
+    (state) => state.adoptionRequestApprove
+  );
+
+  const { loading, success, error } = adoptionRequestApprovedData;
+
   const approveHandler = (e, uid, id) => {
     e.preventDefault();
-    console.log(uid, id);
     dispatch(adminAdoptionRequestApproveAction(uid, id));
   };
+
   return (
     <>
       {data && userInfo && (
         <div className="">
+          {error && <Message message={error} variant={'danger'} />}
+          {success && (
+            <Message message={'Request Approved!'} variant={'success'} />
+          )}
+          {loading && <UploadLoader />}
           <div className="flex  justify-between items-center mt-[32px] shadow-md px-6 py-4 custom-round">
             <h2 className="text-[20px] font-extrabold tracking-tight text-primary ">
               Status
@@ -80,7 +93,6 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
               />
             </div>
           </div>
-
           {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
             <form
               className="mt-5 "

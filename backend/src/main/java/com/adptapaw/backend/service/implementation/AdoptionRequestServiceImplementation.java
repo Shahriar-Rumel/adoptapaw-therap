@@ -90,7 +90,7 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
         mail.setFrom("adoptapawofficial@gmail.com");
         mail.setTemplateLocation("adoptionrequest.html");
         mail.setSubject("Your adoption request has been placed successfully!");
-        mail.setTo(user.getEmail());
+        mail.setTo(request.getEmail());
         mail.put("name",user.getName());
         mail.put("pet",pet.getName());
 
@@ -155,8 +155,28 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
                      animal.setOwner(adoptionRequest.getAdoptionseeker());
                      adoptionAnimalRepository.save(animal);
 
+                    AccountPasswordResetEmailContext mail = new AccountPasswordResetEmailContext();
+                    mail.setFrom("adoptapawofficial@gmail.com");
+                    mail.setTemplateLocation("passwordresetsuccess.html");
+                    mail.setSubject("Congratulations! Your adoption request has been approved.");
+                    mail.setTo(adoptionRequest.getEmail());
+                    mail.put("name",animal.getName());
+
+
+                    try{
+                        emailService.sendMail(mail);
+
+
+                    }catch (MessagingException e){
+                        e.printStackTrace();
+                    }
+
+
                      return mapToRequestDTO(adoptionRequest);
                 }
+
+
+
          }catch (UsernameNotFoundException e){
              return null;
          }
