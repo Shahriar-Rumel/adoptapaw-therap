@@ -4,6 +4,7 @@ import {
   DONATION_POSTS_SUCCESS,
   DONATION_POST_BY_ID_FAIL,
   DONATION_POST_BY_ID_REQUEST,
+  DONATION_POST_BY_ID_RESET,
   DONATION_POST_BY_ID_SUCCESS,
   DONATION_POST_CREATE_FAIL,
   DONATION_POST_CREATE_REQUEST,
@@ -53,6 +54,8 @@ export const donationPostByIdReducer = (state = {}, action) => {
       return { loading: false, donationPostById: action.payload };
     case DONATION_POST_BY_ID_FAIL:
       return { loading: false, error: action.payload };
+    case DONATION_POST_BY_ID_RESET:
+      return {};
     default:
       return state;
   }

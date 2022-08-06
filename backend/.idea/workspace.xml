@@ -5,26 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/adoptionapproved.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/context/AccountPasswordResetEmailContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/context/AccountPasswordResetEmailContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/entity/AdoptionAnimal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adoptionrequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adoptionrequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/AdoptionAnimal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/entity/AdoptionAnimal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/payload/adoption/AdoptionAnimalDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionAnimalServiceImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/adoptionrequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/adoptionrequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Adoption/AnimalProfileMid.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Adoption/AnimalProfileMid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Adoption/UserAdoptionDetailsLeft.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Adoption/UserAdoptionDetailsLeft.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Cards/MissingCardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Cards/MissingCardList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/CreateAdoptionPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/CreateAdoptionPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/MissingAnimalProfilePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/MissingAnimalProfilePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/RegistrationCompletePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/RegistrationCompletePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/RegistrationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/RegistrationPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/adoptionapproved.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/adoptionapproved.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/DonationPostDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/DonationPostDetailsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Pages/DonationPostPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Pages/DonationPostPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,20 +37,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/adoptapaw-missingmodify/backend",
-    "spring.configuration.checksum": "b43fdd98b1fd705ae4c3a10cf25aad8a"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/adoptapaw-missingmodify/backend&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b43fdd98b1fd705ae4c3a10cf25aad8a&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Work Projects\Java Fest\adopatapawdev\backend\src\main\resources\images" />
@@ -125,7 +111,8 @@
       <workItem from="1659625506994" duration="616000" />
       <workItem from="1659698586473" duration="4847000" />
       <workItem from="1659719822228" duration="6736000" />
-      <workItem from="1659764063004" duration="10399000" />
+      <workItem from="1659764063004" duration="11456000" />
+      <workItem from="1659801882485" duration="2716000" />
     </task>
     <servers />
   </component>

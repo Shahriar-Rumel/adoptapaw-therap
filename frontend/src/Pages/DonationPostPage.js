@@ -32,6 +32,7 @@ export default function DonationPostPage() {
       ) : (
         <div className="lg:w-3/4 w-[90vw] mx-auto mt-[140px]">
           <Topbar address={'Home/Donation'} link={'/home'} />
+
           <div className="lg:flex justify-between items-center mb-5 lg:mb-0">
             <div className="lg:w-[60%]">
               <h1 className="font-extrabold text-primary text-[24px] text-left mb-2 tracking-tight">

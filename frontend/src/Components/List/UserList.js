@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
 import Message from '../Message';
 
-export default function UserList({ title, data, page, banHandler }) {
-  var count = 0;
+export default function UserList({ title, data, page, setBanModal, setId }) {
   return (
     <>
       {data && (
@@ -84,7 +83,12 @@ export default function UserList({ title, data, page, banHandler }) {
                               Banned
                             </button>
                           ) : (
-                            <div onClick={() => banHandler(item.id)}>
+                            <div
+                              onClick={() => {
+                                setId(item.id);
+                                setBanModal(true);
+                              }}
+                            >
                               <Button
                                 text={'Ban'}
                                 width={true}

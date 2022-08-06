@@ -7,6 +7,10 @@ import {
   DONATION_CREATE_REQUEST,
   DONATION_CREATE_SUCCESS
 } from '../constants/donationConstants';
+import {
+  DONATION_POST_BY_ID_RESET,
+  DONATION_POST_BY_ID_SUCCESS
+} from '../constants/donationPostConstants';
 
 const BASE_URL = 'http://localhost:8081/api';
 

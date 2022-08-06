@@ -209,7 +209,7 @@ const ProfileMenuSection = ({
         <ProfileMenuItem
           userInfo={userInfo}
           setShowProfileMenu={setShowProfileMenu}
-          link={`/user/profile/${userInfo.id}`}
+          link={`/admin/user`}
           title={'Users'}
         />
       )}

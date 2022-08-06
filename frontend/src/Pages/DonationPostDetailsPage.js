@@ -12,11 +12,16 @@ import Topbar from '../Components/Topbar';
 
 const DonationCover = ({ data }) => {
   useEffect(() => {
-    gsap.fromTo(
-      '.donation-details-animation',
-      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
-      { y: '0', autoAlpha: 1, stagger: 0.2 }
-    );
+    gsap.from('.donation-details-animation', {
+      y: '+=60',
+      autoAlpha: 0,
+      stagger: 0.2
+    });
+    gsap.to('.donation-details-animation', {
+      y: '0',
+      autoAlpha: 1,
+      stagger: 0.2
+    });
   }, []);
   return (
     <>
@@ -162,13 +167,18 @@ const DonationModal = ({
   const [monthly, setMonthly] = useState(true);
   const [yearly, setYearly] = useState(false);
 
-  useEffect(() => {
-    gsap.fromTo(
-      '.donation-modal-animation',
-      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
-      { y: '0', autoAlpha: 1, stagger: 0.2 }
-    );
-  }, [modal]);
+  // useEffect(() => {
+  //   gsap.from('.donation-modal-animation', {
+  //     y: '+=60',
+  //     autoAlpha: 0,
+  //     stagger: 0.2
+  //   });
+  //   gsap.to('.donation-modal-animation', {
+  //     y: '0',
+  //     autoAlpha: 1,
+  //     stagger: 0.2
+  //   });
+  // }, [modal]);
   return (
     <>
       {modal && (
@@ -272,6 +282,7 @@ export default function DonationPostDetailsPage() {
               address={`Home/Donation/Post/${donationPostById.id}`}
               link={'/ongoingdonations'}
             />
+
             <div className="lg:mr-10 lg:w-[80%] donation-details-animation ">
               <DonationCover data={donationPostById} />
               <DonationHeader data={donationPostById} />
