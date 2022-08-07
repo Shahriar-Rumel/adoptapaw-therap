@@ -132,7 +132,9 @@ export default function MissingAnimalProfilePage() {
                   {missingPostById && (
                     <h1
                       className={`${
-                        missingPostById.stillmissing ? `text-red` : `text-green`
+                        missingPostById && missingPostById.stillmissing
+                          ? `text-red`
+                          : `text-green`
                       } font-extrabold tracking-tight`}
                     >
                       {missingPostById.stillmissing ? 'Missing' : 'Found'}
@@ -171,7 +173,7 @@ export default function MissingAnimalProfilePage() {
                   `Do you have information about ${missingPostById.name}?`}
               </h3>
 
-              {missingPostById.stillmissing ? (
+              {missingPostById && missingPostById.stillmissing ? (
                 <div onClick={() => setModal(true)}>
                   <Button text="Send Information" />
                 </div>
