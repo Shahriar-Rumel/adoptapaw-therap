@@ -31,14 +31,7 @@
             font-size: 16px;
             width:460px;
         }
-        .bg-image{
-            padding:10px;
-            height: 100px;
-            width:100px;
-            background-color: aquamarine;
-            background-image: url('https://unsplash.com/photos/LvLlOpu3vzM');
-            background-repeat: repeat;
-        }
+
         p{
             width:420px;
             color: #3b3b3b;
@@ -65,6 +58,7 @@
             color:#FF611E;
 
         }
+
         .footer{
             border-top: 1px solid #a9a9a9;
             width: 440px;
@@ -95,28 +89,37 @@
             padding: 3px 5px;
             border-right: 1px solid gray;
         }
+        .pet-name{
+            background-color: coral;
+            width: 100px;
+            text-align: center;
+            padding: 10px 5px;
+            border-top-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            color: white;
+        }
+        .review{
+            padding: 5px 2px;
+            border-bottom: 2px solid  coral;;
+        }
     </style>
 </head>
 <body>
+
 <div class="cover">
     <h1 class="cover-text">adopt<span>a</span>paw</h1>
 </div>
-<h2 class="header">Request to reset your password</h2>
-<h2 class="header"></h2>
-<div>Hey <b th:text="${name}">name</b> ,</div>
+<h2 class="header"> Acknowledgement of donation.</h2>
+<div>Hi <b th:text="${name}">name</b> ,</div>
 <p>
-    We've received a password reset request from your account.
-    <br/><br/>
-    To reset your password, please click on the button below
-</p>
-<p style="text-align: left;">
-    <a  th:href="${verificationURL}" class="link" >Confirm account</a>
-<!--<p th:text="${token}">token</p>-->
+    We’ve received your donation of <h4 th:text="${amount}" class="pet-name" > amount </h4> for <span th:text="${pet}" class="review"> pet . </span> </p>
+<p>We would like to thank you for your kind donation. This will help us to provide care to <span th:text="${pet}" class="review">pet</span>.
 </p>
 <br>
-<!--<div>-->
-<!--    <img src="/images/adoptapawlog.png"  alt="" th:src="|cid:${imageResourceName}|" />-->
-<!--</div>-->
+<p>
+Thank you.
+</p>
+<br>
 
 <div class="footer">
 

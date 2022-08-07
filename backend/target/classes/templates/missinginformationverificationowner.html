@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:remove="all">Registration confirmation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <style type="text/css">
+    body {
+      font-family: 'Ubuntu', sans-serif;
+    }
+    a.link {
+      border: solid 1px #FF611E;
+      background-color: #FF611E;
+      border-top-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      display: block;
+      width: 460px;
+      text-align: center;
+      padding: 15px 0;
+      cursor: pointer;
+    }
+    .header{
+      font-weight: 900;
+      color:#451E0E;
+      letter-spacing: -0.4px;
+      font-size: 16px;
+      width:460px;
+    }
+
+    p{
+      width:420px;
+      color: #3b3b3b;
+    }
+    .cover{
+      background-color: #451E0E;
+      width:120px;
+      height:30px;
+      border-top-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      padding:10px 0px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+
+    }
+    .cover-text{
+      color:white;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+    .cover-text span{
+      color:#FF611E;
+
+    }
+
+    .footer{
+      border-top: 1px solid #a9a9a9;
+      width: 440px;
+      padding: 20px 10px;
+      height: 100px;
+
+    }
+    .footer-title{
+      text-align: center;
+      font-size: 18px;
+      font-weight:900;
+      color:#451E0E;
+      margin-top: -10px;
+    }
+    .footer-title span{
+      color:#FF611E;
+    }
+    .footer h6{
+      text-align: center;
+    }
+    .address{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100px;
+      margin-left:50%;
+      transform:translateX(-60%);
+      margin-top: -30px;
+
+    }
+    .address h6{
+      padding: 3px 5px;
+      border-right: 1px solid gray;
+    }
+
+    .owner-name{
+      background-color: coral;
+      padding: 4px 10px;
+      color:white;
+      border-radius: 5px;
+      margin-left: 10px;
+      margin-bottom: 30px;
+    }
+    .owner-mobile{
+      background-color: coral;
+      padding: 4px 10px;
+      color:white;
+      border-radius: 5px;
+      margin-left: 10px;
+      margin-top:40px;
+    }
+    .review{
+      padding: 5px 2px;
+      border-bottom: 2px solid  coral;;
+    }
+  </style>
+</head>
+<body>
+<div class="cover">
+  <h1 class="cover-text">adopt<span>a</span>paw</h1>
+</div>
+<h2 class="header">We’ve found information about your pet..</h2>
+<div>Hi <b th:text="${name}">name</b> ,</div>
+<p>
+  We are pleased to let you know that we’ve found promising information about your missing pet <span th:text="${pet}" class="review" >pet</span>.
+</p>
+<p>You can contact the finder with the following information.</p>
+<p>
+  Informed By  <span th:text="${seeker}" class="owner-name">seeker</span><br>
+</p>
+<p>
+  Mobile  <span th:text="${mobile}" class="owner-mobile">mobile</span>
+</p>
+<p>
+  Email  <span th:text="${email}" class="owner-mobile">email</span>
+</p>
+<br/>
+Thanks.
+</p>
+<br>
+<div class="footer">
+
+  <h6>Made by</h6>
+  <h4 class="footer-title">adopt<span>a</span>paw</h4>
+  <div class="address">
+    <h6>Dhaka</h6>
+    <h6>Bangladesh</h6>
+  </div>
+
+</div>
+
+</body>
+</html>

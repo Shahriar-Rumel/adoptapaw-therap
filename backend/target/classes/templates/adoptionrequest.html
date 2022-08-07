@@ -28,7 +28,7 @@
             font-weight: 900;
             color:#451E0E;
             letter-spacing: -0.4px;
-            font-size: 18px;
+            font-size: 16px;
             width:460px;
         }
 
@@ -38,11 +38,11 @@
         }
         .cover{
             background-color: #451E0E;
-            width:460px;
-            height:60px;
+            width:120px;
+            height:30px;
             border-top-left-radius: 12px;
             border-bottom-right-radius: 12px;
-            padding:20px 0px;
+            padding:10px 0px;
             position: relative;
             overflow: hidden;
             margin-bottom: 30px;
@@ -51,16 +51,14 @@
         .cover-text{
             color:white;
             text-align: center;
-            font-size: 18px;
-            margin-top: 20px;
+            font-size: 14px;
+            margin-top: 6px;
         }
         .cover-text span{
             color:#FF611E;
+
         }
 
-        .cover-text span{
-            color:#FF611E;
-        }
         .footer{
             border-top: 1px solid #a9a9a9;
             width: 440px;
@@ -91,16 +89,31 @@
             padding: 3px 5px;
             border-right: 1px solid gray;
         }
+        .pet-name{
+            background-color: coral;
+            width: 200px;
+            text-align: center;
+            padding: 10px 5px;
+            border-top-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            color: white;
+        }
+        .review{
+           padding: 5px 2px;
+            border-bottom: 2px solid  coral;;
+        }
     </style>
 </head>
 <body>
-<h2 class="header">Adoption Request Placement Confirmation</h2>
+
 <div class="cover">
     <h1 class="cover-text">adopt<span>a</span>paw</h1>
 </div>
-<div>Hey, <b th:text="${name}">name</b> !</div>
+<h2 class="header">Your adoption request has been placed successfully !</h2>
+<div>Hi <b th:text="${name}">name</b> ,</div>
 <p>
-    We've received your request to adopt <h4 th:text="${pet}">pet</h4>
+    Thank you for showing interest in adopting <h4 th:text="${pet}" class="pet-name">pet</h4>
+<span class="review">After reviewing your request</span> we will get back to you shortly.
     <br/><br/>
     Thanks.
 </p>

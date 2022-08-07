@@ -31,14 +31,7 @@
             font-size: 16px;
             width:460px;
         }
-        .bg-image{
-            padding:10px;
-            height: 100px;
-            width:100px;
-            background-color: aquamarine;
-            background-image: url('https://unsplash.com/photos/LvLlOpu3vzM');
-            background-repeat: repeat;
-        }
+
         p{
             width:420px;
             color: #3b3b3b;
@@ -65,10 +58,12 @@
             color:#FF611E;
 
         }
+
         .footer{
             border-top: 1px solid #a9a9a9;
             width: 440px;
             padding: 20px 10px;
+            height: 100px;
 
         }
         .footer-title{
@@ -89,11 +84,35 @@
             justify-content: space-between;
             align-items: center;
             width: 100px;
-            margin:auto;
+            margin-left:50%;
+            transform:translateX(-60%);
+            margin-top: -30px;
+
         }
         .address h6{
             padding: 3px 5px;
             border-right: 1px solid gray;
+        }
+
+        .owner-name{
+            background-color: coral;
+            padding: 4px 10px;
+            color:white;
+            border-radius: 5px;
+            margin-left: 10px;
+            margin-bottom: 30px;
+        }
+        .owner-mobile{
+            background-color: coral;
+            padding: 4px 10px;
+            color:white;
+            border-radius: 5px;
+            margin-left: 10px;
+            margin-top:40px;
+        }
+        .review{
+            padding: 5px 2px;
+            border-bottom: 2px solid  coral;;
         }
     </style>
 </head>
@@ -101,23 +120,24 @@
 <div class="cover">
     <h1 class="cover-text">adopt<span>a</span>paw</h1>
 </div>
-<h2 class="header">Request to reset your password</h2>
-<h2 class="header"></h2>
-<div>Hey <b th:text="${name}">name</b> ,</div>
+<h2 class="header">We’ve found a suitable person to adopt your pet.</h2>
+<div>Hi <b th:text="${name}">name</b> ,</div>
 <p>
-    We've received a password reset request from your account.
-    <br/><br/>
-    To reset your password, please click on the button below
+    We’ve found a match for your pet <span th:text="${pet}" class="review" >pet</span>.
 </p>
-<p style="text-align: left;">
-    <a  th:href="${verificationURL}" class="link" >Confirm account</a>
-<!--<p th:text="${token}">token</p>-->
+<p>We’ve already sent your contact information to the user. You can also contact them using the following information.</p>
+<p>
+    Requested By  <span th:text="${seeker}" class="owner-name">seeker</span><br>
 </p>
+<p>
+    Mobile  <span th:text="${mobile}" class="owner-mobile">mobile</span>
+</p>
+<p>
+    Email  <span th:text="${email}" class="owner-mobile">email</span>
+</p>
+<p>Thank you.</p>
 <br>
-<!--<div>-->
-<!--    <img src="/images/adoptapawlog.png"  alt="" th:src="|cid:${imageResourceName}|" />-->
-<!--</div>-->
-
+<br>
 <div class="footer">
 
     <h6>Made by</h6>

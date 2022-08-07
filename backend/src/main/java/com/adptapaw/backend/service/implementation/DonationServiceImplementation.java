@@ -1,6 +1,7 @@
 package com.adptapaw.backend.service.implementation;
 
 
+import com.adptapaw.backend.context.GeneralPurposeEmailContext;
 import com.adptapaw.backend.entity.Donation;
 import com.adptapaw.backend.entity.DonationPost;
 import com.adptapaw.backend.entity.User;
@@ -12,10 +13,12 @@ import com.adptapaw.backend.repository.DonationRepository;
 import com.adptapaw.backend.repository.DonationPostRepository;
 import com.adptapaw.backend.repository.UserRepository;
 import com.adptapaw.backend.service.DonationService;
+import com.adptapaw.backend.service.email.EmailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +31,9 @@ public class DonationServiceImplementation implements DonationService {
     private final DonationPostRepository donationPostRepository;
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private EmailService emailService;
 
     public DonationServiceImplementation(ModelMapper mapper, DonationRepository donationRepository, DonationPostRepository donationPostRepository) {
         this.mapper = mapper;
@@ -81,6 +87,22 @@ public class DonationServiceImplementation implements DonationService {
 
 
         this.donationRepository.save(request);
+
+        GeneralPurposeEmailContext mail = new GeneralPurposeEmailContext();
+        mail.setFrom("adoptapawofficial@gmail.com");
+        mail.setTemplateLocation("donation.html");
+        mail.setSubject("Acknowledgement of donation.");
+        mail.setTo(user.getEmail());
+        mail.put("name",user.getName());
+        mail.put("pet",request.getDonationpost().getName());
+        mail.put("amount",request.getAmountofmoney()+" BDT");
+
+        try{
+            emailService.sendMail(mail);
+
+        }catch (MessagingException e){
+            e.printStackTrace();
+        }
 
         DonationPostDTO donationPostDTO = mapToDTO(donationpost);
 

@@ -1,6 +1,7 @@
 package com.adptapaw.backend.service.implementation;
 
 import com.adptapaw.backend.context.AccountPasswordResetEmailContext;
+import com.adptapaw.backend.context.GeneralPurposeEmailContext;
 import com.adptapaw.backend.entity.AdoptionAnimal;
 import com.adptapaw.backend.entity.AdoptionRequest;
 import com.adptapaw.backend.entity.Roles;
@@ -165,6 +166,7 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
                     mail.put("pet",animal.getName());
                     mail.put("owner",animal.getUser().getName());
                     mail.put("mobile",animal.getMobile());
+                    mail.put("email",animal.getUser().getEmail());
 
                     try{
                         emailService.sendMail(mail);
@@ -174,6 +176,23 @@ public class AdoptionRequestServiceImplementation implements AdoptionRequestServ
                         e.printStackTrace();
                     }
 
+                    GeneralPurposeEmailContext mailToOwner = new GeneralPurposeEmailContext();
+                    mailToOwner.setFrom("adoptapawofficial@gmail.com");
+                    mailToOwner.setTemplateLocation("adoptionapprovedowner.html");
+                    mailToOwner.setSubject("We’ve found a suitable person to adopt your pet.");
+                    mailToOwner.setTo(animal.getUser().getEmail());
+                    mailToOwner.put("name",animal.getUser().getName());
+                    mailToOwner.put("pet",animal.getName());
+                    mailToOwner.put("seeker",animal.getOwner().getName());
+                    mailToOwner.put("mobile",adoptionRequest.getMobile());
+                    mailToOwner.put("email",adoptionRequest.getEmail());
+
+                    try{
+                        emailService.sendMail(mailToOwner);
+
+                    }catch (MessagingException e){
+                        e.printStackTrace();
+                    }
 
                      return mapToRequestDTO(adoptionRequest);
                 }

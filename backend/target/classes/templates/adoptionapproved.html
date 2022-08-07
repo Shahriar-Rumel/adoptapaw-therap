@@ -28,7 +28,7 @@
             font-weight: 900;
             color:#451E0E;
             letter-spacing: -0.4px;
-            font-size: 18px;
+            font-size: 16px;
             width:460px;
         }
 
@@ -38,11 +38,11 @@
         }
         .cover{
             background-color: #451E0E;
-            width:460px;
-            height:60px;
+            width:120px;
+            height:30px;
             border-top-left-radius: 12px;
             border-bottom-right-radius: 12px;
-            padding:20px 0px;
+            padding:10px 0px;
             position: relative;
             overflow: hidden;
             margin-bottom: 30px;
@@ -51,15 +51,12 @@
         .cover-text{
             color:white;
             text-align: center;
-            font-size: 18px;
-            margin-top: 20px;
+            font-size: 14px;
+            margin-top: 6px;
         }
         .cover-text span{
             color:#FF611E;
-        }
 
-        .cover-text span{
-            color:#FF611E;
         }
 
         .footer{
@@ -113,27 +110,33 @@
               margin-left: 10px;
               margin-top:40px;
           }
+        .review{
+               padding: 5px 2px;
+               border-bottom: 2px solid  coral;;
+           }
     </style>
 </head>
 <body>
-<h2 class="header">Adoption request approval confirmation</h2>
 <div class="cover">
-
     <h1 class="cover-text">adopt<span>a</span>paw</h1>
-
 </div>
-<div>Hey, <b th:text="${name}">name</b> !</div>
+<h2 class="header">Congratulations ! Your request for adoption has been approved.</h2>
+<div>Hey <b th:text="${name}">name</b> ,</div>
 <p>
-    We are very pleased to let you know that we have approved your adoption request for :  <h4 th:text="${pet}">pet</h4>
-    You can contact the owner to set a schedule to pick up <span th:text="${pet}">pet</span>.
-<br/>
+    We are delighted to let you
+    Know that we’ve approved your request to adopt <span th:text="${pet}" class="review" >pet</span>.
 </p>
+<p>You can contact the owner to pick up <span th:text="${pet}" class="review" >pet</span>.</p>
 <p>
     Owner name  <span th:text="${owner}" class="owner-name">owner</span><br>
 </p>
 <p>
-    mobile  <span th:text="${mobile}" class="owner-mobile">mobile</span>
+    Mobile  <span th:text="${mobile}" class="owner-mobile">mobile</span>
 </p>
+<p>
+    Email  <span th:text="${email}" class="owner-mobile">email</span>
+</p>
+<p>We hope that you will have a delightful journey with <span th:text="${pet}" class="review" >pet</span>.</p>
 <br/>
 Thanks.
 </p>
