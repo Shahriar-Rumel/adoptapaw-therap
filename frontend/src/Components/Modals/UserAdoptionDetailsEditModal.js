@@ -88,13 +88,12 @@ export default function UserAdoptionPostDetailsEdit({
     data.physicalcondition
   );
   const [vaccine, setVaccine] = useState(data.vaccine);
-  const [stray, setStray] = useState('');
   const [type, setType] = useState(data.type);
   const [training, setTraining] = useState(data.training);
   const [color, setColor] = useState(data.color);
 
   const [empty, setEmpty] = useState(false);
-
+  const [mobile, setMobile] = useState(data.mobile);
   const [imageOne, setImageOne] = useState(data.imageone);
   const [imageTwo, setImageTwo] = useState(data.imagetwo);
   const [imageThree, setImageThree] = useState(data.imagethree);
@@ -131,7 +130,8 @@ export default function UserAdoptionPostDetailsEdit({
     type: type,
     imageone: imageOne,
     imagetwo: imageTwo,
-    imagethree: imageThree
+    imagethree: imageThree,
+    mobile: mobile
   };
 
   useEffect(() => {
@@ -226,7 +226,6 @@ export default function UserAdoptionPostDetailsEdit({
             />
           </div>
         </div>
-
         <div className="lg:flex justify-between items-center">
           <div className="lg:w-[32%]">
             <TextInput
@@ -279,13 +278,14 @@ export default function UserAdoptionPostDetailsEdit({
               setData={setFood}
             />
           </div>
+
           <div className="lg:w-[32%]">
             <TextInput
-              label={"Pet's color"}
-              placeholder={'Dhaka,Bangladesh'}
-              type={'text'}
-              data={color}
-              setData={setColor}
+              label={'Mobile Number'}
+              placeholder={'017xxxxxxx'}
+              type={'number'}
+              setData={setMobile}
+              data={mobile}
             />
           </div>
         </div>
@@ -326,13 +326,27 @@ export default function UserAdoptionPostDetailsEdit({
             </div>
           </div>
         </div>
-        <SelectBox
-          minHeight={200}
-          label={"Pet's physical condition"}
-          choiceList={healthType}
-          data={physicalcondition}
-          setData={setPhysicalcondition}
-        />
+        <div className="flex justify-between">
+          <div className="lg:w-[48%]">
+            <SelectBox
+              minHeight={200}
+              label={"Pet's physical condition"}
+              choiceList={healthType}
+              data={physicalcondition}
+              setData={setPhysicalcondition}
+            />
+          </div>
+          <div className="lg:w-[48%]">
+            <TextInput
+              label={"Pet's color"}
+              placeholder={'Dhaka,Bangladesh'}
+              type={'text'}
+              data={color}
+              setData={setColor}
+            />
+          </div>
+        </div>
+
         <div className="flex justify-between">
           <Checkbox
             label={'Vaccinated'}
@@ -342,14 +356,7 @@ export default function UserAdoptionPostDetailsEdit({
             data={vaccine}
             setData={setVaccine}
           />
-          <Checkbox
-            label={'Stray'}
-            placeholder={'Tommy'}
-            type={'checkbox'}
-            width={'w-[50px]'}
-            data={stray}
-            setData={setStray}
-          />
+
           <Checkbox
             label={'Trained'}
             placeholder={'Tommy'}
