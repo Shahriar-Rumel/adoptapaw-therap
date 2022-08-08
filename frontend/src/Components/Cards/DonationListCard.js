@@ -14,7 +14,10 @@ export default function DonationListCard({ data, userInfo }) {
   return (
     <div className="grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-3 mx-auto ">
       {data.map((item) => (
-        <div className="bg-card-light py-3  custom-round flex justify-between px-3 donation-list-animation cursor-pointer ">
+        <div
+          className="bg-card-light py-3  custom-round flex justify-between px-3 donation-list-animation cursor-pointer "
+          key={item.id}
+        >
           <div className="w-[70%] flex flex-col justify-between">
             <div className="flex justify-between">
               <h1 className="text-primary font-extrabold text-[18px] md:text-[18px] md:leading-[20px] leading-[18px] tracking-tighter mr-3">

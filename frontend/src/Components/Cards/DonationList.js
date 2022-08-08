@@ -16,7 +16,10 @@ export default function DonationList({ title, data, limit, query, page, uid }) {
           {data && data.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
               {data.map((item) => (
-                <div className="bg-brand bg-opacity-5 flex justify-between items-center px-4 py-4 custom-round ">
+                <div
+                  className="bg-brand bg-opacity-5 flex justify-between items-center px-4 py-4 custom-round "
+                  key={item.id}
+                >
                   <div className="">
                     <h1 className="font-bold text-[18px] text-primary">
                       {item.donationpost.name}

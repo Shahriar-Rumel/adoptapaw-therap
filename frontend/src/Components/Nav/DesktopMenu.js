@@ -85,8 +85,6 @@ const ProfileMenuSection = ({
       opacity: 1,
       stagger: 0.2
     });
-
-    console.log('Used');
   }, [adoption, missing]);
   useEffect(() => {
     gsap.from('.profile-menu-bg', {

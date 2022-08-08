@@ -34,7 +34,7 @@ export default function MobileMenu({ burger, setBurgerClicked }) {
     >
       <div className="flex   md:w-[600px]  flex-col  mt-24">
         {navItems.map((item) => (
-          <Link to={item.link}>
+          <Link to={item.link} key={item.link}>
             <div
               onClick={() => setBurgerClicked((prev) => !prev)}
               className="flex justify-end mobile-menu-animation opacity-0 mx-2 cursor-pointer my-5  rounded-full py-2 "
@@ -55,7 +55,7 @@ export default function MobileMenu({ burger, setBurgerClicked }) {
       </div>
       <div className="flex flex-col">
         {navItemsLeft.map((item) => (
-          <Link to={item.link}>
+          <Link to={item.link} key={item.link}>
             <div
               className="flex  mobile-menu-animation opacity-0 relative  items-center justify-end mx-2 cursor-pointer my-5 py-2  "
               onClick={() => setBurgerClicked((prev) => !prev)}

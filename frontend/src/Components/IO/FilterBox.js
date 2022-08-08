@@ -59,6 +59,7 @@ export default function FilterBox({
                 setData(item.value);
                 filterHandler(item.property, item.value);
               }}
+              key={item.value}
             >
               <span className="font-regular capitalize ">{item.value}</span>
             </div>

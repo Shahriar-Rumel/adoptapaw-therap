@@ -18,7 +18,11 @@ export default function MissingCardList({ list, buttonText }) {
   return (
     <div className="my-5 mt-[20px] grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
       {list.map((item) => (
-        <Link to={`/missing/${item.id}`} className="missing-card-animation">
+        <Link
+          to={`/missing/${item.id}`}
+          className="missing-card-animation"
+          key={item.id}
+        >
           <div className="card-item flex  custom-round relative justify-center overflow-hidden mx-2 w-[100%] text-offwhite h-[300px] md:w-[100%] ">
             <div className="card-image w-[100%] h-[300px] md:w-[100%] cursor-pointer hover:scale-[1.3] ease-in-out duration-300">
               <div className="linear-background">

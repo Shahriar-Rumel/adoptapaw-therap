@@ -58,6 +58,7 @@ export default function SelectBox({
                 setShowDropDown(false);
                 setData(item);
               }}
+              key={item}
             >
               <span className="font-regular ">{item}</span>
             </div>

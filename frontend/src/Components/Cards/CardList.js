@@ -31,7 +31,6 @@ export default function CardList({ link, buttonText, list }) {
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat'
                   }}
-                  loading={lazy}
                 ></div>
               </div>
             </div>
@@ -41,7 +40,7 @@ export default function CardList({ link, buttonText, list }) {
                 <h2 className="capitalize text-[20px] font-semibold tracking-tight ease-in-out duration-300 ">
                   {item.name}
                 </h2>
-                {/* <img src="/assets/fav.svg" className="w-[25px]"></img> */}
+
                 <div className="inline-flex">
                   <img src="/assets/tick.svg"></img>
                   <h3
@@ -56,13 +55,11 @@ export default function CardList({ link, buttonText, list }) {
                 </div>
               </div>
 
-              {/* <Link to={`/adoption/${item.id}`}> */}
               <div className="relative mt-[20px]">
                 <button className="bg-brand primary-button  w-[120px] h-[45px] text-[12px] text-offwhite px-20 py-3 ">
                   <span>{buttonText ? buttonText : 'Adopt me'}</span>
                 </button>
               </div>
-              {/* </Link> */}
             </div>
           </div>
         </Link>

@@ -25,7 +25,8 @@ export default function UserAdoptionRequestsPage() {
     if (!userInfo) {
       navigate('/login');
     }
-  }, [userInfo, navigate]);
+  }, [userInfo]);
+
   useEffect(() => {
     dispatch(adoptionRequestsByUserIdAction(id));
   }, [dispatch, id]);
@@ -36,10 +37,13 @@ export default function UserAdoptionRequestsPage() {
         <Loader />
       ) : (
         <div className="lg:w-3/4 w-[95vw] mx-auto mt-[160px]  mb-[100px]">
-          <Topbar
-            link={`/user/profile/${userInfo.id}`}
-            address={'Home/User/Adoption/Requests'}
-          />
+          {userInfo && (
+            <Topbar
+              link={`/user/profile/${userInfo.id}`}
+              address={'Home/User/Adoption/Requests'}
+            />
+          )}
+
           {adoptionRequestsByUserId && (
             <List data={adoptionRequestsByUserId.content} query={''} uid={id} />
           )}

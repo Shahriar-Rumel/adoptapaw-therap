@@ -36,6 +36,7 @@ const Rating = ({ rating, setRating }) => {
               rating === item ? `bg-brand` : `bg-primary-light`
             } w-[30px] h-[30px] rounded-[100%]  flex items-center justify-center cursor-pointer contact-page-animation`}
             onClick={() => setRating(item)}
+            key={item}
           >
             <h2
               className={`${

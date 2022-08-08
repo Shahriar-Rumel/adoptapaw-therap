@@ -30,6 +30,7 @@ export default function Pagination({
               setAvailability('');
               setPostList('');
             }}
+            key={index}
           >
             <h3>{item}</h3>
           </div>

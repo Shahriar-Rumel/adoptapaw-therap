@@ -7,7 +7,10 @@ export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
       className={`grid mb-[30px]   grid-cols-1 md:grid-cols-2 ${columnSize} ${columnSizeXl} gap-3 mx-auto `}
     >
       {data.map((item) => (
-        <div className="user-profile-adoption-posts-animation user-profile-animation donation-list-animation bg-card-light py-3  custom-round flex justify-between px-3  cursor-pointer w-full">
+        <div
+          className="user-profile-adoption-posts-animation user-profile-animation donation-list-animation bg-card-light py-3  custom-round flex justify-between px-3  cursor-pointer w-full"
+          key={item.id}
+        >
           <div className="w-[70%] flex flex-col justify-between ">
             <div className="flex justify-between">
               <h1 className="text-primary font-extrabold text-[14px] md:text-[16px] md:leading-[18px] leading-[16px] tracking-tighter mr-3">

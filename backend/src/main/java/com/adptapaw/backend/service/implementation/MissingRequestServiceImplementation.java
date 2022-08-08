@@ -62,7 +62,7 @@ public class MissingRequestServiceImplementation implements MissingRequestServic
         request.setStatus(false);
         Date date = new Date();
         request.setRequestdate(String.valueOf(date));
-        request.setApproveddate(String.valueOf(date));
+        request.setApproveddate(" ");
         request.setEmail(missingRequestDTO.getEmail());
         request.setMobile(missingRequestDTO.getMobile());
         request.setLocation(missingRequestDTO.getLocation());
