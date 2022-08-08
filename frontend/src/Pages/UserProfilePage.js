@@ -18,7 +18,7 @@ const ProfileCoverSection = ({ userInfo }) => {
     );
   }, []);
   return (
-    <div className=" flex flex-col items-center   lg:w-[50%] xl:w-[60%]  lg:mt-[100px]  lg:mr-[30px] user-profile-information-animation ">
+    <div className=" flex flex-col items-center   lg:w-[50%] xl:w-[60%]  lg:mt-[100px]  mb-[100px] lg:mr-[30px] user-profile-information-animation ">
       <div
         className="w-[140px] h-[140px] lg:w-[240px] lg:h-[240px] flex items-center justify-center rounded-[100%] bg-brand user-profile-animation"
         style={{

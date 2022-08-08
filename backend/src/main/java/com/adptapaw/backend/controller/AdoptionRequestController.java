@@ -2,16 +2,14 @@ package com.adptapaw.backend.controller;
 
 import com.adptapaw.backend.payload.adoption.AdoptionRequestDTO;
 import com.adptapaw.backend.payload.adoption.AdoptionRequestListDTO;
-import com.adptapaw.backend.payload.donations.DonationPostDTO;
 import com.adptapaw.backend.service.AdoptionRequestService;
 import com.adptapaw.backend.utils.AdoptapawConstants;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
-@CrossOrigin(origins  = "http://localhost:3000")
+@CrossOrigin(origins  = ("${site.base.url.https}"))
 @RestController
 @RequestMapping("/api")
 public class AdoptionRequestController {

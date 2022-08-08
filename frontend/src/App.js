@@ -49,170 +49,180 @@ import AdminMissingPostsPage from './Pages/AdminMissingPostspage';
 import AdminMissingInformationsPage from './Pages/AdminMissingInformationsPage';
 import AdminMissingInformationDetailsPage from './Pages/AdminMissingInformationDetailsPage';
 import AdminFeedbackPage from './Pages/AdminFeedbackPage';
+import ScrollToTop from './Components/ScrollToTop';
+import Footer from './Components/Footer';
 
 function App() {
   return (
     <>
       <Router>
-        {/* <ScrollToTop> */}
-        <Nav />
-        <Routes>
-          <Route
-            path="/missing/:id"
-            element={<MissingAnimalProfilePage />}
-            exact
-          />
-          <Route
-            path="/ongoingdonations/:id"
-            element={<DonationPostDetailsPage />}
-            exact
-          />
-          <Route
-            path="/ongoingdonations"
-            element={<DonationPostPage />}
-            exact
-          />
-          <Route path="/missing" element={<MissingAnimalPage />} exact />
-          <Route
-            path="/reset/:token"
-            element={<ForgotPasswordResetPage />}
-            exact
-          />
-          <Route
-            path="/forgot/:email"
-            element={<PasswordResetRequestSentPage />}
-            exact
-          />
-          <Route path="/forgot" element={<ForgotPasswordPage />} exact />
-          <Route path="/login" element={<LoginPage />} exact />
-          <Route
-            path="/registration/complete"
-            element={<RegistrationCompletePage />}
-            exact
-          />
-          <Route path="/registration" element={<RegistrationPage />} exact />
-          <Route
-            path="/adoption/request/success"
-            element={<AdoptionRequestConfirmationPage />}
-            exact
-          />
-          <Route
-            path="/missing/:id/createpost"
-            element={<CreateMissingPost />}
-            exact
-          />
-          <Route
-            path="/donation/createpost"
-            element={<CreateDonationPage />}
-            exact
-          />
-          <Route
-            path="/adoption/:id/createpost"
-            element={<CreateAdoptionPost />}
-            exact
-          />
-          <Route
-            path="/adoption/:id/user/:uid/createadoptionrequest"
-            element={<AdoptionRequestPage />}
-            exact
-          />
-          <Route
-            path="/adoption/:id"
-            element={<AdoptionAnimalProfile />}
-            exact
-          />
-          <Route
-            path="/user/missing/:id"
-            element={<UserMissingPostDetailsPage />}
-            exact
-          />
-          <Route
-            path="/user/adoption/:id"
-            element={<UserAdoptionPostDetailsPage />}
-            exact
-          />
-          <Route
-            path="/user/:uid/adoption/request/:id"
-            element={<UserAdoptionRequestDetailsPage />}
-            exact
-          />
-          <Route
-            path="/user/profile/:id/donations"
-            element={<UserDonationListPage />}
-            exact
-          />
-          <Route
-            path="/user/profile/:id/adoptionrequests"
-            element={<UserAdoptionRequestsPage />}
-            exact
-          />
-          <Route
-            path="/user/profile/:id/missingposts"
-            element={<UserMissingAnimalPostsPage />}
-            exact
-          />
-          <Route
-            path="/user/profile/:id/adoptionposts"
-            element={<UserAdoptionPostsPage />}
-            exact
-          />
-          <Route
-            path="/user/profile/:id/edit"
-            element={<UserProfileEditPage />}
-            exact
-          />
-          <Route
-            path="/admin/missingposts"
-            element={<AdminMissingPostsPage />}
-            exact
-          />
-          <Route path="/admin/feedback" element={<AdminFeedbackPage />} exact />
-          <Route
-            path="/admin/adoptionposts"
-            element={<AdminAdoptionPostsPage />}
-            exact
-          />
-          <Route
-            path="/admin/adoption/request"
-            element={<AdminAdoptionRequestsPage />}
-            exact
-          />
-          <Route
-            path="/admin/missing/info/:id"
-            element={<AdminMissingInformationDetailsPage />}
-            exact
-          />
-          <Route
-            path="/admin/missing/info"
-            element={<AdminMissingInformationsPage />}
-            exact
-          />
-          <Route path="/admin/user" element={<AdminUserListPage />} exact />
-          <Route
-            path="/admin/donation/post/:id/edit"
-            element={<AdminDonationPostDetailsPage />}
-            exact
-          />
-          <Route
-            path="/admin/donation/posts"
-            element={<AdminDonationPostsPage />}
-            exact
-          />
-          <Route
-            path="/auth/verify/:token"
-            element={<AccountVerificationConfirmationPage />}
-            exact
-          />
-          <Route path="/user/profile/:id" element={<UserProfilepage />} exact />
-          <Route path="/adoption" element={<Adoptionpage />} exact />
-          <Route path="/contact" element={<ContactPage />} exact />
-          <Route path="/dashboard" element={<AdminDashboardPage />} exact />
-          <Route path="/home" element={<Homepage />} exact />
-          <Route path="/" element={<Onboarding />} exact />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-        {/* <Footer /> */}
-        {/* </ScrollToTop> */}
+        <ScrollToTop>
+          <Nav />
+          <Routes>
+            <Route
+              path="/missing/:id"
+              element={<MissingAnimalProfilePage />}
+              exact
+            />
+            <Route
+              path="/ongoingdonations/:id"
+              element={<DonationPostDetailsPage />}
+              exact
+            />
+            <Route
+              path="/ongoingdonations"
+              element={<DonationPostPage />}
+              exact
+            />
+            <Route path="/missing" element={<MissingAnimalPage />} exact />
+            <Route
+              path="/reset/:token"
+              element={<ForgotPasswordResetPage />}
+              exact
+            />
+            <Route
+              path="/forgot/:email"
+              element={<PasswordResetRequestSentPage />}
+              exact
+            />
+            <Route path="/forgot" element={<ForgotPasswordPage />} exact />
+            <Route path="/login" element={<LoginPage />} exact />
+            <Route
+              path="/registration/complete"
+              element={<RegistrationCompletePage />}
+              exact
+            />
+            <Route path="/registration" element={<RegistrationPage />} exact />
+            <Route
+              path="/adoption/request/success"
+              element={<AdoptionRequestConfirmationPage />}
+              exact
+            />
+            <Route
+              path="/missing/:id/createpost"
+              element={<CreateMissingPost />}
+              exact
+            />
+            <Route
+              path="/donation/createpost"
+              element={<CreateDonationPage />}
+              exact
+            />
+            <Route
+              path="/adoption/:id/createpost"
+              element={<CreateAdoptionPost />}
+              exact
+            />
+            <Route
+              path="/adoption/:id/user/:uid/createadoptionrequest"
+              element={<AdoptionRequestPage />}
+              exact
+            />
+            <Route
+              path="/adoption/:id"
+              element={<AdoptionAnimalProfile />}
+              exact
+            />
+            <Route
+              path="/user/missing/:id"
+              element={<UserMissingPostDetailsPage />}
+              exact
+            />
+            <Route
+              path="/user/adoption/:id"
+              element={<UserAdoptionPostDetailsPage />}
+              exact
+            />
+            <Route
+              path="/user/:uid/adoption/request/:id"
+              element={<UserAdoptionRequestDetailsPage />}
+              exact
+            />
+            <Route
+              path="/user/profile/:id/donations"
+              element={<UserDonationListPage />}
+              exact
+            />
+            <Route
+              path="/user/profile/:id/adoptionrequests"
+              element={<UserAdoptionRequestsPage />}
+              exact
+            />
+            <Route
+              path="/user/profile/:id/missingposts"
+              element={<UserMissingAnimalPostsPage />}
+              exact
+            />
+            <Route
+              path="/user/profile/:id/adoptionposts"
+              element={<UserAdoptionPostsPage />}
+              exact
+            />
+            <Route
+              path="/user/profile/:id/edit"
+              element={<UserProfileEditPage />}
+              exact
+            />
+            <Route
+              path="/admin/missingposts"
+              element={<AdminMissingPostsPage />}
+              exact
+            />
+            <Route
+              path="/admin/feedback"
+              element={<AdminFeedbackPage />}
+              exact
+            />
+            <Route
+              path="/admin/adoptionposts"
+              element={<AdminAdoptionPostsPage />}
+              exact
+            />
+            <Route
+              path="/admin/adoption/request"
+              element={<AdminAdoptionRequestsPage />}
+              exact
+            />
+            <Route
+              path="/admin/missing/info/:id"
+              element={<AdminMissingInformationDetailsPage />}
+              exact
+            />
+            <Route
+              path="/admin/missing/info"
+              element={<AdminMissingInformationsPage />}
+              exact
+            />
+            <Route path="/admin/user" element={<AdminUserListPage />} exact />
+            <Route
+              path="/admin/donation/post/:id/edit"
+              element={<AdminDonationPostDetailsPage />}
+              exact
+            />
+            <Route
+              path="/admin/donation/posts"
+              element={<AdminDonationPostsPage />}
+              exact
+            />
+            <Route
+              path="/auth/verify/:token"
+              element={<AccountVerificationConfirmationPage />}
+              exact
+            />
+            <Route
+              path="/user/profile/:id"
+              element={<UserProfilepage />}
+              exact
+            />
+            <Route path="/adoption" element={<Adoptionpage />} exact />
+            <Route path="/contact" element={<ContactPage />} exact />
+            <Route path="/dashboard" element={<AdminDashboardPage />} exact />
+            <Route path="/home" element={<Homepage />} exact />
+            <Route path="/" element={<Onboarding />} exact />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+          <Footer />
+        </ScrollToTop>
       </Router>
     </>
   );

@@ -38,9 +38,10 @@ export default function UserAdoptionPostDetailsPage() {
 
   useEffect(() => {
     if (
-      adoptionPostById &&
-      userInfo.role[0].id != 1 &&
-      userInfo.id != adoptionPostById.user.id
+      !userInfo ||
+      (adoptionPostById &&
+        userInfo.role[0].id != 1 &&
+        userInfo.id != adoptionPostById.user.id)
     ) {
       navigate('/home');
     }
@@ -68,14 +69,14 @@ export default function UserAdoptionPostDetailsPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className=" mx-auto lg:w-3/4 w-[90vw]  mt-[140px] lg:mt-[160px] mb-[100px]">
+        <div className=" mx-auto lg:w-3/4 w-[90vw]  mt-[120px] lg:mt-[160px] mb-[100px]">
           {userInfo && adoptionPostById && (
             <Topbar
               address={`Home/Profile/Adoption/Post/${adoptionPostById.id}`}
               link={`/user/profile/${userInfo.id}/adoptionposts`}
             />
           )}
-          <div className="lg:flex lg:justify-between mt-[170px] ">
+          <div className="lg:flex lg:justify-between mt-[70px] ">
             <div className=" lg:w-[50%]  lg:mr-10">
               <div className="flex items-center  w-full mb-5">
                 {adoptionPostById && (

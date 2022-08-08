@@ -13,8 +13,6 @@ public interface MissingRequestService {
     MissingRequestDTO createMissingRequest(String id, MissingRequestDTO missingRequestDTO);
 
 
-    //MissingRequestListDTO getAllByCreator(String id);
-
     MissingRequestDTO getById(String id);
     MissingRequestListDTO getAll(String id, int pageNo, int pageSize, String sortBy, String sortDir);
     MissingRequestDTO approveInfo(String uid, String id);

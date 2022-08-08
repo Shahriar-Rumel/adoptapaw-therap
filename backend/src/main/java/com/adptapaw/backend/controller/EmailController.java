@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/email")
 public class EmailController {
 
-
     @Autowired
     EmailService emailService;
-
 
 
 }

@@ -8,7 +8,7 @@ import com.adptapaw.backend.utils.AdoptapawConstants;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins  = "http://localhost:3000")
+@CrossOrigin(origins  = ("${site.base.url.https}"))
 @RestController
 @RequestMapping("/api")
 public class DonationController {

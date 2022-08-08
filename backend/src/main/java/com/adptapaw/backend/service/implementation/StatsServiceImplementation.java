@@ -3,7 +3,6 @@ package com.adptapaw.backend.service.implementation;
 import com.adptapaw.backend.entity.*;
 import com.adptapaw.backend.payload.StatsDTO;
 import com.adptapaw.backend.repository.*;
-import com.adptapaw.backend.service.MissingRequestService;
 import com.adptapaw.backend.service.StatsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StatsSeriveImplementation implements StatsService {
+public class StatsServiceImplementation implements StatsService {
 
     private final UserRepository userRepository;
     private final AdoptionRequestRepository adoptionRequestRepository;
@@ -21,7 +20,7 @@ public class StatsSeriveImplementation implements StatsService {
     private final MissingAnimalRepository missingAnimalRepository;
     private final DonationPostRepository donationPostRepository;
 
-    public StatsSeriveImplementation(UserRepository userRepository, AdoptionRequestRepository adoptionRequestRepository, MissingRequestRepository missingRequestRepository, AdoptionAnimalRepository adoptionAnimalRepository, MissingAnimalRepository missingAnimalRepository, DonationPostRepository donationPostRepository) {
+    public StatsServiceImplementation(UserRepository userRepository, AdoptionRequestRepository adoptionRequestRepository, MissingRequestRepository missingRequestRepository, AdoptionAnimalRepository adoptionAnimalRepository, MissingAnimalRepository missingAnimalRepository, DonationPostRepository donationPostRepository) {
         this.userRepository = userRepository;
         this.adoptionRequestRepository = adoptionRequestRepository;
         this.missingRequestRepository = missingRequestRepository;

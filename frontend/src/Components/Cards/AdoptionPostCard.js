@@ -12,11 +12,11 @@ export default function AdoptionPostCard({ data, columnSize, columnSizeXl }) {
           key={item.id}
         >
           <div className="w-[70%] flex flex-col justify-between ">
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center ">
               <h1 className="text-primary font-extrabold text-[14px] md:text-[16px] md:leading-[18px] leading-[16px] tracking-tighter mr-3">
                 {item.name}
               </h1>
-              <div className="flex mt-2 mb-5 items-center">
+              <div className="flex items-center">
                 <img src="/assets/Icons/location.svg"></img>{' '}
                 <h3 className="text-gray-light px-3 text-[14px]">
                   {item.location}

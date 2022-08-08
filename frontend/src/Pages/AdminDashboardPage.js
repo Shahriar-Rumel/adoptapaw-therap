@@ -8,7 +8,7 @@ import Loader from '../Components/Loader';
 
 const StatCard = ({ title, data, src, text, variant, brand, link }) => {
   return (
-    <div className="shadow-md bg-primary-light bg-opacity-10 py-5 px-4 custom-round my-5 lg:my-3 lg:w-[33%] ">
+    <div className="shadow-md bg-primary-light bg-opacity-10 py-5 px-4 custom-round my-5 lg:my-3 lg:w-[33%]  ">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-bold text-gray-light tracking-tighter text-[16px]">
@@ -62,7 +62,7 @@ export default function AdminDashboardPage() {
       {statsLoading ? (
         <Loader />
       ) : (
-        <div className="  mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+        <div className="  mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[300px]">
           <div className="lg:flex lg:justify-between">
             <StatCard
               title={'Active user'}

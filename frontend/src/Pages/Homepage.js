@@ -14,8 +14,11 @@ export default function Homepage() {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
   const adoptionPostsData = useSelector((state) => state.adoptionPosts);
+
   const missingPostsData = useSelector((state) => state.missingPostsStore);
+
   const { missingPosts } = missingPostsData;
   const { loading, error, adoptionPosts } = adoptionPostsData;
 
@@ -34,11 +37,8 @@ export default function Homepage() {
 
   useEffect(() => {
     dispatch(adoptionPostsAction(0, 8));
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(missingPostsAction(0, 8));
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function Homepage() {
       ) : (
         <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[140px] ">
           <div className="flex justify-between items-center">
-            <h1 className="image-animation font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-green">
+            <h1 className=" font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-green">
               Paws for adoption
             </h1>
             <Link to="/adoption">
@@ -69,7 +69,7 @@ export default function Homepage() {
             />
           )}
           <div className="flex justify-between items-center">
-            <h1 className="image-animation font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-red">
+            <h1 className=" font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-red">
               Paws missing
             </h1>
             <Link to="/missing">
@@ -88,7 +88,7 @@ export default function Homepage() {
             />
           ) : (
             <Message
-              message={'No adoption post available!'}
+              message={'No missing post available!'}
               variant={'danger'}
               active={true}
             />

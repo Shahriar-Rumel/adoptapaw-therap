@@ -1,8 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { navItems, navItemsLeft } from '../../Data/nav';
-export default function MobileMenu({ burger, setBurgerClicked }) {
+
+export default function MobileMenu({
+  theme,
+  burger,
+  setBurgerClicked,
+  userInfo
+}) {
   useEffect(() => {
     gsap.from('.mobile-menu-animation', {
       y: '+=20',
@@ -26,6 +32,7 @@ export default function MobileMenu({ burger, setBurgerClicked }) {
       stagger: 0.1
     });
   }, [burger]);
+
   return (
     <div
       className={`mobile-menu-bg lg:hidden  ${
@@ -53,27 +60,30 @@ export default function MobileMenu({ burger, setBurgerClicked }) {
           </Link>
         ))}
       </div>
-      <div className="flex flex-col">
-        {navItemsLeft.map((item) => (
-          <Link to={item.link} key={item.link}>
-            <div
-              className="flex  mobile-menu-animation opacity-0 relative  items-center justify-end mx-2 cursor-pointer my-5 py-2  "
-              onClick={() => setBurgerClicked((prev) => !prev)}
-            >
-              <img
-                src={item.imgprimary}
-                className="w-[25px] absolute mr-[130px]"
-              ></img>
-              <div className="w-[120px] flex">
-                <h1 className="px-2 text-primary mr-10 font-semibold text-[14px]">
-                  {item.title}
-                </h1>
+
+      {!userInfo && (
+        <div className="flex flex-col">
+          {navItemsLeft.map((item) => (
+            <Link to={item.link} key={item.link}>
+              <div
+                className="flex  mobile-menu-animation opacity-0 relative  items-center justify-end mx-2 cursor-pointer my-5 py-2  "
+                onClick={() => setBurgerClicked((prev) => !prev)}
+              >
+                <img
+                  src={item.imgprimary}
+                  className="w-[25px] absolute mr-[130px]"
+                ></img>
+                <div className="w-[120px] flex">
+                  <h1 className="px-2 text-primary mr-10 font-semibold text-[14px]">
+                    {item.title}
+                  </h1>
+                </div>
+                <div className="h-[1px] w-[80%] bg-primary absolute mt-20 mr-5"></div>
               </div>
-              <div className="h-[1px] w-[80%] bg-primary absolute mt-20 mr-5"></div>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -6,17 +6,16 @@ export default function MissingCardList({ list, buttonText }) {
   useEffect(() => {
     gsap.from('.missing-card-animation', {
       y: '+=60',
-      autoAlpha: 0,
-      stagger: 0.2
+      opacity: 0
     });
     gsap.to('.missing-card-animation', {
       y: '0',
-      autoAlpha: 1,
+      opacity: 1,
       stagger: 0.2
     });
   }, []);
   return (
-    <div className="my-5 mt-[20px] grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
+    <div className="my-5 mt-[20px] grid mb-[100px]  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
       {list.map((item) => (
         <Link
           to={`/missing/${item.id}`}
@@ -58,13 +57,11 @@ export default function MissingCardList({ list, buttonText }) {
                 </div>
               </div>
 
-              {/* <Link to={`/adoption/${item.id}`}> */}
               <div className="relative mt-[20px]">
                 <button className="bg-brand primary-button  w-[120px] h-[45px] text-[12px] text-offwhite px-20 py-3 ">
                   <span>{buttonText ? buttonText : 'Adopt me'}</span>
                 </button>
               </div>
-              {/* </Link> */}
             </div>
           </div>
         </Link>

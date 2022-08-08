@@ -87,7 +87,6 @@ public class MissingRequestServiceImplementation implements MissingRequestServic
         }catch (MessagingException e){
             e.printStackTrace();
         }
-        MissingAnimalDTO missingAnimalDTO = mapToDTO(pet);
 
         return mapToRequestDTO(request);
     }

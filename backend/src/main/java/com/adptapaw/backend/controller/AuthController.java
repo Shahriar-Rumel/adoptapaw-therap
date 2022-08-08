@@ -5,7 +5,6 @@ import com.adptapaw.backend.context.AccountVerificationEmailContext;
 import com.adptapaw.backend.entity.Roles;
 import com.adptapaw.backend.entity.Token;
 import com.adptapaw.backend.entity.User;
-import com.adptapaw.backend.exception.AdoptapawAPIExceptions;
 import com.adptapaw.backend.exception.InvalidTokenException;
 import com.adptapaw.backend.exception.ResourceNotFoundException;
 import com.adptapaw.backend.payload.*;
@@ -17,7 +16,6 @@ import com.adptapaw.backend.service.email.EmailService;
 import com.adptapaw.backend.service.token.TokenService;
 import com.adptapaw.backend.utils.AdoptapawConstants;
 import com.cloudinary.utils.StringUtils;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
@@ -28,7 +26,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -38,12 +35,12 @@ import java.io.File;
 import java.util.Collections;
 import java.util.Objects;
 
-@CrossOrigin(origins  = "http://localhost:3000")
+
+@CrossOrigin(origins  = ("${site.base.url.https}"))
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private static final String REDIRECT_LOGIN = "Your Account has been verified visit localhost:3000/signin to login";
     private String currentRole ;
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -167,11 +164,11 @@ public class AuthController {
 
         if(StringUtils.isEmpty(token)){
 
-            return REDIRECT_LOGIN;
+            return "Token is not valid";
         }
         userServiceSecurity.verifyUser(token);
 
-        return REDIRECT_LOGIN;
+        return "Account Verified";
     }
 
     @PostMapping("/resetrequest")

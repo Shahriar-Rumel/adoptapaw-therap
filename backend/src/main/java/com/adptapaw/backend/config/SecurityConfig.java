@@ -27,8 +27,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
 public class SecurityConfig {
 
-    @Autowired
-    private UserServiceSecurity userDetailsService;
 
     @Autowired
     private JWTAuthenticationEntryPoint authenticationEntryPoint;
@@ -61,7 +59,6 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/api/donationpost/{id}").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/donationpost/all").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/missing/**").permitAll()
-//                .antMatchers(HttpMethod.PUT, "/api/admin/{uid}/adoption/request/{id}/approve").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/missing/{id}/create").permitAll()
                 .antMatchers(HttpMethod.POST , "/api/feedback/create").permitAll()
                 .antMatchers(HttpMethod.POST , "/api/files/upload").permitAll()

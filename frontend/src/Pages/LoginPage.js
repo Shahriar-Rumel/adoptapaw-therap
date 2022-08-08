@@ -58,15 +58,15 @@ export default function LoginPage() {
   return (
     <>
       {loading && <Loader />}
-      <div className=" lg:flex  lg:flex-row-reverse justify-between lg:items-center lg:w-3/4 w-[90vw] mx-auto mt-[150px] ">
+      <div className=" lg:flex  lg:flex-row-reverse mb-[100px] lg:mb-[200px] justify-between lg:items-center lg:w-3/4 w-[90vw] mx-auto mt-[150px] lg:mt-[200px] ">
         <Topbar address={'Home/Login'} link={'/home'} />
         <img
           src="/assets/dogcat secondary.svg"
-          className="w-[50vw] mx-auto lg:mr-5 mb-12 mt-[-50px] lg:mt-0 md:w-[40vw] lg:w-[35vw] xl:w-[25vw] request-form-image-animation"
+          className="w-[50vw] mx-auto lg:mr-5 mb-12 mt-[50px] lg:mt-0 md:w-[40vw] lg:w-[35vw] xl:w-[25vw] request-form-image-animation"
           alt="Dogcat Secondary"
         ></img>
         <div className="lg:w-[50%]">
-          <h1 className="font-extrabold text-[24px] tracking-tight text-primary request-form-animation">
+          <h1 className="font-extrabold  text-[20px] lg:text-[24px] tracking-tight text-primary request-form-animation">
             Hey, Welcome back to adoptapaw !
           </h1>
           <h3 className="text-[14px] font-regular text-gray-light mb-10 request-form-animation">

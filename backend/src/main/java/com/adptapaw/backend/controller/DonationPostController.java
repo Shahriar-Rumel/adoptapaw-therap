@@ -9,7 +9,7 @@ import com.adptapaw.backend.utils.AdoptapawConstants;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins  = "http://localhost:3000")
+@CrossOrigin(origins  = ("${site.base.url.https}"))
 @RestController
 @RequestMapping("/api/donationpost")
 public class DonationPostController {

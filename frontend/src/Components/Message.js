@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 
-export default function Error({
+export default function Message({
   message,
   text,
   link,
