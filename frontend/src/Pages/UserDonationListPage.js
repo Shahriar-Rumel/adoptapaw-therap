@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { donationByUserIdAction } from '../actions/donationActions';
 import DonationList from '../Components/Cards/DonationList';
 import Loader from '../Components/Loader';
@@ -11,6 +11,9 @@ export default function UserDonationListPage() {
   const [pageNo, setPageNo] = useState(0);
   const dispatch = useDispatch();
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const donationByUserIdData = useSelector((state) => state.donationByUserId);
 
   const { loading, error, donationsByUserId } = donationByUserIdData;
@@ -19,6 +22,13 @@ export default function UserDonationListPage() {
   useEffect(() => {
     dispatch(donationByUserIdAction(id, pageNo, 8));
   }, [dispatch, id]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo]);
   return (
     <>
       {loading ? (

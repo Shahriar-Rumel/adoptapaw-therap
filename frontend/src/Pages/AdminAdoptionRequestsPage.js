@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useNavigate } from 'react-router-dom';
 import { adminAdoptionRequestsAction } from '../actions/adminActions';
 import AdoptionRequestList from '../Components/List/AdoptionRequestList';
 import Loader from '../Components/Loader';
@@ -21,6 +22,13 @@ export default function AdminAdoptionRequestsPage() {
   useEffect(() => {
     dispatch(adminAdoptionRequestsAction(userInfo.id, pageNo, 8));
   }, [dispatch, pageNo]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
 
   return (
     <>

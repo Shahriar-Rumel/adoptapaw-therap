@@ -1,4 +1,8 @@
 import {
+  MISSING_INFO_APPROVE_FAIL,
+  MISSING_INFO_APPROVE_REQUEST,
+  MISSING_INFO_APPROVE_RESET,
+  MISSING_INFO_APPROVE_SUCCESS,
   MISSING_INFO_BY_ID_FAIL,
   MISSING_INFO_BY_ID_REQUEST,
   MISSING_INFO_BY_ID_SUCCESS,
@@ -34,11 +38,13 @@ export const missingInfoByIdReducer = (state = {}, action) => {
 
 export const missingInfoApproveReducer = (state = {}, action) => {
   switch (action.type) {
-    case MISSING_INFO_BY_ID_REQUEST:
+    case MISSING_INFO_APPROVE_REQUEST:
       return { loading: true };
-    case MISSING_INFO_BY_ID_SUCCESS:
+    case MISSING_INFO_APPROVE_SUCCESS:
       return { loading: false, success: true };
-    case MISSING_INFO_BY_ID_FAIL:
+    case MISSING_INFO_APPROVE_FAIL:
+      return { loading: false, error: action.payload };
+    case MISSING_INFO_APPROVE_RESET:
       return { loading: false, error: action.payload };
     default:
       return state;

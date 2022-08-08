@@ -7,12 +7,16 @@ import Loader from '../Components/Loader';
 import Pagination from '../Components/Pagination';
 import Topbar from '../Components/Topbar';
 import UserbanModal from '../Components/Modals/UserbanModal';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminUserListPage() {
   const [pageNo, setPageNo] = useState(0);
   const [banModal, setBanModal] = useState(false);
   const [id, setId] = useState();
   const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   const allUsersData = useSelector((state) => state.allUsers);
   const { loading, error, allUser } = allUsersData;
@@ -28,7 +32,12 @@ export default function AdminUserListPage() {
     dispatch(adminUserBanAction(id));
   };
 
-  console.log(id);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
   return (
     <>
       {loading ? (

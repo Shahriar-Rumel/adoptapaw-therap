@@ -7,6 +7,7 @@ import UserAdoptionDetailsRight from '../Components/Adoption/UserAdoptionDetails
 import Button from '../Components/Button';
 import Loader from '../Components/Loader';
 import Topbar from '../Components/Topbar';
+import { ADOPTION_REQUEST_APPROVE_RESET } from '../constants/adoptionRequestConstants';
 
 export default function UserAdoptionRequestDetailsPage() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ export default function UserAdoptionRequestDetailsPage() {
 
   useEffect(() => {
     dispatch(adoptionRequestByIdAction(uid, id));
+    dispatch({
+      type: ADOPTION_REQUEST_APPROVE_RESET
+    });
   }, [dispatch, uid, id]);
 
   return (

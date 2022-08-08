@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { donationPostByIdAction } from '../actions/donationPostActions';
 import { donationCreateAction } from '../actions/donationActions';
 import Loader from '../Components/Loader';
@@ -271,6 +271,12 @@ export default function DonationPostDetailsPage() {
     e.preventDefault();
     dispatch(donationCreateAction(amountofmoney, id, userInfo.id));
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
 
   return (
     <>
@@ -290,16 +296,18 @@ export default function DonationPostDetailsPage() {
               <DonationBar data={donationPostById} />
               <div className=" flex  justify-between mt-5">
                 <DonatorAvatar data={donationPostById} />
-                <div
-                  onClick={() => setModal(true)}
-                  className="donation-details-animation"
-                >
-                  <Button
-                    width={true}
-                    text={'Donate Now'}
-                    widthClass={'w-[100px]'}
-                  />
-                </div>
+                {userInfo && userInfo.role[0].id != 1 && (
+                  <div
+                    onClick={() => setModal(true)}
+                    className="donation-details-animation"
+                  >
+                    <Button
+                      width={true}
+                      text={'Donate Now'}
+                      widthClass={'w-[100px]'}
+                    />
+                  </div>
+                )}
               </div>
             </div>
             {donationCreateLoading && <UploadLoader />}

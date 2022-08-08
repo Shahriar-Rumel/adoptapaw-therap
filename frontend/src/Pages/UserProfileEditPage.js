@@ -97,6 +97,8 @@ export default function UserProfileEditPage() {
       if (userInfo.id != id) {
         navigate('/home');
       }
+    } else {
+      navigate('/home');
     }
   }, [userInfo]);
 

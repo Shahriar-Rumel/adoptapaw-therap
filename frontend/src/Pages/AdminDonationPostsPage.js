@@ -22,7 +22,12 @@ export default function AdminDonationPostsPage() {
   useEffect(() => {
     dispatch(donationPostsAction(pageNo, 8));
   }, [dispatch, pageNo]);
-  console.log(donationPosts);
+
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
   return (
     <>
       {loading ? (

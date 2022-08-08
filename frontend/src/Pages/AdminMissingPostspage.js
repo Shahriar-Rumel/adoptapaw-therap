@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useNavigate } from 'react-router-dom';
 import { adminAdoptionRequestsAction } from '../actions/adminActions';
 import { adoptionPostsAction } from '../actions/adoptionActions';
 import { missingPostsAction } from '../actions/missingAnimalActions';
@@ -23,7 +24,13 @@ export default function AdminMissingPostsPage() {
   useEffect(() => {
     dispatch(missingPostsAction(pageNo, 12));
   }, [dispatch, pageNo]);
-  console.log(missingPosts);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
 
   return (
     <>

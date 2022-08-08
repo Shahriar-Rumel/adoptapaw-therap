@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { feedbackAction } from '../actions/feedbackActions';
 import Loader from '../Components/Loader';
 import Pagination from '../Components/Pagination';
@@ -25,7 +26,10 @@ const FeedbackStat = ({ data }) => {
 };
 export default function AdminFeedbackPage() {
   const [pageNo, setPageNo] = useState(0);
+
   const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   const feedbackData = useSelector((state) => state.feedbackStore);
 
@@ -34,6 +38,13 @@ export default function AdminFeedbackPage() {
   useEffect(() => {
     dispatch(feedbackAction(pageNo, 8));
   }, [dispatch, pageNo]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
 
   return (
     <>

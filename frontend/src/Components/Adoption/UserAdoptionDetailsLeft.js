@@ -124,11 +124,11 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
               <Button text="Approve Request" />
             </form>
           )}
-          {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
+          {/* {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
             <div className="mt-3">
               <Button text="Reject Request" secondary={true} />
             </div>
-          )}
+          )} */}
         </div>
       )}
     </>

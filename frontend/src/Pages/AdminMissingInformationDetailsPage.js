@@ -12,6 +12,7 @@ import UploadLoader from '../Components/UploadLoader/UploadLoader';
 import Features from '../Components/Adoption/Features';
 import RewardCard from '../Components/Cards/RewardCard';
 import { adminMissingInfoApproveAction } from '../actions/adminActions';
+import { MISSING_INFO_APPROVE_RESET } from '../constants/missingInfoConstants';
 
 const MissingInformationDetailsLeft = ({ data, userInfo }) => {
   const dispatch = useDispatch();
@@ -25,8 +26,19 @@ const MissingInformationDetailsLeft = ({ data, userInfo }) => {
     e.preventDefault();
     dispatch(adminMissingInfoApproveAction(uid, id));
   };
-  console.log(loading);
 
+  useEffect(() => {
+    dispatch({
+      type: MISSING_INFO_APPROVE_RESET
+    });
+  }, [dispatch]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
   return (
     <>
       {data && userInfo && (
@@ -98,11 +110,11 @@ const MissingInformationDetailsLeft = ({ data, userInfo }) => {
               />
             </div>
           </div>
-          {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
+          {/* {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
             <form className="mt-5 ">
               <Button text="Mail User" brand={true} />
             </form>
-          )}
+          )} */}
           {userInfo.role[0].name === 'ROLE_ADMIN' && data.status === false && (
             <form
               className="mt-3 "

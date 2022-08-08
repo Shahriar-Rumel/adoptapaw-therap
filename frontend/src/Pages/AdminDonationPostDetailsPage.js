@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../Components/Button';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { donationPostByIdAction } from '../actions/donationPostActions';
 import Loader from '../Components/Loader';
 import AdminDonationPostEditModal from '../Components/Modals/AdminDonationPostEditModal';
@@ -71,6 +71,9 @@ export default function AdminDonationPostDetailsPage() {
 
   const dispatch = useDispatch();
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const donationPostByIdDataSet = useSelector(
     (state) => state.donationPostByIdStore
   );
@@ -81,6 +84,13 @@ export default function AdminDonationPostDetailsPage() {
   useEffect(() => {
     dispatch(donationPostByIdAction(id));
   }, [dispatch]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
   return (
     <>
       {loading ? (

@@ -19,7 +19,6 @@ import LoginPage from './Pages/LoginPage';
 import MissingAnimalPage from './Pages/MissingAnimalPage';
 import DonationPostPage from './Pages/DonationPostPage';
 import MissingAnimalProfilePage from './Pages/MissingAnimalProfilePage';
-import MissingAnimalDataPage from './Pages/MissingAnimalDataPage';
 import CreateAdoptionPost from './Pages/CreateAdoptionPost';
 import UserProfilepage from './Pages/UserProfilePage';
 import UserAdoptionPostsPage from './Pages/UserAdoptionPostsPage';
@@ -58,11 +57,6 @@ function App() {
         {/* <ScrollToTop> */}
         <Nav />
         <Routes>
-          {/* <Route
-            path="/missing/cat/information"
-            element={<MissingAnimalDataPage />}
-            exact
-          /> */}
           <Route
             path="/missing/:id"
             element={<MissingAnimalProfilePage />}

@@ -55,7 +55,7 @@ export default function RequestForm({ setObjects }) {
           setData={setHadpet}
         />
         <Checkbox
-          label={'Self-Pick up'}
+          label={'Can pick up'}
           type={'checkbox'}
           width={'w-[90px]'}
           setData={setPickup}

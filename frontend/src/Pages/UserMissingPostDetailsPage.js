@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import Button from '../Components/Button';
 import UserMissingPostEditModal from '../Components/Modals/UserMissingPostEditModal';
@@ -164,6 +164,9 @@ export default function UserMissingPostDetailsPage() {
 
   const dispatch = useDispatch();
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const missingPostByIdDataSet = useSelector(
     (state) => state.missingPostByIdStore
   );
@@ -181,6 +184,13 @@ export default function UserMissingPostDetailsPage() {
   const deletePosthandler = () => {
     dispatch(missingPostDeleteAction(id));
   };
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo]);
 
   return (
     <>

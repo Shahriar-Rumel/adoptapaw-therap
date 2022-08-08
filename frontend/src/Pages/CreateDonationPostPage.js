@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextInput from '../Components/IO/TextInput';
 import SelectBox from '../Components/IO/SelectBox';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
@@ -9,6 +9,7 @@ import { donationPostCreateAction } from '../actions/donationPostActions';
 import Topbar from '../Components/Topbar';
 import Loader from '../Components/Loader';
 import Message from '../Components/Message';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateDonationPage() {
   const [name, setName] = useState();
@@ -93,6 +94,12 @@ export default function CreateDonationPage() {
       console.log('Data is empty');
     }
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
   return (
     <>
       {loading ? (

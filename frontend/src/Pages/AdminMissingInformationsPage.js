@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useNavigate } from 'react-router-dom';
 import {
   adminAdoptionRequestsAction,
   adminAllMissingInfoAction
@@ -23,6 +24,13 @@ export default function AdminMissingInformationsPage() {
   useEffect(() => {
     dispatch(adminAllMissingInfoAction(userInfo.id, pageNo, 8));
   }, [dispatch, pageNo]);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
 
   return (
     <>

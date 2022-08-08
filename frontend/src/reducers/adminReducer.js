@@ -15,6 +15,7 @@ import {
 import {
   ADOPTION_REQUEST_APPROVE_FAIL,
   ADOPTION_REQUEST_APPROVE_REQUEST,
+  ADOPTION_REQUEST_APPROVE_RESET,
   ADOPTION_REQUEST_APPROVE_SUCCESS
 } from '../constants/adoptionRequestConstants';
 
@@ -66,6 +67,8 @@ export const adminAdoptionRequestApproveReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case ADOPTION_REQUEST_APPROVE_FAIL:
       return { loading: false, error: action.payload };
+    case ADOPTION_REQUEST_APPROVE_RESET:
+      return {};
     default:
       return state;
   }

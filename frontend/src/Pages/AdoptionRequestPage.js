@@ -24,6 +24,9 @@ export default function AdoptionRequestPage() {
 
   const dispatch = useDispatch();
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const adoptionPostByIdDataSet = useSelector(
     (state) => state.adoptionPostByIdStore
   );
@@ -76,6 +79,12 @@ export default function AdoptionRequestPage() {
   };
 
   useEffect(() => {
+    if (!userInfo) {
+      navigate('/login');
+    }
+  }, [userInfo, navigate]);
+
+  useEffect(() => {
     if (success && email) {
       navigate(`/user/profile/${uid}/adoptionrequests`);
     }
@@ -115,9 +124,9 @@ export default function AdoptionRequestPage() {
               <Message message={requestError} variant={'danger'} />
             )}
             <div className="request-adoption-gallery-animation">
-              <form>
+              <form onSubmit={submitHandler}>
                 <RequestForm setObjects={setObjects} />
-                <div onClick={submitHandler}>
+                <div>
                   <Button text="Confirm Adoption Request" />
                 </div>
               </form>

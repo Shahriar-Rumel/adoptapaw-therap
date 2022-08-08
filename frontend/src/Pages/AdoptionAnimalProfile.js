@@ -5,7 +5,7 @@ import { adoptionPostByIdAction } from '../actions/adoptionActions';
 import AnimalProfileBottom from '../Components/Adoption/AnimalProfileBottom';
 import AnimalProfileLeft from '../Components/Adoption/AnimalProfileLeft';
 import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loader from '../Components/Loader';
 
 export default function AdoptionAnimalProfile() {
