@@ -47,7 +47,10 @@ import {
   donationByUserIdReducer,
   donationCreateReducer
 } from './reducers/donationReducer';
-import { feedbackCreateReducer } from './reducers/feedbackReducer';
+import {
+  feedbackCreateReducer,
+  feedbackReducer
+} from './reducers/feedbackReducer';
 import {
   missingInfoApproveReducer,
   missingInfoByIdReducer,
@@ -98,7 +101,8 @@ const reducer = combineReducers({
   adoptionRequestApprove: adminAdoptionRequestApproveReducer,
   adminAllMissingInfo: adminAllMissingInformationReducer,
   missingInfoByIdStore: missingInfoByIdReducer,
-  missingInfoApprove: missingInfoApproveReducer
+  missingInfoApprove: missingInfoApproveReducer,
+  feedbackStore: feedbackReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

@@ -19,7 +19,6 @@
 .secondary-variant {
   -webkit-tap-highlight-color: hsl(18, 74%, 46%);
   -webkit-appearance: button;
-  /* background-color: hsl(18, 74%, 46%); */
   background: linear-gradient(180deg, #ff540b 0%, #d05926 100%);
   /* background-image: none; */
   color: rgb(255, 255, 255);
@@ -81,12 +80,10 @@
 .primary-button span,
 .primary-variant span,
 .secondary-variant span {
-  /* mix-blend-mode: difference; */
   position: absolute;
 }
 .primary-button:hover span,
 .primary-variant:hover span {
-  /* mix-blend-mode: difference; */
   color: rgb(255, 255, 255);
   font-weight: 500;
 }

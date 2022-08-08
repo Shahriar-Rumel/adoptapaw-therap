@@ -43,7 +43,7 @@ export default function Nav() {
               theme && 'bg-white'
             } `}
       >
-        <div className="flex items-center   justify-center lg:justify-between md:w-[90vw] w-[95vw] mx-auto py-4  md:py-2 z-[999]">
+        <div className="flex items-center  justify-center lg:justify-between md:w-[90vw] w-[95vw] mx-auto py-4  md:py-2 z-[999]">
           <Link
             to={userInfo && userInfo.role[0].id === 1 ? '/dashboard' : '/home'}
           >

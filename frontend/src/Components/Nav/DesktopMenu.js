@@ -139,7 +139,12 @@ const ProfileMenuSection = ({
               link={`/user/profile/${userInfo.id}/adoptionposts`}
               title={'Posts'}
             />
-
+            <ProfileMenuNestedItem
+              userInfo={userInfo}
+              setShowProfileMenu={setShowProfileMenu}
+              link={`/user/profile/${userInfo.id}/adoptionrequests`}
+              title={'Requests'}
+            />{' '}
             <ProfileMenuNestedItem
               userInfo={userInfo}
               setShowProfileMenu={setShowProfileMenu}
@@ -149,7 +154,6 @@ const ProfileMenuSection = ({
           </div>
         )}
       </div>
-
       <div className="w-[200px]">
         <div
           className=" flex flex-col profile-menu-animation opacity-0 border-b w-[100%]  py-6 border-gray text-primary hover:text-primary-hover"
@@ -176,21 +180,24 @@ const ProfileMenuSection = ({
             <ProfileMenuNestedItem
               userInfo={userInfo}
               setShowProfileMenu={setShowProfileMenu}
-              link={`/user/profile/${userInfo.id}/missingposts`}
+              link={
+                userInfo.role[0].id === 1
+                  ? `/admin/missingposts`
+                  : `/user/profile/${userInfo.id}/missingposts`
+              }
               title={'Posts'}
             />
             {userInfo.role[0].id === 1 && (
-              <ProfileMenuItem
+              <ProfileMenuNestedItem
                 userInfo={userInfo}
                 setShowProfileMenu={setShowProfileMenu}
-                link={`/admin/donation/posts`}
-                title={'Donation Posts'}
+                link={`/admin/missing/info`}
+                title={'Info'}
               />
             )}
           </div>
-        )}
+        )}{' '}
       </div>
-
       {userInfo.role[0].id === 1 && (
         <ProfileMenuItem
           userInfo={userInfo}
@@ -199,12 +206,14 @@ const ProfileMenuSection = ({
           title={'Donation Posts'}
         />
       )}
-      <ProfileMenuItem
-        userInfo={userInfo}
-        setShowProfileMenu={setShowProfileMenu}
-        link={`/user/profile/${userInfo.id}/donations`}
-        title={'Donations'}
-      />
+      {userInfo.role[0].id != 1 && (
+        <ProfileMenuItem
+          userInfo={userInfo}
+          setShowProfileMenu={setShowProfileMenu}
+          link={`/user/profile/${userInfo.id}/donations`}
+          title={'Donations'}
+        />
+      )}
       {userInfo.role[0].id === 1 && (
         <ProfileMenuItem
           userInfo={userInfo}
@@ -213,7 +222,14 @@ const ProfileMenuSection = ({
           title={'Users'}
         />
       )}
-
+      {userInfo.role[0].id === 1 && (
+        <ProfileMenuItem
+          userInfo={userInfo}
+          setShowProfileMenu={setShowProfileMenu}
+          link={`/admin/feedback`}
+          title={'Feedbacks'}
+        />
+      )}
       <div
         onClick={LogoutHandler}
         className="mt-5 profile-menu-animation opacity-0"

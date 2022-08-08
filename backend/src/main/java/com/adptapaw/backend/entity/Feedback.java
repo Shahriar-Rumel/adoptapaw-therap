@@ -20,7 +20,7 @@ public class Feedback {
     @Column(nullable = false)
     private Long rating;
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 2000)
     private String description;
     @Column(nullable = false)
     private String feedbackdate;

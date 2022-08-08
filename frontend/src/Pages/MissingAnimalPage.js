@@ -157,7 +157,7 @@ export default function MissingAnimalPage() {
             />
           ) : (
             <Message
-              message={'No adoption post available!'}
+              message={'No missing post available!'}
               variant={'danger'}
               active={true}
             />

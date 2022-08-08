@@ -49,6 +49,7 @@ import AdminAdoptionPostsPage from './Pages/AdminAdoptionPostsPage';
 import AdminMissingPostsPage from './Pages/AdminMissingPostspage';
 import AdminMissingInformationsPage from './Pages/AdminMissingInformationsPage';
 import AdminMissingInformationDetailsPage from './Pages/AdminMissingInformationDetailsPage';
+import AdminFeedbackPage from './Pages/AdminFeedbackPage';
 
 function App() {
   return (
@@ -171,11 +172,12 @@ function App() {
             element={<AdminMissingPostsPage />}
             exact
           />
+          <Route path="/admin/feedback" element={<AdminFeedbackPage />} exact />
           <Route
             path="/admin/adoptionposts"
             element={<AdminAdoptionPostsPage />}
             exact
-          />{' '}
+          />
           <Route
             path="/admin/adoption/request"
             element={<AdminAdoptionRequestsPage />}

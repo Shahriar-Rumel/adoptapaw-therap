@@ -11,9 +11,9 @@ import UploadLoader from '../Components/UploadLoader/UploadLoader';
 const Banner = () => {
   return (
     <div className="py-[30px] bg-white  md:shadow-none custom-round px-5 mb-10 md:mb-0 w-[100%]  md:ml-5">
-      <h1 className=" text-center text-[16px]  tracking-tight  bg-opacity-30  text-primary  w-[100%] leading-5 contact-page-animation">
+      {/* <h1 className=" text-center text-[16px]  tracking-tight  bg-opacity-30  text-primary  w-[100%] leading-5 contact-page-animation">
         We would love to hear from you
-      </h1>
+      </h1> */}
       <img
         src="/assets/icons/feedback.svg"
         className="w-[90%] mt-5 contact-page-animation"
@@ -78,9 +78,11 @@ export default function ContactPage() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // if (rating && description) {
-    dispatch(feedbackCreateAction(dataPort));
-    // }
+    if (rating && description) {
+      dispatch(feedbackCreateAction(dataPort));
+      setDescription('');
+      setRating('');
+    }
   };
   return (
     <div className=" mx-auto lg:w-3/4 w-[90vw] md:flex flex-row-reverse md:shadow-md  custom-round md:px-[30px] md:py-10 justify-between mt-[120px] lg:mt-[150px] mb-[100px]">
@@ -113,14 +115,18 @@ export default function ContactPage() {
             <div className="contact-page-animation">
               <Rating setRating={setRating} rating={rating} />
             </div>
-            <div className="contact-page-animation">
-              <TextInput
-                type={'text'}
-                label={'Tell us how we can improve'}
+            <div className="flex flex-col my-3 contact-page-animation">
+              <label className="font-bold text-primary text-[14px]">
+                Tell us how we can improve
+              </label>
+              <textarea
+                type="text"
                 placeholder={'Your Feedback'}
-                data={description}
-                setData={setDescription}
-              />
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+                className="bg-input py-4  custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
+              ></textarea>
             </div>
             <div className="contact-page-animation">
               <Button text={'Send Feedback'} />

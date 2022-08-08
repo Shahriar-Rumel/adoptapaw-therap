@@ -17,11 +17,11 @@ export default function CreateMissingPost({ history }) {
   const [location, setLocation] = useState('');
   const [reward, setReward] = useState('');
   const [gender, setGender] = useState("Choose pet's  gender");
-  const [breed, setBreed] = useState("Choose pet's  breed");
+  const [breed, setBreed] = useState('');
   const [accessory, setAccessory] = useState('');
   const [date, setDate] = useState('');
   const [attribute, setAttribute] = useState('');
-  const [vaccine, setVaccine] = useState('');
+  const [vaccine, setVaccine] = useState('false');
   const [type, setType] = useState("Choose pet's type");
   const [color, setColor] = useState('');
   const [empty, setEmpty] = useState(false);
@@ -70,7 +70,6 @@ export default function CreateMissingPost({ history }) {
     if (
       dataport.name &&
       dataport.breed &&
-      dataport.vaccine &&
       dataport.color &&
       dataport.datemissing &&
       dataport.specificattribute &&
