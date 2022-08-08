@@ -45,12 +45,11 @@ export default function AdminFeedbackPage() {
             <h1 className="font-extrabold text-primary text-[24px] text-left  tracking-tight">
               Feedbacks
             </h1>
-            {feedbacks && <FeedbackStat data={feedbacks.content} />}
+            {feedbacks && feedbacks.content && (
+              <FeedbackStat data={feedbacks.content} />
+            )}
           </div>
-          {/* <div className="flex justify-between">
-            <h1 className="font-bold text-[18px] text-primary">Feedback</h1>
-            <h1 className="font-bold text-[18px] text-primary">Rating</h1>
-          </div> */}
+
           {feedbacks &&
             feedbacks.content &&
             feedbacks.content.map((item) => (

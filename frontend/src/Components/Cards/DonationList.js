@@ -24,7 +24,7 @@ export default function DonationList({ title, data, limit, query, page, uid }) {
                     <div className="flex items-center mt-2">
                       <img src="/assets/Icons/location.svg"></img>
                       <h3 className="ml-2 text-gray-light text-[14px]">
-                        Dhaka,Bangladesh
+                        {item.donationpost.location}
                       </h3>
                     </div>
                   </div>

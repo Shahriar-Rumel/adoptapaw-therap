@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../Components/Button';
 import Topbar from '../Components/Topbar';
+import { USER_REGISTER_RESET } from '../constants/userConstants';
 
 export default function RegistrationCompletePage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch({
+      type: USER_REGISTER_RESET
+    });
+  }, []);
   return (
     <div className=" lg:w-[600px] w-[90vw] mx-auto mt-[150px] ">
       <Topbar address={'Home/Registration/Complete'} link={'/home'} />

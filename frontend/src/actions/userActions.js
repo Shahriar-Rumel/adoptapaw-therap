@@ -14,7 +14,8 @@ import {
   USER_VERIFY_FAIL,
   GET_ALL_USER_REQUEST,
   GET_ALL_USER_SUCCESS,
-  GET_ALL_USER_FAIL
+  GET_ALL_USER_FAIL,
+  USER_REGISTER_RESET
 } from '../constants/userConstants';
 import axios from 'axios';
 

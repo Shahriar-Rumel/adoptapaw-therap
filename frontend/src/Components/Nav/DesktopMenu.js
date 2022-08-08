@@ -85,6 +85,8 @@ const ProfileMenuSection = ({
       opacity: 1,
       stagger: 0.2
     });
+
+    console.log('Used');
   }, [adoption, missing]);
   useEffect(() => {
     gsap.from('.profile-menu-bg', {
@@ -94,7 +96,6 @@ const ProfileMenuSection = ({
     gsap.to('.profile-menu-bg', {
       width: '250',
       opacity: 1,
-      duration: 0.5,
       stagger: 0.1
     });
   }, []);
@@ -112,7 +113,7 @@ const ProfileMenuSection = ({
       />
       <div className="w-[200px]">
         <div
-          className=" flex flex-col profile-menu-animation opacity-0 border-b w-[100%]  py-6 border-gray text-primary hover:text-primary-hover"
+          className=" flex flex-col profile-menu-animation  border-b w-[100%]  py-6 border-gray text-primary hover:text-primary-hover"
           onClick={() => setAdoption((prev) => !prev)}
         >
           <h2 className="px-2 text-[14px] font-semibold tracking-tight ml-2  ">
@@ -139,12 +140,6 @@ const ProfileMenuSection = ({
               link={`/user/profile/${userInfo.id}/adoptionposts`}
               title={'Posts'}
             />
-            <ProfileMenuNestedItem
-              userInfo={userInfo}
-              setShowProfileMenu={setShowProfileMenu}
-              link={`/user/profile/${userInfo.id}/adoptionrequests`}
-              title={'Requests'}
-            />{' '}
             <ProfileMenuNestedItem
               userInfo={userInfo}
               setShowProfileMenu={setShowProfileMenu}
@@ -196,7 +191,7 @@ const ProfileMenuSection = ({
               />
             )}
           </div>
-        )}{' '}
+        )}
       </div>
       {userInfo.role[0].id === 1 && (
         <ProfileMenuItem

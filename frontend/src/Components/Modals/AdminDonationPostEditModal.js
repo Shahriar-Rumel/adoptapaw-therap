@@ -16,6 +16,7 @@ export default function AdminDonationPostEditModal({ data, setModal }) {
   const [description, setDescription] = useState(data.description);
   const [targetAmount, setTargetAmount] = useState(data.targetamount);
   const [image, setImage] = useState(data.image);
+  const [location, setLocation] = useState(data.location);
 
   const [uploading, setUploading] = useState('');
 
@@ -39,7 +40,8 @@ export default function AdminDonationPostEditModal({ data, setModal }) {
     type: type,
     description: description,
     targetamount: targetAmount,
-    image: image
+    image: image,
+    location: location
   };
 
   const BASE_URL = 'http://localhost:8081';
@@ -80,7 +82,8 @@ export default function AdminDonationPostEditModal({ data, setModal }) {
       dataport.type &&
       dataport.description &&
       dataport.targetamount &&
-      dataport.image
+      dataport.image &&
+      dataport.location
     ) {
       dispatch(donationPostUpdateAction(id, dataport));
     }
@@ -139,6 +142,12 @@ export default function AdminDonationPostEditModal({ data, setModal }) {
           label={'Target amount'}
           data={targetAmount}
           setData={setTargetAmount}
+        />
+        <TextInput
+          type={'text'}
+          label={'Location'}
+          data={location}
+          setData={setLocation}
         />
         <div className="lg:flex relative justify-between items-center my-4">
           <div className="w-[100%]">

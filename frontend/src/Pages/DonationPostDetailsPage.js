@@ -34,8 +34,14 @@ const DonationCover = ({ data }) => {
           backgroundRepeat: 'no-repeat'
         }}
       ></div>
-      <div className="bg-primary-light w-[100px] flex items-center justify-center py-3 custom-round mt-5 donation-details-animation">
-        <h2 className="text-[14px] font-bold text-gray-light">{data.type}</h2>
+      <div className="flex justify-between items-center">
+        <div className="bg-primary-light w-[100px] flex items-center justify-center py-3 custom-round mt-5 donation-details-animation">
+          <h2 className="text-[14px] font-bold text-gray-light">{data.type}</h2>
+        </div>
+        <div className="flex items-center mt-2">
+          <img src="/assets/Icons/location.svg"></img>
+          <h3 className="ml-2 text-gray-light text-[14px]">{data.location}</h3>
+        </div>
       </div>
     </>
   );
