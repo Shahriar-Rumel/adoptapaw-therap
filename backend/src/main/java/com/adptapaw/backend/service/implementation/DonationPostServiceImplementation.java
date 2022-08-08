@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -96,6 +97,10 @@ public class DonationPostServiceImplementation implements DonationPostService {
         feeds.setRemainingamount(donationPostDTO.getTargetamount());
         feeds.setPeopledonated(0L);
         feeds.setImage(donationPostDTO.getImage());
+        feeds.setLocation(donationPostDTO.getLocation());
+        Date date = new Date();
+        feeds.setCreationtime(String.valueOf(date));
+
 
         donationPostRepository.save(feeds);
         donationPostDTO.setId(feeds.getId());
@@ -123,7 +128,7 @@ public class DonationPostServiceImplementation implements DonationPostService {
         feeds.setDescription(donationPostDTO.getDescription());
         feeds.setTargetamount(donationPostDTO.getTargetamount());
         feeds.setImage(donationPostDTO.getImage());
-
+        feeds.setLocation(donationPostDTO.getLocation());
         donationPostRepository.save(feeds);
 
         return mapToDTO(feeds);

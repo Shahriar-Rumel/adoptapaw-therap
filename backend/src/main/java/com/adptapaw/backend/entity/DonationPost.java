@@ -42,6 +42,12 @@ public class DonationPost {
     @Column(length = 1000)
     private String image;
 
+    @Column(nullable = false)
+    private String location;
+
+    @Column(nullable = false)
+    private String creationtime;
+
     @JsonIgnore
     @OneToMany(mappedBy = "donationpost")
     private Set<Donation> donator = new HashSet<>();

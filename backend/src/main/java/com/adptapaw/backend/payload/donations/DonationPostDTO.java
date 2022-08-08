@@ -12,4 +12,6 @@ public class DonationPostDTO {
     private Long remainingamount;
     private Long peopledonated;
     private String image;
+    private String location;
+    private String creationtime;
 }
