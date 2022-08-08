@@ -11,11 +11,16 @@ import Topbar from '../Components/Topbar';
 
 const ForAnimation = () => {
   useEffect(() => {
-    gsap.fromTo(
-      '.user-profile-adoption-posts-animation',
-      { y: '+=60', autoAlpha: 0, stagger: 0.2 },
-      { y: '0', autoAlpha: 1, stagger: 0.2 }
-    );
+    gsap.from('.user-profile-adoption-posts-animation', {
+      y: '+=60',
+      autoAlpha: 0,
+      stagger: 0.2
+    });
+    gsap.to('.user-profile-adoption-posts-animation', {
+      y: '0',
+      autoAlpha: 1,
+      stagger: 0.2
+    });
   }, []);
   return;
 };

@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Message from '../Components/Message';
 import { missingPostsAction } from '../actions/missingAnimalActions';
 import MissingCardList from '../Components/Cards/MissingCardList';
+import Button from '../Components/Button';
 
 export default function Homepage() {
   const dispatch = useDispatch();
@@ -45,9 +46,19 @@ export default function Homepage() {
         <Loader />
       ) : (
         <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[140px] ">
-          <h1 className="image-animation font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-green">
-            Paws for adoption
-          </h1>
+          <div className="flex justify-between items-center">
+            <h1 className="image-animation font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-green">
+              Paws for adoption
+            </h1>
+            <Link to="/adoption">
+              <Button
+                text={'More'}
+                secondary={true}
+                width={true}
+                widthClass={'w-[100px]'}
+              />
+            </Link>
+          </div>
           {adoptionPosts && adoptionPosts.totalElements > 0 ? (
             <CardList list={adoptionPosts.content} />
           ) : (
@@ -57,9 +68,19 @@ export default function Homepage() {
               active={true}
             />
           )}
-          <h1 className="image-animation font-black tracking-tighter text-[24px] mb-[30px] px-3 text-primary border-l-4 border-l-red mt-[60px]">
-            Paws Missing
-          </h1>
+          <div className="flex justify-between items-center">
+            <h1 className="image-animation font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-red">
+              Paws missing
+            </h1>
+            <Link to="/missing">
+              <Button
+                text={'More'}
+                secondary={true}
+                width={true}
+                widthClass={'w-[100px]'}
+              />
+            </Link>
+          </div>
           {missingPosts && missingPosts.totalElements > 0 ? (
             <MissingCardList
               list={missingPosts.content}
@@ -72,18 +93,6 @@ export default function Homepage() {
               active={true}
             />
           )}
-          {/* {missingPosts && missingPosts.totalElements > 0 ? (
-            <MissingCardList
-              list={missingPosts.content}
-              buttonText={'Help me'}
-            />
-          ) : (
-            <Message
-              message={'No adoption post available!'}
-              variant={'danger'}
-              active={true}
-            />
-          )} */}
         </div>
       )}
     </>

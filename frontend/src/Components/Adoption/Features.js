@@ -12,10 +12,16 @@ export default function ({ data }) {
             <FeaturesCol title={'Breed'} value={data.breed} />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
-            <FeaturesCol title={'Training'} value={data.training} />
+            <FeaturesCol
+              title={'Training'}
+              value={data.training ? 'Trained' : 'Untrained'}
+            />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
-            <FeaturesCol title={'Vaccinated'} value={data.vaccine} />
+            <FeaturesCol
+              title={'Vaccinated'}
+              value={data.vaccine ? 'Vaccinated' : 'Unvaccinated'}
+            />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
             <FeaturesCol title={'Color'} value={data.color} />

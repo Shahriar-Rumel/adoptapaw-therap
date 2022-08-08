@@ -120,7 +120,6 @@ export default function UserMissingPostEditModal({
         }
       };
 
-      console.log(config);
       const { data } = await axios.post(
         `${BASE_URL}/api/files/upload`,
         formData,
@@ -128,7 +127,7 @@ export default function UserMissingPostEditModal({
       );
 
       setImageOne(data);
-      console.log(data);
+
       setUploading(false);
     } catch (errror) {
       console.log(error);
@@ -311,7 +310,7 @@ export default function UserMissingPostEditModal({
         </div>
 
         <div onClick={submitHandler}>
-          <Button text={'Create Post'} />
+          <Button text={'Edit Missing Post'} />
         </div>
       </form>
     </div>

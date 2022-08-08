@@ -13,7 +13,7 @@ export default function CreateDonationPage() {
   const [type, setType] = useState();
   const [description, setDescription] = useState();
   const [targetAmount, setTargetAmount] = useState();
-  const [image, setImage] = useState();
+  const [image, setImage] = useState('/assets/Icons/ImagePlaceholder.svg');
   const [empty, setEmpty] = useState(true);
   const [uploading, setUploading] = useState('');
 
@@ -98,8 +98,8 @@ export default function CreateDonationPage() {
       </p>
       <form onSubmit={submitHandler}>
         <TextInput
-          label={'Title'}
-          placeholder={'Donation title'}
+          label={'Pet name'}
+          placeholder={'Tommy'}
           data={name}
           setData={setName}
           type={'text'}
@@ -114,7 +114,7 @@ export default function CreateDonationPage() {
         />
         <div className="flex flex-col my-3 request-form-animation">
           <label className="font-bold text-primary text-[14px]">
-            Pet Description
+            Pet description
           </label>
           <textarea
             type="text"
@@ -134,7 +134,7 @@ export default function CreateDonationPage() {
         <div className="lg:flex relative justify-between items-center my-4">
           <div className="w-[100%]">
             <h2 className="font-bold text-primary text-[14px] mb-4">
-              Plase Upload Image of your pet
+              Please Upload Image of the pet
             </h2>
             <div className="w-[100%] lg:w-[100%] ">
               {uploading && (

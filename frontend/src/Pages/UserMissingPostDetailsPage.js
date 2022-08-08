@@ -22,10 +22,13 @@ const MissingFeature = ({ data }) => {
             <FeaturesCol title={'Breed'} value={data.breed} />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
-            <FeaturesCol title={'Went Missing'} value={data.datemissing} />
+            <FeaturesCol title={'Gender'} value={data.gender} />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
-            <FeaturesCol title={'Vaccinated'} value={data.vaccine} />
+            <FeaturesCol
+              title={'Vaccinated'}
+              value={data.vaccine ? 'Yes' : 'No'}
+            />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
             <FeaturesCol title={'Color'} value={data.color} />

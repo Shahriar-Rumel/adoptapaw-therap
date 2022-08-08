@@ -31,10 +31,13 @@ const MissingFeature = ({ data }) => {
             <FeaturesCol title={'Breed'} value={data.breed} />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
-            <FeaturesCol title={'Lost on'} value={data.datemissing} />
+            <FeaturesCol title={'Gender'} value={data.gender} />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
-            <FeaturesCol title={'Vaccinated'} value={data.vaccine} />
+            <FeaturesCol
+              title={'Vaccinated'}
+              value={data.vaccine ? 'Yes' : 'No'}
+            />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
             <FeaturesCol title={'Color'} value={data.color} />
@@ -133,9 +136,9 @@ export default function MissingAnimalProfilePage() {
                     <h1
                       className={`${
                         missingPostById && missingPostById.stillmissing
-                          ? `text-red`
-                          : `text-green`
-                      } font-extrabold tracking-tight`}
+                          ? `bg-red`
+                          : `bg-green`
+                      } font-extrabold tracking-tight text-white  opacity-55 px-4 custom-round py-3`}
                     >
                       {missingPostById.stillmissing ? 'Missing' : 'Found'}
                     </h1>

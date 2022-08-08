@@ -22,7 +22,7 @@ export default function UserDonationListPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:w-[80vw] w-[95vw] mx-auto mt-[160px]  mb-[100px]">
+        <div className="lg:w-3/4 w-[95vw] mx-auto mt-[160px]  mb-[100px]">
           <Topbar
             link={'/user/profile'}
             address={'Home/User/Adoption/Requests'}

@@ -64,7 +64,6 @@ export default function CreateMissingPost({ history }) {
 
   var petType = ['Cat', 'Dog'];
   var genderType = ['Male', 'Female'];
-  var breedType = ['Breed one', 'Breed Two'];
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -113,7 +112,6 @@ export default function CreateMissingPost({ history }) {
         }
       };
 
-      console.log(config);
       const { data } = await axios.post(
         `${BASE_URL}/api/files/upload`,
         formData,
@@ -121,7 +119,6 @@ export default function CreateMissingPost({ history }) {
       );
 
       setImageOne(data);
-      console.log(data);
       setUploading(false);
     } catch (errror) {
       console.log(error);
@@ -188,10 +185,10 @@ export default function CreateMissingPost({ history }) {
           </div>
 
           <div className="lg:w-[32%]">
-            <SelectBox
+            <TextInput
               minHeight={200}
               label={'Pet breed'}
-              choiceList={breedType}
+              placeholder={'Ocicocat'}
               data={breed}
               setData={setBreed}
             />

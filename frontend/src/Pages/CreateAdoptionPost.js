@@ -77,9 +77,9 @@ export default function CreateAdoptionPost() {
   const [gender, setGender] = useState('');
   const [breed, setBreed] = useState('');
   const [physicalcondition, setPhysicalcondition] = useState('');
-  const [vaccine, setVaccine] = useState('');
+  const [vaccine, setVaccine] = useState(false);
   const [type, setType] = useState('');
-  const [training, setTraining] = useState('');
+  const [training, setTraining] = useState(false);
   const [color, setColor] = useState('');
   const [empty, setEmpty] = useState(false);
   const [mobile, setMobile] = useState();

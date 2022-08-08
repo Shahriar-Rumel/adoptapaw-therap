@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52b4dc3a-d190-4e40-bd22-e89b199deb6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/context/GeneralPurposeEmailContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/adoptionapprovedowner.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/donation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/missinginformation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/missinginformationverification.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/missinginformationverificationowner.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/DonationServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/DonationServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingRequestServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adptapaw/backend/service/implementation/MissingRequestServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adoptionapproved.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adoptionapproved.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adoptionrequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adoptionrequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/passwordreset.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/passwordreset.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/AdoptionRequestServiceImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/DonationServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/DonationServiceImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingRequestServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/adptapaw/backend/service/implementation/MissingRequestServiceImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/adoptionapproved.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/adoptionapproved.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/adoptionrequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/adoptionrequest.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +110,8 @@
       <workItem from="1659801882485" duration="3585000" />
       <workItem from="1659877175931" duration="4698000" />
       <workItem from="1659889287415" duration="2092000" />
-      <workItem from="1659892357375" duration="7310000" />
+      <workItem from="1659892357375" duration="7999000" />
+      <workItem from="1659937730856" duration="1249000" />
     </task>
     <servers />
   </component>
