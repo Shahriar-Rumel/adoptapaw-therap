@@ -133,15 +133,10 @@ const DonationPurpose = () => {
         eu tincidunt cursus. Quam venenatis, id cras viverra at volutpat
         dictumst in fringilla.
       </p>
-      <div
+      <img
+        src="/assets/Icons/DonationSteps.svg"
         className="w-[100%] mt-5  h-[500px] custom-round donation-details-animation"
-        style={{
-          backgroundImage: `url("/assets/adoption/cat.jpg")`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat'
-        }}
-      ></div>
+      ></img>
     </div>
   );
 };
