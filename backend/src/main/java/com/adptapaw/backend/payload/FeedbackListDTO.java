@@ -1,4 +1,5 @@
-package com.adptapaw.backend.payload.donations;
+package com.adptapaw.backend.payload;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,8 +10,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DonationListDTO {
-    List<DonationDTO> content;
+public class FeedbackListDTO {
+    private List<FeedbackDTO> content;
     private int pageNo;
     private int pageSize;
     private long totalElements;

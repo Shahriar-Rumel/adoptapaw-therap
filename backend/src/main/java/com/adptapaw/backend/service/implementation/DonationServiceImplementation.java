@@ -5,6 +5,7 @@ import com.adptapaw.backend.context.GeneralPurposeEmailContext;
 import com.adptapaw.backend.entity.Donation;
 import com.adptapaw.backend.entity.DonationPost;
 import com.adptapaw.backend.entity.User;
+
 import com.adptapaw.backend.payload.donations.DonationListDTO;
 import com.adptapaw.backend.payload.donations.DonationDTO;
 import com.adptapaw.backend.payload.donations.DonationUserDTO;
@@ -16,11 +17,20 @@ import com.adptapaw.backend.service.DonationService;
 import com.adptapaw.backend.service.email.EmailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,6 +54,8 @@ public class DonationServiceImplementation implements DonationService {
     private DonationPostDTO mapToDTO(DonationPost donationPost){
         return mapper.map(donationPost, DonationPostDTO.class);
     }
+
+
 
     private DonationDTO mapToRequestDTO(Donation donation){
         return mapper.map(donation, DonationDTO.class);
@@ -112,15 +124,32 @@ public class DonationServiceImplementation implements DonationService {
     }
 
 
-    public DonationListDTO getAllByCreator(String id) {
+    public ResponseEntity<?> getAllByCreator(String id, int pageNo,  int pageSize, String sortBy,String sortDir) {
 
         User user  = userRepository.findById(Long.valueOf(id)).get();
-        List<Donation> donation = donationRepository.findAllByDonator(user);
 
-        List<DonationDTO> content= donation.stream().map(this::mapToRequestDTO).collect(Collectors.toList());
-        DonationListDTO donationListDTO = new DonationListDTO();
-        donationListDTO.setContent(content);
-        return donationListDTO;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(!Objects.equals(user.getEmail(), auth.getName())){
+            return new ResponseEntity<>("Not authorized to make changes", HttpStatus.BAD_REQUEST);
+        }
+
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        Page<Donation> donationmade =  donationRepository.findAllByDonator(user,pageable);
+        List<Donation> donation = donationmade.getContent();
+        List<DonationDTO> content= donation.stream().map(donationItem ->mapToRequestDTO(donationItem)).collect(Collectors.toList());
+
+        DonationListDTO  donationList = new DonationListDTO();
+        donationList.setContent(content);
+        donationList.setPageNo(donationmade.getNumber());
+        donationList.setPageSize(donationmade.getSize());
+        donationList.setTotalElements(donationmade.getTotalElements());
+        donationList.setTotalPages(donationmade.getTotalPages());
+        donationList.setLast(donationmade.isLast());
+
+        return new ResponseEntity<>(donationList,HttpStatus.OK);
     }
 
     @Override

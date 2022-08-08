@@ -4,6 +4,8 @@ package com.adptapaw.backend.controller;
 import com.adptapaw.backend.payload.donations.DonationListDTO;
 import com.adptapaw.backend.payload.donations.DonationDTO;
 import com.adptapaw.backend.service.DonationService;
+import com.adptapaw.backend.utils.AdoptapawConstants;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins  = "http://localhost:3000")
@@ -27,7 +29,10 @@ public class DonationController {
     }
 
     @GetMapping("/user/{id}/donation")
-    public DonationListDTO getDonationByCreator(@PathVariable(name = "id") String id){
-        return donationService.getAllByCreator(id);
+    public ResponseEntity<?> getDonationByCreator(@PathVariable(name = "id")String id, @RequestParam(value = "pageNo", defaultValue = AdoptapawConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+                                                        @RequestParam(value = "pageSize", defaultValue = AdoptapawConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+                                                        @RequestParam(value = "sortBy", defaultValue = AdoptapawConstants.DEFAULT_SORT_BY, required = false) String sortBy,
+                                                        @RequestParam(value = "sortDir", defaultValue = AdoptapawConstants.DEFAULT_SORT_DIRECTION, required = false) String sortDir ){
+        return donationService.getAllByCreator(id,pageNo, pageSize, sortBy,sortDir);
     }
 }
