@@ -130,18 +130,19 @@ const DonatorAvatar = ({ data }) => {
 
 const DonationPurpose = () => {
   return (
-    <div className="mt-16 lg:mt-[-40px] donation-details-animation">
-      <h1 className="font-extrabold tracking-tight text-[20px] text-primary leading-7 my-4">
+    <div className="mt-16 lg:mt-[0px] donation-details-animation lg:w-[70%]">
+      <h1 className="font-extrabold tracking-tight text-[20px] text-primary leading-5 ">
         How your donation help us take care of helpless animals
       </h1>
-      <p className="text-[14px] text-gray-light leading-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat felis
-        eu tincidunt cursus. Quam venenatis, id cras viverra at volutpat
-        dictumst in fringilla.
+      <p className="text-[14px] text-gray-light leading-4 mt-4">
+        We spend your donation money buying food and medicine for sick and
+        hungry animals. Majority of the cost goes to pay the hospital and
+        treatment bills. After that, the remaining amount of donation money is
+        used to find a rehabilitation shelter for the animal.
       </p>
       <img
         src="/assets/Icons/DonationSteps.svg"
-        className="w-[100%] mt-5  h-[500px] custom-round donation-details-animation"
+        className="w-[100%] mt-4  h-[500px] custom-round donation-details-animation"
       ></img>
     </div>
   );
@@ -284,13 +285,13 @@ export default function DonationPostDetailsPage() {
         <Loader />
       ) : (
         donationPostById && (
-          <div className="lg:w-3/4 w-[90vw] mx-auto mt-[180px] mb-[40px] lg:flex justify-start items-center overflow-y-hidden">
+          <div className="lg:w-3/4 w-[90vw] mx-auto mt-[180px] mb-[40px] lg:flex justify-start  overflow-y-hidden">
             <Topbar
               address={`Home/Donation/Post/${donationPostById.id}`}
               link={'/ongoingdonations'}
             />
 
-            <div className="lg:mr-10 lg:w-[80%] donation-details-animation ">
+            <div className="lg:mr-10  lg:w-[80%] donation-details-animation ">
               <DonationCover data={donationPostById} />
               <DonationHeader data={donationPostById} />
               <DonationBar data={donationPostById} />
