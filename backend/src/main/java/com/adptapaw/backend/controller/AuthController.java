@@ -95,18 +95,18 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@RequestBody SignupDTO signupDTO)  {
 
 
-            if( signupDTO.getName().isBlank())
+            if( signupDTO.getName() == null || signupDTO.getName().trim().length() == 0)
                 return new ResponseEntity<>("Name can not be empty",HttpStatus.BAD_REQUEST);
 
-            if(signupDTO.getEmail().isBlank()  )
+            if(signupDTO.getEmail() == null || signupDTO.getEmail().trim().length() == 0)
                 return new ResponseEntity<>("Email can not be empty",HttpStatus.BAD_REQUEST);
 
 
-            if( signupDTO.getUsername().isBlank())
+            if( signupDTO.getUsername()== null || signupDTO.getUsername().trim().length() == 0)
                 return new ResponseEntity<>("Username can not be empty",HttpStatus.BAD_REQUEST);
 
 
-            if( signupDTO.getPassword().isBlank() )
+            if( signupDTO.getPassword() == null || signupDTO.getPassword().trim().length() == 0)
                 return new ResponseEntity<>("Password can not be empty",HttpStatus.BAD_REQUEST);
 
 
