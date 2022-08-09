@@ -9,6 +9,9 @@ import UploadLoader from '../UploadLoader/UploadLoader';
 import { missingInfoCreateAction } from '../../actions/missingInfoActions';
 import Loader from '../Loader';
 import Message from '../Message';
+import { PRODUCTION_URL } from '../../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL;
 
 export default function MissingAnimalDataModal({ data, setModal }) {
   const [image, setImage] = useState();
@@ -38,7 +41,6 @@ export default function MissingAnimalDataModal({ data, setModal }) {
   };
 
   const { id } = useParams();
-  const BASE_URL = 'http://localhost:8081';
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();

@@ -15,11 +15,12 @@ import TextInput from '../IO/TextInput';
 import Loader from '../Loader';
 import UploadLoader from '../UploadLoader/UploadLoader';
 import Message from '../Message';
+import { PRODUCTION_URL } from '../../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL;
 
 const FileUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
   const uploadFileHandler = async (e) => {
-    const BASE_URL = 'http://localhost:8081';
-
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append('file', file);

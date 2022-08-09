@@ -8,7 +8,9 @@ import {
 } from '../constants/passwordResetConstant';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8081/api/auth';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL + '/api/auth';
 
 export const resetPasswordRequest = (email) => async (dispatch) => {
   try {

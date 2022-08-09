@@ -24,7 +24,9 @@ import {
   ADOPTION_REQUEST_SUCCESS
 } from '../constants/adoptionConstants';
 
-const BASE_URL = 'http://localhost:8081/api/adoption';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL + '/api/adoption';
 
 export const adoptionPostsAction = (pageNo, pageSize) => async (dispatch) => {
   try {

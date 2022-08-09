@@ -12,7 +12,9 @@ import {
   DONATION_POST_BY_ID_SUCCESS
 } from '../constants/donationPostConstants';
 
-const BASE_URL = 'http://localhost:8081/api';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL + '/api';
 
 export const donationCreateAction =
   (amountofmoney, id, uid) => async (dispatch, getState) => {

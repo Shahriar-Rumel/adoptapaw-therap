@@ -19,7 +19,9 @@ import {
 } from '../constants/userConstants';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8081';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL;
 
 export const login = (email, password) => async (dispatch) => {
   try {

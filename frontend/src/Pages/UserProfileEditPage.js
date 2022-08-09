@@ -8,10 +8,12 @@ import TextInput from '../Components/IO/TextInput';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
 import Message from '../Components/Message';
 import Topbar from '../Components/Topbar';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL;
 
 const DpUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
   const uploadFileHandler = async (e) => {
-    const BASE_URL = 'http://localhost:8081';
     const file = e.target.files[0];
     const formData = new FormData();
 

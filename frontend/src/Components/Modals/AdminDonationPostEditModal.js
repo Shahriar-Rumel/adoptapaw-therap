@@ -9,6 +9,9 @@ import { donationPostUpdateAction } from '../../actions/donationPostActions';
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader';
 import Message from '../Message';
+import { PRODUCTION_URL } from '../../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL;
 
 export default function AdminDonationPostEditModal({ data, setModal }) {
   const [name, setName] = useState(data.name);
@@ -43,8 +46,6 @@ export default function AdminDonationPostEditModal({ data, setModal }) {
     image: image,
     location: location
   };
-
-  const BASE_URL = 'http://localhost:8081';
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];

@@ -12,6 +12,10 @@ import UploadLoader from '../Components/UploadLoader/UploadLoader';
 import Message from '../Components/Message';
 import Topbar from '../Components/Topbar';
 
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL;
+
 export default function CreateMissingPost({ history }) {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
@@ -94,8 +98,6 @@ export default function CreateMissingPost({ history }) {
       console.log('Data is empty');
     }
   };
-
-  const BASE_URL = 'http://localhost:8081';
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];

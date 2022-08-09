@@ -8,7 +8,9 @@ import {
   MISSING_INFO_SUCCESS
 } from '../constants/missingInfoConstants';
 
-const BASE_URL = 'http://localhost:8081/api/missing';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL + '/api/missing';
 
 export const missingInfoCreateAction = (id, dataport) => async (dispatch) => {
   try {

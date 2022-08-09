@@ -20,7 +20,9 @@ import {
   MISSING_POST_SUCCESS
 } from '../constants/missingAnimalConstants';
 
-const BASE_URL = 'http://localhost:8081/api/missing';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL + '/api/missing';
 
 export const missingPostsAction = (pageNo, pageSize) => async (dispatch) => {
   try {

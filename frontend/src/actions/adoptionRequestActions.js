@@ -8,7 +8,10 @@ import {
   ADOPTION_REQUEST_BY_ID_SUCCESS
 } from '../constants/adoptionRequestConstants';
 
-const BASE_URL = 'http://localhost:8081/api';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL + '/api';
+
 export const adoptionRequestsByUserIdAction =
   (id) => async (dispatch, getState) => {
     try {

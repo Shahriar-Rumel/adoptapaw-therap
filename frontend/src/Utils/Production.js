@@ -1,0 +1,3 @@
+const PRODUCTION_URL = process.env.REACT_APP_PRODUCTION;
+
+export { PRODUCTION_URL };

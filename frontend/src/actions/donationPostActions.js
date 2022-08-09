@@ -14,7 +14,9 @@ import {
   DONATION_POST_UPDATE_SUCCESS
 } from '../constants/donationPostConstants';
 
-const BASE_URL = 'http://localhost:8081/api/donationpost';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL + '/api/donationpost';
 
 export const donationPostCreateAction =
   (dataport) => async (dispatch, getState) => {

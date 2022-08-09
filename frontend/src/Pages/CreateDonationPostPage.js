@@ -10,6 +10,9 @@ import Topbar from '../Components/Topbar';
 import Loader from '../Components/Loader';
 import Message from '../Components/Message';
 import { useNavigate } from 'react-router-dom';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL;
 
 export default function CreateDonationPage() {
   const [name, setName] = useState();
@@ -41,8 +44,6 @@ export default function CreateDonationPage() {
     image: image,
     location: location
   };
-
-  const BASE_URL = 'http://localhost:8081';
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];

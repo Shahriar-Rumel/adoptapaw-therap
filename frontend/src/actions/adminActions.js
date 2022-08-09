@@ -27,7 +27,9 @@ import {
   MISSING_INFO_BY_ID_SUCCESS
 } from '../constants/missingInfoConstants';
 
-const BASE_URL = 'http://localhost:8081/api';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL + '/api';
 
 export const adminStatsAction = () => async (dispatch, getState) => {
   try {

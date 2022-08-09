@@ -8,7 +8,9 @@ import {
 } from '../constants/feedbackConstants';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8081/api/feedback';
+import { PRODUCTION_URL } from '../Utils/Production';
+
+const BASE_URL = PRODUCTION_URL + '/api/feedback';
 
 export const feedbackCreateAction =
   (dataport) => async (dispatch, getState) => {
