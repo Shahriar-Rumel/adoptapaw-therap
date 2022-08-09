@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { donationPostByIdAction } from '../actions/donationPostActions';
 import Loader from '../Components/Loader';
 import AdminDonationPostEditModal from '../Components/Modals/AdminDonationPostEditModal';
+import Topbar from '../Components/Topbar';
 
 const DonationCover = ({ data }) => {
   return (
@@ -98,6 +99,10 @@ export default function AdminDonationPostDetailsPage() {
       ) : (
         donationPostById && (
           <div className="lg:w-3/4 w-[90vw] mx-auto mt-[150px] mb-[40px] lg:flex justify-center">
+            <Topbar
+              address={`Dashboard/Donation/Post/${donationPostById.id}`}
+              link={'/dashboard'}
+            />
             <div className="lg:w-[1000px]">
               <DonationCover data={donationPostById} />
               <DonationHeader data={donationPostById} />

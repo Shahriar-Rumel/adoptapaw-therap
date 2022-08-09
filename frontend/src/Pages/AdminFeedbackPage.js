@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { feedbackAction } from '../actions/feedbackActions';
 import Loader from '../Components/Loader';
 import Pagination from '../Components/Pagination';
+import Topbar from '../Components/Topbar';
 
 const FeedbackStat = ({ data }) => {
   let positive = 0;
@@ -51,7 +52,8 @@ export default function AdminFeedbackPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[100px]">
+        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[100px] pt-[20px] lg:pt-[40px]">
+          <Topbar address={`Dashboard/Feedbacks`} link={'/dashboard'} />
           <div className="flex justify-between items-center  my-5">
             <h1 className="font-extrabold text-primary text-[24px] text-left  tracking-tight">
               Feedbacks

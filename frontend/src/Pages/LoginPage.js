@@ -102,7 +102,7 @@ export default function LoginPage() {
             <Button text="Login" />
           </div>
           <div className="mt-5 request-form-animation flex justify-between">
-            <h3 className="text-gray-light tracking-tight">
+            <h3 className="text-gray-light tracking-tight text-[14px]">
               Don't have an account ?
               <Link to="/registration">
                 <span className="font-bold text-brand px-1 cursor-pointer">
@@ -111,7 +111,9 @@ export default function LoginPage() {
               </Link>
             </h3>
             <Link to="/forgot">
-              <h3 className="text-primary tracking-tight">Forgot password ?</h3>
+              <h3 className="text-primary tracking-tight text-[14px]">
+                Forgot password ?
+              </h3>
             </Link>
           </div>
         </div>

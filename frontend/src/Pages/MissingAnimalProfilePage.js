@@ -9,6 +9,7 @@ import { missingPostByIdAction } from '../actions/missingAnimalActions';
 import Loader from '../Components/Loader';
 import FeaturesCol from '../Components/FeaturesCol';
 import MissingAnimalDataModal from '../Components/Modals/MissingAnimalDataModal';
+import Topbar from '../Components/Topbar';
 
 const MissingFeature = ({ data }) => {
   useEffect(() => {
@@ -67,7 +68,13 @@ export default function MissingAnimalProfilePage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:flex lg:justify-between lg:flex-row mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+        <div className="lg:flex lg:justify-between lg:flex-row  mx-auto lg:w-3/4 w-[90vw] pt-[40px] mt-[100px] lg:mt-[150px] mb-[100px]">
+          {missingPostById && (
+            <Topbar
+              address={`Home/Missing/Post/${missingPostById.id}`}
+              link={'/missing'}
+            />
+          )}
           {modal && (
             <MissingAnimalDataModal
               data={missingPostById}

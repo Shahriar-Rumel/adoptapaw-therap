@@ -7,6 +7,7 @@ import AnimalProfileLeft from '../Components/Adoption/AnimalProfileLeft';
 import AnimalProfileMid from '../Components/Adoption/AnimalProfileMid';
 import { useNavigate, useParams } from 'react-router-dom';
 import Loader from '../Components/Loader';
+import Topbar from '../Components/Topbar';
 
 export default function AdoptionAnimalProfile() {
   const dispatch = useDispatch();
@@ -28,7 +29,12 @@ export default function AdoptionAnimalProfile() {
         <Loader />
       ) : (
         adoptionPostById && (
-          <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+          <div className=" lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw] pt-[40px]  mt-[100px] lg:mt-[150px] mb-[100px]">
+            <Topbar
+              address={`Home/Adoption/Post/${adoptionPostById.id}`}
+              link={'/adoption'}
+            />
+
             <div className=" lg:w-[50%]  lg:mr-10">
               <AnimalProfileLeft data={adoptionPostById} />
               <AnimalProfileMid data={adoptionPostById} />

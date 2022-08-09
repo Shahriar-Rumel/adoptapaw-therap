@@ -67,7 +67,7 @@ export default function RegistrationPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className=" lg:flex  lg:flex-row-reverse justify-between lg:items-center lg:w-3/4 w-[90vw] mx-auto mt-[150px] mb-[100px]">
+        <div className=" lg:flex  lg:flex-row-reverse justify-between lg:items-center pt-[40px] lg:w-3/4 w-[90vw] mx-auto mt-[150px] mb-[100px]">
           <Topbar address={'Home/Registration'} link={'/home'} />
           <img
             src="/assets/dogcat.svg"
@@ -75,7 +75,7 @@ export default function RegistrationPage() {
           ></img>
           <div className="lg:w-[50%] ">
             <h1 className="font-extrabold text-[24px] tracking-tight text-primary request-form-animation">
-              Want to help a paw ?
+              Big line about why you should sign up
             </h1>
             <h3 className="text-[14px] font-regular text-gray-light mb-10 request-form-animation">
               Sign up to get Started
