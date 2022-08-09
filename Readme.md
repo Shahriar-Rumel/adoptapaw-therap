@@ -8,7 +8,12 @@ Under these circumstances, a central online platform like adoptapaw can work as 
 
 ## Badges
 
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![MIT License](https://badgen.net/npm/license/lodash?color=yellow&label=License)](https://opensource.org/licenses/)
+![](https://img.shields.io/badge/Backend-Springboot-informational?style=flat&logo=spring&logoColor=6CB33E&color=6CB33E)
+[![Build system](https://badgen.net/badge/icon/maven?color=B3204E&icon=maven&label=Builder)](https://opensource.org/licenses/)
+[![Data Base](https://badgen.net/badge/icon/postgresql?color=4D2EA5&icon=postgresql&label=Database)](https://opensource.org/licenses/)
+![](https://img.shields.io/badge/Frontend-React-informational?style=flat&logo=react&logoColor=00D8FF&color=00D8FF)
+![](https://img.shields.io/badge/State-Redux-informational?style=flat&logo=redux&logoColor=764abc&color=764abc)
 [![youtube views](https://img.shields.io/youtube/views/jwL_E4QpZxk?style=social)](https://opensource.org/licenses/)
 
 ## Tech Stack
