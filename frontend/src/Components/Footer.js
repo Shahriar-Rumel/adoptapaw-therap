@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function Footer() {
+  const [theme, setTheme] = useState(true);
+
+  const arr = useLocation();
+
+  useEffect(() => {
+    if (arr.pathname === '/') {
+      setTheme(false);
+    } else {
+      setTheme(true);
+    }
+  }, [arr]);
   return (
-    <div className="bg-[#2F0F02] h-[300px] flex items-center">
-      <div className="md:w-[80vw] w-[85vw]  mx-auto flex flex-col lg:flex-row items-center justify-between">
+    <div
+      className={`bg-[#2F0F02] ${
+        theme ? `h-[300px]` : `h-0`
+      } flex items-center`}
+    >
+      <div
+        className={` ${
+          theme ? `flex` : `hidden`
+        } md:w-[80vw] w-[85vw]  mx-auto  flex-col lg:flex-row items-center justify-between`}
+      >
         <img src="/assets/logo.svg" className="w-[200px]"></img>
         <div className="flex flex-col items-center">
           <h1 className="text-white mt-[100px] lg:mt-0 mb-5 text-[14px] text-gray-light">

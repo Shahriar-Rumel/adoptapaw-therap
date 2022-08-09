@@ -23,41 +23,59 @@ export default function Onboarding() {
     }
   }, [userInfo]);
   return (
-    <div className=" mx-auto  w-[95vw] lg:w-3/4 mt-[50px] md:mt-[80px]   ">
+    <div className=" mx-auto  w-[95vw] lg:w-3/4 mt-[150px]  ">
       <div className="cover"></div>
-      <div className="flex flex-col justify-between xl:flex-row relative xl:justify-between mt-10 lg:mt-6 xl:mt-32 onboarding">
-        <div className="mt-6 ">
-          <h2 className="mt-[50px] md:mt-[30px] uppercase arriving-animation   text-[12px] md:text-[14px] font-regular leading-[14px]  text-center text-offwhite lg:text-left">
+      <div
+        className="flex flex-col justify-between xl:flex-row
+       relative xl:justify-between ml-[20px]"
+      >
+        <div className="">
+          <h2
+            className=" arriving-animation  text-[14px] md:text-[18px]
+            leading-[14px]  text-white lg:text-left mb-4 lg:font-light"
+          >
             Thousands of paws need shelter everyday
-            {/* <span className="text-brand font-medium"> be the change</span> */}
           </h2>
-          <h1 className="-mt-1 -md:mt-8 arriving-animation text-[#ffff]  text-[50px] whitespace-nowrap lg:w-full xl:w-3/4 md:text-[108px] md:leading-[108px] lg:text-[128px] lg:leading-[128px] xl:text-[142px] xl:leading-[142px] uppercase font-black  leading-[50px]  text-center lg:text-left">
+          <h1
+            className=" arriving-animation text-[#ffff] 
+            text-[14vw] whitespace-nowrap lg:w-full xl:w-3/4 md:text-[108px] 
+            uppercase font-black  leading-[14vw] md:leading-[108px]  lg:text-left"
+          >
             Be the <span className="outlined">home</span>
           </h1>
-          <h1 className=" text-[#ffff] arriving-animation   text-[50px] whitespace-nowrap lg:w-full xl:w-3/4 md:text-[108px] md:leading-[108px] lg:text-[128px] lg:leading-[128px] xl:text-[142px] xl:leading-[142px] uppercase font-black  leading-[50px] mt-[0px] text-center lg:text-left">
+          <h1
+            className=" text-[#ffff] arriving-animation 
+           text-[16vw] md:text-[108px]  whitespace-nowrap lg:w-full xl:w-3/4
+           uppercase font-black  
+            leading-[14vw] md:leading-[108px] mt-[0px] lg:text-left"
+          >
             <span className="outlined">for </span>a paw
           </h1>
-          <div className="  mx-auto w-[100%] arriving-animation   flex items-center justify-center mt-[50px] md:mt-24 lg:flex-none lg:justify-start">
+          <div
+            className="  mx-auto w-[100%] arriving-animation 
+            flex items-center mt-[140px] md:mt-24 lg:flex-none 
+            lg:justify-start"
+          >
             <Link to="/home">
               <Button
                 text="Adopt Paws"
                 brnad={false}
                 width={true}
-                widthClass={'w-[200px]'}
+                widthClass={' w-[120px] lg:w-[200px]'}
                 height={true}
                 heightClass={'h-[55px]'}
               />
             </Link>
           </div>
         </div>
-        <img
+        {/* <img
           src="/assets/CoverIllustration.svg"
-          className="dogday-mobile w-[95vw] md:w-[30vw] mt-[80px] mx-auto arriving-animation"
+          className="dogday-mobile w-[95vw] md:hidden mt-[80px] mx-auto arriving-animation"
         ></img>
         <img
           src="/assets/dogdayafternoon-desktop.svg"
-          className="dogday-pc w-[95vw] lg:w-[40vw] xl:w-[40vw]  2xl:w-[35vw] xl:mt-[180px] mx-auto xl:absolute xl:ml-[50%] mt5 arriving-animation "
-        ></img>
+          className="md:hidden dogday-pc w-[95vw] lg:w-[40vw] xl:w-[40vw]  2xl:w-[35vw] xl:mt-[180px] mx-auto xl:absolute xl:ml-[50%] mt5 arriving-animation "
+        ></img> */}
       </div>
     </div>
   );

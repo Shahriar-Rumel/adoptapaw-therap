@@ -50,12 +50,13 @@ body {
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: linear-gradient(90.51deg, #280068 0.45%, #e8875e 99.61%);
+  background-image: url('../public/assets/cover.jpg');
+  /* background: linear-gradient(90.51deg, #280068 0.45%, #e8875e 99.61%); */
 }
 @media screen and (max-width: 768px) {
-  .cover {
+  /* .cover {
     background: linear-gradient(180.51deg, #280068 0.45%, #e8875e 99.61%);
-  }
+  } */
 }
 .outlined {
   -webkit-text-fill-color: red;
@@ -132,7 +133,7 @@ body {
 .dogday-pc {
   display: none;
 }
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 640px) {
   .dogday-mobile {
     display: block;
     width: 100%;

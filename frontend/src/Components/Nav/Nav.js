@@ -40,9 +40,9 @@ export default function Nav() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  // window.onscroll = () => {
-  //   window.pageYOffset === 0 ? setScrolled(false) : setScrolled(true);
-  // };
+  window.onscroll = () => {
+    window.pageYOffset === 0 ? setScrolled(false) : setScrolled(true);
+  };
 
   useEffect(() => {
     if (burger) {
