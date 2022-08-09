@@ -1,4 +1,4 @@
-![Logo](../Resources/adoptapawreadmecover.svg)
+![Logo](/Resources/adoptapawreadmecover.svg)
 
 # **adoptapaw**
 
@@ -39,7 +39,7 @@ https://adoptapaw.netlify.app/
 
 ## Screenshots
 
-![App Screenshot](../Resources/adoptapawcover.png)
+![App Screenshot](/Resources/adoptapawcover.png)
 
 ## License
 
