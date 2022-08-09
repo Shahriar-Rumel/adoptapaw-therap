@@ -46,7 +46,7 @@ https://adoptapaw.netlify.app/
 
 ## Screenshots
 
-![App Screenshot](/Resources/adoptapawcover.png)
+![App Screenshot](/Resources/cover.png)
 
 ## License
 
