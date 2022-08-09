@@ -43,7 +43,7 @@ export default function AdminUserListPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+        <div className="mx-auto lg:w-3/4 w-[90vw]  mt-[130px] lg:mt-[150px] mb-[100px]">
           <Topbar
             address={`Dashboard/User List/Page ${pageNo + 1}`}
             link={'/dashboard'}

@@ -37,7 +37,7 @@ export default function AdminMissingInformationsPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="mx-auto lg:w-3/4 w-[90vw]  mt-[100px] lg:mt-[150px] mb-[100px]">
+        <div className="mx-auto lg:w-3/4 w-[90vw]   lg:mt-[150px] mt-[130px] mb-[100px]">
           <Topbar
             address={`Dashboard/Missing/Information/Page ${pageNo + 1}`}
             link={'/dashboard'}

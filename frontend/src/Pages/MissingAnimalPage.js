@@ -93,39 +93,51 @@ export default function MissingAnimalPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[140px]">
+        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[140px] lg:mt-[180px]">
           <Topbar address={`Home/Missing/Page/${pageNo + 1}`} link={'/home'} />
           <div className="flex flex-col w-[100%]  md:flex-row md:justify-between md:items-center mb-5">
-            <AdoptionHeader
-              link="/assets/Lost-dog.svg"
-              header="Missing Animals"
-              content="Every pet is precious to their owners. Perform a noble deed by reuniting pets with their owners. We express our gratitude to every person who is willing to come forward to help find a missing animal."
-            />
-            {userInfo && (
-              <Link
-                to={`/missing/${userInfo.id}/createpost`}
-                className="w-[120px]"
-              >
-                <Button
-                  text="Create Post"
-                  height={true}
-                  heightClass="h-[50px]"
-                  width={true}
-                  widthClass="w-[120px]"
-                />
-              </Link>
-            )}
-            {!userInfo && (
-              <Link to={`/login`} className="w-[120px]">
-                <Button
-                  text="Create Post"
-                  height={true}
-                  heightClass="h-[50px]"
-                  width={true}
-                  widthClass="w-[120px]"
-                />
-              </Link>
-            )}
+            <div className="bg-gradient-to-r from-[#880000] to-[#000004]  relative w-full h-[300px] custom-round mb-16 flex items-center justify-between px-6">
+              <div className=" mt-[-100px] lg:mt-[-60px] z-[300]">
+                <h1 className="text-white font-bold text-[20px] lg:text-[26px] tracking-tight mb-2">
+                  Missing Animals
+                </h1>
+                <p className="text-offwhite text-[14px] lg:w-[70%]">
+                  Every pet is precious to their owners. Perform a noble deed by
+                  reuniting pets with their owners. We express our gratitude to
+                  every person who is willing to come forward to help find a
+                  missing animal.
+                </p>
+              </div>
+              <div className="absolute left-6 bottom-8 z-[300]">
+                {userInfo && (
+                  <Link
+                    to={`/missing/${userInfo.id}/createpost`}
+                    className="w-[120px]"
+                  >
+                    <Button
+                      text={'Create Post'}
+                      width={true}
+                      widthClass={'w-[120px] lg:w-[150px]'}
+                    />
+                  </Link>
+                )}
+                {!userInfo && (
+                  <Link to={`/login`} className="w-[120px]">
+                    <Button
+                      text="Create Post"
+                      height={true}
+                      heightClass="h-[50px]"
+                      width={true}
+                      widthClass="w-[120px]"
+                    />
+                  </Link>
+                )}
+              </div>
+              <img
+                src="/assets/cat.png"
+                className="absolute custom-round  w-[150px] lg:w-[300px] right-0 bottom-0 "
+              ></img>
+            </div>
           </div>
           <Searchbox
             searchName={searchName}

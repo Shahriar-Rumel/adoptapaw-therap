@@ -48,7 +48,7 @@ const MissingInformationDetailsLeft = ({ data, userInfo }) => {
             <Message message={'Request Approved!'} variant={'success'} />
           )}
           {loading && <UploadLoader />}
-          <div className="flex  justify-between items-center mt-[32px] shadow-md px-6 py-4 custom-round">
+          <div className="flex  justify-between items-center mt-[32px] shadow-md  px-6 py-4 pt-[20px] custom-round">
             <h2 className="text-[20px] font-extrabold tracking-tight text-primary ">
               Status
             </h2>

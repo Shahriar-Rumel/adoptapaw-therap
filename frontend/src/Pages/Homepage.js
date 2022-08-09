@@ -45,7 +45,31 @@ export default function Homepage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[140px] ">
+        <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[100px] lg:mt-[120px] ">
+          <div className="bg-gradient-to-r from-[#3A1607] to-[#DA4A0C]  relative w-full h-[300px] custom-round mb-16 flex items-center justify-between px-6">
+            <div className=" mt-[-100px] lg:mt-[-60px] z-[300]">
+              <h1 className="text-white font-bold text-[20px] lg:text-[26px]  mb-2">
+                Adoptapaw Encourages Charity for Animals
+              </h1>
+              <p className="text-white text-[14px] lg:w-[70%]">
+                Adoption of animal saves those animals who cannot protect
+                themselves.Having a missing animal find their way back home is a
+                noble deed.Donation for sick animals is equivalent to saving a
+                life.
+              </p>
+            </div>
+            <div className="absolute left-6 bottom-8 z-[300]">
+              <Button
+                text={'Adopt now'}
+                width={true}
+                widthClass={'w-[120px] lg:w-[150px]'}
+              />
+            </div>
+            <img
+              src="/assets/cat.png"
+              className="absolute custom-round  w-[150px] lg:w-[300px] right-0 bottom-0 "
+            ></img>
+          </div>
           <div className="flex justify-between items-center">
             <h1 className=" font-black tracking-tighter text-[24px] px-3 text-primary mb-[30px] border-l-4 border-l-green">
               Paws for adoption

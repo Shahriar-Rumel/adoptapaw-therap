@@ -7,7 +7,7 @@ export default function Searchbox({
   showSearchBox
 }) {
   return (
-    <div className="my-5 flex  flex-col items-center justify-center ">
+    <div className="mb-5 flex  flex-col items-center justify-center ">
       <div className="custom-round overflow-hidden flex  w-[90vw] lg:w-[600px] border-[1px] border-input hover:shadow-lg focus:shadow-lg ">
         <input
           className="bg-input border-[1px] focus:outline-none  border-input  h-[45px] px-4 text-[14px] w-[100%]"

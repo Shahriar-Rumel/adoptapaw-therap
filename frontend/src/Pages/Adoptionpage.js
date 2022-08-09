@@ -12,8 +12,6 @@ import FilterBox from '../Components/IO/FilterBox';
 import Pagination from '../Components/Pagination';
 import Searchbox from '../Components/IO/Searchbox';
 
-
-
 export default function Adoptionpage() {
   const [size, setSize] = useState();
   const [searchName, setSearchName] = useState('');
@@ -103,43 +101,52 @@ export default function Adoptionpage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[140px] mb-[100px] ">
+        <div className="lg:w-3/4 w-[90vw] mx-auto mt-[160px] mb-[100px] ">
           <Topbar address={`Home/Adoption/Page ${pageNo + 1}`} link={'/home'} />
 
           <div className="flex flex-col w-[100%]  md:flex-row md:justify-between md:items-center">
-            <AdoptionHeader
-              link={'/assets/adoption/dogowner.svg'}
-              header={'Adopt helpless animals today'}
-              content={
-                'We’re presenting you an opportunity to give a home to a misfortunate animal today. These animals are deprived of shelter, food, and love. We are sure these animals will fill your life with laughter, recreation, and happiness.'
-              }
-            />
-
-            {userInfo && (
-              <Link
-                to={`/adoption/${userInfo.id}/createpost`}
-                className="w-[120px]"
-              >
-                <Button
-                  text="Create Post"
-                  height={true}
-                  heightClass="h-[50px]"
-                  width={true}
-                  widthClass="w-[120px]"
-                />
-              </Link>
-            )}
-            {!userInfo && (
-              <Link to={`/login`} className="w-[120px]">
-                <Button
-                  text="Create Post"
-                  height={true}
-                  heightClass="h-[50px]"
-                  width={true}
-                  widthClass="w-[120px]"
-                />
-              </Link>
-            )}
+            <div className="bg-gradient-to-r from-[#27004B] to-[#000004]  relative w-full h-[300px] custom-round mb-16 flex items-center justify-between px-6">
+              <div className=" mt-[-100px] lg:mt-[-60px] z-[300]">
+                <h1 className="text-white font-bold text-[20px] lg:text-[26px] tracking-tight mb-2">
+                  Adopt helpless animals today
+                </h1>
+                <p className="text-offwhite text-[14px] lg:w-[70%]">
+                  We’re presenting you an opportunity to give a home to a
+                  misfortunate animal today. These animals are deprived of
+                  shelter, food, and love. We are sure these animals will fill
+                  your life with laughter, recreation, and happiness.
+                </p>
+              </div>
+              <div className="absolute left-6 bottom-8 z-[300]">
+                {userInfo && (
+                  <Link
+                    to={`/adoption/${userInfo.id}/createpost`}
+                    className="w-[120px]"
+                  >
+                    <Button
+                      text={'Create Post'}
+                      width={true}
+                      widthClass={'w-[120px] lg:w-[150px]'}
+                    />
+                  </Link>
+                )}
+                {!userInfo && (
+                  <Link to={`/login`} className="w-[120px]">
+                    <Button
+                      text="Create Post"
+                      height={true}
+                      heightClass="h-[50px]"
+                      width={true}
+                      widthClass="w-[120px]"
+                    />
+                  </Link>
+                )}
+              </div>
+              <img
+                src="/assets/dog.png"
+                className="absolute custom-round  w-[150px] lg:w-[300px] right-0 bottom-0 "
+              ></img>
+            </div>
           </div>
           <Searchbox
             searchName={searchName}
