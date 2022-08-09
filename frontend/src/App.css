@@ -50,13 +50,13 @@ body {
   right: 0;
   bottom: 0;
   z-index: -1;
-  background-image: url('../public/assets/cover.jpg');
+  background-image: url('../public/assets/cover-desktop.png');
   /* background: linear-gradient(90.51deg, #280068 0.45%, #e8875e 99.61%); */
 }
 @media screen and (max-width: 768px) {
-  /* .cover {
-    background: linear-gradient(180.51deg, #280068 0.45%, #e8875e 99.61%);
-  } */
+  .cover {
+    background-image: url('../public/assets/cover-mobile-v1.jpg');
+  }
 }
 .outlined {
   -webkit-text-fill-color: red;

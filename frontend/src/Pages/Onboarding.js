@@ -53,7 +53,7 @@ export default function Onboarding() {
           </h1>
           <div
             className="  mx-auto w-[100%] arriving-animation 
-            flex items-center mt-[140px] md:mt-24 lg:flex-none 
+            flex items-center mt-[100px] md:mt-24 lg:flex-none 
             lg:justify-start"
           >
             <Link to="/home">
@@ -68,14 +68,6 @@ export default function Onboarding() {
             </Link>
           </div>
         </div>
-        {/* <img
-          src="/assets/CoverIllustration.svg"
-          className="dogday-mobile w-[95vw] md:hidden mt-[80px] mx-auto arriving-animation"
-        ></img>
-        <img
-          src="/assets/dogdayafternoon-desktop.svg"
-          className="md:hidden dogday-pc w-[95vw] lg:w-[40vw] xl:w-[40vw]  2xl:w-[35vw] xl:mt-[180px] mx-auto xl:absolute xl:ml-[50%] mt5 arriving-animation "
-        ></img> */}
       </div>
     </div>
   );
