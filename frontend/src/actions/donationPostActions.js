@@ -9,6 +9,9 @@ import {
   DONATION_POST_CREATE_FAIL,
   DONATION_POST_CREATE_REQUEST,
   DONATION_POST_CREATE_SUCCESS,
+  DONATION_POST_DELETE_FAIL,
+  DONATION_POST_DELETE_REQUEST,
+  DONATION_POST_DELETE_SUCCESS,
   DONATION_POST_UPDATE_FAIL,
   DONATION_POST_UPDATE_REQUEST,
   DONATION_POST_UPDATE_SUCCESS
@@ -158,3 +161,36 @@ export const donationPostUpdateAction =
       });
     }
   };
+
+export const donationPostDeleteAction = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: DONATION_POST_DELETE_REQUEST
+    });
+
+    const {
+      userLogin: { userInfo }
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.jwtdto.accessToken}`
+      }
+    };
+
+    const { data } = await axios.delete(`${BASE_URL}/${id}`, config);
+
+    dispatch({
+      type: DONATION_POST_DELETE_SUCCESS
+    });
+  } catch (error) {
+    dispatch({
+      type: DONATION_POST_DELETE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+    });
+  }
+};

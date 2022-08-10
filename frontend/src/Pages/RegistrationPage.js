@@ -75,10 +75,10 @@ export default function RegistrationPage() {
           ></img>
           <div className="lg:w-[50%] ">
             <h1 className="font-extrabold text-[24px] tracking-tight text-primary request-form-animation">
-              Big line about why you should sign up
+              Register to become a friend of a paw
             </h1>
             <h3 className="text-[14px] font-regular text-gray-light mb-10 request-form-animation">
-              Sign up to get Started
+              Registering will help you do more for them
             </h3>
             {error && <Message message={error} variant={'danger'} />}
             <div className="request-form-animation">

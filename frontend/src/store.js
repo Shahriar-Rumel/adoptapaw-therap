@@ -41,6 +41,7 @@ import {
   donationAllPostReducer,
   donationPostByIdReducer,
   donationPostCreateReducer,
+  donationPostDeleteReducer,
   donationPostUpdateReducer
 } from './reducers/donationPostReducer';
 import {
@@ -102,7 +103,8 @@ const reducer = combineReducers({
   adminAllMissingInfo: adminAllMissingInformationReducer,
   missingInfoByIdStore: missingInfoByIdReducer,
   missingInfoApprove: missingInfoApproveReducer,
-  feedbackStore: feedbackReducer
+  feedbackStore: feedbackReducer,
+  donationPostDelete: donationPostDeleteReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

@@ -16,7 +16,7 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className=" lg:w-[600px] w-[90vw] mx-auto mt-[150px] ">
+    <div className=" lg:w-[600px] w-[90vw] mx-auto mt-[150px] mb-[200px] py-[100px] ">
       <Topbar address={'Home/Forgot Password'} link={'/home'} />
       <h1 className="font-extrabold text-[24px] text-primary tracking-tight">
         Reset Password

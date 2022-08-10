@@ -47,7 +47,7 @@ export default function Homepage() {
       ) : (
         <div className=" lg:w-3/4 w-[90vw] mx-auto mt-[100px] lg:mt-[120px] ">
           <div className="bg-gradient-to-r from-[#3A1607] to-[#DA4A0C]  relative w-full h-[300px] custom-round mb-16 flex items-center justify-between px-6">
-            <div className=" mt-[-100px] lg:mt-[-60px] z-[300]">
+            <div className=" mt-[-100px] lg:mt-[-60px] z-[10]">
               <h1 className="text-white font-bold text-[20px] lg:text-[26px]  mb-2">
                 Adoptapaw Encourages Charity for Animals
               </h1>
@@ -58,7 +58,7 @@ export default function Homepage() {
                 life.
               </p>
             </div>
-            <div className="absolute left-6 bottom-8 z-[300]">
+            <div className="absolute left-6 bottom-8 z-[10]">
               <Button
                 text={'Adopt now'}
                 width={true}

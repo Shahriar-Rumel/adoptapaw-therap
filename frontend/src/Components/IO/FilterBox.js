@@ -32,7 +32,7 @@ export default function FilterBox({
       <div
         className={`drop-down focus:border-2 flex z-[12] justify-between w-full mx-auto ${
           !showDropDown ? 'border-0' : 'border border-brand'
-        } bg-input custom-round h-[33px] px-2 my-3 cursor-pointer items-center`}
+        } bg-input custom-round h-[45px] px-2   cursor-pointer items-center`}
         ref={dropDownRef}
         onClick={() => setShowDropDown((prev) => !prev)}
       >

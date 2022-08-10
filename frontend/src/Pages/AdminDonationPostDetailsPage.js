@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../Components/Button';
 import { useNavigate, useParams } from 'react-router-dom';
-import { donationPostByIdAction } from '../actions/donationPostActions';
+import {
+  donationPostByIdAction,
+  donationPostDeleteAction
+} from '../actions/donationPostActions';
 import Loader from '../Components/Loader';
 import AdminDonationPostEditModal from '../Components/Modals/AdminDonationPostEditModal';
 import Topbar from '../Components/Topbar';
+import AdminDonatinPostDeleteModal from '../Components/Modals/AdminDonationPostDeleteModal';
+import { DONATION_POST_DELETE_RESET } from '../constants/donationPostConstants';
 
 const DonationCover = ({ data }) => {
   return (
@@ -80,11 +85,16 @@ export default function AdminDonationPostDetailsPage() {
   );
   const { loading, error, donationPostById } = donationPostByIdDataSet;
 
-  const { id } = useParams();
+  const donationPostDeleteData = useSelector(
+    (state) => state.donationPostDelete
+  );
+  const {
+    loading: deleteLoading,
+    success,
+    error: deleteError
+  } = donationPostDeleteData;
 
-  useEffect(() => {
-    dispatch(donationPostByIdAction(id));
-  }, [dispatch]);
+  const { id } = useParams();
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -92,6 +102,25 @@ export default function AdminDonationPostDetailsPage() {
       navigate('/login');
     }
   }, [userInfo, navigate]);
+  useEffect(() => {
+    if (success) {
+      navigate('/admin/donation/posts');
+    }
+  }, [success]);
+
+  useEffect(() => {
+    dispatch(donationPostByIdAction(id));
+    dispatch({
+      type: DONATION_POST_DELETE_RESET
+    });
+  }, [dispatch, success]);
+
+  const deleteHandler = () => {
+    dispatch(donationPostDeleteAction(id));
+    dispatch({
+      type: DONATION_POST_DELETE_RESET
+    });
+  };
   return (
     <>
       {loading ? (
@@ -111,7 +140,7 @@ export default function AdminDonationPostDetailsPage() {
                 <div onClick={() => setModal(true)}>
                   <Button width={true} text={'Edit'} widthClass={'w-[100px]'} />
                 </div>
-                <div>
+                <div onClick={() => setDeleteModal(true)}>
                   <Button
                     width={true}
                     text={'Delete'}
@@ -127,13 +156,16 @@ export default function AdminDonationPostDetailsPage() {
                 setModal={setModal}
               />
             )}
-            {/* {deleteModal && (
-              <UserAdoptionPostDeleteModal
-                data={donationPostById}
+            {deleteModal && (
+              <AdminDonatinPostDeleteModal
+                data={deleteModal}
                 setModal={setDeleteModal}
-                setRefresh={setRefresh}
+                deleteHandler={deleteHandler}
+                deleteLoading={deleteLoading}
+                success={success}
+                deleteError={deleteError}
               />
-            )} */}
+            )}
           </div>
         )
       )}

@@ -15,7 +15,7 @@ export default function MissingCardList({ list, buttonText }) {
     });
   }, []);
   return (
-    <div className="my-5 mt-[20px] grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
+    <div className="my-5 mt-[20px] grid mb-[100px]   grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 mx-auto">
       {list.map((item) => (
         <Link
           to={`/missing/${item.id}`}

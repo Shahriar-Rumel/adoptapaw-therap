@@ -11,6 +11,10 @@ import Loader from '../Components/Loader';
 import Message from '../Components/Message';
 import { useNavigate } from 'react-router-dom';
 import { PRODUCTION_URL } from '../Utils/Production';
+import {
+  DONATION_POST_CREATE_RESET,
+  DONATION_POST_DELETE_RESET
+} from '../constants/donationPostConstants';
 
 const BASE_URL = PRODUCTION_URL;
 
@@ -90,11 +94,13 @@ export default function CreateDonationPage() {
       setDescription('');
       setTargetAmount('');
       setImage('');
+      setLocation('');
     } else {
       setEmpty(true);
       console.log('Data is empty');
     }
   };
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!userInfo) {

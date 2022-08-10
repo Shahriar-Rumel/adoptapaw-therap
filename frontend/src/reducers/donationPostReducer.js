@@ -10,6 +10,10 @@ import {
   DONATION_POST_CREATE_REQUEST,
   DONATION_POST_CREATE_RESET,
   DONATION_POST_CREATE_SUCCESS,
+  DONATION_POST_DELETE_FAIL,
+  DONATION_POST_DELETE_REQUEST,
+  DONATION_POST_DELETE_RESET,
+  DONATION_POST_DELETE_SUCCESS,
   DONATION_POST_UPDATE_FAIL,
   DONATION_POST_UPDATE_REQUEST,
   DONATION_POST_UPDATE_SUCCESS
@@ -78,12 +82,14 @@ export const donationPostUpdateReducer = (state = {}, action) => {
 
 export const donationPostDeleteReducer = (state = {}, action) => {
   switch (action.type) {
-    case DONATION_POST_UPDATE_REQUEST:
+    case DONATION_POST_DELETE_REQUEST:
       return { loading: true };
-    case DONATION_POST_UPDATE_SUCCESS:
+    case DONATION_POST_DELETE_SUCCESS:
       return { loading: false, success: true };
-    case DONATION_POST_UPDATE_FAIL:
+    case DONATION_POST_DELETE_FAIL:
       return { loading: false, error: action.payload };
+    case DONATION_POST_DELETE_RESET:
+      return {};
     default:
       return state;
   }

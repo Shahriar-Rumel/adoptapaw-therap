@@ -106,7 +106,7 @@ export default function Adoptionpage() {
 
           <div className="flex flex-col w-[100%]  md:flex-row md:justify-between md:items-center">
             <div className="bg-gradient-to-r from-[#27004B] to-[#000004]  relative w-full h-[300px] custom-round mb-16 flex items-center justify-between px-6">
-              <div className=" mt-[-100px] lg:mt-[-60px] z-[300]">
+              <div className=" mt-[-100px] lg:mt-[-60px] z-[10]">
                 <h1 className="text-white font-bold text-[20px] lg:text-[26px] tracking-tight mb-2">
                   Adopt helpless animals today
                 </h1>
@@ -117,7 +117,7 @@ export default function Adoptionpage() {
                   your life with laughter, recreation, and happiness.
                 </p>
               </div>
-              <div className="absolute left-6 bottom-8 z-[300]">
+              <div className="absolute left-6 bottom-8 z-[10]">
                 {userInfo && (
                   <Link
                     to={`/adoption/${userInfo.id}/createpost`}

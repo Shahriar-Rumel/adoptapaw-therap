@@ -90,7 +90,7 @@ export default function AdminDonationPostEditModal({ data, setModal }) {
     }
   };
   return (
-    <div className=" lg:w-[1000px] w-[90vw] top-[100px] absolute shadow-xl bg-white px-4 py-5 ">
+    <div className=" lg:w-[1000px] w-[90vw] top-[100px]  shadow-xl custom-round bg-white px-4 py-5 ">
       <div className="flex justify-between items-center">
         <h1 className="text-[24px] tracking-tight font-extrabold text-primary">
           Edit Donation Post
@@ -110,21 +110,27 @@ export default function AdminDonationPostEditModal({ data, setModal }) {
       )}
       {loading && <Loader />}
       <form onSubmit={submitHandler}>
-        <TextInput
-          label={'Title'}
-          placeholder={'Donation title'}
-          data={name}
-          setData={setName}
-          type={'text'}
-        />
-        <SelectBox
-          label={'Pet type'}
-          placeholder={'Pet name'}
-          choiceList={typeArray}
-          data={type}
-          setData={setType}
-          type={'text'}
-        />
+        <div className="lg:flex justify-between">
+          <div className="lg:w-[48%]">
+            <TextInput
+              label={'Title'}
+              placeholder={'Donation title'}
+              data={name}
+              setData={setName}
+              type={'text'}
+            />
+          </div>
+          <div className="lg:w-[48%]">
+            <SelectBox
+              label={'Pet type'}
+              placeholder={'Pet name'}
+              choiceList={typeArray}
+              data={type}
+              setData={setType}
+              type={'text'}
+            />
+          </div>
+        </div>
         <div className="flex flex-col my-3 request-form-animation">
           <label className="font-bold text-primary text-[14px]">
             Pet Description
@@ -138,18 +144,25 @@ export default function AdminDonationPostEditModal({ data, setModal }) {
             className="bg-input py-4  custom-round px-4 my-3 font-[500] text-[14px] focus:border-brand active:border-brand focus:border-[1px] active:border-[1px] outline-none"
           ></textarea>
         </div>
-        <TextInput
-          type={'number'}
-          label={'Target amount'}
-          data={targetAmount}
-          setData={setTargetAmount}
-        />
-        <TextInput
-          type={'text'}
-          label={'Location'}
-          data={location}
-          setData={setLocation}
-        />
+        <div className="lg:flex justify-between">
+          <div className="lg:w-[48%]">
+            <TextInput
+              type={'number'}
+              label={'Target amount'}
+              data={targetAmount}
+              setData={setTargetAmount}
+            />
+          </div>
+          <div className="lg:w-[48%]">
+            <TextInput
+              type={'text'}
+              label={'Location'}
+              data={location}
+              setData={setLocation}
+            />
+          </div>
+        </div>
+
         <div className="lg:flex relative justify-between items-center my-4">
           <div className="w-[100%]">
             <h2 className="font-bold text-primary text-[14px] mb-4">
