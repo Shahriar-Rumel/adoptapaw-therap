@@ -54,26 +54,7 @@ export default function AdoptionRequestList({ title, data, page }) {
                         >
                           {item.id}
                         </td>
-                        <td>
-                          {/* <div className="w-[35px] h-[35px] overflow-hidden rounded-[100%] ">
-                            <div
-                              className="w-[35px] h-[35px] flex items-center justify-center bg-brand"
-                              style={{
-                                backgroundImage: `url(${item.dp})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover',
-                                backgroundRepeat: 'no-repeat'
-                              }}
-                            >
-                              {!item.dp && (
-                                <h1 className="text-[12px] font-bold uppercase text-white">
-                                  {item.name.split('')[0]}
-                                </h1>
-                              )}
-                            </div>
-                          </div> */}
-                          {item.adoptionseeker.username}
-                        </td>
+                        <td>{item.adoptionseeker.username}</td>
                         <td>{item.pet.name}</td>
                         <td>{item.requestdate}</td>
                         <td>{!item.status ? 'Pending' : 'Approved'}</td>

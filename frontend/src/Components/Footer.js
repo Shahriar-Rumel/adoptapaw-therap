@@ -17,7 +17,7 @@ export default function Footer() {
     <div
       className={`bg-[#2F0F02] ${
         theme ? `h-[300px]` : `h-0`
-      } flex items-center`}
+      } flex items-center  left-0 right-0 bottom-0 mt-[200px]`}
     >
       <div
         className={` ${

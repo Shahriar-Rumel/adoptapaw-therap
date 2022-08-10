@@ -15,7 +15,7 @@ export default function RegistrationCompletePage() {
     });
   }, []);
   return (
-    <div className=" lg:w-[600px] w-[90vw] mx-auto mt-[150px] ">
+    <div className=" lg:w-[600px] w-[90vw] mx-auto mt-[150px] mb-[100px] ">
       <Topbar address={'Home/Registration/Complete'} link={'/home'} />
       <img
         src="/assets/Icons/mail.svg"
