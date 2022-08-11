@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect } from 'react';
 import Button from '../Components/Button';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
-import List from '../Components/List';
 import { Link, useNavigate } from 'react-router-dom';
 import { adminStatsAction } from '../actions/adminActions';
 import Loader from '../Components/Loader';

@@ -101,19 +101,13 @@ export default function UserAdoptionDetailsLeft({ data, userInfo }) {
               <TextBlock
                 header={'Requested at'}
                 content={
-                  data && data.requestdate && data.requestdate.length > 6
-                    ? data.requestdate.substring(0, 19)
-                    : 'N/A'
+                  data.requestdate ? data.requestdate.substring(0, 19) : 'N/A'
                 }
               />
               <TextBlock
                 header={'Approved at'}
                 content={
-                  data && data.approveddate && data.approveddate.length > 4
-                    ? // ? data.approveddate.split('20')[0] +
-                      //   data.approveddate.split('BDT')[1].split(' ')[0]
-                      data.approveddate.substring(0, 19)
-                    : 'N/A'
+                  data.approveddate ? data.approveddate.substring(0, 19) : 'N/A'
                 }
               />
             </div>

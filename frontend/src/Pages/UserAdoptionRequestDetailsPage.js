@@ -80,7 +80,6 @@ export default function UserAdoptionRequestDetailsPage() {
               <UserAdoptionDetailsLeft
                 data={adoptionRequest}
                 userInfo={userInfo}
-                // approveHandler={approveHandler}
               />
             </div>
           </div>

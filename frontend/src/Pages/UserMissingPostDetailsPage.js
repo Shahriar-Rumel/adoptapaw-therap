@@ -12,6 +12,7 @@ import {
 import AttributeCard from '../Components/Cards/AttributeCard';
 import RewardCard from '../Components/Cards/RewardCard';
 import FeaturesCol from '../Components/FeaturesCol';
+import Topbar from '../Components/Topbar';
 
 const MissingFeature = ({ data }) => {
   return (
@@ -197,7 +198,13 @@ export default function UserMissingPostDetailsPage() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw] mt-[100px] lg:mt-[150px] mb-[100px]">
+        <div className="lg:flex lg:justify-between mx-auto lg:w-3/4 w-[90vw] mt-[140px] lg:mt-[150px] mb-[100px]">
+          {missingPostById && (
+            <Topbar
+              address={`Home/Profile/Missing/Post/${missingPostById.id}`}
+              link={`/admin/missingposts`}
+            />
+          )}
           {modal && (
             <UserMissingPostEditModal
               data={missingPostById}
@@ -213,12 +220,13 @@ export default function UserMissingPostDetailsPage() {
               deletePosthandler={deletePosthandler}
             />
           )}
-
-          <MissingAnimalProfileLayout
-            missingPostById={missingPostById}
-            setDeleteModal={setDeleteModal}
-            setModal={setModal}
-          />
+          {!modal && (
+            <MissingAnimalProfileLayout
+              missingPostById={missingPostById}
+              setDeleteModal={setDeleteModal}
+              setModal={setModal}
+            />
+          )}
         </div>
       )}
     </>

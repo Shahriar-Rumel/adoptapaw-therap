@@ -41,7 +41,12 @@ export default function Message({
 
           {button && (
             <Link to={link}>
-              <Button text={text} width={true} brand={variant == 'danger'} />
+              <Button
+                text={text}
+                width={true}
+                widthClass={'w-[100px]'}
+                brand={variant == 'danger'}
+              />
             </Link>
           )}
         </div>

@@ -79,7 +79,7 @@ export default function MissingAnimalDataModal({ data, setModal }) {
   };
   console.log(email, mobile, location);
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto  mb-[160px] absolute top-[100px] bg-white   z-[700]  shadow-lg p-8 custom-round">
+    <div className=" lg:w-3/4 w-[90vw] mx-auto  mb-[160px] absolute top-[140px] bg-white   z-[700]  shadow-lg p-8 custom-round">
       <div className="lg:flex lg:flex-row-reverse justify-between items-center  ">
         <div className="relative lg:w-[45%]">
           <div

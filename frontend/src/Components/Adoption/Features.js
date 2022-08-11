@@ -14,13 +14,13 @@ export default function ({ data }) {
           <div className={'border-l-brand border-l-2 pl-3'}>
             <FeaturesCol
               title={'Training'}
-              value={data.training ? 'Trained' : 'Untrained'}
+              value={data.training === 'true' ? 'Trained' : 'Untrained'}
             />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>
             <FeaturesCol
               title={'Vaccinated'}
-              value={data.vaccine ? 'Vaccinated' : 'Unvaccinated'}
+              value={data.vaccine === 'true' ? 'Vaccinated' : 'Unvaccinated'}
             />
           </div>
           <div className={'border-l-brand border-l-2 pl-3'}>

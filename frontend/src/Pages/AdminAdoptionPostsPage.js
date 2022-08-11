@@ -29,7 +29,6 @@ export default function AdminAdoptionPostsPage() {
   useEffect(() => {
     dispatch(adoptionPostsAction(pageNo, 12));
   }, [dispatch, pageNo]);
-  console.log(adoptionPosts);
 
   return (
     <>

@@ -132,24 +132,30 @@ export default function AdminDonationPostDetailsPage() {
               address={`Dashboard/Donation/Post/${donationPostById.id}`}
               link={'/dashboard'}
             />
-            <div className="lg:w-[1000px]">
-              <DonationCover data={donationPostById} />
-              <DonationHeader data={donationPostById} />
-              <DonationBar data={donationPostById} />
-              <div className=" flex  justify-between mt-5">
-                <div onClick={() => setModal(true)}>
-                  <Button width={true} text={'Edit'} widthClass={'w-[100px]'} />
-                </div>
-                <div onClick={() => setDeleteModal(true)}>
-                  <Button
-                    width={true}
-                    text={'Delete'}
-                    widthClass={'w-[100px]'}
-                    secondary={true}
-                  />
+            {!modal && (
+              <div className="lg:w-[1000px]">
+                <DonationCover data={donationPostById} />
+                <DonationHeader data={donationPostById} />
+                <DonationBar data={donationPostById} />
+                <div className=" flex  justify-between mt-5">
+                  <div onClick={() => setModal(true)}>
+                    <Button
+                      width={true}
+                      text={'Edit'}
+                      widthClass={'w-[100px]'}
+                    />
+                  </div>
+                  <div onClick={() => setDeleteModal(true)}>
+                    <Button
+                      width={true}
+                      text={'Delete'}
+                      widthClass={'w-[100px]'}
+                      secondary={true}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
             {modal && (
               <AdminDonationPostEditModal
                 data={donationPostById}

@@ -246,7 +246,7 @@ const ProfileMenuSection = ({
         }}
       >
         {!userInfo.dp && (
-          <h1 className="font-black text-[24px] text-white">
+          <h1 className="font-black text-[24px] text-white uppercase">
             {userInfo.name.split('')[0]}
           </h1>
         )}

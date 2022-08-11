@@ -21,10 +21,9 @@ export default function ForgotPasswordResetPage() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(resetPassword(token, password));
-    // navigate('/reset/passwordresetmessage');
   };
   return (
-    <div className=" lg:w-[600px] w-[90vw] mx-auto mt-[150px] ">
+    <div className=" lg:w-[600px] w-[90vw] mb-[400px]  mx-auto mt-[190px] ">
       <Topbar address={'Home/Forgot Password / Reset'} link={'/home'} />
       {success && (
         <Message

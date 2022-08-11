@@ -2,14 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import {
-  adoptionPostCreateAction,
-  adoptionPostUpdateAction
-} from '../../actions/adoptionActions';
+import { adoptionPostUpdateAction } from '../../actions/adoptionActions';
 import Button from '../Button';
 import Checkbox from '../IO/Checkbox';
-import ChoiceInput from '../IO/ChoiceInput';
-import ImageInput from '../IO/ImageInput';
 import SelectBox from '../IO/SelectBox';
 import TextInput from '../IO/TextInput';
 import Loader from '../Loader';
@@ -88,9 +83,13 @@ export default function UserAdoptionPostDetailsEdit({
   const [physicalcondition, setPhysicalcondition] = useState(
     data.physicalcondition
   );
-  const [vaccine, setVaccine] = useState(data.vaccine);
+  const [vaccine, setVaccine] = useState(
+    data.vaccine === 'true' ? true : false
+  );
   const [type, setType] = useState(data.type);
-  const [training, setTraining] = useState(data.training);
+  const [training, setTraining] = useState(
+    data.training === 'true' ? true : false
+  );
   const [color, setColor] = useState(data.color);
 
   const [empty, setEmpty] = useState(false);
@@ -99,7 +98,6 @@ export default function UserAdoptionPostDetailsEdit({
   const [imageTwo, setImageTwo] = useState(data.imagetwo);
   const [imageThree, setImageThree] = useState(data.imagethree);
 
-  console.log(data.imageone);
   const [uploading, setUploading] = useState('');
 
   const dispatch = useDispatch();
@@ -172,7 +170,7 @@ export default function UserAdoptionPostDetailsEdit({
   };
 
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto  mb-[160px] absolute top-[160px] bg-white  z-[700]  shadow-lg p-8 custom-round">
+    <div className="w-full mx-auto  mb-[100px]  bg-white  z-[700]  shadow-lg p-8 custom-round">
       <div className="flex justify-between items-center ">
         <h1 className="text-[30px] font-extrabold text-primary   tracking-tighter">
           Edit Post

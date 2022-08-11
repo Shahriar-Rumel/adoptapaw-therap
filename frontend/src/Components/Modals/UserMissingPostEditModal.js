@@ -2,33 +2,19 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import {
-  adoptionPostCreateAction,
-  adoptionPostUpdateAction
-} from '../../actions/adoptionActions';
 import Button from '../Button';
 import Checkbox from '../IO/Checkbox';
-import ChoiceInput from '../IO/ChoiceInput';
-import ImageInput from '../IO/ImageInput';
 import SelectBox from '../IO/SelectBox';
 import TextInput from '../IO/TextInput';
-import Loader from '../Loader';
 import UploadLoader from '../UploadLoader/UploadLoader';
 import Message from '../Message';
-import {
-  missingPostCreateAction,
-  missingPostUpdateAction
-} from '../../actions/missingAnimalActions';
+import { missingPostUpdateAction } from '../../actions/missingAnimalActions';
 
 import { PRODUCTION_URL } from '../../Utils/Production';
 
 const BASE_URL = PRODUCTION_URL;
 
-export default function UserMissingPostEditModal({
-  data,
-  setModal,
-  setRefresh
-}) {
+export default function UserMissingPostEditModal({ data, setModal }) {
   const [name, setName] = useState(data.name);
   const [location, setLocation] = useState(data.location);
   const [reward, setReward] = useState(data.rewards);
@@ -91,7 +77,6 @@ export default function UserMissingPostEditModal({
     if (
       dataport.name &&
       dataport.breed &&
-      dataport.vaccine &&
       dataport.color &&
       dataport.datemissing &&
       dataport.specificattribute &&
@@ -138,7 +123,8 @@ export default function UserMissingPostEditModal({
   };
 
   return (
-    <div className=" lg:w-3/4 w-[90vw] mx-auto  mb-[100px] absolute top-[80px] bg-white  z-[700]  shadow-lg p-8 custom-round">
+    // <div className="bg-green fixed left-0 right-0 top-[10px] z-[100] flex items-center justify-center">
+    <div className="w-full mx-auto   mb-[100px]   bg-white  z-[700]  shadow-lg p-8 custom-round">
       <div className="flex justify-between items-center ">
         <h1 className="text-[30px] font-extrabold text-primary   tracking-tighter">
           Edit Missing Post
@@ -312,9 +298,10 @@ export default function UserMissingPostEditModal({
         </div>
 
         <div onClick={submitHandler}>
-          <Button text={'Edit Missing Post'} />
+          <Button text={'Update Missing Post'} />
         </div>
       </form>
     </div>
+    // </div>
   );
 }

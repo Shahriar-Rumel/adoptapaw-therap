@@ -95,16 +95,16 @@ const MissingInformationDetailsLeft = ({ data, userInfo }) => {
               <TextBlock
                 header={'Received at'}
                 content={
-                  data.requestdate.split('20')[0] +
-                  data.requestdate.split('BDT')[1].split(' ')[0]
+                  data.requestdate
+                    ? data.requestdate.substring(0, 19) + ' BDT'
+                    : 'N/A'
                 }
               />
               <TextBlock
                 header={'Approved at'}
                 content={
-                  data && data.approveddate !== ' '
-                    ? data.approveddate.split('20')[0] +
-                      data.approveddate.split('BDT')[1].split(' ')[0]
+                  data.approvedate
+                    ? data.approvedate.substring(0, 19) + ' BDT'
                     : 'N/A'
                 }
               />
