@@ -41,7 +41,7 @@ const DpUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
     }
   };
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex items-center justify-center mt-[-100px]">
       <label
         htmlFor={id}
         style={{
@@ -50,7 +50,7 @@ const DpUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}
-        className="text-[12px] bg-brand  mt-5 lg:mt-0 flex items-center justify-center mx-auto w-[50vw]   h-[50vw] lg:w-[300px]  lg:h-[300px] xl:w-[400px]  xl:h-[400px] cursor-pointer font-bold text-[transparent] py-[35px] px-[25px]  rounded-[100%]"
+        className="text-[12px] bg-brand  mt-5 lg:mt-0 flex items-center justify-center mx-auto w-[50vw]   h-[50vw] lg:w-[300px]  lg:h-[300px]  cursor-pointer font-bold text-[transparent] py-[35px] px-[25px]  rounded-[100%]"
       >
         {!rawData && (
           <h1 className="uppercase font-bold text-[70px] lg:text-[124px] text-white">
@@ -60,7 +60,7 @@ const DpUpload = ({ rawData, setData, setUploading, userInfo, id }) => {
       </label>
       <img
         src="/assets/icons/edit.svg"
-        className="absolute mt-[50%] w-[30px]"
+        className="absolute mt-[190px] w-[30px]"
       ></img>
       <input
         id={id}
@@ -145,7 +145,7 @@ export default function UserProfileEditPage() {
           id={'dpid'}
           userInfo={userInfo}
         />
-        <form className="w-full lg:ml-[200px]">
+        <form className="w-full lg:ml-[100px]">
           <div className="md:w-[100%] lg:ml-5">
             <TextInput
               type={'text'}
