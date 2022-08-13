@@ -1,6 +1,6 @@
 ![Logo](/Resources/cover.png)
 
-> A Project developed for therap javafest 2022
+> A Project developed for Therap Javafest 2022
 
 <br/>
 
@@ -12,7 +12,7 @@
 [![Data Base](https://badgen.net/badge/icon/postgresql?color=4D2EA5&icon=postgresql&label=Database)](https://opensource.org/licenses/)
 ![](https://img.shields.io/badge/Frontend-React-informational?style=flat&logo=react&logoColor=00D8FF&color=00D8FF)
 ![](https://img.shields.io/badge/State-Redux-informational?style=flat&logo=redux&logoColor=764abc&color=764abc)
-[![youtube views](https://img.shields.io/youtube/views/jwL_E4QpZxk?style=social)](https://opensource.org/licenses/)
+[![youtube views](https://img.shields.io/youtube/views/IQAq34VDJMk?style=social)](https://www.youtube.com/watch?v=IQAq34VDJMk)
 
 Adoptapaw is a web-based online platform that allows users to find animals for adoption, help them find their missing pets, and raise funds to help vulnerable animals through donations from users.
 
@@ -24,7 +24,7 @@ https://adoptapaw.netlify.app/
 
 ## Project Demonstration
 
-https://adoptapaw.netlify.app/
+https://www.youtube.com/watch?v=IQAq34VDJMk
 
 ## Tech Stack
 
@@ -55,13 +55,7 @@ https://adoptapaw.netlify.app/
 **FrontEnd** : `Netlify `  
 **Backend** : `Heroku`
 
-## Environment Variables
-
-Add the following environment variables to your .env file
-
-`REACT_APP_PRODUCTION`
-
-## Responsive in all devices
+## Responsive across all platform
 
 ![Logo](/Resources/Responsive-1.png)
 ![Logo](/Resources/Responsive-2.png)
