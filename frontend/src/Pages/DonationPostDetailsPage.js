@@ -98,7 +98,7 @@ const DonatorAvatar = ({ data }) => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}
-        className="w-[30px] h-[30px] rounded-full"
+        className="w-[30px]  bg-brand h-[30px] rounded-full"
       ></div>
       <div
         style={{
@@ -107,7 +107,7 @@ const DonatorAvatar = ({ data }) => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}
-        className="ml-[-15px] w-[30px] h-[30px] rounded-full"
+        className="ml-[-15px] bg-primary w-[30px] h-[30px] rounded-full"
       ></div>
       <div
         style={{
@@ -116,7 +116,7 @@ const DonatorAvatar = ({ data }) => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}
-        className="ml-[-15px] w-[30px] h-[30px] rounded-full"
+        className="ml-[-15px] bg-blue w-[30px] h-[30px] rounded-full"
       ></div>
       <h3 className="text-gray-light font-bold tracking-tight ml-5">
         <span className="text-primary text-extrabold mr-1">
@@ -162,25 +162,10 @@ const DonationModal = ({
   handleDonation,
   amountofmoney,
   setAmountofmoney,
-  target,
   remains,
-  success
+  success,
+  donationCreateLoading
 }) => {
-  const [monthly, setMonthly] = useState(true);
-  const [yearly, setYearly] = useState(false);
-
-  // useEffect(() => {
-  //   gsap.from('.donation-modal-animation', {
-  //     y: '+=60',
-  //     autoAlpha: 0,
-  //     stagger: 0.2
-  //   });
-  //   gsap.to('.donation-modal-animation', {
-  //     y: '0',
-  //     autoAlpha: 1,
-  //     stagger: 0.2
-  //   });
-  // }, [modal]);
   return (
     <>
       {modal && (
@@ -201,6 +186,7 @@ const DonationModal = ({
             <h2 className="donation-modal-animation font-bold tracking-tight mt-10">
               Payment Amount
             </h2>
+            {donationCreateLoading && <UploadLoader />}
             {success && (
               <Message message={'Donated successfully!'} variant={'success'} />
             )}
@@ -311,7 +297,7 @@ export default function DonationPostDetailsPage() {
                 )}
               </div>
             </div>
-            {donationCreateLoading && <UploadLoader />}
+
             <DonationPurpose />
             <DonationModal
               modal={modal}
@@ -322,6 +308,7 @@ export default function DonationPostDetailsPage() {
               target={donationPostById.targetamount}
               remains={donationPostById.remainingamount}
               success={success}
+              donationCreateLoading={donationCreateLoading}
             />
           </div>
         )

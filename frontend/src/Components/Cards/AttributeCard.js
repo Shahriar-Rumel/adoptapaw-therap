@@ -13,10 +13,6 @@ export default function AttributeCard({ Attribute, feature }) {
           {feature}
         </h2>
       </div>
-      {/* <img
-        src="/assets/card-color.svg"
-        className="absolute mx-[87%] z-[-2] mt-[-40px] w-[55px]"
-      ></img> */}
     </div>
   );
 }

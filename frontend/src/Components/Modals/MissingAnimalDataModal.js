@@ -7,7 +7,6 @@ import TextInput from '../IO/TextInput';
 import axios from 'axios';
 import UploadLoader from '../UploadLoader/UploadLoader';
 import { missingInfoCreateAction } from '../../actions/missingInfoActions';
-import Loader from '../Loader';
 import Message from '../Message';
 import { PRODUCTION_URL } from '../../Utils/Production';
 

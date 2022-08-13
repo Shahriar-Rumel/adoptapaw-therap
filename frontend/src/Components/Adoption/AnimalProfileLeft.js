@@ -1,6 +1,5 @@
 import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
-import { adoptionListGallery } from '../../Data/adoption';
 export default function AnimalProfileLeft({ poster, data }) {
   const [image, setImage] = useState(data ? data.imageone : '');
   useEffect(() => {

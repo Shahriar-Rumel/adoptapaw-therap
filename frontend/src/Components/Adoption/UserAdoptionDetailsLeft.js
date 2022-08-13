@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Button from '../Button';
 import TextBlock from '../TextBlock';
 import { useDispatch, useSelector } from 'react-redux';

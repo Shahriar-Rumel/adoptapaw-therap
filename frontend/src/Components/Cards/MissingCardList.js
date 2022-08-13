@@ -1,7 +1,6 @@
 import gsap from 'gsap';
-import React, { lazy, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../Button';
 export default function MissingCardList({ list, buttonText }) {
   useEffect(() => {
     gsap.from('.missing-card-animation', {

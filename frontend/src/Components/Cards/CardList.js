@@ -1,5 +1,4 @@
-import React, { useEffect, lazy } from 'react';
-import { adoptionList } from '../../Data/adoption';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 

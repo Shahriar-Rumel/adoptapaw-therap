@@ -176,6 +176,7 @@ public class MissingRequestServiceImplementation implements MissingRequestServic
                 mailtoowner.put("pet",missingRequest.getPet().getName());
                 mailtoowner.put("seeker",missingRequest.getEmail().split("@")[0]);
                 mailtoowner.put("email",missingRequest.getEmail());
+                mailtoowner.put("mobile",missingRequest.getMobile());
 
                 try{
                     emailService.sendMail(mailtoowner);

@@ -3,15 +3,8 @@ import { Link } from 'react-router-dom';
 import Button from './Button';
 import Message from './Message';
 
-export default function List({ title, data, limit, query, page, uid }) {
+export default function List({ data, uid }) {
   var count = 0;
-  let limitforSection = 0;
-  if (limit == 0) {
-    // limitforSection = data.length;
-  } else limitforSection = 5;
-
-  //   .filter((listdataitem) => listdataitem.district.includes(query))
-  //   .sort((a, b) => ('' + a.date).localeCompare(b.date))
 
   return (
     <>

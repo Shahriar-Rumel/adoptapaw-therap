@@ -4,8 +4,6 @@ import SelectBox from './IO/SelectBox';
 import TextInput from './IO/TextInput';
 
 export default function RequestForm({ setObjects }) {
-  // const [data, setData] = useState('Yes');
-
   var choiceArray = ['Yes', 'No'];
 
   const {

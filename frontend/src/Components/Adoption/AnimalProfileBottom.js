@@ -1,5 +1,4 @@
-import gsap from 'gsap';
-import React, { useEffect } from 'react';
+import React from 'react';
 import AdditionalFeatures from '../Adoption/AdditionalFeatures';
 import Features from './Features';
 

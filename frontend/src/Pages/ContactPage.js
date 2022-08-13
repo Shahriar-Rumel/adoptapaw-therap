@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { feedbackCreateAction } from '../actions/feedbackActions';
 import Button from '../Components/Button';
-import TextInput from '../Components/IO/TextInput';
 import Topbar from '../Components/Topbar';
 import Message from '../Components/Message';
 import UploadLoader from '../Components/UploadLoader/UploadLoader';
@@ -11,9 +10,6 @@ import UploadLoader from '../Components/UploadLoader/UploadLoader';
 const Banner = () => {
   return (
     <div className="py-[30px] bg-white  md:shadow-none custom-round px-5 mb-10 md:mb-0 w-[100%]  md:ml-5">
-      {/* <h1 className=" text-center text-[16px]  tracking-tight  bg-opacity-30  text-primary  w-[100%] leading-5 contact-page-animation">
-        We would love to hear from you
-      </h1> */}
       <img
         src="/assets/icons/feedback.svg"
         className="w-[90%] mt-5 contact-page-animation"

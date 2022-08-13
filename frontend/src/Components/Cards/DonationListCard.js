@@ -1,7 +1,6 @@
 import gsap from 'gsap';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { donationList } from '../../Data/donation';
 import Button from '../Button';
 export default function DonationListCard({ data, userInfo }) {
   useEffect(() => {
