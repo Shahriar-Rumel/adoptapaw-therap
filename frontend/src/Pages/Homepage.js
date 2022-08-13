@@ -59,11 +59,13 @@ export default function Homepage() {
               </p>
             </div>
             <div className="absolute left-6 bottom-8 z-[10]">
-              <Button
-                text={'Adopt now'}
-                width={true}
-                widthClass={'w-[120px] lg:w-[150px]'}
-              />
+              <Link to="/adoption">
+                <Button
+                  text={'Adopt now'}
+                  width={true}
+                  widthClass={'w-[120px] lg:w-[150px]'}
+                />
+              </Link>
             </div>
             <img
               src="/assets/cat.png"
