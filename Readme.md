@@ -1,8 +1,10 @@
 ![Logo](/Resources/cover.png)
 
-> A Project developed for Therap Javafest 2022
+> A Project developed for Therap Java Fest 2022
 
 <br/>
+
+![Badge](https://visitor-counter-badge.vercel.app/api/shahriar-rumel/adoptapaw-therap?label=Visitors&color=EA6607&labelColor=451E0E)
 
 # **Adoptapaw**
 
