@@ -50,6 +50,14 @@ https://www.youtube.com/watch?v=IQAq34VDJMk
 
 - PostgresQL
 
+## Project Architecture
+
+![Logo](/Resources/ProjectArchitecture.png)
+
+## Database Schema
+
+![Logo](/Resources/DatabaseSchema.png)
+
 ## Deployment
 
 **FrontEnd** : `Netlify `  
