@@ -65,6 +65,7 @@ https://www.youtube.com/watch?v=IQAq34VDJMk
 ![Logo](/Resources/apiDocumentation-1.png)
 ![Logo](/Resources/apiDocumentation-2.png)
 ![Logo](/Resources/apiDocumentation-3.png)
+![Logo](/Resources/ModelDTO.png)
 
 ## Deployment
 
