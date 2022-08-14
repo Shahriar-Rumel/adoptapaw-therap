@@ -58,6 +58,14 @@ https://www.youtube.com/watch?v=IQAq34VDJMk
 
 ![Logo](/Resources/DatabaseSchema.png)
 
+## REST API Documentation
+
+[Test The API](https://adoptapaw.herokuapp.com/swagger-ui/)
+
+![Logo](/Resources/apiDocumentation-1.png)
+![Logo](/Resources/apiDocumentation-2.png)
+![Logo](/Resources/apiDocumentation-3.png)
+
 ## Deployment
 
 **FrontEnd** : `Netlify `  
