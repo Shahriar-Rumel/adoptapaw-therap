@@ -226,6 +226,10 @@ public class AuthController {
         try {
             User user = userRepository.findById(Long.valueOf(id)).orElseThrow(()-> new ResourceNotFoundException("Update User","ID",Long.parseLong(id)));
 
+           Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+           if(!Objects.equals(user.getEmail(), auth.getName())){
+            return new ResponseEntity<>("Not authorized to make changes",HttpStatus.BAD_REQUEST);
+           }
             user.setName(signupDTO.getName());
             if(signupDTO.getPassword() != null)
                 user.setPassword(passwordEncoder.encode(signupDTO.getPassword()));
